@@ -16,8 +16,7 @@ public class App
 	 * the screen, the data will be loaded. The graphics primitives 
 	 * that draw the image will incrementally paint on the screen. 
 	 *
-	 * @args  url  an absolute URL giving the base location of the image
-	 * @return      the image at the specified URL
+	 * @param  args the location of the image, relative to the url argument
 	 */
     public static void main( String[] args )
     {
