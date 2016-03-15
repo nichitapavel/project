@@ -29,7 +29,7 @@ public class App
 	 * <p>
 	 * Testing 
 	 *
-	 * @param  Bolean a the location of the image, relative to the url argument
+	 * @param  a the location of the image, relative to the url argument
 	 */
     public static void test(Boolean a)
     {
