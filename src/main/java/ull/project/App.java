@@ -30,6 +30,7 @@ public class App
 	 * Testing 
 	 *
 	 * @param  a the location of the image, relative to the url argument
+	 * @return Boolean a simple return
 	 */
     public static Boolean test(Boolean a)
     {
