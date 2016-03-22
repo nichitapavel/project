@@ -8,12 +8,14 @@ package datastructures;
  *
  */
 public class Attribute implements Comparable<Attribute>{
-    private String attribute;
+    private String attr;
     
     /**
      * Constructs a Null string. 
      */
-    public Attribute() { };
+    public Attribute() {
+        // Manually generated default constructor.
+    }
     
     
     /**
@@ -21,7 +23,7 @@ public class Attribute implements Comparable<Attribute>{
      * @param attribute A string representing the value of attribute.
      */
     public Attribute(String attribute) {
-        this.attribute = attribute;
+        this.attr = attribute;
     }
     
     /**
@@ -29,7 +31,7 @@ public class Attribute implements Comparable<Attribute>{
      * @param obj An Attribute object.
      */
     public Attribute(Attribute obj) {
-        attribute = obj.getAttribute();
+        attr = obj.getAttribute();
     }
     
     /**
@@ -37,16 +39,16 @@ public class Attribute implements Comparable<Attribute>{
      * @return the string with the value of Attribute.
      */
     public String getAttribute() {
-        return attribute;
-    };
+        return attr;
+    }
 
     /**
      * Sets the value of Attribute string.
      * @param attribute the value to be set of attribute.
      */
     public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    };
+        this.attr = attribute;
+    }
     
     /**
      * Compares two attributes lexicographically.
@@ -69,7 +71,7 @@ public class Attribute implements Comparable<Attribute>{
      */
     @Override
     public int compareTo(Attribute obj) {
-        return attribute.compareTo(obj.getAttribute());
+        return attr.compareTo(obj.getAttribute());
     }
 
 }
