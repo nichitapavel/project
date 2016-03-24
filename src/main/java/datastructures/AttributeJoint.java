@@ -45,7 +45,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @param joint An ArrayList of Attribute objects.
      */
     public AttributeJoint(ArrayList<Attribute> joint) {
-        this.joint = new ArrayList<>(joint) ;
+        this.joint = new ArrayList<Attribute>(joint) ;
         sort();
     }
 
@@ -58,7 +58,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @param obj An AttributeJoint object.
      */
     public AttributeJoint(AttributeJoint obj) {
-        this.joint = new ArrayList<>(obj.getAttributeJoint());
+        this.joint = new ArrayList<Attribute>(obj.getAttributeJoint());
     }
 
     /**
@@ -76,7 +76,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @param joint A list with Attribute objects.
      */
     public void setAttributeJoint(ArrayList<Attribute> joint) {
-        this.joint = new ArrayList<>(joint);
+        this.joint = new ArrayList<Attribute>(joint);
     }
 
     /**
