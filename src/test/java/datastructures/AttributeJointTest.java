@@ -21,7 +21,6 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AttributeJointTest {
     private AttributeJoint mainAttributeJoint;
-    private SetUpClass setUpObject;
     
     /**
      * Set up
@@ -30,8 +29,6 @@ public class AttributeJointTest {
     public void setUp() {
         String [] attrArray = {"A", "B", "C"};
         mainAttributeJoint = new AttributeJoint(attrArray);
-
-        this.setUpObject = new SetUpClass();
     }
 
     /**
@@ -318,8 +315,8 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsDifferentClass() {
-        Attribute A = new Attribute("A");
-        assertFalse(mainAttributeJoint.equals(A));
+        Attribute a = new Attribute("A");
+        assertFalse(mainAttributeJoint.equals(a));
     }
 
     /**
@@ -327,9 +324,9 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointNullTrue() {
-        AttributeJoint A = new AttributeJoint();
-        AttributeJoint B = new AttributeJoint();
-        assertTrue(A.equals(B));
+        AttributeJoint a = new AttributeJoint();
+        AttributeJoint b = new AttributeJoint();
+        assertTrue(a.equals(b));
     }
 
     /**
@@ -337,8 +334,8 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointNullFalse() {
-        AttributeJoint A = new AttributeJoint();
-        assertFalse(A.equals(mainAttributeJoint));
+        AttributeJoint a = new AttributeJoint();
+        assertFalse(a.equals(mainAttributeJoint));
     }
     
     /**
@@ -346,8 +343,8 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointInverse() {
-        AttributeJoint A = new AttributeJoint();
-        assertFalse(mainAttributeJoint.equals(A));
+        AttributeJoint a = new AttributeJoint();
+        assertFalse(mainAttributeJoint.equals(a));
     }
     
     /**
@@ -376,15 +373,15 @@ public class AttributeJointTest {
      */
     @Test
     public void testSortConstructor() {
-        String [] unsortedArray_A = {"B", "A", "C"};
-        AttributeJoint unsortedJoint_A = new AttributeJoint(unsortedArray_A);
-        assertEquals(mainAttributeJoint, unsortedJoint_A);
+        String [] unsortedArrayA = {"B", "A", "C"};
+        AttributeJoint unsortedJointA = new AttributeJoint(unsortedArrayA);
+        assertEquals(mainAttributeJoint, unsortedJointA);
         
-        ArrayList<Attribute> unsortedVector_B = new ArrayList<>();
-        unsortedVector_B.add(new Attribute("C"));
-        unsortedVector_B.add(new Attribute("B"));
-        unsortedVector_B.add(new Attribute("A"));
-        AttributeJoint unsortedJoint_B = new AttributeJoint(unsortedVector_B);
+        ArrayList<Attribute> unsortedVectorB = new ArrayList<>();
+        unsortedVectorB.add(new Attribute("C"));
+        unsortedVectorB.add(new Attribute("B"));
+        unsortedVectorB.add(new Attribute("A"));
+        AttributeJoint unsortedJoint_B = new AttributeJoint(unsortedVectorB);
         assertEquals(mainAttributeJoint, unsortedJoint_B);
     }
 
@@ -406,9 +403,9 @@ public class AttributeJointTest {
     public void testSortAddAttributeJoint() {
         String [] unsortedArray = {"B"};
         AttributeJoint unsortedJoint = new AttributeJoint(unsortedArray);
-        String [] unsortedArray_B = {"A", "C"};
-        AttributeJoint unsortedJoint_B = new AttributeJoint(unsortedArray_B);
-        unsortedJoint.addAttributes(unsortedJoint_B);
+        String [] unsortedArrayB = {"A", "C"};
+        AttributeJoint unsortedJointB = new AttributeJoint(unsortedArrayB);
+        unsortedJoint.addAttributes(unsortedJointB);
         assertEquals(mainAttributeJoint, unsortedJoint);
     }
     
