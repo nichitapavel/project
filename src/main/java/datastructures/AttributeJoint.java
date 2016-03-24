@@ -118,6 +118,42 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Adds an Attribute object to this list.
+     * 
+     * If this list is not initialized, initializes it, checks if {@code attr}
+     * is already in the list, if it's not adds it, and sort this list.
+     * 
+     * @param attr Attribute object to add to the list.
+     */
+    public void addAttributes(Attribute attr) {
+        if (joint == null)
+            joint = new ArrayList<>();
+        
+        if (joint.indexOf(attr) == -1)
+            joint.add(attr);
+        
+        sort();
+    }
+
+    /**
+     * Adds another AttributeJoint Attribute objects to this.
+     * 
+     * If this list is not initialized, initializes it, checks if {@code attrJoint}
+     * has Attribute objects, if it not, calls {@link datastructures.AttributeJoint#addAttributes(Attribute)} 
+     * for every Attribute object of {@code attrJoint}.
+     * 
+     * @param attrJoint The AttributeJoint to add to this.
+     */
+    public void addAttributes(AttributeJoint attrJoint) {
+        if (joint == null)
+            joint = new ArrayList<>();
+        
+        if (attrJoint.getAttributeJoint() != null)      
+            for (Attribute attr : attrJoint)
+                addAttributes(attr);
+    }
+
+    /**
      * Sorts the list of Attribute objects according to lexicographically
      * order.
      */
