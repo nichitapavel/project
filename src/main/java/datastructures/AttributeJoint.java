@@ -118,6 +118,50 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Returns a hash code for this attribute joint.
+     * 
+     * The hash code for a AttributeJoint object is
+     * computed using the default implementations of Eclipse.
+     * 
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((joint == null) ? 0 : joint.hashCode());
+        return result;
+    }
+
+    /**
+     * Compares this attribute joint to the specified object.
+     * 
+     *  The result is true if and only if the argument
+     *  is not null and is a AttributeJoint object that represents
+     *  the same attribute joint list as this object.
+     * 
+     * @param obj The object to compare this AttributeJoint against.
+     * @return true if the given object represents a AttributeJoint
+     * equivalent to this attribute joint list, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        AttributeJoint other = (AttributeJoint) obj;
+        if (joint == null) {
+            if (other.joint != null)
+                return false;
+        } else if (!joint.equals(other.joint))
+            return false;
+        return true;
+    }
+
+    /**
      * Adds an Attribute object to this list.
      * 
      * If this list is not initialized, initializes it, checks if {@code attr}
