@@ -6,6 +6,7 @@ package datastructures;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Pavel Nichita
@@ -19,7 +20,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      */
     public AttributeJoint() {
         // Manually generated default constructor.
-    };
+    }
 
     /**
      * Constructs an ordered list of Attributes from strings.
@@ -30,7 +31,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @param stringArray An array of String object.
      */
     public AttributeJoint(String [] stringArray) {
-        joint = new ArrayList<Attribute>();
+        joint = new ArrayList<>();
         for (String attr : stringArray)
             joint.add(new Attribute(attr));
         sort();
@@ -44,8 +45,8 @@ public class AttributeJoint implements Iterable<Attribute> {
      * 
      * @param joint An ArrayList of Attribute objects.
      */
-    public AttributeJoint(ArrayList<Attribute> joint) {
-        this.joint = new ArrayList<Attribute>(joint) ;
+    public AttributeJoint(List<Attribute> joint) {
+        this.joint = new ArrayList<>(joint) ;
         sort();
     }
 
@@ -58,7 +59,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @param obj An AttributeJoint object.
      */
     public AttributeJoint(AttributeJoint obj) {
-        this.joint = new ArrayList<Attribute>(obj.getAttributeJoint());
+        this.joint = new ArrayList<>(obj.getAttributeJoint());
     }
 
     /**
@@ -66,7 +67,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * 
      * @return a list of Attribute objects.
      */
-    public ArrayList<Attribute> getAttributeJoint() {
+    public List<Attribute> getAttributeJoint() {
         return this.joint;
     }
 
@@ -75,8 +76,8 @@ public class AttributeJoint implements Iterable<Attribute> {
      * 
      * @param joint A list with Attribute objects.
      */
-    public void setAttributeJoint(ArrayList<Attribute> joint) {
-        this.joint = new ArrayList<Attribute>(joint);
+    public void setAttributeJoint(List<Attribute> joint) {
+        this.joint = new ArrayList<>(joint);
     }
 
     /**
@@ -107,7 +108,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      */
     @Override
     public String toString() {
-        if (this.joint == null || this.joint.size() == 0)
+        if (this.joint == null || this.joint.isEmpty())
             return "null";
         
         String stringJoint = "{" + joint.get(0).toString();
