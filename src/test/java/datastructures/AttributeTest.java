@@ -23,7 +23,7 @@ public class AttributeTest {
     private String namedAttr;
 
     /**
-     * @throws java.lang.Exception
+     * Set Up
      */
     @Before
     public void setUp() {
