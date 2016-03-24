@@ -324,9 +324,9 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointNullTrue() {
-        AttributeJoint a = new AttributeJoint();
-        AttributeJoint b = new AttributeJoint();
-        assertTrue(a.equals(b));
+        AttributeJoint attrJointA = new AttributeJoint();
+        AttributeJoint attrJointB = new AttributeJoint();
+        assertTrue(attrJointA.equals(attrJointB));
     }
 
     /**
@@ -334,8 +334,8 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointNullFalse() {
-        AttributeJoint a = new AttributeJoint();
-        assertFalse(a.equals(mainAttributeJoint));
+        AttributeJoint attrJointA = new AttributeJoint();
+        assertFalse(attrJointA.equals(mainAttributeJoint));
     }
     
     /**
@@ -343,8 +343,8 @@ public class AttributeJointTest {
      */
     @Test
     public void testEqualsAttributeJointInverse() {
-        AttributeJoint a = new AttributeJoint();
-        assertFalse(mainAttributeJoint.equals(a));
+        AttributeJoint attrJointA = new AttributeJoint();
+        assertFalse(mainAttributeJoint.equals(attrJointA));
     }
     
     /**
@@ -381,8 +381,8 @@ public class AttributeJointTest {
         unsortedVectorB.add(new Attribute("C"));
         unsortedVectorB.add(new Attribute("B"));
         unsortedVectorB.add(new Attribute("A"));
-        AttributeJoint unsortedJoint_B = new AttributeJoint(unsortedVectorB);
-        assertEquals(mainAttributeJoint, unsortedJoint_B);
+        AttributeJoint unsortedJointB = new AttributeJoint(unsortedVectorB);
+        assertEquals(mainAttributeJoint, unsortedJointB);
     }
 
     /**
