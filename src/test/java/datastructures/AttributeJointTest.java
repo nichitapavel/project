@@ -418,4 +418,120 @@ public class AttributeJointTest {
             assertNotNull(attr);
     }
 
+    /**
+     * Checks if {A} isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedSingleElementAttributeJoint() {
+        String [] containedJointArray = {"A"};
+        AttributeJoint containedJoint = new AttributeJoint(containedJointArray);
+        assertTrue(containedJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks if {A, C} isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedAttributeJoint() {
+        String [] containedJointArray = {"A", "C"};
+        AttributeJoint containedJoint = new AttributeJoint(containedJointArray);
+        assertTrue(containedJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks if {A, B, C} isContained in null AttributeJoint.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedNullAttributeJointFalse() {
+        AttributeJoint nullJoint = new AttributeJoint();
+        assertFalse(mainAttributeJoint.isContained(nullJoint));
+    }
+    
+    /**
+     * Checks if a null AttributeJoint isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedNullAttributeJointDoesNotContainAnyAttributeJoint() {
+        AttributeJoint nullJoint = new AttributeJoint();
+        assertFalse(nullJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks if {D} isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedSingleElementAttributeJointFalse() {
+        String [] containedJointArray = {"D"};
+        AttributeJoint containedJoint = new AttributeJoint(containedJointArray);
+        assertFalse(containedJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks if {D, E} isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedAttributeJointFalse() {
+        String [] containedJointArray = {"D", "E"};
+        AttributeJoint containedJoint = new AttributeJoint(containedJointArray);
+        assertFalse(containedJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks if {A, C, D} isContained in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsNotContainedAttributeJointWithSimilarAttributesFalse() {
+        String [] containedJointArray = {"A", "C", "D"};
+        AttributeJoint containedJoint = new AttributeJoint(containedJointArray);
+        assertFalse(containedJoint.isContained(mainAttributeJoint));
+    }
+    
+    /**
+     * Checks the position of Attribute: A, C and D in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getAttributePosition(Attribute)}.
+     */
+    @Test
+    public void testGetAttributePositionNormalAttributeJoint() {
+        assertEquals(0, this.mainAttributeJoint.getAttributePosition(new Attribute("A")));
+        assertEquals(1, this.mainAttributeJoint.getAttributePosition(new Attribute("B")));
+        assertEquals(2, this.mainAttributeJoint.getAttributePosition(new Attribute("C")));
+    }
+    
+    /**
+     * Checks the position of Attribute: A in a null AttributeJoint.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getAttributePosition(Attribute)}.
+     */
+    @Test
+    public void testGetAttributePositionVoidAttributeJoint() {
+        AttributeJoint nullAttrJoint = new AttributeJoint();
+        assertEquals(-1, nullAttrJoint.getAttributePosition(new Attribute("A")));
+    }
+    
+    /**
+     * Checks the position of Attribute: D in {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getAttributePosition(Attribute)}.
+     */
+    @Test
+    public void testGetAttributePositionThatDoesNotExistInNormalAttributeJoint() {
+        assertEquals(-1, this.mainAttributeJoint.getAttributePosition(new Attribute("D")));
+    }
+    
+
 }

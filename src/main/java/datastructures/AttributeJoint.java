@@ -162,6 +162,28 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Checks if all Attribute objects from this are part of {@code attrJoint}.
+     * 
+     * If this object or {@code attrJoint} is null returns false, if at least
+     * one Attribute object is not part of {@code attrJoint} returns false, 
+     * otherwise returns true. 
+     * 
+     * @param attrJoint the object where to check if is part of.
+     * @return true if all Attribute objects are part of {@code attrJoint},
+     * false otherwise.
+     */
+    public boolean isContained(AttributeJoint attrJoint) {
+        if (attrJoint.getAttributeJoint() == null || joint == null)
+            return false;
+        
+        for (Attribute attribute : joint){
+            if (attrJoint.getAttributePosition(attribute) == -1)
+                return false;
+        }
+        return true;
+    }
+
+    /**
      * Adds an Attribute object to this list.
      * 
      * If this list is not initialized, initializes it, checks if {@code attr}
@@ -213,6 +235,23 @@ public class AttributeJoint implements Iterable<Attribute> {
     @Override
     public Iterator<Attribute> iterator() {
         return this.joint.iterator();
+    }
+
+    /**
+     * Returns the position of {@code attribute} if is part of this object.
+     * 
+     * @param attribute Attribute to return it position.
+     * @return returns -1 if is not in this object, otherwise returns the
+     * position of {@code attribute}.
+     */
+    public int getAttributePosition(Attribute attribute) {
+        if (this.joint == null)
+            return -1;
+        
+        for (int i = 0; i < this.joint.size(); i++)
+            if (attribute.equals(this.joint.get(i)))
+                return i;
+        return -1;
     }
 
 }
