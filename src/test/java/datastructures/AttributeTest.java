@@ -223,4 +223,45 @@ public class AttributeTest {
         assertTrue(result > 0);
     }
 
+    /**
+     * Creates an AttributeJoint with these elements in it:
+     * <i>Name</i>, <i>Atributo</i> and <i>A</i>. Checks for every Attribute 
+     * if it is contained in the AttributeJoint.
+     * 
+     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContained() {
+        String [] attributes = {"Name", "Atributo", "A"};
+        AttributeJoint attrJoint = new AttributeJoint(attributes);
+        assertTrue(namedAttribute.isContained(attrJoint));
+        assertTrue(stringAttr.isContained(attrJoint));
+        Attribute A = new Attribute("A");
+        assertTrue(A.isContained(attrJoint));
+    }
+
+    /**
+     * Creates an AttributeJoint with these elements in it:
+     * Atributo and A. Checks if Attribute <i>Name</i> 
+     * is contained in the AttributeJoint. 
+     * 
+     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedFalseAttrJoint() {
+        String [] attributes = {"Atributo", "A"};
+        AttributeJoint attrJoint = new AttributeJoint(attributes);
+        assertFalse(namedAttribute.isContained(attrJoint));
+    }
+
+    /**
+     * Checks if Attribute <i>Name</i> is contained in a null AttributeJoint. 
+     * 
+     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     */
+    @Test
+    public void testIsContainedNullAttrJoint() {
+        AttributeJoint attrJoint = new AttributeJoint();
+        assertFalse(namedAttribute.isContained(attrJoint));
+    }
 }

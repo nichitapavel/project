@@ -143,4 +143,23 @@ public class Attribute implements Comparable<Attribute>{
         return attr.compareTo(obj.getAttribute());
     }
 
+    /**
+     * Checks if this object is part of {@code attrJoint}
+     * 
+     * If {@code attrJoint} is null returns false immediately, otherwise for every
+     * Attribute object of {@code attrJoint} calls {@link datastructures.Attribute#equals(Object)}
+     * method to see if they are equal, if positive returns true. If none is equals returns
+     * false at the end. Only checks for the value of this object.
+     * 
+     * @param attrJoint AttributeJoint object where to check if it is part of.
+     * @return true if this attribute is part of an AttributeJoint object, false otherwise.
+     */
+    public boolean isContained(AttributeJoint attrJoint) {
+        if (attrJoint.getAttributeJoint() == null)
+            return false;
+        for (Attribute attr : attrJoint.getAttributeJoint())
+            if (attr.equals(this))
+                return true;
+        return false;
+    }
 }
