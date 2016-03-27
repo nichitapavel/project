@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import utils.Const;
+
 /**
  * @author Pavel Nichita
  *
@@ -343,7 +345,7 @@ public class AttributeJoint implements Iterable<Attribute> {
         }
         catch (NullPointerException ex) {
             LOG.setLevel(Level.INFO);
-            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+            LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
         return null;
     }
@@ -383,7 +385,7 @@ public class AttributeJoint implements Iterable<Attribute> {
             return resultAttrJoint;         
         }
         catch (NullPointerException ex) {
-            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+            LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
         return new AttributeJoint();
     }
@@ -406,7 +408,7 @@ public class AttributeJoint implements Iterable<Attribute> {
             return resultAttrJoint;         
         }
         catch (NullPointerException ex) {
-            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+            LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
         return new AttributeJoint();
     }
