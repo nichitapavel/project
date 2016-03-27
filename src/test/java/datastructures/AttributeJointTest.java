@@ -630,4 +630,16 @@ public class AttributeJointTest {
         nullJoint.removeAttributes(mainAttributeJoint);
         assertNull(nullJoint.getAttributeJoint());
     }
+    
+    /**
+     * Checks that from AttributeJoint {A, B, C} returns Attribute A when 
+     * {@code position == 0} and Attribute C when {@code position == 2}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getAttributeAt(int)}.
+     */
+    @Test
+    public void getAttributeAt(){
+        assertEquals(new Attribute("A"), this.mainAttributeJoint.getAttributeAt(0));
+        assertEquals(new Attribute("C"), this.mainAttributeJoint.getAttributeAt(2));
+    }
 }

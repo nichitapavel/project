@@ -293,6 +293,18 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Returns the Attribute object from position {@code position}. 
+     * 
+     * The {@code position} is out of range case is not contemplated.  
+     * 
+     * @param position The position of Attribute object to return.
+     * @return the Attribute object from {@code position}. 
+     */
+    public Attribute getAttributeAt(int position) {
+        return this.joint.get(position);
+    }
+    
+    /**
      * Returns the position of {@code attribute} if is part of this object.
      * 
      * @param attribute Attribute to return it position.
