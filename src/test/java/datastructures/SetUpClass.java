@@ -3,8 +3,6 @@
  */
 package datastructures;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import dependency.ADependency;
@@ -647,7 +645,7 @@ public class SetUpClass {
     }
 
     //Functional Dependency ABD -> E
-    public ADependency funcDep_ABDtoE() {
+    public ADependency funcDepABDtoE() {
         return new FunctionalDependency(attrJntABD(), attrJntE());
     }
     
