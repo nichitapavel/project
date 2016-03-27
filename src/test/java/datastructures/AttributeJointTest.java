@@ -638,7 +638,7 @@ public class AttributeJointTest {
      * Test method for {@link datastructures.AttributeJoint#getAttributeAt(int)}.
      */
     @Test
-    public void getAttributeAt(){
+    public void testGetAttributeAt(){
         assertEquals(new Attribute("A"), this.mainAttributeJoint.getAttributeAt(0));
         assertEquals(new Attribute("C"), this.mainAttributeJoint.getAttributeAt(2));
     }
@@ -650,9 +650,78 @@ public class AttributeJointTest {
      * Test method for {@link datastructures.AttributeJoint#changeAttributeAt(int, Attribute)}.
      */
     @Test
-    public void changeAttributeAtTest() {
+    public void testChangeAttributeAtTest() {
         Attribute attrG = new Attribute("G");
         this.mainAttributeJoint.changeAttributeAt(this.mainAttributeJoint.getSize()-1, attrG);
         assertEquals(attrG, this.mainAttributeJoint.getAttributeAt(this.mainAttributeJoint.getSize() - 1));     
+    }
+    
+    /**
+     * Union AttributeJoint {A, B, C} with {D, E, F}, result must be {A, B, C, D, E, F}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#union(AttributeJoint)}.
+     */
+    @Test
+    public void testUnionNormalAttributeJoints() {
+        String [] stringAttr = {"D", "E", "F"};
+        AttributeJoint attrJoint = new AttributeJoint(stringAttr);
+        AttributeJoint result = this.mainAttributeJoint.union(attrJoint);
+        String [] expectedStringAttr = {"A", "B", "C", "D", "E", "F"};
+        AttributeJoint expected = new AttributeJoint(expectedStringAttr);
+        assertEquals(expected, result);
+    }
+    
+    /**
+     * Union AttributeJoint {A, B, C} with a null AttributeJoint, result must be {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#union(AttributeJoint)}.
+     */
+    @Test
+    public void testUnionVoidAttributeJoint() {
+        AttributeJoint voidAttrJoint = new AttributeJoint();
+        AttributeJoint result = this.mainAttributeJoint.union(voidAttrJoint);
+        assertEquals(this.mainAttributeJoint, result);
+    }
+    
+    /**
+     * Union AttributeJoint {A, B, C} with {A, C, F}, result must be {A, B, C, F}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#union(AttributeJoint)}.
+     */
+    @Test
+    public void testUnionRepetedAttributes() {
+        String [] stringAttr = {"A", "C", "F"};
+        AttributeJoint attrJoint = new AttributeJoint(stringAttr);
+        AttributeJoint result = this.mainAttributeJoint.union(attrJoint);
+        String [] expectedStringAttr = {"A", "B", "C", "F"};
+        AttributeJoint expected = new AttributeJoint(expectedStringAttr);
+        assertEquals(expected, result);
+    }
+
+    /**
+     * Union AttributeJoint {A, B, C} with {A, B, C}, result must be {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#union(AttributeJoint)}.
+     */
+    @Test
+    public void testUnionRepeatedAllAttributes() {
+        String [] stringAttr = {"A", "B", "C"};
+        AttributeJoint attrJoint = new AttributeJoint(stringAttr);
+        AttributeJoint result = this.mainAttributeJoint.union(attrJoint);
+        String [] expectedStringAttr = {"A", "B", "C"};
+        AttributeJoint expected = new AttributeJoint(expectedStringAttr);
+        assertEquals(expected, result);
+    }
+    
+    /**
+     * Union a null AttributeJoint with {A, B, C}, result must be {A, B, C}.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#union(AttributeJoint)}.
+     */
+    @Test
+    public void testUnionVoidAttributeJointWithAttributeJoint() {
+        AttributeJoint voidAttrJoint = new AttributeJoint();
+        AttributeJoint result = voidAttrJoint.union(this.mainAttributeJoint);
+        assertEquals(this.mainAttributeJoint, result);
     }
 }

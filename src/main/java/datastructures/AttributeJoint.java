@@ -317,6 +317,20 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
     
     /**
+     * Creates a new AttributeJoint with all Attributes from this
+     * and {@code attrJoint} and returns it.
+     * 
+     * @param attrJoint The other AttributeJoint for the union.
+     * @return a new AttributeJoint with all Attribute objects.
+     */
+    public AttributeJoint union(AttributeJoint attrJoint) {
+        AttributeJoint result = new AttributeJoint();
+        result.addAttributes(this);
+        result.addAttributes(attrJoint);
+        return result;
+    }
+    
+    /**
      * Returns the position of {@code attribute} if is part of this object.
      * 
      * @param attribute Attribute to return it position.
