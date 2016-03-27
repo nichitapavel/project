@@ -539,7 +539,7 @@ public class AttributeJointTest {
      * Test method for {@link datastructures.AttributeJoint#getSize()}.
      */
     @Test
-    public void getSizeAssert() {
+    public void testGetSizeAssert() {
         assertEquals(mainAttributeJoint.getSize(), 3);
     }
 
@@ -549,7 +549,7 @@ public class AttributeJointTest {
      * Test method for {@link datastructures.AttributeJoint#getSize()}.
      */
     @Test
-    public void getSizeFail() {
+    public void testGetSizeFail() {
         assertNotEquals(mainAttributeJoint.getSize(), 0);
     }
 
@@ -559,8 +559,75 @@ public class AttributeJointTest {
      * Test method for {@link datastructures.AttributeJoint#getSize()}.
      */
     @Test
-    public void getSizeNullAttributeJoint() {
+    public void testGetSizeNullAttributeJoint() {
         assertEquals(0, new AttributeJoint().getSize());
     }
+ 
+    /**
+     * Checks that after {@code clear} method is called on AtributeJoint:
+     * {A, B, C} the object is empty.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#clear()}.
+     */
+    @Test
+    public void testClearJoint() {
+        this.mainAttributeJoint.clear();
+        assertEquals(0, this.mainAttributeJoint.getSize());
+    }
     
+    /**
+     * Checks if the result of removing Attribute C from AttributeJoint {A, B, C} 
+     * is equal with {A, B} .
+     * 
+     * Test method for {@link datastructures.AttributeJoint#removeAttributes(Attribute)}.
+     */
+    @Test
+    public void testRemoveAttribute() {
+        String [] expectedAttrArray = {"A", "B"};
+        AttributeJoint expectedAttributeJoint = new AttributeJoint(expectedAttrArray);
+        Attribute attr = new Attribute("C");
+        mainAttributeJoint.removeAttributes(attr);
+        assertEquals(expectedAttributeJoint, mainAttributeJoint);
+    }
+    
+    /**
+     * Checks if removing Attribute C from a null AttributeJoint fails.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#removeAttributes(Attribute)}.
+     */
+    @Test
+    public void testRemoveAttributeFromNullJoint() {
+        AttributeJoint nullJoint = new AttributeJoint();
+        Attribute attr = new Attribute("C");
+        nullJoint.removeAttributes(attr);
+        assertNull(nullJoint.getAttributeJoint());
+    }
+    
+    /**
+     * Checks if the result of removing AttributeJoint {A, C} from AttributeJoint
+     * {A, B, C} is equal with {B} .
+     * 
+     * Test method for {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}.
+     */
+    @Test
+    public void testRemoveAttributeJoint() {
+        String [] expArray = {"B"};
+        AttributeJoint expectedJoint = new AttributeJoint(expArray);
+        String [] removeArray = {"A", "C"};
+        AttributeJoint removedJoint = new AttributeJoint(removeArray);
+        mainAttributeJoint.removeAttributes(removedJoint);
+        assertEquals(expectedJoint, mainAttributeJoint);
+    }
+    
+    /**
+     * Checks if removing AttributeJoin {A, B, C} from a null AttributeJoint fails.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}.
+     */
+    @Test
+    public void testRemoveAttributeJointFromNullJoint() {
+        AttributeJoint nullJoint = new AttributeJoint();
+        nullJoint.removeAttributes(mainAttributeJoint);
+        assertNull(nullJoint.getAttributeJoint());
+    }
 }

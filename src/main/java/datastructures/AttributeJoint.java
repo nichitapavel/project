@@ -249,6 +249,40 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Removes all of the elements from this list.
+     * 
+     * The list will be empty after this call returns.
+     */
+    public void clear() {
+        this.joint.clear();
+    }
+
+    /**
+     * Removes from this list an Attribute object.
+     * 
+     * If {@code attr} is not in the list, the list is unchanged.
+     * 
+     * @param attr Attribute object to be removed from this list.
+     */
+    public void removeAttributes(Attribute attr) {
+        if (joint != null)
+            joint.remove(attr);
+    }
+
+    /**
+     * Removes from this a list of Attribute object.
+     * 
+     * Calls for {@link datastructures.AttributeJoint#removeAttributes(Attribute)}
+     * for every Attribute of {@code removedJoint}.
+     * 
+     * @param removedJoint A list of Attribute objects to be removed from this list.
+     */
+    public void removeAttributes(AttributeJoint removedJoint) {
+        for (Attribute attr : removedJoint.getAttributeJoint())
+            removeAttributes(attr);
+    }
+    
+    /**
      * Returns an Iterator other the Attribute objects list.
      * 
      * @return an iterator other the Attribute objects list.
