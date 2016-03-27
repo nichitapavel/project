@@ -724,4 +724,26 @@ public class AttributeJointTest {
         AttributeJoint result = voidAttrJoint.union(this.mainAttributeJoint);
         assertEquals(this.mainAttributeJoint, result);
     }
+    
+    /**
+     * Checks if last Attribute of AttributeJoint {A, B, C} is Attribute C. 
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getLastAttribute()}.
+     */
+    @Test
+    public void testGetLastAttributeAttributeJoint() {
+        Attribute attrC = new Attribute("C");
+        assertEquals(attrC, this.mainAttributeJoint.getLastAttribute());
+    }
+    
+    /**
+     * Checks if a null AttributeJoint returns null. 
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getLastAttribute()}.
+     */
+    @Test
+    public void testGetLastAttributeNullAttributeJoint() {
+        AttributeJoint attrJoint = new AttributeJoint();
+        assertNull(attrJoint.getLastAttribute());
+    }
 }

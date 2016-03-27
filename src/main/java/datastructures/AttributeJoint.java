@@ -331,6 +331,24 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
     
     /**
+     * Return the last Attribute object from this list.
+     * 
+     * If this object is not initialized returns null.
+     * 
+     * @return the last Attribute of this list or null if not initialized.
+     */
+    public Attribute getLastAttribute() {
+        try {
+            return this.joint.get(this.joint.size() - 1);
+        }
+        catch (NullPointerException ex) {
+            LOG.setLevel(Level.INFO);
+            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+        }
+        return null;
+    }
+    
+    /**
      * Returns the position of {@code attribute} if is part of this object.
      * 
      * @param attribute Attribute to return it position.
