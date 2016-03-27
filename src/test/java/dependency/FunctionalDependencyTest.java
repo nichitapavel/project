@@ -207,7 +207,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void getAttributeJoint() {
-        this.fd = this.setUpObject.funcDep_A_to_BCD();
+        this.fd = this.setUpObject.funcDepAtoBCD();
         AttributeJoint expected = this.setUpObject.attrJntABCD();
         assertEquals(expected, this.fd.getAttributeJoint());
     }

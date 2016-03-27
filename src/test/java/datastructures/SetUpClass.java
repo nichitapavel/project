@@ -3,6 +3,8 @@
  */
 package datastructures;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import dependency.ADependency;
@@ -445,272 +447,227 @@ public class SetUpClass {
     /******************/
     
     //Functional Dependency A -> B
-    public ADependency funcDep_A_to_B() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntB());
-        return funcDep;
+    public ADependency funcDepAtoB() {
+        return new FunctionalDependency(attrJntA(), attrJntB());
     }
     
     //Functional Dependency A -> C
-    public ADependency funcDep_A_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntC());
-        return funcDep;
+    public ADependency funcDepAtoC() {
+        return new FunctionalDependency(attrJntA(), attrJntC());
     }
     
     //Functional Dependency A -> D
-    public ADependency funcDep_A_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntD());
-        return funcDep;
+    public ADependency funcDepAtoD() {
+        return new FunctionalDependency(attrJntA(), attrJntD());
     }
     
     //Functional Dependency A -> E
-    public ADependency funcDep_A_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntE());
-        return funcDep;
+    public ADependency funcDepAtoE() {
+        return new FunctionalDependency(attrJntA(), attrJntE());
     }
     
     //Functional Dependency A -> BCD
-    public ADependency funcDep_A_to_BCD() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntBCD());
-        return funcDep;
+    public ADependency funcDepAtoBCD() {
+        return new FunctionalDependency(attrJntA(), attrJntBCD());
     }
     
     //Functional Dependency B -> C
-    public ADependency funcDep_B_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntC());
-        return funcDep;
+    public ADependency funcDepBtoC() {
+        return new FunctionalDependency(attrJntB(), attrJntC());
     }
     
     //Functional Dependency B -> D
-    public ADependency funcDep_B_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntD());
-        return funcDep;
+    public ADependency funcDepBtoD() {
+        return new FunctionalDependency(attrJntB(), attrJntD());
     }
     
     //Functional Dependency B -> E
-    public ADependency funcDep_B_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntE());
-        return funcDep;
+    public ADependency funcDepBtoE() {
+        return new FunctionalDependency(attrJntB(), attrJntE());
     }
     
     //Functional Dependency B -> AC
-    public ADependency funcDep_B_to_AC() {
-        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntAC());
-        return funcDep;
+    public ADependency funcDepBtoAC() {
+        return new FunctionalDependency(attrJntB(), attrJntAC());
     }
     
     //Functional Dependency B -> CE
-    public ADependency funcDep_B_to_CE() {
-        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntCE());
-        return funcDep;
+    public ADependency funcDepBtoCE() {
+        return new FunctionalDependency(attrJntB(), attrJntCE());
     }
     
     //Functional Dependency C -> A
-    public ADependency funcDep_C_to_A() {
-        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntA());
-        return funcDep;
+    public ADependency funcDepCtoA() {
+        return new FunctionalDependency(attrJntC(), attrJntA());
     }
     
     //Functional Dependency C -> B
-    public ADependency funcDep_C_to_B() {
-        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntB());
-        return funcDep;
+    public ADependency funcDepCtoB() {
+        return new FunctionalDependency(attrJntC(), attrJntB());
     }
     
     //Functional Dependency C -> B
-    public ADependency funcDep_C_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntD());
-        return funcDep;
+    public ADependency funcDepCtoD() {
+        return new FunctionalDependency(attrJntC(), attrJntD());
     }
 
     //Functional Dependency D -> C
-    public ADependency funcDep_D_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntD(), attrJntC());
-        return funcDep;
+    public ADependency funcDepDtoC() {
+        return new FunctionalDependency(attrJntD(), attrJntC());
     }
     
     //Functional Dependency D -> E
-    public ADependency funcDep_D_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntD(), attrJntE());
-        return funcDep;
+    public ADependency funcDepDtoE() {
+        return new FunctionalDependency(attrJntD(), attrJntE());
     }
     
     //Functional Dependency E -> C
-    public ADependency funcDep_E_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntC());
-        return funcDep;
+    public ADependency funcDepEtoC() {
+        return new FunctionalDependency(attrJntE(), attrJntC());
     }
     
     //Functional Dependency E -> D
-    public ADependency funcDep_E_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntD());
-        return funcDep;
+    public ADependency funcDepEtoD() {
+        return new FunctionalDependency(attrJntE(), attrJntD());
     }
     
     //Functional Dependency E -> DF
-    public ADependency funcDep_E_to_DF() {
-        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntDF());
-        return funcDep;
+    public ADependency funcDepEtoDF() {
+        return new FunctionalDependency(attrJntE(), attrJntDF());
     }
         
     //Functional Dependency E -> F
-    public ADependency funcDep_E_to_F() {
-        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntF());
-        return funcDep;
+    public ADependency funcDepEtoF() {
+        return new FunctionalDependency(attrJntE(), attrJntF());
     }
 
     //Functional Dependency F -> E
-    public ADependency funcDep_F_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntF(), attrJntE());
-        return funcDep;
+    public ADependency funcDepFtoE() {
+        return new FunctionalDependency(attrJntF(), attrJntE());
     }
     
     //Functional Dependency A -> BC
-    public ADependency funcDep_A_to_BC() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntBC());
-        return funcDep;
+    public ADependency funcDepAtoBC() {
+        return new FunctionalDependency(attrJntA(), attrJntBC());
     }
     
     //Functional Dependency A -> CD
-    public ADependency funcDep_A_to_CD() {
-        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntCD());
-        return funcDep;
+    public ADependency funcDepAtoCD() {
+        return new FunctionalDependency(attrJntA(), attrJntCD());
     }
     
     //Functional Dependency C -> AB
-    public ADependency funcDep_C_to_AB() {
-        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntAB());
-        return funcDep;
+    public ADependency funcDepCtoAB() {
+        return new FunctionalDependency(attrJntC(), attrJntAB());
     }
     
     //Functional Dependency AB -> B
-    public ADependency funcDep_AB_to_B() {
-        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntB());
-        return funcDep;
+    public ADependency funcDepABtoB() {
+        return new FunctionalDependency(attrJntAB(), attrJntB());
     }
     
     //Functional Dependency AB -> C
-    public ADependency funcDep_AB_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntC());
-        return funcDep;
+    public ADependency funcDepABtoC() {
+        return new FunctionalDependency(attrJntAB(), attrJntC());
     }
     
     //Functional Dependency AB -> D
-    public ADependency funcDep_AB_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntD());
-        return funcDep;
+    public ADependency funcDepABtoD() {
+        return new FunctionalDependency(attrJntAB(), attrJntD());
     }
     
     //Functional Dependency AB -> CD
-    public ADependency funcDep_AB_to_CD() {
-        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntCD());
-        return funcDep;
+    public ADependency funcDepABtoCD() {
+        return new FunctionalDependency(attrJntAB(), attrJntCD());
     }
     
     //Functional Dependency AB -> BCD
-    public ADependency funcDep_AB_to_BCD() {
-        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntBCD());
-        return funcDep;
+    public ADependency funcDepABtoBCD() {
+        return new FunctionalDependency(attrJntAB(), attrJntBCD());
     }
     
     //Functional Dependency AD -> C
-    public ADependency funcDep_AD_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntAD(), attrJntC());
-        return funcDep;
+    public ADependency funcDepADtoC() {
+        return new FunctionalDependency(attrJntAD(), attrJntC());
     }
     
     //Functional Dependency AD -> E
-    public ADependency funcDep_AD_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntAD(), attrJntE());
-        return funcDep;
+    public ADependency funcDepADtoE() {
+        return new FunctionalDependency(attrJntAD(), attrJntE());
     }
     
     //Functional Dependency AE -> D
-    public ADependency funcDep_AE_to_D() {
-        ADependency funcDep = new FunctionalDependency(attrJntAE(), attrJntD());
-        return funcDep;
+    public ADependency funcDepAEtoD() {
+        return new FunctionalDependency(attrJntAE(), attrJntD());
     }
     
     //Functional Dependency AE -> F
-    public ADependency funcDep_AE_to_F() {
-        ADependency funcDep = new FunctionalDependency(attrJntAE(), attrJntF());
-        return funcDep;
+    public ADependency funcDepAEtoF() {
+        return new FunctionalDependency(attrJntAE(), attrJntF());
     }
     
     //Functional Dependency BC -> A
-    public ADependency funcDep_BC_to_A() {
-        ADependency funcDep = new FunctionalDependency(attrJntBC(), attrJntA());
-        return funcDep;
+    public ADependency funcDepBCtoA() {
+        return new FunctionalDependency(attrJntBC(), attrJntA());
     }
     
     //Functional Dependency BC -> E
-    public ADependency funcDep_BC_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntBC(), attrJntE());
-        return funcDep;
+    public ADependency funcDepBCtoE() {
+        return new FunctionalDependency(attrJntBC(), attrJntE());
     }
-    
+
     //Functional Dependency BD -> C
-    public ADependency funcDep_BD_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntBD(), attrJntC());
-        return funcDep;
+    public ADependency funcDepBDtoC() {
+        return new FunctionalDependency(attrJntBD(), attrJntC());
     }
     
     //Functional Dependency BE -> A
-    public ADependency funcDep_BE_to_A() {
-        ADependency funcDep = new FunctionalDependency(attrJntBE(), attrJntA());
-        return funcDep;
+    public ADependency funcDepBEtoA() {
+        return new FunctionalDependency(attrJntBE(), attrJntA());
     }
     
     //Functional Dependency CD -> A
-    public ADependency funcDep_CD_to_A() {
-        ADependency funcDep = new FunctionalDependency(attrJntCD(), attrJntA());
-        return funcDep;
+    public ADependency funcDepCDtoA() {
+        return new FunctionalDependency(attrJntCD(), attrJntA());
     }
     
     //Functional Dependency CD -> E
-    public ADependency funcDep_CD_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntCD(), attrJntE());
-        return funcDep;
+    public ADependency funcDepCDtoE() {
+        return new FunctionalDependency(attrJntCD(), attrJntE());
     }
     
     //Functional Dependency CF -> H
-    public ADependency funcDep_CF_to_H() {
-        ADependency funcDep = new FunctionalDependency(attrJntCF(), attrJntH());
-        return funcDep;
+    public ADependency funcDepCFtoH() {
+        return new FunctionalDependency(attrJntCF(), attrJntH());
     }
     
     //Functional Dependency DE -> C
-    public ADependency funcDep_DE_to_C() {
-        ADependency funcDep = new FunctionalDependency(attrJntDE(), attrJntC());
-        return funcDep;
+    public ADependency funcDepDEtoC() {
+        return new FunctionalDependency(attrJntDE(), attrJntC());
     }
 
     //Functional Dependency ABD -> E
-    public ADependency funcDep_ABD_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntABD(), attrJntE());
-        return funcDep;
+    public ADependency funcDep_ABDtoE() {
+        return new FunctionalDependency(attrJntABD(), attrJntE());
     }
     
     //Functional Dependency ABD -> G
-    public ADependency funcDep_ABD_to_G() {
-        ADependency funcDep = new FunctionalDependency(attrJntABD(), attrJntG());
-        return funcDep;
+    public ADependency funcDepABDtoG() {
+        return new FunctionalDependency(attrJntABD(), attrJntG());
     }
     
     //Functional Dependency ABE -> G
-    public ADependency funcDep_ABE_to_G() {
-        ADependency funcDep = new FunctionalDependency(attrJntABE(), attrJntG());
-        return funcDep;
+    public ADependency funcDepABEtoG() {
+        return new FunctionalDependency(attrJntABE(), attrJntG());
     }
     
     //Functional Dependency ABE -> H
-    public ADependency funcDep_ABE_to_H() {
-        ADependency funcDep = new FunctionalDependency(attrJntABE(), attrJntH());
-        return funcDep;
+    public ADependency funcDepABEtoH() {
+        return new FunctionalDependency(attrJntABE(), attrJntH());
     }
 
     //Functional Dependency BCD -> E
-    public ADependency funcDep_BCD_to_E() {
-        ADependency funcDep = new FunctionalDependency(attrJntBCD(), attrJntE());
-        return funcDep;
+    public ADependency funcDepBCDtoE() {
+        return new FunctionalDependency(attrJntBCD(), attrJntE());
     }
 }
