@@ -40,7 +40,7 @@ public abstract class ADependency {
      */
     public AttributeJoint getAntecedent() {
         return this.antecedent;
-    };
+    }
     
     /**
      * Returns the right side of a dependency.
@@ -49,7 +49,7 @@ public abstract class ADependency {
      */
     public AttributeJoint getConsequent() {
         return this.consequent;
-    };
+    }
     
     /**
      * Sets the left side of a dependency.
@@ -58,7 +58,7 @@ public abstract class ADependency {
      */
     public void setAntecedent(AttributeJoint antecedent) {
         this.antecedent = antecedent;
-    };
+    }
     
     /**
      * Sets the right side of a dependency.
@@ -67,7 +67,6 @@ public abstract class ADependency {
      */    
     public void setConsequent(AttributeJoint consequent) {
         this.consequent = consequent;
-    
-};
+    }
 
 }
