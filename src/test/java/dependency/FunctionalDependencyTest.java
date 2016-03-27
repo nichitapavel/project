@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import datastructures.Attribute;
 import datastructures.AttributeJoint;
 
 /**
@@ -49,7 +50,7 @@ public class FunctionalDependencyTest {
      * Checks that a argument constructor creates a not null antecedent and consequent.
      */
     @Test
-    public void constructorAttributeJoints() {
+    public void testConstructorAttributeJoints() {
         assertNotNull(fd.getAntecedent());
         assertNotNull(fd.getConsequent());
     }
@@ -63,7 +64,7 @@ public class FunctionalDependencyTest {
      * 
      */
     @Test
-    public void getTest() {
+    public void testGet() {
         assertEquals(this.antecedent, fd.getAntecedent());
         assertEquals(this.consequent, fd.getConsequent());
     }
@@ -79,7 +80,7 @@ public class FunctionalDependencyTest {
      * Checks that fd returns {C, E} for consequent.
      */
     @Test
-    public void setTest() {
+    public void testSet() {
         String [] antecedentSetterArray = {"A", "B", "D"};
         AttributeJoint antecedentSetter = new AttributeJoint(antecedentSetterArray);
         String [] consequentSetterArray = {"C", "E"};
@@ -88,5 +89,61 @@ public class FunctionalDependencyTest {
         fd.setConsequent(consequentSetter);
         assertEquals(antecedentSetter, fd.getAntecedent());
         assertEquals(consequentSetter, fd.getConsequent());     
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromAntecedent(Attribute)}.
+     * 
+     * Remove Attribute B from antecedent {A, B, C}, result must be {A, C}.
+     */
+    @Test
+    public void testRemoveAttributeFromAntecedent() {
+        String [] attr = {"A", "C"}; 
+        AttributeJoint expected = new AttributeJoint(attr);
+        fd.removeAttributeFromAntecedent(new Attribute("B"));
+        assertEquals(expected, fd.getAntecedent());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromConsequent(Attribute)}.
+     * 
+     * Remove Attribute E from consequent {D, E, F}, result must be {D, F}.
+     */
+    @Test
+    public void testRemoveAttributeFromConsequent() {
+        String [] attr = {"D", "F"}; 
+        AttributeJoint expected = new AttributeJoint(attr);
+        fd.removeAttributeFromConsequent(new Attribute("E"));
+        assertEquals(expected, fd.getConsequent());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromAntecedent(AttributeJoint)}.
+     * 
+     * Remove AttributeJoint {A, B} from antecedent {A, B, C}, result must be {C}.
+     */
+    @Test
+    public void testRemoveAttributeJointFromAntecedent() {
+        String [] attr = {"C"}; 
+        AttributeJoint expected = new AttributeJoint(attr);
+        String [] toBeRemovedArray = {"B", "A"}; 
+        AttributeJoint toBeRemoved = new AttributeJoint(toBeRemovedArray);
+        fd.removeAttributeFromAntecedent(toBeRemoved);
+        assertEquals(expected, fd.getAntecedent());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromConsequent(AttributeJoint)}.
+     * 
+     * Remove AttributeJoint {E, D} from consequent {D, E, F}, result must be {F}.
+     */
+    @Test
+    public void testRemoveAttributeJointFromConsequent() {
+        String [] attr = {"F"}; 
+        AttributeJoint expected = new AttributeJoint(attr);
+        String [] toBeRemovedArray = {"E", "D"}; 
+        AttributeJoint toBeRemoved = new AttributeJoint(toBeRemovedArray);
+        fd.removeAttributeFromConsequent(toBeRemoved);
+        assertEquals(expected, fd.getConsequent());
     }
 }

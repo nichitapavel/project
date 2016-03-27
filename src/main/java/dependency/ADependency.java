@@ -3,6 +3,7 @@
  */
 package dependency;
 
+import datastructures.Attribute;
 import datastructures.AttributeJoint;
 
 /**
@@ -69,4 +70,79 @@ public abstract class ADependency {
         this.consequent = consequent;
     }
 
+    /**
+     * Removes an Attribute from the left side.
+     * 
+     * It's a wrapper that calls a private function that calls
+     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The Attribute to be removed.
+     */
+    public void removeAttributeFromAntecedent(Attribute attr){
+        removeAttributes(attr, this.antecedent);
+    }
+    
+    /**
+     * Removes an AttributeJoint from the left side.
+     * 
+     * It's a wrapper that calls a private function that calls
+     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The AttributeJoint to be removed.
+     */
+    public void removeAttributeFromAntecedent(AttributeJoint attr) {
+        removeAttributes(attr, antecedent);
+    }
+    
+    /**
+     * Removes an Attribute from the right side.
+     * 
+     * It's a wrapper that calls a private function that calls
+     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The Attribute to be removed.
+     */
+    public void removeAttributeFromConsequent(Attribute attr){
+        removeAttributes(attr, this.consequent);
+    }
+    
+    /**
+     * Removes an AttributeJoint from the right side.
+     * 
+     * It's a wrapper that calls a private function that calls
+     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The AttributeJoint to be removed.
+     */
+    public void removeAttributeFromConsequent(AttributeJoint attr) {
+        removeAttributes(attr, this.consequent);
+    }
+   
+    /**
+     * Removes an Attribute from the left or right side.
+     * 
+     * It's a wrapper that calls AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The Attribute to be removed.
+     */
+    private void removeAttributes(Attribute attr, AttributeJoint attrJoint){
+        attrJoint.removeAttributes(attr);       
+    }
+    
+    /**
+     * Removes an AttributeJoint from the left or right side.
+     * 
+     * It's a wrapper that calls AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * with {@code attr} as parameter.
+     * 
+     * @param attr The AttributeJoint to be removed.
+     */
+    private void removeAttributes(AttributeJoint attr, AttributeJoint attrJoint){
+        attrJoint.removeAttributes(attr);       
+    }
 }
