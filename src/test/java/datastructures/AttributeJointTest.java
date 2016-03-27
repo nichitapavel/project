@@ -788,4 +788,55 @@ public class AttributeJointTest {
         assertEquals(expected, firstJoined.intersect(secondJoined));
     }
 
+    /**
+     * Test method for {@link datastructures.AttributeJoint#substract(AttributeJoint)}.
+     * 
+     * Substracts AttributeJoint {A, B} from {A, B, C}, result must be {C}.
+     */
+    @Test
+    public void testSubstracABFromABC() {
+        AttributeJoint expected = this.setUpObject.attrJntC();
+        AttributeJoint firstJoined = this.setUpObject.attrJntABC();
+        AttributeJoint secondJoined = this.setUpObject.attrJntAB();
+        assertEquals(expected, firstJoined.substract(secondJoined));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#substract(AttributeJoint)}.
+     * 
+     * Substracts AttributeJoint {B, C} from {A, D, E}, result must be {A, D, E}.
+     */
+    @Test
+    public void testSubstracBCFromADE() {
+        AttributeJoint expected = this.setUpObject.attrJntADE();
+        AttributeJoint firstJoined = this.setUpObject.attrJntADE();
+        AttributeJoint secondJoined = this.setUpObject.attrJntBC();
+        assertEquals(expected, firstJoined.substract(secondJoined));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#substract(AttributeJoint)}.
+     * 
+     * Substracts AttributeJoint {B, C} from {A, B}, result must be {A}.
+     */
+    @Test
+    public void testSubstracBCFromAB() {
+        AttributeJoint expected = this.setUpObject.attrJntA();
+        AttributeJoint firstJoined = this.setUpObject.attrJntAB();
+        AttributeJoint secondJoined = this.setUpObject.attrJntBC();
+        assertEquals(expected, firstJoined.substract(secondJoined));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#substract(AttributeJoint)}.
+     * 
+     * Substracts AttributeJoint {B, C} from a null one, result must be an empty AttributeJoint.
+     */
+    @Test
+    public void testSubstracBCFromNull() {
+        AttributeJoint expected = new AttributeJoint();
+        AttributeJoint firstJoined = new AttributeJoint();
+        AttributeJoint secondJoined = this.setUpObject.attrJntBC();
+        assertEquals(expected, firstJoined.substract(secondJoined));
+    }
 }

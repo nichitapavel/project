@@ -387,5 +387,28 @@ public class AttributeJoint implements Iterable<Attribute> {
         }
         return new AttributeJoint();
     }
+    
+    /**
+     * Creates a new AttributeJoint with all Attributes that only are in this
+     * object but not in {@code attrJoint} and returns it.
+     * 
+     * If this is not initialized returns an empty AttributeObject.
+     * 
+     * @param attrJoint The other AttributeJoint for the substract.
+     * @return a new AttributeJoint with all Attribute objects only from this object.
+     */
+    public AttributeJoint substract(AttributeJoint attrJoint) {
+        try {
+            AttributeJoint resultAttrJoint = new AttributeJoint();
+            ArrayList<Attribute> auxJoint = new ArrayList<>(this.joint);
+            auxJoint.removeAll(attrJoint.getAttributeJoint());
+            resultAttrJoint.setAttributeJoint(auxJoint);
+            return resultAttrJoint;         
+        }
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+        }
+        return new AttributeJoint();
+    }
 
 }
