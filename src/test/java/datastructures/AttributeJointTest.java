@@ -839,4 +839,36 @@ public class AttributeJointTest {
         AttributeJoint secondJoined = this.setUpObject.attrJntBC();
         assertEquals(expected, firstJoined.substract(secondJoined));
     }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isNull()}.
+     * 
+     * Checks if null AttributeJoint returns true.
+     */
+    @Test
+    public void testIsNullNullAttributeJoint() {
+        assertTrue(new AttributeJoint().isNull());
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isNull()}.
+     * 
+     * Checks if AttributeJoint {A, B} returns false.
+     */
+    @Test
+    public void testIsNullAttributeJointAB() {
+        assertFalse(this.setUpObject.attrJntAB().isNull());
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isNull()}.
+     * 
+     * Checks if AttributeJoint {} returns true.
+     */
+    @Test
+    public void testIsNullAttributeJointAMinusA() {
+        AttributeJoint attrJnt = this.setUpObject.attrJntA();
+        attrJnt.removeAttributes(this.setUpObject.attrA());
+        assertTrue(attrJnt.isNull());
+    }
 }

@@ -413,4 +413,14 @@ public class AttributeJoint implements Iterable<Attribute> {
         return new AttributeJoint();
     }
 
+    /**
+     * Check if this object is null or it's size is zero.
+     * 
+     * @return true if is null o it's size is zero, false otherwise.
+     */
+    public boolean isNull() {
+        if (this.joint == null || this.joint.isEmpty())
+            return true;
+        return false;
+    }
 }
