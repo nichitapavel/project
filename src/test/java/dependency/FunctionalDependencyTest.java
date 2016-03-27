@@ -146,4 +146,43 @@ public class FunctionalDependencyTest {
         fd.removeAttributeFromConsequent(toBeRemoved);
         assertEquals(expected, fd.getConsequent());
     }
+
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isDestroyable()}.
+     * 
+     * Checks if dependency {A, B, C} -> {D, E, F} can be destroyed,
+     * result must be false.
+     */
+    @Test
+    public void testFuncDepIsNotDestroyable() {
+        assertFalse(fd.isDestroyable());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isDestroyable()}.
+     * 
+     * Checks if dependency {} -> {D, E, F} can be destroyed,
+     * result must be true.
+     */
+    @Test
+    public void testFuncDepIsDestroyableAntecedent() {
+        String [] antecedentArray = {"A", "B", "C"};
+        this.antecedent = new AttributeJoint(antecedentArray);
+        fd.removeAttributeFromAntecedent(this.antecedent);
+        assertTrue(fd.isDestroyable());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isDestroyable()}.
+     * 
+     * Checks if dependency {A, B, C} -> {} can be destroyed,
+     * result must be true.
+     */
+    @Test
+    public void testFuncDepIsDestroyableConsequent() {
+        String [] consecuentArray = {"D", "E", "F"};
+        this.consequent = new AttributeJoint(consecuentArray);
+        fd.removeAttributeFromConsequent(this.consequent);
+        assertTrue(fd.isDestroyable());
+    }
 }

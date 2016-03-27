@@ -145,4 +145,18 @@ public abstract class ADependency {
     private void removeAttributes(AttributeJoint attr, AttributeJoint attrJoint){
         attrJoint.removeAttributes(attr);       
     }
+    
+    /**
+     * Returns true if this object can be removed without any side effect.
+     * 
+     * When a dependency has no attributes in antecedent o consequent, it means it can
+     * be destroyed because it is not representing anything.
+     * 
+     * @return true if there is no antecedent or consequent, false otherwise.
+     */
+    public boolean isDestroyable() {
+        if (antecedent.getSize() == 0 || consequent.getSize() == 0)
+            return true;
+        return false;
+    }
 }
