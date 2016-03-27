@@ -5,6 +5,8 @@ package datastructures;
 
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
+import dependency.ADependency;
+import dependency.FunctionalDependency;
 
 /**
  * @author Pavel Nichita
@@ -436,5 +438,279 @@ public class SetUpClass {
         attrJoint.addAttributes(attrG());
         attrJoint.addAttributes(attrH());
         return attrJoint;
-    }   
+    }
+    
+    /******************/
+    //FUNCTIONAL DEPENDENCY
+    /******************/
+    
+    //Functional Dependency A -> B
+    public ADependency funcDep_A_to_B() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntB());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> C
+    public ADependency funcDep_A_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> D
+    public ADependency funcDep_A_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntD());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> E
+    public ADependency funcDep_A_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> BCD
+    public ADependency funcDep_A_to_BCD() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntBCD());
+        return funcDep;
+    }
+    
+    //Functional Dependency B -> C
+    public ADependency funcDep_B_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency B -> D
+    public ADependency funcDep_B_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntD());
+        return funcDep;
+    }
+    
+    //Functional Dependency B -> E
+    public ADependency funcDep_B_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency B -> AC
+    public ADependency funcDep_B_to_AC() {
+        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntAC());
+        return funcDep;
+    }
+    
+    //Functional Dependency B -> CE
+    public ADependency funcDep_B_to_CE() {
+        ADependency funcDep = new FunctionalDependency(attrJntB(), attrJntCE());
+        return funcDep;
+    }
+    
+    //Functional Dependency C -> A
+    public ADependency funcDep_C_to_A() {
+        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntA());
+        return funcDep;
+    }
+    
+    //Functional Dependency C -> B
+    public ADependency funcDep_C_to_B() {
+        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntB());
+        return funcDep;
+    }
+    
+    //Functional Dependency C -> B
+    public ADependency funcDep_C_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntD());
+        return funcDep;
+    }
+
+    //Functional Dependency D -> C
+    public ADependency funcDep_D_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntD(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency D -> E
+    public ADependency funcDep_D_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntD(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency E -> C
+    public ADependency funcDep_E_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency E -> D
+    public ADependency funcDep_E_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntD());
+        return funcDep;
+    }
+    
+    //Functional Dependency E -> DF
+    public ADependency funcDep_E_to_DF() {
+        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntDF());
+        return funcDep;
+    }
+        
+    //Functional Dependency E -> F
+    public ADependency funcDep_E_to_F() {
+        ADependency funcDep = new FunctionalDependency(attrJntE(), attrJntF());
+        return funcDep;
+    }
+
+    //Functional Dependency F -> E
+    public ADependency funcDep_F_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntF(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> BC
+    public ADependency funcDep_A_to_BC() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntBC());
+        return funcDep;
+    }
+    
+    //Functional Dependency A -> CD
+    public ADependency funcDep_A_to_CD() {
+        ADependency funcDep = new FunctionalDependency(attrJntA(), attrJntCD());
+        return funcDep;
+    }
+    
+    //Functional Dependency C -> AB
+    public ADependency funcDep_C_to_AB() {
+        ADependency funcDep = new FunctionalDependency(attrJntC(), attrJntAB());
+        return funcDep;
+    }
+    
+    //Functional Dependency AB -> B
+    public ADependency funcDep_AB_to_B() {
+        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntB());
+        return funcDep;
+    }
+    
+    //Functional Dependency AB -> C
+    public ADependency funcDep_AB_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency AB -> D
+    public ADependency funcDep_AB_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntD());
+        return funcDep;
+    }
+    
+    //Functional Dependency AB -> CD
+    public ADependency funcDep_AB_to_CD() {
+        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntCD());
+        return funcDep;
+    }
+    
+    //Functional Dependency AB -> BCD
+    public ADependency funcDep_AB_to_BCD() {
+        ADependency funcDep = new FunctionalDependency(attrJntAB(), attrJntBCD());
+        return funcDep;
+    }
+    
+    //Functional Dependency AD -> C
+    public ADependency funcDep_AD_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntAD(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency AD -> E
+    public ADependency funcDep_AD_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntAD(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency AE -> D
+    public ADependency funcDep_AE_to_D() {
+        ADependency funcDep = new FunctionalDependency(attrJntAE(), attrJntD());
+        return funcDep;
+    }
+    
+    //Functional Dependency AE -> F
+    public ADependency funcDep_AE_to_F() {
+        ADependency funcDep = new FunctionalDependency(attrJntAE(), attrJntF());
+        return funcDep;
+    }
+    
+    //Functional Dependency BC -> A
+    public ADependency funcDep_BC_to_A() {
+        ADependency funcDep = new FunctionalDependency(attrJntBC(), attrJntA());
+        return funcDep;
+    }
+    
+    //Functional Dependency BC -> E
+    public ADependency funcDep_BC_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntBC(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency BD -> C
+    public ADependency funcDep_BD_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntBD(), attrJntC());
+        return funcDep;
+    }
+    
+    //Functional Dependency BE -> A
+    public ADependency funcDep_BE_to_A() {
+        ADependency funcDep = new FunctionalDependency(attrJntBE(), attrJntA());
+        return funcDep;
+    }
+    
+    //Functional Dependency CD -> A
+    public ADependency funcDep_CD_to_A() {
+        ADependency funcDep = new FunctionalDependency(attrJntCD(), attrJntA());
+        return funcDep;
+    }
+    
+    //Functional Dependency CD -> E
+    public ADependency funcDep_CD_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntCD(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency CF -> H
+    public ADependency funcDep_CF_to_H() {
+        ADependency funcDep = new FunctionalDependency(attrJntCF(), attrJntH());
+        return funcDep;
+    }
+    
+    //Functional Dependency DE -> C
+    public ADependency funcDep_DE_to_C() {
+        ADependency funcDep = new FunctionalDependency(attrJntDE(), attrJntC());
+        return funcDep;
+    }
+
+    //Functional Dependency ABD -> E
+    public ADependency funcDep_ABD_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntABD(), attrJntE());
+        return funcDep;
+    }
+    
+    //Functional Dependency ABD -> G
+    public ADependency funcDep_ABD_to_G() {
+        ADependency funcDep = new FunctionalDependency(attrJntABD(), attrJntG());
+        return funcDep;
+    }
+    
+    //Functional Dependency ABE -> G
+    public ADependency funcDep_ABE_to_G() {
+        ADependency funcDep = new FunctionalDependency(attrJntABE(), attrJntG());
+        return funcDep;
+    }
+    
+    //Functional Dependency ABE -> H
+    public ADependency funcDep_ABE_to_H() {
+        ADependency funcDep = new FunctionalDependency(attrJntABE(), attrJntH());
+        return funcDep;
+    }
+
+    //Functional Dependency BCD -> E
+    public ADependency funcDep_BCD_to_E() {
+        ADependency funcDep = new FunctionalDependency(attrJntBCD(), attrJntE());
+        return funcDep;
+    }
 }
