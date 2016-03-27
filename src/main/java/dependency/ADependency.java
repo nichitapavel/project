@@ -159,4 +159,25 @@ public abstract class ADependency {
             return true;
         return false;
     }
+    
+    /**
+     * Removes all of the elements from this dependency.
+     * 
+     * The dependency will be empty after this call returns.
+     */
+    public void clear() {
+        this.antecedent.clear();
+        this.consequent.clear();
+    }
+    
+    /**
+     * Return an AttributeJoint with all Attributes from this dependency.
+     * 
+     * @return an AttributeJoint with all Attributes from this dependency.
+     */
+    public AttributeJoint getAttributeJoint() {
+        AttributeJoint attrJoint = new AttributeJoint(this.antecedent);
+        attrJoint.addAttributes(consequent);
+        return attrJoint;
+    }
 }

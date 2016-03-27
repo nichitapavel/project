@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
+import datastructures.SetUpClass;
 
 /**
  * @author Pavel Nichita
@@ -19,6 +20,7 @@ public class FunctionalDependencyTest {
     private ADependency fd;
     private AttributeJoint antecedent;
     private AttributeJoint consequent;
+    private SetUpClass setUpObject;
     
     /**
      * 
@@ -30,6 +32,7 @@ public class FunctionalDependencyTest {
         String [] consecuentArray = {"D", "E", "F"};
         consequent = new AttributeJoint(consecuentArray);
         fd = new FunctionalDependency(antecedent, consequent);
+        setUpObject = new SetUpClass();
     }
 
     /**
@@ -184,5 +187,28 @@ public class FunctionalDependencyTest {
         this.consequent = new AttributeJoint(consecuentArray);
         fd.removeAttributeFromConsequent(this.consequent);
         assertTrue(fd.isDestroyable());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#clear()}.
+     * 
+     * Clears dependency {A, B, C} -> {D, E, F} and checks that antecedent
+     * and consequent are zero.
+     */
+    @Test
+    public void testClearFunctionalDependency() {
+        this.fd.clear();
+        assertEquals(0, this.fd.getAntecedent().getSize());
+        assertEquals(0, this.fd.getConsequent().getSize());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#getAttributeJoint()}.
+     */
+    @Test
+    public void getAttributeJoint() {
+        this.fd = this.setUpObject.funcDep_A_to_BCD();
+        AttributeJoint expected = this.setUpObject.attrJntABCD();
+        assertEquals(expected, this.fd.getAttributeJoint());
     }
 }
