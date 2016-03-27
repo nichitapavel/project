@@ -21,6 +21,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AttributeJointTest {
     private AttributeJoint mainAttributeJoint;
+    private SetUpClass setUpObject;
     
     /**
      * Set up
@@ -29,6 +30,7 @@ public class AttributeJointTest {
     public void setUp() {
         String [] attrArray = {"A", "B", "C"};
         mainAttributeJoint = new AttributeJoint(attrArray);
+        setUpObject = new SetUpClass();
     }
 
     /**
@@ -746,4 +748,44 @@ public class AttributeJointTest {
         AttributeJoint attrJoint = new AttributeJoint();
         assertNull(attrJoint.getLastAttribute());
     }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#intersect(AttributeJoint)}.
+     * 
+     * Intersects AttributeJoin {A, B} with {A}, result must be {A}. 
+     */
+    @Test
+    public void testIntersectAFromAB() {
+        AttributeJoint expected = this.setUpObject.attrJntA();
+        AttributeJoint firstJoined = this.setUpObject.attrJntAB();
+        AttributeJoint secondJoined = this.setUpObject.attrJntA();
+        assertEquals(expected, firstJoined.intersect(secondJoined));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#intersect(AttributeJoint)}.
+     * 
+     * Intersects AttributeJoin {A} with a null, result must be a null AttributeJoint.
+     */
+    @Test
+    public void testIntersectNullFromA() {
+        AttributeJoint expected = new AttributeJoint();
+        AttributeJoint firstJoined = this.setUpObject.attrJntA();
+        AttributeJoint secondJoined = new AttributeJoint();
+        assertEquals(expected, firstJoined.intersect(secondJoined));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#intersect(AttributeJoint)}.
+     * 
+     * Intersects AttributeJoin {A, B, C, D, E} with {D, F}, result must be {D}.
+     */
+    @Test
+    public void testIntersectDromABCDEandDF() {
+        AttributeJoint expected = this.setUpObject.attrJntD();
+        AttributeJoint firstJoined = this.setUpObject.attrJntABCDE();
+        AttributeJoint secondJoined = this.setUpObject.attrJntDF();
+        assertEquals(expected, firstJoined.intersect(secondJoined));
+    }
+
 }

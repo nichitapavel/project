@@ -365,4 +365,27 @@ public class AttributeJoint implements Iterable<Attribute> {
         return -1;
     }
 
+    /**
+     * Creates a new AttributeJoint with all common Attributes from this
+     * and {@code consequent} and returns it.
+     * 
+     * If this is not initialized returns an empty AttributeObject.
+     *  
+     * @param consequent The other AttributeJoint for the intersect.
+     * @return a new AttributeJoint with all common Attribute objects
+     */
+    public AttributeJoint intersect(AttributeJoint consequent) {
+        try {
+            AttributeJoint resultAttrJoint = new AttributeJoint();
+            ArrayList<Attribute> auxJoint = new ArrayList<>(this.joint);
+            auxJoint.retainAll(consequent.getAttributeJoint());
+            resultAttrJoint.setAttributeJoint(auxJoint);
+            return resultAttrJoint;         
+        }
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, "AttributeJoint not initialized", ex);
+        }
+        return new AttributeJoint();
+    }
+
 }
