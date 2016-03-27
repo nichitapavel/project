@@ -157,8 +157,8 @@ public class Attribute implements Comparable<Attribute>{
     public boolean isContained(AttributeJoint attrJoint) {
         if (attrJoint.getAttributeJoint() == null)
             return false;
-        for (Attribute attr : attrJoint.getAttributeJoint())
-            if (attr.equals(this))
+        for (Attribute obj : attrJoint.getAttributeJoint())
+            if (obj.equals(this))
                 return true;
         return false;
     }

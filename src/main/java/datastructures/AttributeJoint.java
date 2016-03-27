@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Pavel Nichita
@@ -14,6 +16,7 @@ import java.util.List;
  */
 public class AttributeJoint implements Iterable<Attribute> {
     private ArrayList<Attribute> joint;
+    private final static Logger LOG = Logger.getLogger(AttributeJoint.class.getName()); 
 
     /**
      * Constructs a Null list of Attribute.
@@ -230,7 +233,10 @@ public class AttributeJoint implements Iterable<Attribute> {
         try {
             return this.joint.size();           
         }
-        catch (NullPointerException ex) { };
+        catch (NullPointerException ex) {
+            LOG.setLevel(Level.INFO);
+            LOG.info("Size of Null this.joint");
+        }
         return 0;
     }
     
