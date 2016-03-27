@@ -642,4 +642,17 @@ public class AttributeJointTest {
         assertEquals(new Attribute("A"), this.mainAttributeJoint.getAttributeAt(0));
         assertEquals(new Attribute("C"), this.mainAttributeJoint.getAttributeAt(2));
     }
+    
+    /**
+     * Changes C Attribute from AttributeJoint {A, B, C} with Attribute G and
+     * checks if operation was successful.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#changeAttributeAt(int, Attribute)}.
+     */
+    @Test
+    public void changeAttributeAtTest() {
+        Attribute attrG = new Attribute("G");
+        this.mainAttributeJoint.changeAttributeAt(this.mainAttributeJoint.getSize()-1, attrG);
+        assertEquals(attrG, this.mainAttributeJoint.getAttributeAt(this.mainAttributeJoint.getSize() - 1));     
+    }
 }

@@ -305,6 +305,18 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
     
     /**
+     * Changes the Attribute from {@code position} with {@code attr}.
+     * 
+     * The {@code position} is out of range case is not contemplated.
+     * 
+     * @param position The position of Attribute object to change.
+     * @param attr New value of Attribute object from {@code position}
+     */
+    public void changeAttributeAt(int position, Attribute attr) {
+        this.joint.set(position, attr);
+    }
+    
+    /**
      * Returns the position of {@code attribute} if is part of this object.
      * 
      * @param attribute Attribute to return it position.
