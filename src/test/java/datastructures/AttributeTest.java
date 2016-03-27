@@ -20,7 +20,7 @@ public class AttributeTest {
     private Attribute namedAttribute;
     private Attribute characterlessAttribute;
     private Attribute stringAttr;
-    private static final String namedAttr = "Atributo";
+    private static final String NAMED_ATTR = "Atributo";
 
     /**
      * Set Up
@@ -30,7 +30,7 @@ public class AttributeTest {
         nullAttribute = new Attribute();
         namedAttribute = new Attribute("Name");
         characterlessAttribute = new Attribute("");
-        stringAttr = new Attribute(namedAttr);
+        stringAttr = new Attribute(NAMED_ATTR);
     }
 
     /**
@@ -89,7 +89,7 @@ public class AttributeTest {
      */
     @Test
     public void testGetAttribute() {
-        assertEquals(namedAttr, stringAttr.getAttribute());
+        assertEquals(NAMED_ATTR, stringAttr.getAttribute());
     }
 
     /**
@@ -183,7 +183,7 @@ public class AttributeTest {
      */
     @Test
     public void testToString() {
-        assertEquals(namedAttr, stringAttr.toString());
+        assertEquals(NAMED_ATTR, stringAttr.toString());
     }
 
     /**
@@ -231,7 +231,7 @@ public class AttributeTest {
      */
     @Test
     public void testIsContained() {
-        String [] attributes = {"Name", namedAttr, "A"};
+        String [] attributes = {"Name", NAMED_ATTR, "A"};
         AttributeJoint attrJoint = new AttributeJoint(attributes);
         assertTrue(namedAttribute.isContained(attrJoint));
         assertTrue(stringAttr.isContained(attrJoint));
@@ -248,7 +248,7 @@ public class AttributeTest {
      */
     @Test
     public void testIsContainedFalseAttrJoint() {
-        String [] attributes = {namedAttr, "A"};
+        String [] attributes = {NAMED_ATTR, "A"};
         AttributeJoint attrJoint = new AttributeJoint(attributes);
         assertFalse(namedAttribute.isContained(attrJoint));
     }

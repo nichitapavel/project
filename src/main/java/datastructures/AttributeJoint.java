@@ -235,8 +235,7 @@ public class AttributeJoint implements Iterable<Attribute> {
         }
         catch (NullPointerException ex) {
             LOG.setLevel(Level.INFO);
-            LOG.info("Size of Null this.joint");
-            LOG.info(ex.getMessage());
+            LOG.log(Level.INFO, "AttributeJoint is null", ex);
         }
         return 0;
     }
