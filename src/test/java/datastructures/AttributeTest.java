@@ -20,7 +20,7 @@ public class AttributeTest {
     private Attribute namedAttribute;
     private Attribute characterlessAttribute;
     private Attribute stringAttr;
-    private final String namedAttr = "Atributo";
+    private static final String namedAttr = "Atributo";
 
     /**
      * Set Up
@@ -231,7 +231,7 @@ public class AttributeTest {
      */
     @Test
     public void testIsContained() {
-        String [] attributes = {"Name", "Atributo", "A"};
+        String [] attributes = {"Name", namedAttr, "A"};
         AttributeJoint attrJoint = new AttributeJoint(attributes);
         assertTrue(namedAttribute.isContained(attrJoint));
         assertTrue(stringAttr.isContained(attrJoint));
@@ -248,7 +248,7 @@ public class AttributeTest {
      */
     @Test
     public void testIsContainedFalseAttrJoint() {
-        String [] attributes = {"Atributo", "A"};
+        String [] attributes = {namedAttr, "A"};
         AttributeJoint attrJoint = new AttributeJoint(attributes);
         assertFalse(namedAttribute.isContained(attrJoint));
     }

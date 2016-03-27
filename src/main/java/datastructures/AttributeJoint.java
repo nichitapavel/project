@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class AttributeJoint implements Iterable<Attribute> {
     private ArrayList<Attribute> joint;
-    private final static Logger LOG = Logger.getLogger(AttributeJoint.class.getName()); 
+    private static final Logger LOG = Logger.getLogger(AttributeJoint.class.getName()); 
 
     /**
      * Constructs a Null list of Attribute.
@@ -236,6 +236,7 @@ public class AttributeJoint implements Iterable<Attribute> {
         catch (NullPointerException ex) {
             LOG.setLevel(Level.INFO);
             LOG.info("Size of Null this.joint");
+            LOG.info(ex.getMessage());
         }
         return 0;
     }
