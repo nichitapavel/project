@@ -220,6 +220,21 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Returns the size of the list with Attribute objects.
+     * 
+     * If the list is not initialized returns 0.
+     * 
+     * @return an integer with the size of list.
+     */
+    public int getSize() {
+        try {
+            return this.joint.size();           
+        }
+        catch (NullPointerException ex) { };
+        return 0;
+    }
+    
+    /**
      * Sorts the list of Attribute objects according to lexicographically
      * order.
      */

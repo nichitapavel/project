@@ -532,6 +532,35 @@ public class AttributeJointTest {
     public void testGetAttributePositionThatDoesNotExistInNormalAttributeJoint() {
         assertEquals(-1, this.mainAttributeJoint.getAttributePosition(new Attribute("D")));
     }
-    
 
+    /**
+     * Checks that AttributeJoint: {A, B, C} has a size of three.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getSize()}.
+     */
+    @Test
+    public void getSizeAssert() {
+        assertEquals(mainAttributeJoint.getSize(), 3);
+    }
+
+    /**
+     * Checks that AttributeJoint: {A, B, C} does not have a size of zero.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getSize()}.
+     */
+    @Test
+    public void getSizeFail() {
+        assertNotEquals(mainAttributeJoint.getSize(), 0);
+    }
+
+    /**
+     * Checks that AttributeJoint: {null} has a size of zero.
+     * 
+     * Test method for {@link datastructures.AttributeJoint#getSize()}.
+     */
+    @Test
+    public void getSizeNullAttributeJoint() {
+        assertEquals(0, new AttributeJoint().getSize());
+    }
+    
 }
