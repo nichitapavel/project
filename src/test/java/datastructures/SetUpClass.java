@@ -668,4 +668,109 @@ public class SetUpClass {
     public ADependency funcDepBCDtoE() {
         return new FunctionalDependency(attrJntBCD(), attrJntE());
     }
+    
+    /******************/
+    //KeyJoint
+    /******************/
+    
+    //KeyJoint A
+    public KeyJoint keyJointA() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntA());
+        return keyJoint;
+    }
+    
+    //KeyJoint AB
+    public KeyJoint keyJointAB() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAB());
+        return keyJoint;
+    }
+    
+    //KeyJoint AB_AC
+    public KeyJoint keyJointAB$AC() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAB());
+        keyJoint.addKey(attrJntAC());
+        return keyJoint;
+    }
+        
+    //KeyJoint AD_CD
+    public KeyJoint keyJointAD$CD() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAD());
+        keyJoint.addKey(attrJntCD());
+        return keyJoint;
+    }
+    
+    //KeyJoint AD_BCD_BDE
+    public KeyJoint keyJointAD$BCD$BDE() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAD());
+        keyJoint.addKey(attrJntBCD());
+        keyJoint.addKey(attrJntBDE());
+        return keyJoint;
+    }
+    
+    //KeyJoint CD_CE_CF_ABD_ABE_ABF
+    public KeyJoint keyJointCD$CE$CF$ABD$ABE$ABF() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntCD());
+        keyJoint.addKey(attrJntCE());
+        keyJoint.addKey(attrJntCF());
+        keyJoint.addKey(attrJntABD());
+        keyJoint.addKey(attrJntABE());
+        keyJoint.addKey(attrJntABF());
+        return keyJoint;
+    }
+    
+    //KeyJoint DE
+    public KeyJoint keyJointDE() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntDE());
+        return keyJoint;
+    }
+    
+    //KeyJoint AE_DE
+    public KeyJoint keyJointAE$DE() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAE());
+        keyJoint.addKey(attrJntDE());
+        return keyJoint;
+    }
+    
+    //KeyJoint AC
+    public KeyJoint keyJointAC() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntAC());
+        return keyJoint;
+    }
+    
+    //KeyJoint ABC
+    public KeyJoint keyJointABC() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntABC());
+        return keyJoint;
+    }
+    
+    //KeyJoint CDF
+    public KeyJoint keyJointCDF() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntCDF());
+        return keyJoint;
+    }
+    
+    //KeyJoint BEF
+    public KeyJoint keyJointBEF() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntBEF());
+        return keyJoint;
+    }
+    
+    //KeyJoint ABDE
+    public KeyJoint keyJointABDE() {
+        KeyJoint keyJoint = new KeyJoint();
+        keyJoint.addKey(attrJntABDE());
+        return keyJoint;
+    }
 }
