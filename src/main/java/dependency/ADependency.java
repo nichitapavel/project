@@ -18,7 +18,7 @@ public abstract class ADependency {
      * Empty constructor.
      */
     public ADependency() {
-        // Private constructor to prevent instantiation.
+        // Manually generated default constructor.
     }
     
     /**
@@ -186,7 +186,9 @@ public abstract class ADependency {
     @Override
     public abstract String toString();
     
+    @Override
     public abstract int hashCode();
 
+    @Override
     public abstract boolean equals(Object obj);
 }

@@ -344,7 +344,6 @@ public class AttributeJoint implements Iterable<Attribute> {
             return this.joint.get(this.joint.size() - 1);
         }
         catch (NullPointerException ex) {
-            LOG.setLevel(Level.INFO);
             LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
         return null;
