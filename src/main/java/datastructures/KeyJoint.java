@@ -5,6 +5,7 @@ package datastructures;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  *
  */
 public class KeyJoint implements Iterable<AttributeJoint> {
-    private ArrayList<AttributeJoint> keyJoint;
+    private List<AttributeJoint> keys;
     private static final Logger LOG = Logger.getLogger(KeyJoint.class.getName());
 
     /**
@@ -31,7 +32,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      * @param keyJoint An array of String object.
      */
     public KeyJoint(ArrayList<AttributeJoint> keyJoint) {
-        this.keyJoint = new ArrayList<>(keyJoint);
+        keys = new ArrayList<>(keyJoint);
     }
 
     /**
@@ -39,8 +40,8 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      * 
      * @return a list of AttributeJoint objects representing keys of a Relation.
      */
-    public ArrayList<AttributeJoint> getKeyJoint() {
-        return this.keyJoint;
+    public List<AttributeJoint> getKeyJoint() {
+        return keys;
     }
     
     /**
@@ -55,9 +56,9 @@ public class KeyJoint implements Iterable<AttributeJoint> {
     public String toString() {
         String msg = "null";
         try {
-            msg = "{" + this.keyJoint.get(0);
-            for (int i = 1; i < this.keyJoint.size(); i++)
-                msg += ", " + this.keyJoint.get(i);
+            msg = "{" + this.keys.get(0);
+            for (int i = 1; i < this.keys.size(); i++)
+                msg += ", " + this.keys.get(i);
             msg += "}";
         }
         catch(NullPointerException ex){
@@ -74,9 +75,9 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      * @param key key to be added.
      */
     public void addKey(AttributeJoint key) {
-        if (this.keyJoint == null)
-            this.keyJoint = new ArrayList<>();
-        this.keyJoint.add(key);
+        if (this.keys == null)
+            this.keys = new ArrayList<>();
+        this.keys.add(key);
     }
     
     /**
@@ -86,7 +87,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     @Override
     public Iterator<AttributeJoint> iterator() {
-        return this.keyJoint.iterator();
+        return this.keys.iterator();
     }
     
     /**
@@ -96,7 +97,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     public int getSize() {
         try {
-            return this.keyJoint.size();            
+            return this.keys.size();            
         }
         catch (NullPointerException ex) {
             LOG.log(Level.INFO, ex.getMessage(), ex);
@@ -114,7 +115,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     public AttributeJoint getKey(int index) {
         try {
-            return this.keyJoint.get(index);
+            return this.keys.get(index);
         }
         catch (IndexOutOfBoundsException ex) {
             LOG.log(Level.INFO, ex.getMessage(), ex);
@@ -134,7 +135,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((keyJoint == null) ? 0 : keyJoint.hashCode());
+        result = prime * result + ((keys == null) ? 0 : keys.hashCode());
         return result;
     }
 
@@ -152,17 +153,17 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     @Override
     public boolean equals(Object keyJoint) {
-        if (getClass() != keyJoint.getClass())
+        if (keyJoint != null && getClass() != keyJoint.getClass())
             return false;
         else {
             KeyJoint other = (KeyJoint) keyJoint;
-            if (this.keyJoint == null && other.keyJoint != null)
+            if (this.keys == null && other.keys != null)
                 return false;
-            if (other.keyJoint == null && this.keyJoint != null)
+            if (other.keys == null && this.keys != null)
                 return false;
-            if (this.keyJoint == null && other.keyJoint == null) 
+            if (this.keys == null && other.keys == null) 
                 return true;
-            return this.keyJoint.equals(other.getKeyJoint());
+            return this.keys.equals(other.getKeyJoint());
         }
     }
     

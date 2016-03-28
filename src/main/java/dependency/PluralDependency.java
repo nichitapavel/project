@@ -37,7 +37,7 @@ public class PluralDependency extends ADependency {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return null;
+        return "";
     }
 
     @Override

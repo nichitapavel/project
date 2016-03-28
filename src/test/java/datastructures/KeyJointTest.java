@@ -67,11 +67,11 @@ public class KeyJointTest {
         AttributeJoint attrJntAB = new AttributeJoint(keyStringAB);
         String [] keyStringAC = {"A", "C"};
         AttributeJoint attrJntAC = new AttributeJoint(keyStringAC);
-        ArrayList<AttributeJoint> keysVector = new ArrayList<>();
-        keysVector.add(attrJntAB);
-        keysVector.add(attrJntAC);
-        KeyJoint keyJoint = new KeyJoint(keysVector);
-        assertEquals(keysVector, keyJoint.getKeyJoint());
+        ArrayList<AttributeJoint> keysVectorAux = new ArrayList<>();
+        keysVectorAux.add(attrJntAB);
+        keysVectorAux.add(attrJntAC);
+        KeyJoint keyJointAux = new KeyJoint(keysVector);
+        assertEquals(keysVectorAux, keyJointAux.getKeyJoint());
     }
 
     /**
@@ -103,14 +103,14 @@ public class KeyJointTest {
     @Test
     public void testEqualsTrue() {
         String [] keyStringAB = {"A", "B"};
-        AttributeJoint attrJnt_AB = new AttributeJoint(keyStringAB);
+        AttributeJoint attrJntAB = new AttributeJoint(keyStringAB);
         String [] keyStringAC = {"A", "C"};
-        AttributeJoint attrJnt_AC = new AttributeJoint(keyStringAC);
-        ArrayList<AttributeJoint> keysVector = new ArrayList<>();
-        keysVector.add(attrJnt_AB);
-        keysVector.add(attrJnt_AC);
-        KeyJoint keyJoint = new KeyJoint(keysVector);
-        assertTrue(keyJoint.equals(keyJoint));
+        AttributeJoint attrJntAC = new AttributeJoint(keyStringAC);
+        ArrayList<AttributeJoint> keysVectorAux = new ArrayList<>();
+        keysVectorAux.add(attrJntAB);
+        keysVectorAux.add(attrJntAC);
+        KeyJoint keyJointAux = new KeyJoint(keysVectorAux);
+        assertTrue(keyJointAux.equals(keyJoint));
     }
     
     /**
@@ -120,7 +120,7 @@ public class KeyJointTest {
      */
     @Test
     public void testEqualsFalseDifferentClassObjects() {
-        assertFalse(keyJoint.equals("fail"));
+        assertFalse(keyJoint.equals(new String()));
     }
     
     /**
@@ -219,7 +219,7 @@ public class KeyJointTest {
      */
     @Test
     public void getKey() {
-        keyJoint = setUpObject.keyJointAD$BCD$BDE();
+        keyJoint = setUpObject.keyJointAdBcdBde();
         assertEquals(setUpObject.attrJntAD(), keyJoint.getKey(0));
     }
 
@@ -231,7 +231,7 @@ public class KeyJointTest {
      */
     @Test
     public void getKeyOutOfBoundsError() {
-        keyJoint = setUpObject.keyJointAD$BCD$BDE();
+        keyJoint = setUpObject.keyJointAdBcdBde();
         assertNull(keyJoint.getKey(5));
     }
 

@@ -688,7 +688,7 @@ public class SetUpClass {
     }
     
     //KeyJoint AB_AC
-    public KeyJoint keyJointAB$AC() {
+    public KeyJoint keyJointAbAc() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAB());
         keyJoint.addKey(attrJntAC());
@@ -696,7 +696,7 @@ public class SetUpClass {
     }
         
     //KeyJoint AD_CD
-    public KeyJoint keyJointAD$CD() {
+    public KeyJoint keyJointAdCd() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAD());
         keyJoint.addKey(attrJntCD());
@@ -704,7 +704,7 @@ public class SetUpClass {
     }
     
     //KeyJoint AD_BCD_BDE
-    public KeyJoint keyJointAD$BCD$BDE() {
+    public KeyJoint keyJointAdBcdBde() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAD());
         keyJoint.addKey(attrJntBCD());
@@ -713,7 +713,7 @@ public class SetUpClass {
     }
     
     //KeyJoint CD_CE_CF_ABD_ABE_ABF
-    public KeyJoint keyJointCD$CE$CF$ABD$ABE$ABF() {
+    public KeyJoint keyJointCdCeCfAbdAbeAbf() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntCD());
         keyJoint.addKey(attrJntCE());
@@ -732,7 +732,7 @@ public class SetUpClass {
     }
     
     //KeyJoint AE_DE
-    public KeyJoint keyJointAE$DE() {
+    public KeyJoint keyJointAeDe() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAE());
         keyJoint.addKey(attrJntDE());
