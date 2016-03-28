@@ -153,8 +153,8 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     @Override
     public boolean equals(Object keyJoint) {
-        try {
-            if (keyJoint != null && getClass() != keyJoint.getClass())
+        if (keyJoint != null){
+            if (getClass() != keyJoint.getClass())
                 return false;
             else {
                 KeyJoint other = (KeyJoint) keyJoint;
@@ -166,8 +166,6 @@ public class KeyJoint implements Iterable<AttributeJoint> {
                     return true;
                 return this.keys.equals(other.getKeyJoint());
             }
-        } catch (NullPointerException ex) {
-            LOG.log(Level.INFO, ex.getMessage(), ex);
         }
         return false;
     }
