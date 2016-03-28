@@ -289,4 +289,117 @@ public class FunctionalDependencyTest {
         ADependency funcDep = new FunctionalDependency();
         assertEquals(961, funcDep.hashCode());
     }
+
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that {A, B, C} -> {D, E, F} equals himself.
+     */
+    @Test
+    public void testEqualsSameObject() {
+        assertTrue(fd.equals(fd));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that two different FD with same values are equal.
+     */
+    @Test
+    public void testEqualsSameValues() {
+        String [] antecedentArray = {"A", "B", "C"};
+        antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"D", "E", "F"};
+        consequent = new AttributeJoint(consecuentArray);
+        ADependency auxFD = new FunctionalDependency(antecedent, consequent);
+        assertTrue(fd.equals(auxFD));
+        assertTrue(auxFD.equals(fd));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that a FD not equals an Attribute.
+     */
+    @Test
+    public void testEqualsOtherClassObject() {
+        Attribute attrA = new Attribute("A");
+        assertFalse(fd.equals(attrA));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that two different FD are not equal.
+     */
+    @Test
+    public void testEqualsNotDifferentValues() {
+        String [] antecedentArray = {"A"};
+        antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"E", "F"};
+        consequent = new AttributeJoint(consecuentArray);
+        ADependency auxFD = new FunctionalDependency(antecedent, consequent);
+        assertFalse(fd.equals(auxFD));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that a FD not equals null.
+     */
+    @Test
+    public void testEqualsNotNullObject() {
+        assertFalse(fd.equals(null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that an empty FD does not equal {A, B, C} -> {D, E, F}.
+     */
+    @Test
+    public void testEqualsNotObjectWithNullValues() {
+        ADependency funcDep = new FunctionalDependency();
+        assertFalse(funcDep.equals(fd));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that two empty FD are equal.
+     */
+    @Test
+    public void testEqualsBothObjectsWithNullValues() {
+        ADependency funcDep1 = new FunctionalDependency();
+        ADependency funcDep2 = new FunctionalDependency();
+        assertTrue(funcDep1.equals(funcDep2));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that {A, B, C} -> {D, E, F} not equals {A, B, C} -> {null}.
+     */
+    @Test
+    public void testEqualsNotConsquentWithNullValues() {
+        ADependency funcDep = new FunctionalDependency();
+        String [] attrString = { "A", "B", "C" };
+        AttributeJoint attrJoint = new AttributeJoint(attrString);
+        funcDep.setAntecedent(attrJoint);
+        assertFalse(fd.equals(funcDep));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#equals(Object)}.
+     * 
+     * Checks that {A, B, C} -> {null} not equals {A, B, C} -> {D, E, F}.
+     */
+    @Test
+    public void testEqualsConsequentWithNullValues() {
+        ADependency funcDep = new FunctionalDependency();
+        String [] attrString = { "A", "B", "C" };
+        AttributeJoint attrJoint = new AttributeJoint(attrString);
+        funcDep.setAntecedent(attrJoint);
+        assertFalse(funcDep.equals(fd));
+    }
 }

@@ -69,5 +69,37 @@ public class FunctionalDependency extends PluralDependency {
                 + ((super.consequent == null) ? 0 : super.consequent.hashCode());
         return result;
     }
-    
+ 
+    /**
+     * Compares this functional dependency to the specified object.
+     * 
+     *  The result is true if and only if the argument
+     *  is not null and is a FunctionalDependency object that represents
+     *  the same attribute joint list as this object.
+     * 
+     * @param obj The object to compare this FunctionalDependency against.
+     * @return true if the given object represents a AttributeJoint
+     * equivalent to this functional dependency, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ADependency other = (ADependency) obj;
+        if (super.antecedent == null) {
+            if (other.antecedent != null)
+                return false;
+        } else if (!super.antecedent.equals(other.antecedent))
+            return false;
+        if (super.consequent == null) {
+            if (other.consequent != null)
+                return false;
+        } else if (!super.consequent.equals(other.consequent))
+            return false;
+        return true;
+    }
 }
