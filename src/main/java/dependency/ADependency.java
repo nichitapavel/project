@@ -180,4 +180,13 @@ public abstract class ADependency {
         attrJoint.addAttributes(consequent);
         return attrJoint;
     }
+    
+    public abstract void clearTrivialElements();
+    
+    @Override
+    public abstract String toString();
+    
+    public abstract int hashCode();
+
+    public abstract boolean equals(Object obj);
 }
