@@ -31,7 +31,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      * 
      * @param keyJoint An array of String object.
      */
-    public KeyJoint(ArrayList<AttributeJoint> keyJoint) {
+    public KeyJoint(List<AttributeJoint> keyJoint) {
         keys = new ArrayList<>(keyJoint);
     }
 
@@ -153,20 +153,23 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      */
     @Override
     public boolean equals(Object keyJoint) {
-        if (keyJoint != null && getClass() != keyJoint.getClass())
-            return false;
-        else {
-            KeyJoint other = (KeyJoint) keyJoint;
-            if (this.keys == null && other.keys != null)
+        try {
+            if (getClass() != keyJoint.getClass())
                 return false;
-            if (other.keys == null && this.keys != null)
-                return false;
-            if (this.keys == null && other.keys == null) 
-                return true;
-            return this.keys.equals(other.getKeyJoint());
+            else {
+                KeyJoint other = (KeyJoint) keyJoint;
+                if (this.keys == null && other.keys != null)
+                    return false;
+                if (other.keys == null && this.keys != null)
+                    return false;
+                if (this.keys == null && other.keys == null) 
+                    return true;
+                return this.keys.equals(other.getKeyJoint());
+            }
+        } catch (NullPointerException ex) {
+            LOG.log(Level.INFO, ex.getMessage(), ex);
         }
+        return false;
     }
-    
-    
     
 }
