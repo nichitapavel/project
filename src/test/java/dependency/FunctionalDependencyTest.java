@@ -221,7 +221,7 @@ public class FunctionalDependencyTest {
      * {A, B, C} -> {D, E, F}. 
      */
     @Test
-    public void toStringFunctionalDependency() {
+    public void testToStringFunctionalDependency() {
         String expected = "{A, B, C} -> {D, E, F}";
         assertEquals(expected, fd.toString());
     }
@@ -233,9 +233,60 @@ public class FunctionalDependencyTest {
      * null -> null. 
      */
     @Test
-    public void toStringNullFunctionalDependency() {
+    public void testToStringNullFunctionalDependency() {
         this.fd = new FunctionalDependency();
         String expected = "null -> null";
         assertEquals(expected, this.fd.toString());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#hashCode()}.
+     * 
+     * Checks that two different FD, but with same value, have the same hash code.
+     */
+    @Test
+    public void testHashCodeEquals() {
+        String [] antecedentArray = {"A", "B", "C"};
+        antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"D", "E", "F"};
+        consequent = new AttributeJoint(consecuentArray);
+        ADependency auxFD = new FunctionalDependency(antecedent, consequent);
+        assertEquals(fd.hashCode(), auxFD.hashCode());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#hashCode()}.
+     * 
+     * Checks that the same FD has the same hash code.
+     */
+    @Test
+    public void testHashCodeSameFD() {
+        assertEquals(fd.hashCode(), fd.hashCode());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#hashCode()}.
+     * 
+     * Checks that two different FD have different hash code.
+     */
+    @Test
+    public void testHashCodeDifferent() {
+        String [] antecedentArray = {"A"};
+        antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"E", "F"};
+        consequent = new AttributeJoint(consecuentArray);
+        ADependency auxFD = new FunctionalDependency(antecedent, consequent);
+        assertNotEquals(fd.hashCode(), auxFD.hashCode());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#hashCode()}.
+     * 
+     * Checks that an empty FD has a valid hash code.
+     */
+    @Test
+    public void testHashCodeNullValues() {
+        ADependency funcDep = new FunctionalDependency();
+        assertEquals(961, funcDep.hashCode());
     }
 }

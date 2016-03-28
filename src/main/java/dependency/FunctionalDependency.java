@@ -3,14 +3,18 @@
  */
 package dependency;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import datastructures.AttributeJoint;
+import utils.Const;
 
 /**
  * @author Pavel Nichita
  *
  */
 public class FunctionalDependency extends PluralDependency {
-  
+    private static final Logger LOG = Logger.getLogger(FunctionalDependency.class.getName());
     /**
      * Empty constructor.
      */
@@ -41,8 +45,29 @@ public class FunctionalDependency extends PluralDependency {
         try {
             return super.antecedent.toString() + " -> " + super.consequent.toString();          
         }
-        catch (NullPointerException ex) { };
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, Const.FD_NOT_INIT, ex);
+        }
         return "null -> null";
+    }
+    
+    /**
+     * Returns a hash code for this functional dependency.
+     * 
+     * The hash code for a FunctionalDependency object is
+     * computed using the default implementations of Eclipse.
+     * 
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((super.antecedent == null) ? 0 : super.antecedent.hashCode());
+        result = prime * result
+                + ((super.consequent == null) ? 0 : super.consequent.hashCode());
+        return result;
     }
     
 }
