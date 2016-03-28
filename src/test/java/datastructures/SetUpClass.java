@@ -681,7 +681,7 @@ public class SetUpClass {
     }
     
     //KeyJoint AB
-    public KeyJoint keyJointAB() {
+    public KeyJoint keyJointAb() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAB());
         return keyJoint;
@@ -725,7 +725,7 @@ public class SetUpClass {
     }
     
     //KeyJoint DE
-    public KeyJoint keyJointDE() {
+    public KeyJoint keyJointDe() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntDE());
         return keyJoint;
@@ -740,35 +740,35 @@ public class SetUpClass {
     }
     
     //KeyJoint AC
-    public KeyJoint keyJointAC() {
+    public KeyJoint keyJointAc() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntAC());
         return keyJoint;
     }
     
     //KeyJoint ABC
-    public KeyJoint keyJointABC() {
+    public KeyJoint keyJointAbc() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntABC());
         return keyJoint;
     }
     
     //KeyJoint CDF
-    public KeyJoint keyJointCDF() {
+    public KeyJoint keyJointCdf() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntCDF());
         return keyJoint;
     }
     
     //KeyJoint BEF
-    public KeyJoint keyJointBEF() {
+    public KeyJoint keyJointBef() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntBEF());
         return keyJoint;
     }
     
     //KeyJoint ABDE
-    public KeyJoint keyJointABDE() {
+    public KeyJoint keyJointAbde() {
         KeyJoint keyJoint = new KeyJoint();
         keyJoint.addKey(attrJntABDE());
         return keyJoint;
