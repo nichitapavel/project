@@ -433,6 +433,7 @@ public class FunctionalDependencyTest {
     /**
      * Test method for {@link dependency.FunctionalDependency#clearTrivialElements()}.
      * 
+     * A cleared FD {A, B, C} -> {null} should trigger exception.
      */
     @Test
     public void clearTrivialElementsABCtoVoid() {
