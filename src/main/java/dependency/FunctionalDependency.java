@@ -6,6 +6,7 @@ package dependency;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import utils.Const;
 
@@ -101,5 +102,27 @@ public class FunctionalDependency extends PluralDependency {
         } else if (!super.consequent.equals(other.consequent))
             return false;
         return true;
+    }
+    
+    /**
+     * Clear the right side of this dependency of Attribute objects that
+     * appear also in the left side.
+     * 
+     * If an Attribute object appears in the left side of a dependency it
+     * should not appear in the right side because is automatically implied.
+     * Reflexivity law of Armstrong.
+     */
+    @Override
+    public void clearTrivialElements() {
+        try {
+            AttributeJoint newConsequent = new AttributeJoint();
+            for (Attribute attr : super.consequent)
+                if (!attr.isContained(super.antecedent))
+                    newConsequent.addAttributes(attr);
+            super.consequent = newConsequent;
+        }
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, Const.FD_NOT_INIT, ex);
+        }
     }
 }

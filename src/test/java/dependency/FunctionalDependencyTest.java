@@ -402,4 +402,32 @@ public class FunctionalDependencyTest {
         funcDep.setAntecedent(attrJoint);
         assertFalse(funcDep.equals(fd));
     }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#clearTrivialElements()}.
+     * 
+     * A cleared FD {A, B, C} -> {D, E, F} from trivial elements is
+     * {A, B, C} -> {D, E, F}.
+     */
+    @Test
+    public void testClearTrivialElementsABCtoCDE() {
+        ADependency newFD = new FunctionalDependency(this.fd.getAntecedent(), this.fd.getConsequent());
+        this.fd.clearTrivialElements();
+        assertEquals(newFD, this.fd);
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#clearTrivialElements()}.
+     * 
+     * A cleared FD {A, B} -> {B, C, D} from trivial elements is
+     * {A, B} -> {C, D}.
+     */
+    @Test
+    public void testClearTrivialElementsABtoB() {
+        ADependency newFD = this.setUpObject.funcDepABtoBCD();
+        ADependency expected = this.setUpObject.funcDepABtoCD();
+        newFD.clearTrivialElements();
+        assertEquals(expected, newFD);
+    }
+    
 }
