@@ -430,4 +430,14 @@ public class FunctionalDependencyTest {
         assertEquals(expected, newFD);
     }
     
+    /**
+     * Test method for {@link dependency.FunctionalDependency#clearTrivialElements()}.
+     * 
+     */
+    @Test
+    public void clearTrivialElementsABCtoVoid() {
+        this.fd.setConsequent(new AttributeJoint());
+        this.fd.clearTrivialElements();
+    }
+    
 }
