@@ -204,11 +204,38 @@ public class FunctionalDependencyTest {
     
     /**
      * Test method for {@link dependency.FunctionalDependency#getAttributeJoint()}.
+     * 
+     * Check that Dependency {A} -> {B, C, D} returns AttributeJoint {A, B, C, D}.
      */
     @Test
-    public void getAttributeJoint() {
+    public void testGetAttributeJoint() {
         this.fd = this.setUpObject.funcDepAtoBCD();
         AttributeJoint expected = this.setUpObject.attrJntABCD();
         assertEquals(expected, this.fd.getAttributeJoint());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#toString()}.
+     * 
+     * Check that Dependency {A, B, C} -> {D, E, F} to string is
+     * {A, B, C} -> {D, E, F}. 
+     */
+    @Test
+    public void toStringFunctionalDependency() {
+        String expected = "{A, B, C} -> {D, E, F}";
+        assertEquals(expected, fd.toString());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#toString()}.
+     * 
+     * Check that empty Dependency to string is
+     * null -> null. 
+     */
+    @Test
+    public void toStringNullFunctionalDependency() {
+        this.fd = new FunctionalDependency();
+        String expected = "null -> null";
+        assertEquals(expected, this.fd.toString());
     }
 }
