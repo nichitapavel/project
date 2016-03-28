@@ -871,4 +871,116 @@ public class AttributeJointTest {
         attrJnt.removeAttributes(this.setUpObject.attrA());
         assertTrue(attrJnt.isNull());
     }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B} is a subset of {{A, B}}, result True.
+     */
+    @Test
+    public void testIsPartOfTrueABinAb() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntAB(); 
+        assertTrue(attrJoint.isPartOf(this.setUpObject.keyJointAb()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B} is a subset of {{A, B}, {A, C}}, result True.
+     */
+    @Test
+    public void testIsPartOfTrueABinAbAc() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntAB(); 
+        assertTrue(attrJoint.isPartOf(this.setUpObject.keyJointAbAc()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B} is a subset of {{A}}, result False.
+     */
+    @Test
+    public void testIsPartOfFalseABinA() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntAB();
+        assertFalse(attrJoint.isPartOf(this.setUpObject.keyJointA()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A} is a subset of {{A, C}}, result True.
+     */
+    @Test
+    public void testIsPartOfTrueAinAc() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntA();
+        assertTrue(attrJoint.isPartOf(this.setUpObject.keyJointAb()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A} is a subset of null KeyJoint, result False.
+     */
+    @Test
+    public void testIsPartOfFalseAinNullKeyJoint() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntA();
+        assertFalse(attrJoint.isPartOf(new KeyJoint()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B} contains joins from {{A}}, result True.
+     */
+    @Test
+    public void testContainsJointsFromTrueAbFromA() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntAB();
+        assertTrue(attrJoint.containsJoinsFrom(this.setUpObject.keyJointA()));
+    }
+
+    /**
+     * Test method for {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B, C, D} contains joins from 
+     * {{C, D}, {C, E}, {C, F}, {A, B, D}, {A, B, E}, {A, B, F}}, result True.
+     */
+    @Test
+    public void testContainsJointsFromTrueAbcdFromCdCeCfAbdAbeAbf() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntABCD();
+        assertTrue(attrJoint.containsJoinsFrom(this.setUpObject.keyJointCdCeCfAbdAbeAbf()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {A, B} contains joins from 
+     * {{C, D}, {C, E}, {C, F}, {A, B, D}, {A, B, E}, {A, B, F}}, result False.
+     */
+    @Test
+    public void testContainsJointsFromFalseAbFromCdCeCfAbdAbeAbf() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntAB();
+        assertFalse(attrJoint.containsJoinsFrom(this.setUpObject.keyJointCdCeCfAbdAbeAbf()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {B} contains joins from {{A}}, result False.
+     */
+    @Test
+    public void testContainsJointsFromFalseBFromA() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntB();
+        assertFalse(attrJoint.containsJoinsFrom(this.setUpObject.keyJointA()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * Checks if AttributeJoint {B} contains joins from null KeyJoint, result False.
+     */
+    @Test
+    public void testContainsJointFromFalseNullKeyJoint() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntB();
+        assertFalse(attrJoint.containsJoinsFrom(new KeyJoint()));
+    }
 }

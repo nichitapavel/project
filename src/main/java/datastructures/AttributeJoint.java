@@ -367,6 +367,42 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
+     * Returns if this AttributeJoint is a subset of any key from {@code keyJoint}.
+     * 
+     * With just one case true, returns true.
+     * Exact opposite of {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * 
+     * @param keyJoint KeyJoint where to check if is a subset.
+     * @return true if this object is a subset of at least one key, false otherwise.
+     */
+    public boolean isPartOf(KeyJoint keyJoint) {
+        if (keyJoint.getKeyJoint() == null)
+            return false;
+        for (AttributeJoint key : keyJoint)
+            if (this.isContained(key))
+                return true;
+        return false;
+    }
+    
+    /**
+     * Returns if a Key is a subset of this AttributeObject.
+     * 
+     * With just one case true, returns true.
+     * Exact opposite of {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * 
+     * @param keyJoint KeyJoint with the keys to check here.
+     * @return true if at least one key is a subset of this object, false otherwise.
+     */
+    public boolean containsJoinsFrom(KeyJoint keyJoint) {
+        if (keyJoint.getKeyJoint() == null)
+            return false;
+        for (AttributeJoint key : keyJoint)
+            if (key.isContained(this))
+                return true;
+        return false;
+    }
+    
+    /**
      * Creates a new AttributeJoint with all common Attributes from this
      * and {@code consequent} and returns it.
      * 
