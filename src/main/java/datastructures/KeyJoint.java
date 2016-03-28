@@ -154,7 +154,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
     @Override
     public boolean equals(Object keyJoint) {
         try {
-            if (getClass() != keyJoint.getClass())
+            if (keyJoint != null && getClass() != keyJoint.getClass())
                 return false;
             else {
                 KeyJoint other = (KeyJoint) keyJoint;
