@@ -63,7 +63,7 @@ public class DFJoint implements Iterable<ADependency> {
      * 
      * @param df The list of dependencies.
      */
-    public void setDFJoint(ArrayList<ADependency> df) {
+    public void setDFJoint(List<ADependency> df) {
         this.df = df;
     }
     
@@ -108,8 +108,8 @@ public class DFJoint implements Iterable<ADependency> {
      * @return true if {@code funcDep} exists in this list, false otherwise.
      */
     public boolean contains(ADependency funcDep) {
-        for (ADependency df : this.df)
-            if (df.equals(funcDep))
+        for (ADependency item : this.df)
+            if (item.equals(funcDep))
                 return true;
         return false;
     }
