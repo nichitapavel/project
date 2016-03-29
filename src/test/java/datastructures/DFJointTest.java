@@ -22,15 +22,15 @@ import dependency.FunctionalDependency;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DFJointTest {
     private DFJoint nullDFJoint;
-    private ArrayList<ADependency> DFJointVector;
+    private ArrayList<ADependency> dfJointVector;
     private ADependency one;
     private ADependency two;
     
-    // DFJoint = {A -> BC, BC -> A, BCD -> E, E -> C}
+    /* DFJoint = {A -> BC, BC -> A, BCD -> E, E -> C} */
     private DFJoint dfJoint;
-    //firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C}
+    /* firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C} */
     private DFJoint firstDFJoint;
-    //secondDFJoint = {A -> B, B -> C}
+    /* secondDFJoint = {A -> B, B -> C} */
     private DFJoint secondDFJoint;
     
     private SetUpClass setUpObject;
@@ -46,14 +46,14 @@ public class DFJointTest {
         this.one = this.setUpObject.funcDepAtoB();
         this.two = this.setUpObject.funcDepCtoA();
         
-        DFJointVector = new ArrayList<ADependency>();
-        DFJointVector.add(this.one);
-        DFJointVector.add(this.two);
+        dfJointVector = new ArrayList<>();
+        dfJointVector.add(this.one);
+        dfJointVector.add(this.two);
         
-        //firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C}
+        /* firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C}*/
         firstDFJoint = this.setUpObject.dfJoint04();
         
-        //secondDFJoint = {A -> B, B -> C}
+        /* secondDFJoint = {A -> B, B -> C} */
         secondDFJoint = this.setUpObject.dfJoint05();
     }
 
@@ -74,7 +74,7 @@ public class DFJointTest {
      */
     @Test
     public void testConstructorArgumentVector() {
-        DFJoint auxDFJoint = new DFJoint(DFJointVector);
+        DFJoint auxDFJoint = new DFJoint(dfJointVector);
         assertEquals(2, auxDFJoint.getDFJoint().size());
         assertEquals(this.one, auxDFJoint.getDFJoint().get(0));
         assertEquals(this.two, auxDFJoint.getDFJoint().get(1));
@@ -87,9 +87,9 @@ public class DFJointTest {
      */
     @Test
     public void testConstructorArgumentDFJoint() {
-        DFJoint auxDFJoint = new DFJoint(DFJointVector);
+        DFJoint auxDFJoint = new DFJoint(dfJointVector);
         DFJoint testDFJoint = new DFJoint(auxDFJoint);
-        assertEquals(DFJointVector, testDFJoint.getDFJoint());
+        assertEquals(dfJointVector, testDFJoint.getDFJoint());
         assertEquals(auxDFJoint.getName(), testDFJoint.getName());
     }
     
@@ -146,8 +146,8 @@ public class DFJointTest {
      */
     @Test
     public void testSetDFJoint() {
-        nullDFJoint.setDFJoint(DFJointVector);
-        assertEquals(DFJointVector, nullDFJoint.getDFJoint());
+        nullDFJoint.setDFJoint(dfJointVector);
+        assertEquals(dfJointVector, nullDFJoint.getDFJoint());
     }
     
     /**
@@ -157,7 +157,7 @@ public class DFJointTest {
      */
     @Test
     public void testSetDFJointAssertSize() {
-        nullDFJoint.setDFJoint(DFJointVector);
+        nullDFJoint.setDFJoint(dfJointVector);
         assertEquals(2, nullDFJoint.getDFJoint().size());
     }
     
@@ -168,7 +168,7 @@ public class DFJointTest {
      */
     @Test
     public void testSetDFJointAssertFunctionalDependencies() {
-        nullDFJoint.setDFJoint(DFJointVector);
+        nullDFJoint.setDFJoint(dfJointVector);
         assertEquals(this.one, nullDFJoint.getDFJoint().get(0));
         assertEquals(this.two, nullDFJoint.getDFJoint().get(1));
     }
@@ -305,8 +305,8 @@ public class DFJointTest {
      */
     @Test
     public void testEqualsFalseDifferentClassObject() {
-        Attribute A = new Attribute("A");
-        assertFalse(dfJoint.equals(A));
+        Attribute attrA = new Attribute("A");
+        assertFalse(dfJoint.equals(attrA));
     }
     
     /**
