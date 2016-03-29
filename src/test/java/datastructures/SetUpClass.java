@@ -773,4 +773,502 @@ public class SetUpClass {
         keyJoint.addKey(attrJntABDE());
         return keyJoint;
     }
+    
+    /******************/
+    //DFJoint
+    /******************/
+    
+    //DFJoint One = {A -> BC, BC -> A, BCD -> E, E -> C}
+    public DFJoint dfJoint01() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint One");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBCtoA());
+        dfJoint.addDependency(funcDepBCDtoE());
+        dfJoint.addDependency(funcDepEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Two = {A -> BC, BC -> E, CD -> A}
+    public DFJoint dfJoint02() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Two");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBCtoE());
+        dfJoint.addDependency(funcDepCDtoA());
+        return dfJoint;
+    }
+    
+    //DFJoint Three = {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+    public DFJoint dfJoint03() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Three");
+        dfJoint.addDependency(funcDepABtoC());
+        dfJoint.addDependency(funcDepCtoAB());
+        dfJoint.addDependency(funcDepEtoD());
+        dfJoint.addDependency(funcDepDtoE());
+        dfJoint.addDependency(funcDepEtoF());
+        dfJoint.addDependency(funcDepFtoE());
+        dfJoint.addDependency(funcDepABDtoG());
+        dfJoint.addDependency(funcDepCFtoH());
+        return dfJoint;
+    }
+    
+    //DFJoint Four = {A -> BC, B -> C, A -> B, AB -> C}
+    public DFJoint dfJoint04() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Four");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepABtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Five = {A -> B, B -> C}
+    public DFJoint dfJoint05() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Five");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepBtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Six = {AB -> D, B -> C, C -> B, B -> E}
+    public DFJoint dfJoint06() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Six");
+        dfJoint.addDependency(funcDepABtoD());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepCtoB());
+        dfJoint.addDependency(funcDepBtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint Seven = {A -> B, B -> C, C -> D}
+    public DFJoint dfJoint07() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Seven");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepCtoD());
+        return dfJoint;
+    }
+    
+    //DFJoint Eight = {B -> C, AB -> D, C -> B}
+    public DFJoint dfJoint08() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Eight");
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepABtoD());
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint Nine = {AB -> C}
+    public DFJoint dfJoint09() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Nine");
+        dfJoint.addDependency(funcDepABtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Ten = {AB -> C, C -> A}
+    public DFJoint dfJoint10() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Ten");
+        dfJoint.addDependency(funcDepABtoC());
+        dfJoint.addDependency(funcDepCtoA());
+        return dfJoint;
+    }
+    
+    //DFJoint Eleven = {C -> A}
+    public DFJoint dfJoint11() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Eleven");
+        dfJoint.addDependency(funcDepCtoA());
+        return dfJoint;
+    }
+    
+    //DFJoint Twelve = {A -> B, CD -> A, BD -> C, DE -> C}
+    public DFJoint dfJoint12() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twelve");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepCDtoA());
+        dfJoint.addDependency(funcDepBDtoC());
+        dfJoint.addDependency(funcDepDEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Thirteen = {A -> B}
+    public DFJoint dfJoint13() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Thirteen");
+        dfJoint.addDependency(funcDepAtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint Fourteen = {CD -> A, AD -> C, DE -> C}
+    public DFJoint dfJoint14() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Fourteen");
+        dfJoint.addDependency(funcDepCDtoA());
+        dfJoint.addDependency(funcDepADtoC());
+        dfJoint.addDependency(funcDepDEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Fifteen = {CD -> A, AD -> C}
+    public DFJoint dfJoint15() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Fifteen");
+        dfJoint.addDependency(funcDepCDtoA());
+        dfJoint.addDependency(funcDepADtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Sixteen = {DE -> C}
+    public DFJoint dfJoint16() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Sixteen");
+        dfJoint.addDependency(funcDepDEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Seventeen = {BCD -> E, E -> C}
+    public DFJoint dfJoint17() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Seventeen");
+        dfJoint.addDependency(funcDepBCDtoE());
+        dfJoint.addDependency(funcDepEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Eighteen = {E -> C}
+    public DFJoint dfJoint18() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Eighteen");
+        dfJoint.addDependency(funcDepEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Nineteen = {AB -> C, C -> B}
+    public DFJoint dfJoint19() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Nineteen");
+        dfJoint.addDependency(funcDepABtoC());
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint Twenty = {C -> B}
+    public DFJoint dfJoint20() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twenty");
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentyone = {A -> C}
+    public DFJoint dfJoint21() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentyone");
+        dfJoint.addDependency(funcDepAtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentytwo = {B -> C}
+    public DFJoint dfJoint22() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentytwo");
+        dfJoint.addDependency(funcDepBtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentythree = {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H}
+    public DFJoint dfJoint23() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentythree");
+        dfJoint.addDependency(funcDepABtoC());
+        dfJoint.addDependency(funcDepCtoAB());
+        dfJoint.addDependency(funcDepEtoDF());
+        dfJoint.addDependency(funcDepDtoE());
+        dfJoint.addDependency(funcDepFtoE());
+        dfJoint.addDependency(funcDepABDtoG());
+        dfJoint.addDependency(funcDepCFtoH());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentyfour = {A -> BC, B -> C, AB -> C}
+    public DFJoint dfJoint24() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentyfour");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepABtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentyfive = {A -> B, A -> C, A -> D, D -> E}
+    public DFJoint dfJoint25() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentyfive");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepAtoC());
+        dfJoint.addDependency(funcDepAtoD());
+        dfJoint.addDependency(funcDepDtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentysix = {A -> BC, D -> E}
+    public DFJoint dfJoint26() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentysix");
+        dfJoint.addDependency(funcDepAtoBCD());
+        dfJoint.addDependency(funcDepDtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentyseven = {AB -> D, B -> CE, C -> B}
+    public DFJoint dfJoint27() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentyseven");
+        dfJoint.addDependency(funcDepABtoD());
+        dfJoint.addDependency(funcDepBtoCE());
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint OneMinusAtoBC = {BC -> A, BCD -> E, E -> C}
+    public DFJoint dfJoint1MinusAtoBC() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint One minus A -> BC");
+        dfJoint.addDependency(funcDepBCtoA());
+        dfJoint.addDependency(funcDepBCDtoE());
+        dfJoint.addDependency(funcDepEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint FiveMinusBtoC = {A -> B}
+    public DFJoint dfJoint5MinusBtoC() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Five minus B -> C");
+        dfJoint.addDependency(funcDepAtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint Twentyeight = {A -> BCD}
+    public DFJoint dfJoint28() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Twentyeight");
+        dfJoint.addDependency(funcDepAtoBCD());
+        return dfJoint;
+    }
+    
+    //DFJoint FourRegroupedWithoutCinAtoBC
+    public DFJoint dfJoint4ReGroupedWithoutCinAtoBC() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Four Regrouped Without C in A->BC");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepABtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint FourRegroupedWithoutAinABtoC
+    public DFJoint dfJoint4RegroupedWithoutAinABtoC() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint Four Regrouped Without A in AB->C");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoBC = {A -> BC}
+    public DFJoint dfJointAtoBC() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoBC");
+        dfJoint.addDependency(funcDepAtoBC());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoE = {A -> E}
+    public DFJoint dfJointAtoE() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoE");
+        dfJoint.addDependency(funcDepAtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint CtoA = {C -> A}
+    public DFJoint dfJointCtoA() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint CtoA");
+        dfJoint.addDependency(funcDepCtoA());
+        return dfJoint;
+    }
+    
+    //DFJoint dfJoint_BtoD = {B -> D}
+    public DFJoint dfJointBtoD() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint BtoD");
+        dfJoint.addDependency(funcDepBtoD());
+        return dfJoint;
+    }
+    
+    //DFJoint dfJoint_BtoE = {B -> E}
+    public DFJoint dfJointBtoE() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint BtoE");
+        dfJoint.addDependency(funcDepBtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint dfJoint_ABtoD_BtoC_CtoB = {AB -> D, B -> C, C -> B}
+    public DFJoint dfJointABtodBtocCtob() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint ABtoD_BtoC_CtoB");
+        dfJoint.addDependency(funcDepABtoD());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint dfJoint_ABtoC_CtoAB = {AB -> C, C -> AB}
+    public DFJoint dfJointABtocCtoab() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint ABtoC_CtoAB");
+        dfJoint.addDependency(funcDepABtoC());
+        dfJoint.addDependency(funcDepCtoAB());
+        return dfJoint;
+    }
+    
+    //DFJoint EtoD_DtoE = {E -> D, D -> E}
+    public DFJoint dfJointEtodDtoe() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint EtoD_DtoE");
+        dfJoint.addDependency(funcDepEtoD());
+        dfJoint.addDependency(funcDepDtoE());
+        return dfJoint;
+    }
+
+    //DFJoint EtoF_FtoE = {E -> F, F -> E}
+    public DFJoint dfJointEtofFtoe() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint EtoF_FtoE");
+        dfJoint.addDependency(funcDepEtoF());
+        dfJoint.addDependency(funcDepFtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint BtoC_CtoB = {B -> C, C -> B}
+    public DFJoint dfJointBtocCtob() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint BtoC_CtoB");
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepCtoB());
+        return dfJoint;
+    }
+    
+    //DFJoint ABtoD = {AB -> D}
+    public DFJoint dfJointABtod() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint ABtoD");
+        dfJoint.addDependency(funcDepABtoD());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoBC_BCtoA = {A -> BC, BC -> A}
+    public DFJoint dfJointAtobcBCtoa() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoBC_BCtoA");
+        dfJoint.addDependency(funcDepAtoBC());
+        dfJoint.addDependency(funcDepBCtoA());
+        return dfJoint;
+    }
+
+    //DFJoint ADtoE = {AD -> E}
+    public DFJoint dfJointADtoe() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint ADtoE");
+        dfJoint.addDependency(funcDepADtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint ABEtoGH = {ABE -> GH}
+    public DFJoint dfJointABEtogh() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint ABEtoGH");
+        dfJoint.addDependency(funcDepABEtoG());
+        dfJoint.addDependency(funcDepABEtoH());
+        return dfJoint;
+    }
+    
+    //DFJoint BCDtoE_EtoC = {BCD -> E, E -> C}
+    public DFJoint dfJointBCDtoeEtoc() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint BCDtoE_EtoC");
+        dfJoint.addDependency(funcDepBCDtoE());
+        dfJoint.addDependency(funcDepEtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoB_BEtoA_ABDtoE = {A -> B, BE -> A, ABD -> E}
+    public DFJoint dfJointAtobBEtoaABDtoe() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoB_BEtoA_ABDtoE");
+        dfJoint.addDependency(funcDepAtoB());
+        dfJoint.addDependency(funcDepBEtoA());
+        dfJoint.addDependency(funcDepABDtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint CDtoE = {CD -> E}
+    public DFJoint dfJointCDtoe() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint CDtoE");
+        dfJoint.addDependency(funcDepCDtoE());
+        return dfJoint;
+    }
+    
+    //DFJoint CtoD = {C -> D}
+    public DFJoint dfJointCtod() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint CtoD");
+        dfJoint.addDependency(funcDepCtoD());
+        return dfJoint;
+    }
+    
+    //DPJoint BtoAC = {B -> AC}
+    public DFJoint dfJointBtoac() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint BtoAC");
+        dfJoint.addDependency(funcDepBtoAC());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoC = {A -> C}
+    public DFJoint dfJointAtoc() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoC");
+        dfJoint.addDependency(funcDepAtoC());
+        return dfJoint;
+    }
+    
+    //DFJoint AtoB = {A -> B}
+    public DFJoint dfJointAtob() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint AtoB");
+        dfJoint.addDependency(funcDepAtoB());
+        return dfJoint;
+    }
+    //DFJoint BtoAC_CtoD = {B -> AC, C -> D}
+    public DFJoint dfJointBtoacCtod() {
+        DFJoint dfJoint = new DFJoint();
+        dfJoint.setName("DFJoint {B -> AC, C -> D}");
+        dfJoint.addDependency(funcDepBtoAC());
+        dfJoint.addDependency(funcDepCtoD());
+        return dfJoint;
+    }
 }
