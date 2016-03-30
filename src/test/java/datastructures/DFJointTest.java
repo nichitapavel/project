@@ -360,7 +360,7 @@ public class DFJointTest {
      * DFJoint contains A to BC? Result true.
      */
     @Test
-    public void containsTrue() {
+    public void testContainsTrue() {
         assertTrue(this.firstDFJoint.contains(this.setUpObject.funcDepAtoBC()));
     }
     
@@ -369,7 +369,174 @@ public class DFJointTest {
      * 
      * DFJoint contains E to C? Result false.
      */
-    public void containsFalse() {
+    public void testContainsFalse() {
         assertFalse(this.firstDFJoint.contains(this.setUpObject.funcDepEtoC()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#toString()}.
+     * 
+     * Checks if the returned string is the expected one.
+     */
+    @Test
+    public void testToStringTest() {
+        String msg = "{ ({A} -> {B, C}), ({B, C} -> {A}), ({B, C, D} -> {E}), ({E} -> {C}) }";
+        assertEquals(msg, dfJoint.toString());
+    }
+
+    /**
+     * Test method for {@link datastructures.DFJoint#toString()}.
+     * 
+     * Checks that "null" is returned if DFJoint is null.
+     */
+    @Test
+    public void testToStringNullValuesObject() {
+        assertEquals("null", nullDFJoint.toString());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * 
+     * Checks that DFJoint size is four.
+     */
+    @Test
+    public void testGetSizeDFJoint() {
+        assertEquals(4, dfJoint.getSize());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * 
+     * Checks that zero is returned if DFJoint is null.
+     */
+    @Test
+    public void testGetSizeNullDFJoint() {
+        assertEquals(0, nullDFJoint.getSize());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * 
+     * Sets a DFJoint to null, then checks if returned size is zero.
+     */
+    @Test
+    public void testGetSizeNullDfJointVector() {
+        nullDFJoint.setDFJoint(null);
+        assertEquals(0, nullDFJoint.getSize());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * 
+     * Removes A to BC dependency, checks that it is not more present.
+     */
+    @Test 
+    public void testRemoveDFJoint_OneMinusAtoBC() {
+        this.dfJoint.removeDF(this.setUpObject.funcDepAtoBC());
+        assertEquals(this.setUpObject.dfJoint1MinusAtoBC(), this.dfJoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Removes B to C dependency, checks that it is not more present.
+     */
+    @Test
+    public void testRemoveDFJoint_FiveMinusBtoC() {
+        this.dfJoint = this.setUpObject.dfJoint05();
+        this.dfJoint.removeDF(this.setUpObject.funcDepBtoC());
+        assertEquals(this.setUpObject.dfJoint5MinusBtoC(), this.dfJoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Tries to remove DE to C dependency if a DFJoint where it is not present.
+     */
+    @Test
+    public void testRemoveDFJoint_AnNonExistentFD() {
+        DFJoint dfJointCopy = new DFJoint(this.dfJoint);
+        this.dfJoint.removeDF(this.setUpObject.funcDepDEtoC());
+        assertEquals(dfJointCopy, this.dfJoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Remove B to C and leave it with zero dependencies.
+     */
+    @Test
+    public void testRemoveDFJointTwentyTwoAndLeaveItEmpty() {
+        this.dfJoint = this.setUpObject.dfJoint22();
+        this.dfJoint.removeDF(this.setUpObject.funcDepBtoC());
+        assertEquals("null", this.dfJoint.toString());
+        assertEquals(this.nullDFJoint, this.dfJoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Tries to remove a dependency from a null DFJoint
+     */
+    @Test
+    public void testRemoveDFJointException() {
+        this.nullDFJoint.removeDF(this.one);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
+     * Checks if DFJoint return list is {A, B, C, D, E}.
+     */
+    @Test
+    public void testGetAttributesDFJointTest() {
+        AttributeJoint attrJointFromDF = dfJoint.getAttributesDFJoint();
+        AttributeJoint attrJoint = this.setUpObject.attrJntABCDE();
+        assertEquals(attrJoint, attrJointFromDF);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
+     * Checks if DFJoint return list is {A, B, C}.
+     */
+    @Test
+    public void testGetAttributesFirstDFJointTest() {
+        AttributeJoint attrJointFromDF = firstDFJoint.getAttributesDFJoint();
+        AttributeJoint attrJoint = this.setUpObject.attrJntABC();
+        assertEquals(attrJoint, attrJointFromDF);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
+     * Checks if DFJoint return list is {A, B, C}.
+     */
+    @Test
+    public void testGetAttributesSecondDFJointTest() {
+        AttributeJoint attrJointFromDF = secondDFJoint.getAttributesDFJoint();
+        AttributeJoint attrJoint = this.setUpObject.attrJntABC();
+        assertEquals(attrJoint, attrJointFromDF);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Checks that DFJoint size is four.
+     */
+    @Test
+    public void getSizeDFJoint() {
+        assertEquals(4, dfJoint.getSize());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Checks that a null DFJoint size is zero.
+     */
+    @Test
+    public void getSizeNullDFJoint() {
+        assertEquals(0, nullDFJoint.getSize());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Sets DFJoint list of dependencies, and checks that returned size is zero.
+     */
+    @Test
+    public void getSizeNullDfJointVector() {
+        nullDFJoint.setDFJoint(null);
+        assertEquals(0, nullDFJoint.getSize());
     }
 }

@@ -6,6 +6,8 @@ package datastructures;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import dependency.ADependency;
 
@@ -22,6 +24,7 @@ public class DFJoint implements Iterable<ADependency> {
      * A name to reference this DFJoint.
      */
     private String name;
+    private static final Logger LOG = Logger.getLogger(DFJoint.class.getName());
     
     /**
      * Constructs a Null DFJoint.
@@ -168,5 +171,84 @@ public class DFJoint implements Iterable<ADependency> {
     @Override
     public Iterator<ADependency> iterator() {
         return this.df.iterator();
+    }
+    
+    /**
+     * Returns a string representing of this DFJoint.
+     * 
+     * The format followed is {({obj, obj} to {obj, obj}), ({obj, obj} to {obj, obj}), ...}.
+     * If this is null then returns "null" string.
+     * 
+     * @return a string representing of this DFJoint.
+     */
+    @Override
+    public String toString() {
+        String msg = "null";
+        try {
+            msg = "{ (" + this.df.get(0) + ")";
+            for (int i = 1; i < this.df.size(); i++){
+                msg = msg + ", (" + this.df.get(i) + ")";
+            }
+            msg += " }";
+        }
+        catch (IndexOutOfBoundsException ex) {
+            LOG.log(Level.INFO, ex.getMessage(), ex);   
+        }
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, ex.getMessage(), ex);
+        }
+        return msg;
+    }
+    
+    /**
+     * Returns the number of dependencies in this DFJoint.
+     * 
+     * If this is null, returns zero.
+     * 
+     * @return the number of dependencies in this DFJoint.
+     */
+    public int getSize() {
+        if (this.df == null)
+            return 0;
+        return this.df.size();
+    }
+    
+    /**
+     * Removes a dependency from this DFJoint, if the dependency exist.
+     * 
+     * If DFJoint is null nothing happens.
+     * 
+     * @param fd the dependency to be removed.
+     */
+    public void removeDF(ADependency fd) {
+        try {
+            this.df.remove(fd);
+        } catch (NullPointerException ex) {
+            LOG.log(Level.INFO, ex.getMessage(), ex);
+        }
+    }
+    
+    /**
+     * Make a list with all unique attributes in this object and returns it.
+     * 
+     * @return a list with all unique attributes in this object.
+     */
+    public AttributeJoint getAttributesDFJoint() {
+        AttributeJoint attrJoint = new AttributeJoint();
+        for (ADependency df : this.df) {
+                attrJoint.addAttributes(df.getAntecedent());
+                attrJoint.addAttributes(df.getConsequent());
+        }
+        return attrJoint;
+    }
+    
+    /**
+     * Returns the dependency that is found at position {@code index}.
+     * 
+     * @param index The position where to look.
+     * @return the dependency found at position {@code index}.
+     */
+    public ADependency getDF(int index) {
+        return this.df.get(index);
     }
 }
