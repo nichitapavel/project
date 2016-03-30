@@ -5,6 +5,9 @@ package dependency;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -439,6 +442,19 @@ public class FunctionalDependencyTest {
     public void clearTrivialElementsABCtoVoid() {
         this.fd.setConsequent(new AttributeJoint());
         this.fd.clearTrivialElements();
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#toFunctionalDependency(datastructures.DFJoint)}.
+     * 
+     * Returns a list with {A, B, C} to {D, E, F} dependency checked in a null DFJoint.
+     * It doesn't matter the DFJoint, since this is a FunctinalDependency, not a PluralDependency. 
+     */
+    @Test
+    public void toFunctionalDependency() {
+        List<ADependency> expected = new ArrayList<ADependency>();
+        expected.add(new FunctionalDependency(this.antecedent, this.consequent));
+        assertEquals(expected, this.fd.toFunctionalDependency(null));
     }
     
 }

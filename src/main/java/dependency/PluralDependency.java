@@ -3,7 +3,11 @@
  */
 package dependency;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import datastructures.AttributeJoint;
+import datastructures.DFJoint;
 
 /**
  * @author Pavel Nichita
@@ -50,6 +54,12 @@ public class PluralDependency extends ADependency {
     public boolean equals(Object obj) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public List<ADependency> toFunctionalDependency(DFJoint dfJoint) {
+        // TODO Auto-generated method stub
+        return new ArrayList<>();
     }
 
 }

@@ -3,8 +3,11 @@
  */
 package dependency;
 
+import java.util.List;
+
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
+import datastructures.DFJoint;
 
 /**
  * @author Pavel Nichita
@@ -191,4 +194,6 @@ public abstract class ADependency {
 
     @Override
     public abstract boolean equals(Object obj);
+
+    public abstract List<ADependency> toFunctionalDependency(DFJoint dfJoint);
 }

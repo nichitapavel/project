@@ -3,11 +3,14 @@
  */
 package dependency;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
+import datastructures.DFJoint;
 import utils.Const;
 
 /**
@@ -124,5 +127,21 @@ public class FunctionalDependency extends PluralDependency {
         catch (NullPointerException ex) {
             LOG.log(Level.INFO, Const.FD_NOT_INIT, ex);
         }
+    }
+    
+    /**
+     * Returns a list with this dependency.
+     * 
+     * This function was designed for {@link dependency.PluralDependency} class.
+     * A plural dependency can imply a list of functional dependency in a DFJoint.
+     * 
+     * @param dfJoint the DFJoint where this dependency exists.
+     * @return a list of size one with this dependency in it.
+     */
+    @Override
+    public List<ADependency> toFunctionalDependency(DFJoint dfJoint) {
+        List<ADependency> result = new ArrayList<>();
+        result.add(this);
+        return result;
     }
 }
