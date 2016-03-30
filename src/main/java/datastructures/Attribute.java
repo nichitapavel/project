@@ -3,6 +3,10 @@
  */
 package datastructures;
 
+import dependency.ADependency;
+import dependency.FunctionalDependency;
+import normalization.Normalization;
+
 /**
  * @author Pavel Nichita
  *
@@ -160,6 +164,44 @@ public class Attribute implements Comparable<Attribute>{
         for (Attribute obj : attrJoint.getAttributeJoint())
             if (obj.equals(this))
                 return true;
+        return false;
+    }
+    
+    /**
+     * Returns if this attribute is rare in the antecedent of a dependency in a specified DFJoint.
+     * 
+     * @param fd Dependency where to check.
+     * @param dfJoint DFJoint where to check.
+     * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
+     */
+    public boolean isRareInAntecedent(ADependency fd, DFJoint dfJoint) {
+        AttributeJoint ullman = new AttributeJoint(fd.getAntecedent());
+        ullman.removeAttributes(this);
+        AttributeJoint ullmanResult = Normalization.simpleUllman(ullman, dfJoint);
+        if (fd.getConsequent().isContained(ullmanResult))
+            return true;
+        return false;
+    }
+
+    /**
+     * Returns if this attribute is rare in the consequent of a dependency in a specified DFJoint.
+     * 
+     * @param fd Dependency where to check.
+     * @param dfJoint DFJoint where to check.
+     * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
+     */
+    public boolean isRareInConsequent(ADependency fd, DFJoint dfJoint) {
+        AttributeJoint consequent = fd.getConsequent();
+        AttributeJoint antecedent = fd.getAntecedent();
+        AttributeJoint newConsecuent = new AttributeJoint(consequent);
+        newConsecuent.removeAttributes(this);
+        DFJoint dfJointPrima = new DFJoint(dfJoint);                    
+        dfJointPrima.removeDF(fd);
+        ADependency newFD = new FunctionalDependency(antecedent, newConsecuent);
+        dfJointPrima.addDependency(newFD);
+        AttributeJoint ullmanResult = Normalization.simpleUllman(antecedent, dfJointPrima);
+        if (consequent.isContained(ullmanResult))
+            return true;
         return false;
     }
 }

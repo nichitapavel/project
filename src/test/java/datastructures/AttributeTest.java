@@ -20,6 +20,7 @@ public class AttributeTest {
     private Attribute namedAttribute;
     private Attribute characterlessAttribute;
     private Attribute stringAttr;
+    private SetUpClass setUpObject;
     private static final String NAMED_ATTR = "Atributo";
 
     /**
@@ -31,6 +32,7 @@ public class AttributeTest {
         namedAttribute = new Attribute("Name");
         characterlessAttribute = new Attribute("");
         stringAttr = new Attribute(NAMED_ATTR);
+        setUpObject = new SetUpClass();
     }
 
     /**
@@ -262,5 +264,135 @@ public class AttributeTest {
     public void testIsContainedNullAttrJoint() {
         AttributeJoint attrJoint = new AttributeJoint();
         assertFalse(namedAttribute.isContained(attrJoint));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if A is rare in {AB} to {C} in
+     * {A -> BC, B -> C, A -> B, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareAInAntecedentInDFJointFourABtoC() {
+        Attribute attrA = this.setUpObject.attrA();
+        assertTrue(attrA.isRareInAntecedent(this.setUpObject.funcDepABtoC(),
+                this.setUpObject.dfJoint04()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if B is rare in {AB} to {C} in
+     * {A -> BC, B -> C, A -> B, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareBInAntecedentInDFJointFourABtoC() {
+        Attribute attrB = this.setUpObject.attrB();
+        assertTrue(attrB.isRareInAntecedent(this.setUpObject.funcDepABtoC(),
+                this.setUpObject.dfJoint04()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if A is rare in {AB} to {C} in
+     * {A -> BC, B -> C, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareAInAntecedentInDFJointTwentyFourABtoC() {
+        Attribute attrA = this.setUpObject.attrA();
+        assertTrue(attrA.isRareInAntecedent(this.setUpObject.funcDepABtoC(),
+                this.setUpObject.dfJoint24()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if B is rare in {AB} to {C} in
+     * {A -> BC, B -> C, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareBInAntecedentInDFJointTwentyFourABtoC() {
+        Attribute attrB = this.setUpObject.attrB();
+        assertTrue(attrB.isRareInAntecedent(this.setUpObject.funcDepABtoC(),
+                this.setUpObject.dfJoint24()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if B is rare in {BC} to {A} in
+     * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
+     */
+    @Test
+    public void testIsRareFalseBInAntecedentInDFJointOneBCtoA() {
+        Attribute attrB = this.setUpObject.attrB();
+        assertFalse(attrB.isRareInAntecedent(this.setUpObject.funcDepBCtoA(),
+                this.setUpObject.dfJoint01()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if C is rare in {BC} to {A} in
+     * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
+     */
+    @Test
+    public void testIsRareFalseCInAntecedentInDFJointOneBCtoA() {
+        Attribute attrC = this.setUpObject.attrC();
+        assertFalse(attrC.isRareInAntecedent(this.setUpObject.funcDepBCtoA(),
+                this.setUpObject.dfJoint01()));
+    }
+
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if B is rare in {A} to {BC} in
+     * {A -> BC, B -> C, A -> B, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareBInConsequentInDFJointFourAtoBC() {
+        Attribute attrB = this.setUpObject.attrB();
+        assertTrue(attrB.isRareInConsequent(this.setUpObject.funcDepAtoBC(),
+                this.setUpObject.dfJoint04()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if C is rare in {A} to {BC} in
+     * {A -> BC, B -> C, A -> B, AB -> C}, result true.
+     */
+    @Test
+    public void testIsRareCInConsequentInDFJointFourAtoBC() {
+        Attribute attrC = this.setUpObject.attrC();
+        assertTrue(attrC.isRareInConsequent(this.setUpObject.funcDepAtoBC(),
+                this.setUpObject.dfJoint04()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if C is rare in {A} to {BC} in
+     * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
+     */
+    @Test
+    public void testIsRareFalseCInConsequentInDFJointOneAtoBC() {
+        Attribute attrC = this.setUpObject.attrC();
+        assertFalse(attrC.isRareInConsequent(this.setUpObject.funcDepAtoBC(),
+                this.setUpObject.dfJoint01()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * 
+     * Checks if C is rare in {A} to {BC} in
+     * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
+     */
+    @Test
+    public void testIsRareFalseBInConsequentInDFJointOneAtoBC() {
+        Attribute attrB = this.setUpObject.attrB();
+        assertFalse(attrB.isRareInConsequent(this.setUpObject.funcDepAtoBC(),
+                this.setUpObject.dfJoint01()));
     }
 }
