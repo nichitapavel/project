@@ -452,7 +452,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void toFunctionalDependency() {
-        List<ADependency> expected = new ArrayList<ADependency>();
+        List<ADependency> expected = new ArrayList<>();
         expected.add(new FunctionalDependency(this.antecedent, this.consequent));
         assertEquals(expected, this.fd.toFunctionalDependency(null));
     }

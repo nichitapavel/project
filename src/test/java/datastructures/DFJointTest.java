@@ -431,7 +431,7 @@ public class DFJointTest {
      * Removes A to BC dependency, checks that it is not more present.
      */
     @Test 
-    public void testRemoveDFJoint_OneMinusAtoBC() {
+    public void testRemoveDFJointOneMinusAtoBC() {
         this.dfJoint.removeDF(this.setUpObject.funcDepAtoBC());
         assertEquals(this.setUpObject.dfJoint1MinusAtoBC(), this.dfJoint);
     }
@@ -441,7 +441,7 @@ public class DFJointTest {
      * Removes B to C dependency, checks that it is not more present.
      */
     @Test
-    public void testRemoveDFJoint_FiveMinusBtoC() {
+    public void testRemoveDFJointFiveMinusBtoC() {
         this.dfJoint = this.setUpObject.dfJoint05();
         this.dfJoint.removeDF(this.setUpObject.funcDepBtoC());
         assertEquals(this.setUpObject.dfJoint5MinusBtoC(), this.dfJoint);
@@ -452,7 +452,7 @@ public class DFJointTest {
      * Tries to remove DE to C dependency if a DFJoint where it is not present.
      */
     @Test
-    public void testRemoveDFJoint_AnNonExistentFD() {
+    public void testRemoveDFJointAnNonExistentFD() {
         DFJoint dfJointCopy = new DFJoint(this.dfJoint);
         this.dfJoint.removeDF(this.setUpObject.funcDepDEtoC());
         assertEquals(dfJointCopy, this.dfJoint);

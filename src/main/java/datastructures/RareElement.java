@@ -65,7 +65,7 @@ public class RareElement {
      */
     public DFJoint getDFJoint() {
         return this.dfJoint;
-    };
+    }
     
     /**
      * Returns where {@code attr} is rare: antecedent or consequent.

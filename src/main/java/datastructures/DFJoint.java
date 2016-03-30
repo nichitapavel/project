@@ -235,9 +235,9 @@ public class DFJoint implements Iterable<ADependency> {
      */
     public AttributeJoint getAttributesDFJoint() {
         AttributeJoint attrJoint = new AttributeJoint();
-        for (ADependency df : this.df) {
-                attrJoint.addAttributes(df.getAntecedent());
-                attrJoint.addAttributes(df.getConsequent());
+        for (ADependency obj : this.df) {
+                attrJoint.addAttributes(obj.getAntecedent());
+                attrJoint.addAttributes(obj.getConsequent());
         }
         return attrJoint;
     }
