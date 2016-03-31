@@ -7,6 +7,7 @@ import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
+import dependency.PluralDependency;
 
 /**
  * @author Pavel Nichita
@@ -1270,5 +1271,243 @@ public class SetUpClass {
         dfJoint.addDependency(funcDepBtoAC());
         dfJoint.addDependency(funcDepCtoD());
         return dfJoint;
+    }
+    
+    /******************/
+    //Plural Dependency
+    /******************/
+
+    //Plural Dependency A ->> B
+    public ADependency pluDepAtoB() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntB());
+        return pluDep;
+    }
+    
+    //A ->> E
+    public ADependency pluDepAtoE() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntE());
+        return pluDep;
+    }
+
+    //Plural Dependency A ->> BC    
+    public ADependency pluDepAtoBC() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBC());
+        return pluDep;
+    }
+    
+    //Plural Dependency A ->> CD    
+    public ADependency pluDepAtoCD() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntCD());
+        return pluDep;
+    }
+    
+    //Plural Dependency A ->> DE    
+    public ADependency pluDepAtoDE() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntDE());
+        return pluDep;
+    }
+    
+    //Plural Dependency A ->> EF
+    public ADependency pluDepAtoEF() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntEF());
+        return pluDep;
+    }
+
+    //Plural Dependency A ->> BCD
+    public ADependency pluDepAtoBCD() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBCD());
+        return pluDep;
+    }
+    
+    //Plural Dependency A ->> BEF
+    public ADependency pluDepAtoBEF() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBEF());
+        return pluDep;
+    }
+    
+    //Plural Dependency A ->> BCDEF
+    public ADependency pluDepAtoBCDEF() {
+        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBCDEF());
+        return pluDep;
+    }
+    
+    //Plural Dependency B ->> A
+    public ADependency pluDepBtoA() {
+        ADependency pluDep = new PluralDependency(attrJntB(), attrJntA());
+        return pluDep;
+    }   
+    
+    //Plural Dependency B ->> C
+    public ADependency pluDepBtoC() {
+        ADependency pluDep = new PluralDependency(attrJntB(), attrJntC());
+        return pluDep;
+    }
+    
+    //Plural Dependency D ->> F
+    public ADependency pluDepDtoF() {
+        ADependency pluDep = new PluralDependency(attrJntD(), attrJntF());
+        return pluDep;
+    }
+
+    //Plural Dependency BC ->> AD
+    public ADependency pluDepBCtoAD() {
+        ADependency pluDep = new PluralDependency(attrJntBC(), attrJntAD());
+        return pluDep;
+    }
+
+    
+    //Plural Dependency BE ->> B
+    public ADependency pluDepBEtoB() {
+        ADependency pluDep = new PluralDependency(attrJntBE(), attrJntB());
+        return pluDep;
+    }
+    
+    /******************/
+    //DPJoints
+    /******************/
+    
+    //DPJoint 30 = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A ->> CD}
+    public DFJoint dpJoint30() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A ->> CD}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(funcDepCDtoA());
+        dpJoint.addDependency(funcDepBDtoC());
+        dpJoint.addDependency(funcDepAEtoF());
+        dpJoint.addDependency(funcDepDEtoC());
+        dpJoint.addDependency(pluDepAtoCD());
+        return dpJoint;
+    }
+    
+    //DPJoint 30_A = {AD -> C, CD -> A}
+    public DFJoint dpJoint30A() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {AD -> C, CD -> A}");
+        dpJoint.addDependency(funcDepCDtoA());
+        dpJoint.addDependency(funcDepADtoC());
+        return dpJoint;
+    }
+    
+    //DPJoint 30_B = {A -> B, AE -> F}
+    public DFJoint dpJoint30B() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, AE -> F}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(funcDepAEtoF());
+        return dpJoint;
+    }
+    
+    //DPJoint 30_C = {AE -> F}
+    public DFJoint dpJoint30C() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {AE -> F}");
+        dpJoint.addDependency(funcDepAEtoF());
+        return dpJoint;
+    }
+    
+    //DPJoint 31 = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, AE -> D, A ->> CD}
+    public DFJoint dpJoint31() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, AE -> D, A ->> CD}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(funcDepCDtoA());
+        dpJoint.addDependency(funcDepBDtoC());
+        dpJoint.addDependency(funcDepAEtoF());
+        dpJoint.addDependency(funcDepDEtoC());
+        dpJoint.addDependency(funcDepAEtoD());
+        dpJoint.addDependency(pluDepAtoCD());
+        return dpJoint;
+    }
+    
+    //DPJoint 31_A = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A -> D, A -> C}
+    public DFJoint dpJoint31Equi() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A -> D, A -> C}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(funcDepCDtoA());
+        dpJoint.addDependency(funcDepBDtoC());
+        dpJoint.addDependency(funcDepAEtoF());
+        dpJoint.addDependency(funcDepDEtoC());
+        dpJoint.addDependency(funcDepAtoD());
+        dpJoint.addDependency(funcDepAtoC());
+        return dpJoint;
+    }
+    
+    //DPJoint 32 = {A -> B, B ->> C}
+    public DFJoint dpJoint32() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, B ->> C}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(pluDepBtoC());
+        return dpJoint;
+    }
+    
+    //DPJoint 33 = {A -> B, A -> C, B ->> C}
+    public DFJoint dpJoint33() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A -> B, A -> C, B ->> C}");
+        dpJoint.addDependency(funcDepAtoB());
+        dpJoint.addDependency(funcDepAtoC());
+        dpJoint.addDependency(pluDepBtoC());
+        return dpJoint;
+    }
+    
+    //DPJoint 34 = {B ->> C}
+    public DFJoint dpJoint34() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {B ->> C}");
+        dpJoint.addDependency(pluDepBtoC());
+        return dpJoint;
+    }
+    
+    //DPJoint 35 = {D ->> F, C -> A, CD -> E, A -> B}
+    public DFJoint dpJoint35() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {D ->> F, C -> A, CD -> E, A -> B}");
+        dpJoint.addDependency(pluDepDtoF());
+        dpJoint.addDependency(funcDepCtoA());
+        dpJoint.addDependency(funcDepCDtoE());
+        dpJoint.addDependency(funcDepAtoB());
+        return dpJoint;
+    }
+    
+    //DPJoint 35_A = {C -> A, CD -> E, A -> B}
+    public DFJoint dpJoint35A() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {C -> A, CD -> E, A -> B}");
+        dpJoint.addDependency(funcDepCtoA());
+        dpJoint.addDependency(funcDepCDtoE());
+        dpJoint.addDependency(funcDepAtoB());
+        return dpJoint;
+    }   
+    
+    
+    //DPJoint 36 = {A ->> BCD, B -> AC, C -> D}
+    public DFJoint dpJoint36() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A ->> BCD, B -> AC, C -> D}");
+        dpJoint.addDependency(pluDepAtoBCD());
+        dpJoint.addDependency(funcDepBtoAC());
+        dpJoint.addDependency(funcDepCtoD());
+        return dpJoint;
+    }
+    
+    //DPJoint 37 = {A ->> BC, D -> C}
+    public DFJoint dpJoint37() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {A ->> BC, D -> C}");
+        dpJoint.addDependency(pluDepAtoBC());
+        dpJoint.addDependency(funcDepDtoC());
+        return dpJoint;
+    }
+    
+    //DFJoint 38 = {B -> AC, C -> D, BC ->> AD}
+    public DFJoint dpJoint38() {
+        DFJoint dpJoint = new DFJoint();
+        dpJoint.setName("DPJoint {B -> AC, C -> D, BC ->> AD}");
+        dpJoint.addDependency(funcDepBtoAC());
+        dpJoint.addDependency(funcDepCtoD());
+        dpJoint.addDependency(pluDepBCtoAD());
+        return dpJoint;
     }
 }
