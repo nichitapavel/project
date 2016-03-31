@@ -8,6 +8,7 @@ import java.util.List;
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.Relation;
 
 /**
  * @author Pavel Nichita
@@ -196,4 +197,9 @@ public abstract class ADependency {
     public abstract boolean equals(Object obj);
 
     public abstract List<ADependency> toFunctionalDependency(DFJoint dfJoint);
+
+    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }
