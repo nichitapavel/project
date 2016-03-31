@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
+import datastructures.DFJoint;
 import datastructures.SetUpClass;
 
 /**
@@ -24,6 +25,8 @@ public class FunctionalDependencyTest {
     private AttributeJoint antecedent;
     private AttributeJoint consequent;
     private SetUpClass setUpObject;
+    private DFJoint firstDFJoint;
+    private DFJoint secondDFJoint;
     
     /**
      * 
@@ -36,6 +39,8 @@ public class FunctionalDependencyTest {
         consequent = new AttributeJoint(consecuentArray);
         fd = new FunctionalDependency(antecedent, consequent);
         setUpObject = new SetUpClass();
+        firstDFJoint = this.setUpObject.dfJoint04();
+        secondDFJoint = this.setUpObject.dfJoint05();
     }
 
     /**
@@ -439,7 +444,7 @@ public class FunctionalDependencyTest {
      * A cleared FD {A, B, C} -> {null} should trigger exception.
      */
     @Test
-    public void clearTrivialElementsABCtoVoid() {
+    public void testClearTrivialElementsABCtoVoid() {
         this.fd.setConsequent(new AttributeJoint());
         this.fd.clearTrivialElements();
     }
@@ -451,10 +456,69 @@ public class FunctionalDependencyTest {
      * It doesn't matter the DFJoint, since this is a FunctinalDependency, not a PluralDependency. 
      */
     @Test
-    public void toFunctionalDependency() {
+    public void testToFunctionalDependency() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(new FunctionalDependency(this.antecedent, this.consequent));
         assertEquals(expected, this.fd.toFunctionalDependency(null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Checks that every dependency from firstJoint belongs secondDFJoint.
+     */
+    @Test
+    public void testBelongsToTrueSecondDFJoint() {
+        for (ADependency fd : firstDFJoint)
+            assertTrue(fd.belongsTo(secondDFJoint, null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Checks that every dependency from secondDFJoint belongs firstJoint.
+     */
+    @Test
+    public void testBelongsToTrueFirstDFJoint() {
+        for (ADependency fd : secondDFJoint)
+            assertTrue(fd.belongsTo(firstDFJoint, null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Checks that {A, B, C} to {D, E, F} belongs to firstDFJoint and secondDFJoint,
+     * result false.
+     */
+    @Test
+    public void testBelongsToFalseFD() {
+        assertFalse(fd.belongsTo(firstDFJoint, null));
+        assertFalse(fd.belongsTo(secondDFJoint, null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Checks that {C} to {A, B} belongs to firstDFJoint, result false.
+     */
+    @Test
+    public void testBelongsToFalseFirstFD() {
+        String [] antecedentArray = {"C"};
+        AttributeJoint antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"A", "B"};
+        AttributeJoint consequent = new AttributeJoint(consecuentArray);
+        ADependency fundDep = new FunctionalDependency(antecedent, consequent);
+        assertFalse(fundDep.belongsTo(firstDFJoint, null));
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Checks that {C} to {A} belongs to firstDFJoint, result false.
+     */
+    @Test
+    public void testBelongsFalseSecondFD() {
+        String [] antecedentArray = {"C"};
+        AttributeJoint antecedent = new AttributeJoint(antecedentArray);
+        String [] consecuentArray = {"A"};
+        AttributeJoint consequent = new AttributeJoint(consecuentArray);
+        ADependency fundDep = new FunctionalDependency(antecedent, consequent);
+        assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
     
 }

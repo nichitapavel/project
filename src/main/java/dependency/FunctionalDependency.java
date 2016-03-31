@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.Relation;
+import normalization.Normalization;
 import utils.Const;
 
 /**
@@ -82,7 +84,7 @@ public class FunctionalDependency extends PluralDependency {
      *  the same attribute joint list as this object.
      * 
      * @param obj The object to compare this FunctionalDependency against.
-     * @return true if the given object represents a AttributeJoint
+     * @return true if the given object represents a FunctionalDependency
      * equivalent to this functional dependency, false otherwise.
      */
     @Override
@@ -143,5 +145,20 @@ public class FunctionalDependency extends PluralDependency {
         List<ADependency> result = new ArrayList<>();
         result.add(this);
         return result;
+    }
+    
+    /**
+     * Returns if this dependency can be implied in a relation with DFJoint.
+     * 
+     * The method used is Ullman, it calculates all attributes implied by antecedent, 
+     * if all consequent attributes are present, then this dependency belongs to Relation DFJoint.
+     * 
+     * @return true if it can be implied in Relation with DFJoint, false otherwise. 
+     */
+    @Override
+    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
+        DFJoint hiddenDF = dfJoint.getHiddenDF();
+        AttributeJoint equivalentAttrJoint = Normalization.simpleUllman(super.antecedent, hiddenDF);
+        return super.consequent.isContained(equivalentAttrJoint);
     }
 }
