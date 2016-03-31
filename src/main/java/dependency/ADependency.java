@@ -198,8 +198,5 @@ public abstract class ADependency {
 
     public abstract List<ADependency> toFunctionalDependency(DFJoint dfJoint);
 
-    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+    public abstract boolean belongsTo(DFJoint dfJoint, Relation relation);
 }

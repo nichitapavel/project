@@ -513,29 +513,29 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
      * Checks if firstDFJoint is implied by secondDFJoint, result true.
      */ 
     @Test
     public void testIsImpliedTrueFirstToSecondDFJoint() {
-        assertTrue(firstDFJoint.isImplied(secondDFJoint, null));
+        assertTrue(firstDFJoint.isImplied(secondDFJoint));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
      * Checks if secondDFJoint is implied by firstDFJoint, result true.
      */
     @Test
     public void testIsImpliedTrueSecondToFirstDFJoint() {
-        assertTrue(secondDFJoint.isImplied(firstDFJoint, null));
+        assertTrue(secondDFJoint.isImplied(firstDFJoint));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
      * Checks if dfJoint is implied by firstDFJoint, result false.
      */
     @Test
     public void testIsImpliedFalseDFJointObjectToFirsDFJoint() {
-        assertFalse(dfJoint.isImplied(firstDFJoint, null));
+        assertFalse(dfJoint.isImplied(firstDFJoint));
     }
 }

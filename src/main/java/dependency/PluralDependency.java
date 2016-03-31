@@ -8,6 +8,7 @@ import java.util.List;
 
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.Relation;
 
 /**
  * @author Pavel Nichita
@@ -119,6 +120,12 @@ public class PluralDependency extends ADependency {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

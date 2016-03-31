@@ -468,8 +468,8 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void testBelongsToTrueSecondDFJoint() {
-        for (ADependency fd : firstDFJoint)
-            assertTrue(fd.belongsTo(secondDFJoint, null));
+        for (ADependency item : firstDFJoint)
+            assertTrue(item.belongsTo(secondDFJoint, null));
     }
     
     /**
@@ -478,8 +478,8 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void testBelongsToTrueFirstDFJoint() {
-        for (ADependency fd : secondDFJoint)
-            assertTrue(fd.belongsTo(firstDFJoint, null));
+        for (ADependency item : secondDFJoint)
+            assertTrue(item.belongsTo(firstDFJoint, null));
     }
     
     /**
@@ -500,10 +500,10 @@ public class FunctionalDependencyTest {
     @Test
     public void testBelongsToFalseFirstFD() {
         String [] antecedentArray = {"C"};
-        AttributeJoint antecedent = new AttributeJoint(antecedentArray);
+        AttributeJoint antecedentFD = new AttributeJoint(antecedentArray);
         String [] consecuentArray = {"A", "B"};
-        AttributeJoint consequent = new AttributeJoint(consecuentArray);
-        ADependency fundDep = new FunctionalDependency(antecedent, consequent);
+        AttributeJoint consequentFD = new AttributeJoint(consecuentArray);
+        ADependency fundDep = new FunctionalDependency(antecedentFD, consequentFD);
         assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
     
@@ -514,10 +514,10 @@ public class FunctionalDependencyTest {
     @Test
     public void testBelongsFalseSecondFD() {
         String [] antecedentArray = {"C"};
-        AttributeJoint antecedent = new AttributeJoint(antecedentArray);
+        AttributeJoint antecedentFD = new AttributeJoint(antecedentArray);
         String [] consecuentArray = {"A"};
-        AttributeJoint consequent = new AttributeJoint(consecuentArray);
-        ADependency fundDep = new FunctionalDependency(antecedent, consequent);
+        AttributeJoint consequentFD = new AttributeJoint(consecuentArray);
+        ADependency fundDep = new FunctionalDependency(antecedentFD, consequentFD);
         assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
     

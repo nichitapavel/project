@@ -259,10 +259,9 @@ public class DFJoint implements Iterable<ADependency> {
      * Checks that every dependency from this DFJoint belongs to {@code dfJoint}. 
      * 
      * @param dfJoint The DFJoint that is an overset of this DFJoint.
-     * @param relation The Relation to whom is DFJoint.
      * @return true if this DFJoint is a subset of {@code dfJoint}.
      */
-    public boolean isImplied(DFJoint dfJoint, Relation relation) {
+    public boolean isImplied(DFJoint dfJoint) {
         for (ADependency fd : this.df) {
             if (!fd.belongsTo(dfJoint, null))
                 return false;

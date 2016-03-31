@@ -35,13 +35,13 @@ public final class Normalization {
         do {
             isChanged = false;
             for (ADependency df:dfJoint) {
-                if (df.getClass() == new FunctionalDependency().getClass()) {
-                    if (df.getAntecedent().isContained(result) && !(df.getConsequent().isContained(result))) {
+                if (df.getClass() == new FunctionalDependency().getClass() &&
+                    df.getAntecedent().isContained(result) &&
+                    !(df.getConsequent().isContained(result))) {
                         result.addAttributes(df.getConsequent());
                         isChanged = true;
                     }
                 }
-            }
         } while (isChanged);
         
         return result;

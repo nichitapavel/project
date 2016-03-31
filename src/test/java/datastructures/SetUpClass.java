@@ -1279,87 +1279,73 @@ public class SetUpClass {
 
     //Plural Dependency A ->> B
     public ADependency pluDepAtoB() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntB());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntB());
     }
     
     //A ->> E
     public ADependency pluDepAtoE() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntE());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntE());
     }
 
     //Plural Dependency A ->> BC    
     public ADependency pluDepAtoBC() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBC());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntBC());
     }
     
     //Plural Dependency A ->> CD    
     public ADependency pluDepAtoCD() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntCD());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntCD());
     }
     
     //Plural Dependency A ->> DE    
     public ADependency pluDepAtoDE() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntDE());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntDE());
     }
     
     //Plural Dependency A ->> EF
     public ADependency pluDepAtoEF() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntEF());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntEF());
     }
 
     //Plural Dependency A ->> BCD
     public ADependency pluDepAtoBCD() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBCD());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntBCD());
     }
     
     //Plural Dependency A ->> BEF
     public ADependency pluDepAtoBEF() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBEF());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntBEF());
     }
     
     //Plural Dependency A ->> BCDEF
     public ADependency pluDepAtoBCDEF() {
-        ADependency pluDep = new PluralDependency(attrJntA(), attrJntBCDEF());
-        return pluDep;
+        return new PluralDependency(attrJntA(), attrJntBCDEF());
     }
     
     //Plural Dependency B ->> A
     public ADependency pluDepBtoA() {
-        ADependency pluDep = new PluralDependency(attrJntB(), attrJntA());
-        return pluDep;
+        return new PluralDependency(attrJntB(), attrJntA());
     }   
     
     //Plural Dependency B ->> C
     public ADependency pluDepBtoC() {
-        ADependency pluDep = new PluralDependency(attrJntB(), attrJntC());
-        return pluDep;
+        return new PluralDependency(attrJntB(), attrJntC());
     }
     
     //Plural Dependency D ->> F
     public ADependency pluDepDtoF() {
-        ADependency pluDep = new PluralDependency(attrJntD(), attrJntF());
-        return pluDep;
+        return new PluralDependency(attrJntD(), attrJntF());
     }
 
     //Plural Dependency BC ->> AD
     public ADependency pluDepBCtoAD() {
-        ADependency pluDep = new PluralDependency(attrJntBC(), attrJntAD());
-        return pluDep;
+        return new PluralDependency(attrJntBC(), attrJntAD());
     }
 
     
     //Plural Dependency BE ->> B
     public ADependency pluDepBEtoB() {
-        ADependency pluDep = new PluralDependency(attrJntBE(), attrJntB());
-        return pluDep;
+        return new PluralDependency(attrJntBE(), attrJntB());
     }
     
     /******************/
