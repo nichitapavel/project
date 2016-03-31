@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dependency.ADependency;
+import dependency.PluralDependency;
 
 /**
  * @author Pavel Nichita
@@ -250,5 +251,38 @@ public class DFJoint implements Iterable<ADependency> {
      */
     public ADependency getDF(int index) {
         return this.df.get(index);
+    }
+    
+    /**
+     * Returns if this DFJoint is a subset of the {@code dfJoint} DFJoint.
+     * 
+     * Checks that every dependency from this DFJoint belongs to {@code dfJoint}. 
+     * 
+     * @param dfJoint The DFJoint that is an overset of this DFJoint.
+     * @param relation The Relation to whom is DFJoint.
+     * @return true if this DFJoint is a subset of {@code dfJoint}.
+     */
+    public boolean isImplied(DFJoint dfJoint, Relation relation) {
+        for (ADependency fd : this.df) {
+            if (!fd.belongsTo(dfJoint, null))
+                return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Return a DFJoint that contains all functional dependency that can be implied
+     * from a plural dependency and all the functional dependency that already exists
+     * in this DFJoint.
+     * 
+     * @return a list of all functional dependencies that can be implied.
+     */
+    public DFJoint getHiddenDF() {
+        DFJoint hiddenDF = new DFJoint(this);
+        for (ADependency pl : this) {
+            if (pl.getClass() == new PluralDependency().getClass())
+                hiddenDF.getDFJoint().addAll(pl.toFunctionalDependency(hiddenDF));
+        }
+        return hiddenDF;
     }
 }

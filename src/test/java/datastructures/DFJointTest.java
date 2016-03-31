@@ -513,30 +513,29 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
-     * Checks that DFJoint size is four.
-     */
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Checks if firstDFJoint is implied by secondDFJoint, result true.
+     */ 
     @Test
-    public void getSizeDFJoint() {
-        assertEquals(4, dfJoint.getSize());
+    public void testIsImpliedTrueFirstToSecondDFJoint() {
+        assertTrue(firstDFJoint.isImplied(secondDFJoint, null));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
-     * Checks that a null DFJoint size is zero.
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Checks if secondDFJoint is implied by firstDFJoint, result true.
      */
     @Test
-    public void getSizeNullDFJoint() {
-        assertEquals(0, nullDFJoint.getSize());
+    public void testIsImpliedTrueSecondToFirstDFJoint() {
+        assertTrue(secondDFJoint.isImplied(firstDFJoint, null));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
-     * Sets DFJoint list of dependencies, and checks that returned size is zero.
+     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint, Relation)}.
+     * Checks if dfJoint is implied by firstDFJoint, result false.
      */
     @Test
-    public void getSizeNullDfJointVector() {
-        nullDFJoint.setDFJoint(null);
-        assertEquals(0, nullDFJoint.getSize());
+    public void testIsImpliedFalseDFJointObjectToFirsDFJoint() {
+        assertFalse(dfJoint.isImplied(firstDFJoint, null));
     }
 }
