@@ -14,6 +14,10 @@ import dependency.FunctionalDependency;
  */
 public final class Normalization {
     
+    private Normalization() {
+        // Private constructor to hide the implicit public one.
+    }
+    
     /**
      * Calculates all attributes that are being implied by {@code attrJoint} in
      * {@code dfJoint}.
@@ -31,11 +35,12 @@ public final class Normalization {
         do {
             isChanged = false;
             for (ADependency df:dfJoint) {
-                if (df.getClass() == new FunctionalDependency().getClass())
+                if (df.getClass() == new FunctionalDependency().getClass()) {
                     if (df.getAntecedent().isContained(result) && !(df.getConsequent().isContained(result))) {
                         result.addAttributes(df.getConsequent());
                         isChanged = true;
                     }
+                }
             }
         } while (isChanged);
         
