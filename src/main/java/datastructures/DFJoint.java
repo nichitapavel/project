@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dependency.ADependency;
+import dependency.FunctionalDependency;
 import dependency.PluralDependency;
 
 /**
@@ -283,5 +284,42 @@ public class DFJoint implements Iterable<ADependency> {
                 hiddenDF.getDFJoint().addAll(pl.toFunctionalDependency(hiddenDF));
         }
         return hiddenDF;
+    }
+    
+    /**
+     * Returns a new DFJoint equivalent with this one, but with all dependencies in
+     * a "minimal" form.
+     * 
+     * If a DFJoint has dependencies like {A, B} to {C}, {A, B} to {E}, this will be transformed
+     * to {A, B} to {C, E}.
+     * 
+     * @return a new DFJoint with all dependencies with same left side in just on dependency.
+     */
+    public DFJoint regroupDFJoint() {
+        ArrayList<ADependency> copyDFJoint = new ArrayList<>(this.df); 
+        DFJoint regroupedDFJoint = new DFJoint();
+        for (int i = 0; i < copyDFJoint.size(); i++) {
+            ADependency dfI = copyDFJoint.get(i);
+            AttributeJoint antecedentI = dfI.getAntecedent();
+            AttributeJoint regroupedConsequent = new AttributeJoint(dfI.getConsequent());
+            for (int j = i + 1; j < copyDFJoint.size(); j++) {
+                ADependency dfJ = copyDFJoint.get(j);
+                if (dfI.getClass() == dfJ.getClass()){
+                    AttributeJoint antecedentJ = dfJ.getAntecedent();
+                    if (antecedentI.equals(antecedentJ)) {
+                        regroupedConsequent.addAttributes(dfJ.getConsequent());
+                        copyDFJoint.remove(j);
+                        j--;
+                    }
+                }
+            }
+            if (dfI.getClass() == new FunctionalDependency().getClass())
+                regroupedDFJoint.addDependency(new FunctionalDependency(antecedentI, regroupedConsequent));
+            else
+                regroupedDFJoint.addDependency(new PluralDependency(antecedentI, regroupedConsequent));
+            copyDFJoint.remove(i);
+            i--;
+        }
+        return regroupedDFJoint;
     }
 }
