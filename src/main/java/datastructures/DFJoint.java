@@ -394,4 +394,20 @@ public class DFJoint implements Iterable<ADependency> {
             this.df.get(pos).removeAttributeFromConsequent(rareAttr.getAttribute());
         this.df = regroupDFJoint().getDFJoint();
     }
+    
+    /**
+     * Returns if this DFJoint is in it's minimal form.
+     *
+     * In order to be minimum, there must be no rare attributes and all
+     * dependencies with same left part should be grouped: {A} to {B} and
+     * {A} to {C} should appear as {A} to {B, C}. 
+     * 
+     * @return true if minimal, false otherwise.
+     */
+    public boolean isMinimal() {
+        List<RareElement> rareAttributes = findRareAttributes();
+        if (!rareAttributes.isEmpty())
+            return false;
+        return true;
+    }
 }

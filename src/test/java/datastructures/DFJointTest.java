@@ -633,4 +633,80 @@ public class DFJointTest {
         toBeMinimal.removeRareAttributes(true);
         assertEquals(expected, toBeMinimal);
     }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {A -> BC, B -> C, A -> B, AB -> C} is minimal.
+     * Result: False.
+     */
+    @Test
+    public void testIsMinimalDFJoint4() {
+        assertFalse(this.firstDFJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {A -> BC, B -> C, AB -> C} is minimal.
+     * Result: False.
+     */
+    @Test
+    public void testIsMinimalDFJoint24() {
+        this.dfJoint = this.setUpObject.dfJoint24();
+        assertFalse(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {A -> BC, BC -> A, BCD -> E, E -> C} is minimal.
+     * Result: True.
+     */
+    @Test
+    public void testIsMinimalDFJoint1() {
+        this.dfJoint = this.setUpObject.dfJoint01();
+        assertTrue(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {A -> BC, BC -> A, BCD -> E, E -> C} is minimal.
+     * Result: True.
+     */
+    @Test
+    public void testIsMinimalDFJoint2() {
+        this.dfJoint = this.setUpObject.dfJoint02();
+        assertTrue(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H} is minimal.
+     * Result: True.
+     */
+    @Test
+    public void testIsMinimalDFJoint3() {
+        this.dfJoint = this.setUpObject.dfJoint03();
+        assertTrue(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H} is minimal.
+     * Result: True.
+     */
+    @Test
+    public void testIsMinimalDFJoint23() {
+        this.dfJoint = this.setUpObject.dfJoint23();
+        assertTrue(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Checks if {A -> BCD} is minimal.
+     * Result: True.
+     */
+    @Test
+    public void testIsMinimalDFJoint28() {
+        this.dfJoint = this.setUpObject.dfJoint28();
+        assertTrue(this.dfJoint.isMinimal());
+    }
 }
