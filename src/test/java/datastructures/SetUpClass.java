@@ -1554,4 +1554,457 @@ public class SetUpClass {
                 dfJoint04(),
                 Const.ANTECEDENT);
     }
+    
+    /******************/
+    //Relation
+    /******************/
+    
+    //Relation One = DFJoint One, AttributeJoint ABCDE
+    public Relation relation01() {
+        return new Relation(attrJntABCDE(), dfJoint01());
+    }
+    
+    //Relation Two = DFJoint Two, AttributeJoint ABCDE
+    public Relation relation02() {
+        return new Relation(attrJntABCDE(), dfJoint02());
+    }
+    
+    //Relation Three = DFJoint Three, AttributeJoint ABCDEFGH
+    public Relation relation03() {
+        return new Relation(attrJntABCDEFGH(), dfJoint03());
+    }
+    
+    //Relation Four = DFJoint Four, AttributeJoint ABC
+    public Relation relation04() {
+        return new Relation(attrJntABC(), dfJoint04());
+    }
+        
+    //Relation Five = DFJoint Five, AttributeJoint ABC
+    public Relation relation05() {
+        return new Relation(attrJntABC(), dfJoint05());
+    }
+    
+    //Relation Six = DFJoint Six, AttributeJoint ABCDE -> Key:
+        public Relation relation06() {
+            return new Relation(attrJntABCDE(), dfJoint06());
+        }
+
+    //Relation Seven = DFJoint Seven, AttributeJoint ABCD -> Key:
+    public Relation relation07() {
+        return new Relation(attrJntABCD(), dfJoint07());
+    }
+    
+    //Relation Eight = DFJoint Eight, AttributeJoint ABCD -> Key:
+    public Relation relation08() {
+        return new Relation(attrJntABCD(), dfJoint08());
+    }
+    
+    //Relation Nine = DFJoint Nine, AttributeJoint ABC -> Key: AB
+    public Relation relation09() {
+        return new Relation(attrJntABC(), dfJoint09());
+    }
+    
+    //Relation OneABC
+    public Relation relation1ABC() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABC());
+        relation.setDFJoint(dfJointAtobcBCtoa());
+        return relation;
+    }
+    
+    //Relation OneADE
+    public Relation relation1ADE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntADE());
+        relation.setDFJoint(dfJointADtoe());
+        return relation;
+    }
+    
+    //Relation OneBCDE
+    public Relation relation1BCDE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBCDE());
+        relation.setDFJoint(dfJointBCDtoeEtoc());
+        return relation;
+    }
+    
+    //Relation OneABCD
+    public Relation relation1ABCD() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABCD());
+        relation.setDFJoint(dfJointAtobcBCtoa());
+        return relation;
+    }
+    
+    //Relation OneCE
+    public Relation relation1CE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntCE());
+        relation.setDFJoint(dfJoint18());
+        return relation;
+    }
+    
+    //Relation OneABDE
+    public Relation relation1ABDE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABDE());
+        relation.setDFJoint(dfJointAtobBEtoaABDtoe());
+        return relation;
+    }
+    
+    //Relation AE
+    public Relation relationAE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntAE());
+        return relation;
+    }
+    
+    //Relation AD
+    public Relation relationAD() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntAD());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation BC
+    public Relation relationBC() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBC());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation BD
+    public Relation relationBD() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBD());
+        return relation;
+    }
+    
+    //Relation AB
+    public Relation relationAB() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntAB());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation BE
+    public Relation relationBE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBE());
+        return relation;
+    }
+    
+    //Relation DE
+    public Relation relationDE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntDE());
+        return relation;
+    }
+    
+    //Relation DF
+    public Relation relationDF() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntDF());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation EF
+    public Relation relationEF() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntEF());
+        return relation;
+    }
+    
+    //Relation ABD
+    public Relation relationABD() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABD());
+        return relation;
+    }
+    
+    //Relation BCD
+    public Relation relationBCD() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBCD());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation BDE
+    public Relation relationBDE() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntBDE());
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation AEGH
+    public Relation relationABEGH() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABEGH());
+        relation.setDFJoint(dfJointABEtogh());
+        return relation;
+    }
+    
+    //Relation ABC_AtoBC
+    public Relation relationABCinAtobc() {
+        Relation relation = relation1ABC();
+        relation.setDFJoint(dfJointAtoBC());
+        return relation;
+    }
+    
+    //Relation CDE_CDtoE
+    public Relation relationCDEinCDtoe() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntCDE());
+        relation.setDFJoint(dfJointCDtoe());
+        return relation;
+    }
+    
+    //Relation AE_AtoE
+    public Relation relationAEinAtoe() {
+        Relation relation = relationAE();
+        relation.setDFJoint(dfJointAtoE());
+        return relation;
+    }
+    
+    //Relation AC_CtoA
+    public Relation relationACinCtoa() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntAC());
+        relation.setDFJoint(dfJointCtoA());
+        return relation;
+    }
+    
+    //Relation BC_BtoC
+    public Relation relationBCinBtoc() {
+        Relation relation = relationBC();
+    relation.setDFJoint(dfJoint22());
+        return relation;
+    }
+    
+    //Relation BC_CtoB
+    public Relation relationBCinCtob() {
+        Relation relation = relationBC();
+    relation.setDFJoint(dfJoint20());
+        return relation;
+    }
+    
+    //Relation BD_BtoD
+    public Relation relationBDinBtod() {
+        Relation relation = relationBD();
+        relation.setDFJoint(dfJointBtoD());
+        return relation;
+    }
+    
+    //Relation AB_AtoB
+    public Relation relationABinAtob() {
+        Relation relation = relationAB();
+        relation.setDFJoint(dfJoint5MinusBtoC());
+        return relation;
+    }
+    
+    //Relation BE_BtoE
+    public Relation relationBEinBtoe() {
+        Relation relation = relationBE();
+        relation.setDFJoint(dfJointBtoE());
+        return relation;
+    }
+    
+    //Relation CD_CtoD
+    public Relation relationCDinCtod() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntCD());
+        relation.setDFJoint(dfJointCtod());
+        return relation;
+    }
+    
+    //Relation ABCD_ABtoD_BtoC_CtoB
+    public Relation relationABCDinABtodBtocCtob() {
+        Relation relation = relation07();
+        relation.setDFJoint(dfJointABtodBtocCtob());
+        return relation;
+    }
+    
+    //Relation ABC_ABtoC_CtoAB
+    public Relation relationABCinABtocCtoab() {
+        Relation relation = relation1ABC();
+        relation.setDFJoint(dfJointABtocCtoab());
+        return relation;
+    }
+    
+    //Relation DE_EtoD_DtoE
+    public Relation relationDEinEtodDtoe() {
+        Relation relation = relationDE();
+        relation.setDFJoint(dfJointEtodDtoe());
+        return relation;
+    }
+    //Relation EF_EtoF_FtoE
+    public Relation relationEFinEtofFtoe() {
+        Relation relation = relationEF();
+        relation.setDFJoint(dfJointEtofFtoe());
+        return relation;
+    }
+
+    //Relation BC_BtoC_CtoB
+    public Relation relationBCinBtocCtob() {
+        Relation relation = relationBC();
+        relation.setDFJoint(dfJointBtocCtob());
+        return relation;
+    }
+
+    //Relation ABD_ABtoD
+    public Relation relationABDinABtod() {
+        Relation relation = relationABD();
+        relation.setDFJoint(dfJointABtod());
+        return relation;
+    }
+    
+    //Relation ABC_AtoBC_BCtoA
+    public Relation relationABCinAtobcBCtoa() {
+        Relation relation = relation1ABC();
+        relation.setDFJoint(dfJointAtobcBCtoa());
+        return relation;
+    }
+    
+    //Relation ABC_BtoAC
+    public Relation relationABCinBtoac() {
+        Relation relation = relation1ABC();
+        relation.setDFJoint(dfJointBtoac());
+        return relation;
+    }
+    
+    //Relation AEF
+    public Relation relationAEF() {
+        Relation relation = relation30C();
+        relation.setDFJoint(new DFJoint());
+        return relation;
+    }
+    
+    //Relation AC_AtoC
+    public Relation relationACinAtoc() {
+        Relation relation = relationACinCtoa();
+        relation.setDFJoint(dfJointAtoc());
+        return relation;
+    }
+    
+    //Relation ABCD_BtoAC_CtoD
+    public Relation relationABCDinBtoacCtod() {
+        Relation relation = relation1ABCD();
+        relation.setDFJoint(dfJointBtoacCtod());
+        return relation;
+    }
+    
+    //Relation ABC_AtoC
+    public Relation relationABCinAtoc() {
+        Relation relation = relation1ABC();
+        relation.setDFJoint(dfJointAtoc());
+        return relation;
+    }
+    
+    /******************/
+    //Relation 4NF 
+    /******************/
+    
+    //Relation 30
+    public Relation relation30() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint30());
+        relation.settAttrJoint(attrJntABCDEF());
+        return relation;
+    }
+
+    //Relation 30_A
+    public Relation relation30A() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint30A());
+        relation.settAttrJoint(attrJntACD());
+        return relation;
+    }
+
+    //Relation 30_B
+    public Relation relation30B() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint30B());
+        relation.settAttrJoint(attrJntABEF());
+        return relation;
+    }
+    
+    //Relation 30_C
+    public Relation relation30C() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint30C());
+        relation.settAttrJoint(attrJntAEF());
+        return relation;
+    }
+    
+    //Relation 31
+    public Relation relation31() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint31());
+        relation.settAttrJoint(attrJntABCDEF());
+        return relation;
+    }
+
+
+    //Relation 32
+    public Relation relation32() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint32());
+        relation.settAttrJoint(attrJntABC());
+        return relation;
+    }
+    
+    //Relation 33
+    public Relation relation33() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint33());
+        relation.settAttrJoint(attrJntABC());
+        return relation;
+    }
+
+    //Relation 34
+    public Relation relation34() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint34());
+        relation.settAttrJoint(attrJntABC());
+        return relation;
+    }
+    
+    //Relation 35
+    public Relation relation35() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint35());
+        relation.settAttrJoint(attrJntABCDEF());
+        return relation;
+    }
+    
+    //Relation 36
+    public Relation relation36() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint36());
+        relation.settAttrJoint(attrJntABCDEF());
+        return relation;
+    }
+    
+    //Relation 37
+    public Relation relation37() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint37());
+        relation.settAttrJoint(attrJntABCDE());
+        return relation;
+    }
+    
+    //Relation 38 {B -> AC, C -> D, BC ->> AD}
+    public Relation relation38() {
+        Relation relation = new Relation();
+        relation.setDFJoint(dpJoint38());
+        relation.settAttrJoint(attrJntABCD());
+        return relation;
+    }
+    
 }
