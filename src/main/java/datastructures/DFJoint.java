@@ -410,4 +410,81 @@ public class DFJoint implements Iterable<ADependency> {
             return false;
         return true;
     }
+
+    /**
+     * Returns a new DFJoint only with dependencies that can be implied by using
+     * attributes from {@code attrJoint}.
+     * 
+     * @param attrJoint attribute on who to project.
+     * @return a new DFJoint with implied dependencies.
+     */
+    public DFJoint projectionOnAttributeJoint(AttributeJoint attrJoint) {
+        DFJoint hiddenDF = this.getHiddenDF();
+        DFJoint result = new DFJoint();
+        AttributeJoint oldAntecedent;
+        AttributeJoint oldConsequent;
+        
+        for (ADependency df : hiddenDF) {
+            if (df.getClass() == new FunctionalDependency().getClass()){
+                oldAntecedent = df.getAntecedent();
+                oldConsequent = df.getConsequent();
+                if (oldAntecedent.isContained(attrJoint) && 
+                        oldConsequent.isContained(attrJoint)) {
+                    result.addDependency(df); // añadir df
+                }
+                if (!oldAntecedent.isContained(attrJoint) && 
+                        oldConsequent.isContained(attrJoint)) {
+                    boolean added = false;
+                    ArrayList<AttributeJoint> newAntecedentElements = new ArrayList<>();
+                    AttributeJoint newAntecedent = oldAntecedent.intersect(attrJoint);
+                    AttributeJoint substract = oldAntecedent.substract(attrJoint);
+                    for (ADependency dfConsequent : this.df) {
+                        if (substract.isContained(dfConsequent.getConsequent())) {
+                            newAntecedentElements.add(dfConsequent.getAntecedent());
+                        }
+                    }
+                    for (int i = 0; i < newAntecedentElements.size(); i++) {
+                        AttributeJoint attrJnt = newAntecedentElements.get(i);
+                        if (!attrJnt.isContained(oldConsequent)) {
+                            newAntecedent.addAttributes(attrJnt);
+                            newAntecedentElements.remove(attrJnt);
+                            added = true;
+                        }
+                    }
+                    if (!added) {
+                        for (AttributeJoint attrJnt : newAntecedentElements) {
+                            if (attrJnt.isContained(oldConsequent)) {
+                                newAntecedent.addAttributes(attrJnt);
+                                added = true;
+                            }
+                        }                   
+                    }
+                    ADependency addDF = new FunctionalDependency(newAntecedent, oldConsequent);
+                    addDF.clearTrivialElements();
+                    if (added && !addDF.getAntecedent().isNull()
+                            && !addDF.getConsequent().isNull()
+                            && addDF.getAntecedent().isContained(attrJoint))
+                        result.addDependency(addDF); // añadir df
+                }
+                if (oldAntecedent.isContained(attrJoint) && 
+                        !oldConsequent.isContained(attrJoint)) {
+                    AttributeJoint newConsequent = oldConsequent.intersect(attrJoint);
+                    
+                    if (newConsequent.isNull()) {
+                        AttributeJoint substract = oldConsequent.substract(attrJoint);
+                        for (ADependency dfAntecedent : this.df)
+                            if (substract.isContained(dfAntecedent.getAntecedent()))
+                                newConsequent.addAttributes(dfAntecedent.getAntecedent());
+                    }
+                    
+                    ADependency addDF = new FunctionalDependency(oldAntecedent, newConsequent);
+                    addDF.clearTrivialElements();
+                    
+                    if (!addDF.getConsequent().isNull() && newConsequent.isContained(attrJoint))
+                        result.addDependency(addDF); // añadir df
+                }
+            }
+        }
+        return result;
+    }
 }
