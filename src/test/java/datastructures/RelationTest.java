@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author Pavel Nichita
  *
  */
-public class RelationTests {
+public class RelationTest {
     private Relation nullRelation;
     //AB -> D, B -> C, C -> B, B -> E
     private Relation firstFormRelation;
