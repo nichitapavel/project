@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
+import utils.Const;
 
 /**
  * @author Pavel Nichita
@@ -321,5 +322,36 @@ public class DFJoint implements Iterable<ADependency> {
             i--;
         }
         return regroupedDFJoint;
+    }
+    
+    /**
+     * Checks for existence of rare attributes in this DFJoint.
+     * 
+     * Returns a list with all rare attributes wrapped arround {@link datastructures.RareElement}
+     * class.
+     * 
+     * @return a list with all rare attributes.
+     */
+    public List<RareElement> findRareAttributes() {
+        List<RareElement> rareElVector = new ArrayList<>();
+        if (this.df.size() > 1) {
+            for(ADependency fd : this.df) {
+                AttributeJoint antecedent = fd.getAntecedent();
+                AttributeJoint consecuent = fd.getConsequent();
+                if (antecedent.getSize() != 1) {
+                    for (Attribute attr : antecedent) {
+                        if (attr.isRareInAntecedent(fd, this))
+                            rareElVector.add(new RareElement(attr, fd, this, Const.ANTECEDENT));
+                    }
+                }
+                if (consecuent.getSize() != 1) {    
+                    for (Attribute attr : consecuent) {
+                        if (attr.isRareInConsequent(fd, this))
+                            rareElVector.add(new RareElement(attr, fd, this, Const.CONSEQUEDENT));
+                    }
+                }
+            }
+        }
+        return rareElVector;
     }
 }
