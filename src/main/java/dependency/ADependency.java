@@ -8,6 +8,7 @@ import java.util.List;
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.KeyJoint;
 import datastructures.Relation;
 
 /**
@@ -201,4 +202,6 @@ public abstract class ADependency {
     public abstract boolean belongsTo(DFJoint dfJoint, Relation relation);
 
     public abstract boolean isTrivial();
+
+    public abstract boolean is2NF(Relation relation, KeyJoint keyJoint);
 }

@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.KeyJoint;
 import datastructures.Relation;
 import normalization.Normalization;
 import utils.Const;
@@ -181,4 +182,28 @@ public class FunctionalDependency extends PluralDependency {
                 return true;
         return false;
     }
+    
+    /**
+     * Returns if this dependency meets 2nd normal form specification.
+     * 
+     * In order for a dependency to meet this specification it must comply with one
+     * of this criteria:
+     * <ul><li>Antecedent is a key of Relation</li><li>Consequent is 
+     * part of a key of Relation</li><li>The antecedent is not part of a key</li></ul>.
+     *  
+     * @return true if meets 2nd normal form specification, false otherwise.
+     */
+    @Override
+    public boolean is2NF(Relation relation, KeyJoint keyJoint) {
+        if (keyJoint == null)
+            keyJoint = relation.calculateKeyJoint();
+
+        AttributeJoint ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        if (!relation.getAttrJoint().equals(ullman) &&
+                !super.consequent.isPartOf(keyJoint) &&
+                super.antecedent.isPartOf(keyJoint))
+                    return false;
+        return true;
+    }
+
 }

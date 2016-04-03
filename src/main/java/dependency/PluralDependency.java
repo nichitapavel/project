@@ -8,6 +8,7 @@ import java.util.List;
 
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.KeyJoint;
 import datastructures.Relation;
 
 /**
@@ -130,6 +131,12 @@ public class PluralDependency extends ADependency {
 
     @Override
     public boolean isTrivial() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean is2NF(Relation relation, KeyJoint keyJoint) {
         // TODO Auto-generated method stub
         return false;
     }
