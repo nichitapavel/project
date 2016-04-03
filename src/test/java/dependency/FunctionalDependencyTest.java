@@ -521,4 +521,45 @@ public class FunctionalDependencyTest {
         assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
     
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isTrivial(datastructures.Relation)}.
+     * Checks that {A} -> {B} is trivial,
+     * result: false.
+     */
+    @Test
+    public void isTrivialFalseAtoB() {
+        assertFalse(this.setUpObject.funcDepAtoB().isTrivial());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isTrivial(datastructures.Relation)}.
+     * Checks that {A, B} -> {B} is trivial,
+     * result: true.
+     */
+    @Test
+    public void isTrivialTrueABtoB() {
+        assertTrue(this.setUpObject.funcDepABtoB().isTrivial());
+    }
+
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isTrivial(datastructures.Relation)}.
+     * Checks that {} -> {D, E, F} is trivial,
+     * result: true.
+     */
+    @Test
+    public void isTrivialTrueVoidAntedent() {
+        this.fd.setAntecedent(new AttributeJoint());
+        assertTrue(this.fd.isTrivial());
+    }
+    
+    /**
+     * Test method for {@link dependency.FunctionalDependency#isTrivial(datastructures.Relation)}.
+     * Checks that {A, B, C} -> {} is trivial,
+     * result: true.
+     */
+    @Test
+    public void isTrivialTrueVoidConsequent() {
+        this.fd.setConsequent(new AttributeJoint());
+        assertTrue(this.fd.isTrivial());
+    }
 }

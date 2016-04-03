@@ -199,4 +199,6 @@ public abstract class ADependency {
     public abstract List<ADependency> toFunctionalDependency(DFJoint dfJoint);
 
     public abstract boolean belongsTo(DFJoint dfJoint, Relation relation);
+
+    public abstract boolean isTrivial();
 }

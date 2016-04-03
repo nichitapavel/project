@@ -128,4 +128,10 @@ public class PluralDependency extends ADependency {
         return false;
     }
 
+    @Override
+    public boolean isTrivial() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

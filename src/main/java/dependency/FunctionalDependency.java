@@ -161,4 +161,24 @@ public class FunctionalDependency extends PluralDependency {
         AttributeJoint equivalentAttrJoint = Normalization.simpleUllman(super.antecedent, hiddenDF);
         return super.consequent.isContained(equivalentAttrJoint);
     }
+    
+    /**
+     * Returns if this dependency is trivial.
+     *
+     * In order to be trivial, this dependency must have all the 
+     * right attributes included in the left attributes side. Also
+     * if either left side or right side have no attributes is trivial.
+     * 
+     * @return true if all attribute from right side are included in the
+     * left side, false otherwise.
+     */
+    @Override
+    public boolean isTrivial() {
+        if (super.antecedent.isNull() || super.consequent.isNull())
+            return true;
+        for (Attribute attr : super.consequent)
+            if (attr.isContained(super.antecedent))
+                return true;
+        return false;
+    }
 }
