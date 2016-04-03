@@ -204,4 +204,8 @@ public abstract class ADependency {
     public abstract boolean isTrivial();
 
     public abstract boolean is2NF(Relation relation, KeyJoint keyJoint);
+
+    public abstract boolean is3NF(Relation relation, KeyJoint keyJoint);
+
+    public abstract boolean isBCNF(Relation relation);
 }

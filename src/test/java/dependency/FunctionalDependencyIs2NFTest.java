@@ -73,7 +73,7 @@ public class FunctionalDependencyIs2NFTest {
         Relation relation = this.setUpObject.relation03(); 
         assertTrue(funcDep.is2NF(relation, this.setUpObject.keyJointCdCeCfAbdAbeAbf()));
     }
-    /****************************************/
+    
     /**
      * Test method for {@link dependency.FunctionalDependency#is2NF(datastructures.Relation, datastructures.KeyJoint)}.
      * Check if {A -> BC} is 2NF in {ABC} {A -> BC, B -> C, A -> B, AB -> C} with keys {A}.

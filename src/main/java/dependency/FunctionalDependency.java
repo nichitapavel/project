@@ -190,7 +190,9 @@ public class FunctionalDependency extends PluralDependency {
      * of this criteria:
      * <ul><li>Antecedent is a key of Relation</li><li>Consequent is 
      * part of a key of Relation</li><li>The antecedent is not part of a key</li></ul>.
-     *  
+     * 
+     * @param relation The Relation where to check the specification.
+     * @param keyJoint The keys of relation, if nor present the keys are calculated.
      * @return true if meets 2nd normal form specification, false otherwise.
      */
     @Override
@@ -204,6 +206,48 @@ public class FunctionalDependency extends PluralDependency {
                 !super.consequent.isPartOf(newKeys) &&
                 super.antecedent.isPartOf(newKeys))
                     return false;
+        return true;
+    }
+    
+    /**
+     * Returns if this dependency meets 3rd normal form specification.
+     * 
+     * In order for a dependency to meet this specification it must comply with one
+     * of this criteria:
+     * <ul><li>Antecedent is a key of Relation</li><li>Consequent is 
+     * part of a key of Relation</li></ul>.
+     * 
+     * @param relation The Relation where to check the specification.
+     * @param keyJoint The keys of relation, if nor present the keys are calculated.
+     * @return true if meets 3rd normal form specification, false otherwise.
+     */
+    @Override
+    public boolean is3NF(Relation relation, KeyJoint keyJoint) {
+        KeyJoint newKeys = keyJoint;
+        if (newKeys == null)
+            newKeys = relation.calculateKeyJoint();
+        
+        AttributeJoint ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        if (!relation.getAttrJoint().equals(ullman) && !super.consequent.isPartOf(newKeys))
+            return false;
+        return true;
+    }
+    
+    /**
+     *  Returns if this dependency meets Boyce-Codd normal form specification.
+     * 
+     * In order for a dependency to meet this specification the antecedent must be 
+     * a key of Relation. It calculates antecedent closure of this dependencie, if
+     * closure is the same as {@code Relation} that is BCNF.
+     * 
+     * @param relation The Relation where to check the specification.
+     * @return true if meets Boyce-Codd normal form specification, false otherwise.
+     */
+    @Override
+    public boolean isBCNF(Relation relation) {
+        AttributeJoint ullmanResult = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        if (!relation.getAttrJoint().equals(ullmanResult))
+            return false;
         return true;
     }
 

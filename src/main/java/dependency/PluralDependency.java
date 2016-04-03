@@ -141,4 +141,16 @@ public class PluralDependency extends ADependency {
         return false;
     }
 
+    @Override
+    public boolean is3NF(Relation relation, KeyJoint keyJoint) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean isBCNF(Relation relation) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }
