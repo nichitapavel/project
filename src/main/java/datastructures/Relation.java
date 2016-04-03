@@ -3,6 +3,11 @@
  */
 package datastructures;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import normalization.Normalization;
+
 /**
  * @author Pavel Nichita
  *
@@ -168,4 +173,56 @@ public class Relation {
         return true;
     }
 
+    /**
+     * Returns a KeyJoint object with the keys that define this
+     * relation.
+     * 
+     * First step checks with Ullman algorithm iv every attribute is a 
+     * key individually, if it is it removes it from subsequent calculation.
+     * Second step is creating ordered combinations of attributes to check if 
+     * they are key until no more possible options exist. 
+     * 
+     * @return a KeyJoint object with the keys of this relation.
+     */
+    public KeyJoint calculateKeyJoint() {
+        KeyJoint result = new KeyJoint();
+        AttributeJoint attrJointToCheck;
+        AttributeJoint ullman;
+        AttributeJoint nonKeyAttributes = new AttributeJoint();
+        List<AttributeJoint> list = new ArrayList<>();
+        
+        for(Attribute attr : this.attrJoint) {
+            attrJointToCheck = new AttributeJoint();
+            attrJointToCheck.addAttributes(attr);
+            ullman = Normalization.simpleUllman(attrJointToCheck, this.dfJoint);
+            if(!ullman.equals(this.attrJoint)) {
+                nonKeyAttributes.addAttributes(attr);
+                list.add(attrJointToCheck);
+            }
+            else {
+                result.addKey(attrJointToCheck);
+            }
+        }
+        
+        int i = 0;
+        do {
+            AttributeJoint attrJoint = list.get(i);
+            Attribute lastAttribute = attrJoint.getLastAttribute();
+            for (int j = nonKeyAttributes.getAttributePosition(lastAttribute) + 1;
+                    j < nonKeyAttributes.getSize();
+                    j++) {
+                attrJointToCheck = new AttributeJoint(attrJoint);
+                attrJointToCheck.addAttributes(nonKeyAttributes.getAttributeAt(j));
+                if (!attrJointToCheck.containsJoinsFrom(result)) {
+                    ullman = Normalization.simpleUllman(attrJointToCheck, this.dfJoint);
+                    if (ullman.equals(this.attrJoint))
+                        result.addKey(attrJointToCheck);
+                    else
+                        list.add(attrJointToCheck);
+                }
+            }
+            i++;
+        } while (i < list.size());
+        return result;
+    }
 }
