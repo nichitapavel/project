@@ -8,6 +8,7 @@ import datastructures.AttributeJoint;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
+import utils.Const;
 
 /**
  * @author Pavel Nichita
@@ -1495,5 +1496,62 @@ public class SetUpClass {
         dpJoint.addDependency(funcDepCtoD());
         dpJoint.addDependency(pluDepBCtoAD());
         return dpJoint;
+    }
+    
+    /******************/
+    //RareElement
+    /******************/
+    
+    //C Consequent A->BC DFJoint TwentyFour
+    public RareElement rareElementCinAtoBCDFJoint24Consequent() {
+        return new RareElement(
+                attrC(),
+                funcDepAtoBC(),
+                dfJoint24(),
+                Const.CONSEQUEDENT);
+    }
+    
+    //A Antecedent AB->C DFJoint TwentyFour
+    public RareElement rareElementAinABtoCDFJoint24Antecedent() {
+        return new RareElement(
+                attrA(),
+                funcDepABtoC(),
+                dfJoint24(),
+                Const.ANTECEDENT);
+    }
+    
+    //B Antecedent AB->C DFJoint TwentyFour
+    public RareElement rareElementBinABtoCDFJoint24Antecedent() {
+        return new RareElement(
+                attrB(),
+                funcDepABtoC(),
+                dfJoint24(),
+                Const.ANTECEDENT);
+    }
+    
+    //C Consequent A->BC DFJoint Four
+    public RareElement rareElementCinAtoBCDFJoint4Consequent() {
+        return new RareElement(
+                attrC(),
+                funcDepAtoBC(),
+                dfJoint04(),
+                Const.CONSEQUEDENT);
+    }
+    //A Antecedent AB->C DFJoint Four
+    public RareElement rareElementAinABtoCDFJoint4Antecedent() {
+        return new RareElement(
+                attrA(),
+                funcDepABtoC(),
+                dfJoint04(),
+                Const.ANTECEDENT);
+    }
+
+    //B Antecedent AB->C DFJoint Four
+    public RareElement rareElementBinABtoCDFJoint4Antecedent() {
+        return new RareElement(
+                attrB(),
+                funcDepABtoC(),
+                dfJoint04(),
+                Const.ANTECEDENT);
     }
 }
