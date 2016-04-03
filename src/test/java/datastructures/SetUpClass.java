@@ -109,7 +109,7 @@ public class SetUpClass {
     //AttributeJoint G
     public AttributeJoint attrJntG() {
         AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrF());
+        attrJoint.addAttributes(attrG());
         return attrJoint;
     }
 
