@@ -141,7 +141,7 @@ public class DFJoint implements Iterable<ADependency> {
      * 
      *  The result is true if and only if the argument
      *  is not null and is a DFJoint object that represents
-     *  the same attribute joint list as this object.
+     *  the same DFJoint as this object.
      *  Only checks the list of dependencies, the name of this
      *  DFJoint doesn't counts.
      * 
