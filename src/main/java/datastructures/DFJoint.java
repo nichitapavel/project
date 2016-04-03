@@ -354,4 +354,44 @@ public class DFJoint implements Iterable<ADependency> {
         }
         return rareElVector;
     }
+    
+    /**
+     * Removes all rare attributes from this DFJoint.
+     * 
+     * Depending on {@code auto} removes the first rare attribute that finds
+     * or the specified by user.
+     * 
+     * @param auto if true removes the first rare attribute that it finds, if false
+     * the specified by the user. 
+     */
+    public void removeRareAttributes(boolean auto) { 
+        int option = 0;
+        this.df = regroupDFJoint().getDFJoint();
+        List<RareElement> rareAttrVector = findRareAttributes();
+        while (rareAttrVector.size() != 0) {
+            if (!auto) {
+                // option = get.stdin(), user specifies what to remove.
+            }
+            removeAttribute(rareAttrVector.get(option));
+            rareAttrVector = findRareAttributes();
+        }
+    }
+    
+    /**
+     * Removes the specified rare attribute from this DFJoint.
+     * 
+     * Doesn't check if it actually an rare attribute, this should be
+     * handle by developer.
+     * 
+     * @param rareAttr an attribute with all needed information to remove it from
+     * this DFJoint.
+     */
+    public void removeAttribute(RareElement rareAttr) {
+        int pos = this.df.indexOf(rareAttr.getFD());
+        if (rareAttr.getPosition() == "Antecedent")
+            this.df.get(pos).removeAttributeFromAntecedent(rareAttr.getAttribute());
+        else
+            this.df.get(pos).removeAttributeFromConsequent(rareAttr.getAttribute());
+        this.df = regroupDFJoint().getDFJoint();
+    }
 }

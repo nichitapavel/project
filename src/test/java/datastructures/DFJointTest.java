@@ -538,4 +538,99 @@ public class DFJointTest {
     public void testIsImpliedFalseDFJointObjectToFirsDFJoint() {
         assertFalse(dfJoint.isImplied(firstDFJoint));
     }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes C in {A} -> {BC} in {A -> BC, B -> C, A -> B, AB -> C}
+     * Result: {A -> B, B -> C, AB -> C}
+     */
+    @Test
+    public void testRemoveAttributeCinAtoBCDFJoint4Consequent() {
+        this.firstDFJoint.removeAttribute(this.setUpObject.rareElementCinAtoBCDFJoint4Consequent());
+        assertEquals(this.setUpObject.dfJoint4ReGroupedWithoutCinAtoBC(), this.firstDFJoint);
+    }
+
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes A in {A, B} -> {C} in {A -> BC, B -> C, A -> B, AB -> C}
+     * Result: {A -> BC, B -> C}
+     */
+    @Test
+    public void testRemoveAttributeAinABtoCDFJoint4Antecedent() {
+        this.firstDFJoint.removeAttribute(this.setUpObject.rareElementAinABtoCDFJoint4Antecedent());
+        assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), this.firstDFJoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes B in {A, B} -> {C} in {A -> BC, B -> C, A -> B, AB -> C}
+     * Result: {A -> BC, B -> C}
+     */
+    @Test
+    public void testRemoveAttributeBinABtoCDFJoint4Antecedent() {
+        this.firstDFJoint.removeAttribute(this.setUpObject.rareElementBinABtoCDFJoint4Antecedent());
+        assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), this.firstDFJoint);
+    }
+
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes C in {A} -> {B, C} in {A -> BC, B -> C, AB -> C}
+     * Result: {A -> B, B -> C, AB -> C}
+     */
+    @Test
+    public void testRemoveAinttributeCinAtoBCDFJoint24Consequent() {
+        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        newDFjoint.removeAttribute(this.setUpObject.rareElementCinAtoBCDFJoint24Consequent());
+        assertEquals(this.setUpObject.dfJoint4ReGroupedWithoutCinAtoBC(), newDFjoint);
+    }
+
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes A in {A, B} -> {C} in {A -> BC, B -> C, AB -> C}
+     * Result: {A -> BC, B -> C}
+     */
+    @Test
+    public void testRemoveAttributeAinABtoCDFJoint24Antecedent() {
+        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        newDFjoint.removeAttribute(this.setUpObject.rareElementAinABtoCDFJoint24Antecedent());
+        assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), newDFjoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Removes A in {A, B} -> {C} in {A -> BC, B -> C, AB -> C}
+     * Result: {A -> BC, B -> C}
+     */
+    @Test
+    public void testRemoveAttributeBinABtoCDFJoint24Antecedent() {
+        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        newDFjoint.removeAttribute(this.setUpObject.rareElementBinABtoCDFJoint24Antecedent());
+        assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), newDFjoint);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeRareAttributes(boolean)}.
+     * Removes all rare attribute in {A -> BC, B -> C, AB -> C}
+     * Result: {A -> B, B -> C}
+     */
+    @Test
+    public void removeRareAttributesAutoDFJoint24() {
+        DFJoint expected = this.setUpObject.dfJoint05();
+        DFJoint toBeMinimal = this.setUpObject.dfJoint24();
+        toBeMinimal.removeRareAttributes(true);
+        assertEquals(expected, toBeMinimal);
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#removeRareAttributes(boolean)}.
+     * Removes all rare attribute in {A -> BC, B -> C, A -> B, AB -> C}
+     * Result: {A -> B, B -> C}
+     */
+    @Test
+    public void removeRareAttributesAutoDFJoint4() {
+        DFJoint expected = this.setUpObject.dfJoint05();
+        DFJoint toBeMinimal = this.setUpObject.dfJoint04();
+        toBeMinimal.removeRareAttributes(true);
+        assertEquals(expected, toBeMinimal);
+    }
 }
