@@ -368,7 +368,7 @@ public class DFJoint implements Iterable<ADependency> {
         int option = 0;
         this.df = regroupDFJoint().getDFJoint();
         List<RareElement> rareAttrVector = findRareAttributes();
-        while (rareAttrVector.size() != 0) {
+        while (!rareAttrVector.isEmpty()) {
             if (!auto) {
                 // option = get.stdin(), user specifies what to remove.
             }
