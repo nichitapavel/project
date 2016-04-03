@@ -206,12 +206,12 @@ public class Relation {
         
         int i = 0;
         do {
-            AttributeJoint attrJoint = list.get(i);
-            Attribute lastAttribute = attrJoint.getLastAttribute();
+            AttributeJoint attrJointAux = list.get(i);
+            Attribute lastAttribute = attrJointAux.getLastAttribute();
             for (int j = nonKeyAttributes.getAttributePosition(lastAttribute) + 1;
                     j < nonKeyAttributes.getSize();
                     j++) {
-                attrJointToCheck = new AttributeJoint(attrJoint);
+                attrJointToCheck = new AttributeJoint(attrJointAux);
                 attrJointToCheck.addAttributes(nonKeyAttributes.getAttributeAt(j));
                 if (!attrJointToCheck.containsJoinsFrom(result)) {
                     ullman = Normalization.simpleUllman(attrJointToCheck, this.dfJoint);

@@ -41,7 +41,7 @@ public class RelationTests {
     private KeyJoint secondFormRelationKeyJoint;
     private KeyJoint thirdFormRelationKeyJoint;
     private KeyJoint boyceCoddFormRelationKeyJoint;
-    
+
     private SetUpClass setUpObject;
 
     /**
@@ -50,21 +50,13 @@ public class RelationTests {
     @Before
     public void setUp() {
         this.setUpObject = new SetUpClass();
-        
         this.nullRelation = new Relation();
-        
-        SetUpClass setUpObject = new SetUpClass();
-        
         //DFJoints
         this.secondFormRelationDFJoint = setUpObject.dfJoint07();
-                
         this.thirdFormRelationDFJoint = setUpObject.dfJoint08();
-        
         this.boyceCoddFormRelationDFJoint = setUpObject.dfJoint09();
-        
         //AttributeJoints attributes of a relation
         this.secondAndThirdFormRelationAttributes = setUpObject.attrJntABCD();
-                
         this.boyceCoddFormRelationAttributes = setUpObject.attrJntABC();
 
         //Relations
@@ -73,19 +65,15 @@ public class RelationTests {
         this.thirdFormRelation = new Relation(secondAndThirdFormRelationAttributes, thirdFormRelationDFJoint);
         this.boyceCoddFormRelation = new Relation(boyceCoddFormRelationAttributes, boyceCoddFormRelationDFJoint);
         this.one = this.setUpObject.relation01();
-        
+
         //KeyJoint
         List<AttributeJoint> keysVector = new ArrayList<>();
         keysVector.add(setUpObject.attrJntAB());
-        
         this.boyceCoddFormRelationKeyJoint = new KeyJoint(keysVector);
-        
         keysVector.add(setUpObject.attrJntAC());
         this.thirdFormRelationKeyJoint = new KeyJoint(keysVector);
-                
         keysVector.clear();
         keysVector.add(setUpObject.attrJntA());
-        
         this.secondFormRelationKeyJoint = new KeyJoint(keysVector);
     }
 
