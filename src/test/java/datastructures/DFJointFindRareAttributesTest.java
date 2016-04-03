@@ -11,6 +11,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import utils.Const;
+
 /**
  * @author Pavel Nichita
  *
@@ -53,17 +55,17 @@ public class DFJointFindRareAttributesTest {
                 this.setUpObject.attrC(),
                 this.setUpObject.funcDepAtoBC(),
                 this.setUpObject.dfJoint24(),
-                "Consequent"));
+                Const.CONSEQUEDENT));
         this.rareAttributesVector.add( new RareElement(
                 this.setUpObject.attrA(),
                 this.setUpObject.funcDepABtoC(),
                 this.setUpObject.dfJoint24(),
-                "Antecedent"));
+                Const.ANTECEDENT));
         this.rareAttributesVector.add( new RareElement(
                 this.setUpObject.attrB(),
                 this.setUpObject.funcDepABtoC(),
                 this.setUpObject.dfJoint24(),
-                "Antecedent"));
+                Const.ANTECEDENT));
         
         assertEquals(this.rareAttributesVector,
                 this.setUpObject.dfJoint24().findRareAttributes());
@@ -106,25 +108,25 @@ public class DFJointFindRareAttributesTest {
                 this.setUpObject.attrB(),
                 this.setUpObject.funcDepAtoBC(),
                 this.setUpObject.dfJoint04(),
-                "Consequent")
+                Const.CONSEQUEDENT)
         );
         this.rareAttributesVector.add(new RareElement(
                 this.setUpObject.attrC(),
                 this.setUpObject.funcDepAtoBC(),
                 this.setUpObject.dfJoint04(),
-                "Consequent")
+                Const.CONSEQUEDENT)
         );
         this.rareAttributesVector.add(new RareElement(
                 this.setUpObject.attrA(),
                 this.setUpObject.funcDepABtoC(),
                 this.setUpObject.dfJoint04(),
-                "Antecedent")
+                Const.ANTECEDENT)
         );
         this.rareAttributesVector.add(new RareElement(
                 this.setUpObject.attrB(),
                 this.setUpObject.funcDepABtoC(),
                 this.setUpObject.dfJoint04(),
-                "Antecedent")
+                Const.ANTECEDENT)
         );
         
         assertEquals(this.rareAttributesVector,
