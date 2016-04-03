@@ -42,7 +42,7 @@ public class DFJointProjectionTest {
      * result: {C -> A}.
      */
     @Test
-    public void projectionDFJointTenToAttributeJointAC() {
+    public void testProjectionDFJointTenToAttributeJointAC() {
         DFJoint dfJoint = this.setUpObject.dfJoint10();
         AttributeJoint attrJoint = this.setUpObject.attrJntAC();
         DFJoint expected = this.setUpObject.dfJoint11();
@@ -55,7 +55,7 @@ public class DFJointProjectionTest {
      * result: {A -> B}.
      */
     @Test
-    public void projectionDFJointTwelveToAttributeJointAB() {
+    public void testProjectionDFJointTwelveToAttributeJointAB() {
         DFJoint dfJoint = this.setUpObject.dfJoint12();
         AttributeJoint attrJoint = this.setUpObject.attrJntAB();
         DFJoint expected = this.setUpObject.dfJoint13();
@@ -68,7 +68,7 @@ public class DFJointProjectionTest {
      * result: {CD -> A, AD -> C, DE -> C}.
      */
     @Test
-    public void projectionDFJointTwelveToAttributeJointACDE() {
+    public void testProjectionDFJointTwelveToAttributeJointACDE() {
         DFJoint dfJoint = this.setUpObject.dfJoint12();
         AttributeJoint attrJoint = this.setUpObject.attrJntACDE();
         DFJoint expected = this.setUpObject.dfJoint14();
@@ -81,7 +81,7 @@ public class DFJointProjectionTest {
      * result: {CD -> A, AD -> C}.
      */
     @Test
-    public void projectionDFJointFourteenToAttributeJointACD() {
+    public void testProjectionDFJointFourteenToAttributeJointACD() {
         DFJoint dfJoint = this.setUpObject.dfJoint14();
         AttributeJoint attrJoint = this.setUpObject.attrJntACD();
         DFJoint expected = this.setUpObject.dfJoint15();
@@ -94,7 +94,7 @@ public class DFJointProjectionTest {
      * result: {DE -> C}.
      */
     @Test
-    public void projectionDFJointFourteenToAttributeJointCDE() {
+    public void testProjectionDFJointFourteenToAttributeJointCDE() {
         DFJoint dfJoint = this.setUpObject.dfJoint14();
         AttributeJoint attrJoint = this.setUpObject.attrJntCDE();
         DFJoint expected = this.setUpObject.dfJoint16();
@@ -107,7 +107,7 @@ public class DFJointProjectionTest {
      * result: {E -> C}.
      */
     @Test
-    public void projectionDFJointSeventeenToAttributeJointCE() {
+    public void testProjectionDFJointSeventeenToAttributeJointCE() {
         DFJoint dfJoint = this.setUpObject.dfJoint17();
         AttributeJoint attrJoint = this.setUpObject.attrJntCE();
         DFJoint expected = this.setUpObject.dfJoint18();
@@ -120,7 +120,7 @@ public class DFJointProjectionTest {
      * result: {}.
      */
     @Test
-    public void projectionDFJointSeventeenToAttributeJointBDE() {
+    public void testProjectionDFJointSeventeenToAttributeJointBDE() {
         DFJoint dfJoint = this.setUpObject.dfJoint17();
         AttributeJoint attrJoint = this.setUpObject.attrJntBDE();
         DFJoint expected = new DFJoint();
@@ -133,7 +133,7 @@ public class DFJointProjectionTest {
      * result: {C -> B}.
      */
     @Test
-    public void projectionDFJointNineteenToAttributeJointBC() {
+    public void testProjectionDFJointNineteenToAttributeJointBC() {
         DFJoint dfJoint = this.setUpObject.dfJoint19();
         AttributeJoint attrJoint = this.setUpObject.attrJntBC();
         DFJoint expected = this.setUpObject.dfJoint20();
@@ -146,7 +146,7 @@ public class DFJointProjectionTest {
      * result: {}.
      */
     @Test
-    public void projectionDFJointNineteenToAttributeJointAC() {
+    public void testProjectionDFJointNineteenToAttributeJointAC() {
         DFJoint dfJoint = this.setUpObject.dfJoint19();
         AttributeJoint attrJoint = this.setUpObject.attrJntAC();
         DFJoint expected = new DFJoint();
@@ -159,7 +159,7 @@ public class DFJointProjectionTest {
      * result: {A -> C}.
      */
     @Test
-    public void projectionDFJointFourToAttributeJointAC() {
+    public void testProjectionDFJointFourToAttributeJointAC() {
         DFJoint dfJoint = this.setUpObject.dfJoint04();
         AttributeJoint attrJoint = this.setUpObject.attrJntAC();
         DFJoint expected = this.setUpObject.dfJoint21();
@@ -172,7 +172,7 @@ public class DFJointProjectionTest {
      * result: {A -> B}.
      */
     @Test
-    public void projectionDFJointFourToAttributeJointAB() {
+    public void testProjectionDFJointFourToAttributeJointAB() {
         DFJoint dfJoint = this.setUpObject.dfJoint04();
         AttributeJoint attrJoint = this.setUpObject.attrJntAB();
         DFJoint expected = this.setUpObject.dfJoint13();
@@ -185,7 +185,7 @@ public class DFJointProjectionTest {
      * result: {B -> C}.
      */
     @Test
-    public void projectionDFJointFourToAttributeJointBC() {
+    public void testProjectionDFJointFourToAttributeJointBC() {
         DFJoint dfJoint = this.setUpObject.dfJoint04();
         AttributeJoint attrJoint = this.setUpObject.attrJntBC();
         DFJoint expected = this.setUpObject.dfJoint22();
@@ -198,7 +198,7 @@ public class DFJointProjectionTest {
      * result: {C -> A}.
      */
     @Test
-    public void projectionDFJoint35_AToAttributeJointAC() {
+    public void testProjectionDFJoint35AToAttributeJointAC() {
         DFJoint dfJoint = this.setUpObject.dpJoint35A();
         AttributeJoint attrJoint = this.setUpObject.attrJntAC();
         DFJoint expected = this.setUpObject.dfJointCtoA();

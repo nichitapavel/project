@@ -424,13 +424,13 @@ public class DFJoint implements Iterable<ADependency> {
         AttributeJoint oldAntecedent;
         AttributeJoint oldConsequent;
         
-        for (ADependency df : hiddenDF) {
-            if (df.getClass() == new FunctionalDependency().getClass()){
-                oldAntecedent = df.getAntecedent();
-                oldConsequent = df.getConsequent();
+        for (ADependency item : hiddenDF) {
+            if (item.getClass() == new FunctionalDependency().getClass()){
+                oldAntecedent = item.getAntecedent();
+                oldConsequent = item.getConsequent();
                 if (oldAntecedent.isContained(attrJoint) && 
                         oldConsequent.isContained(attrJoint)) {
-                    result.addDependency(df); // añadir df
+                    result.addDependency(item); // añadir df
                 }
                 if (!oldAntecedent.isContained(attrJoint) && 
                         oldConsequent.isContained(attrJoint)) {
