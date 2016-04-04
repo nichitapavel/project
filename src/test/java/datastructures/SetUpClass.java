@@ -3,6 +3,9 @@
  */
 package datastructures;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import dependency.ADependency;
@@ -2005,6 +2008,66 @@ public class SetUpClass {
         relation.setDFJoint(dpJoint38());
         relation.settAttrJoint(attrJntABCD());
         return relation;
+    }
+ 
+    /******************/
+    //Vector<FunctionalDependency>
+    /******************/
+    // {A -> BC, BC -> A, E -> C} 
+    public List<ADependency> listNonBCNFDFJoint1() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepAtoBC());
+        arrayList.add(funcDepBCtoA());
+        arrayList.add(funcDepEtoC());
+        return arrayList;
+    }
+
+    // {A -> BC, BC -> E}
+    public List<ADependency> listNonBCNFDFJoint2() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepAtoBC());
+        arrayList.add(funcDepBCtoE());
+        return arrayList;
+    }
+
+    // {ABD -> G, CF -> H}
+    public List<ADependency> listNonBCNFDFJoint3() {
+        List<ADependency> arrayList = dfJoint03().getDFJoint();
+        arrayList.remove(funcDepABDtoG());
+        arrayList.remove(funcDepCFtoH());
+        return arrayList;
+    }
+    
+    // {B -> C}
+    public List<ADependency> listNonBCNFDFJoint4and5() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepBtoC());
+        return arrayList;
+    }
+    
+    // {B -> C, C -> B, B -> E}
+    public List<ADependency> listNonBCNFDFJoint6() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepBtoC());
+        arrayList.add(funcDepCtoB());
+        arrayList.add(funcDepBtoE());
+        return arrayList;
+    }
+    
+    // {B -> C, C -> D}
+    public List<ADependency> listNonBCNFDFJoint7() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepBtoC());
+        arrayList.add(funcDepCtoD());
+        return arrayList;
+    }
+
+    // {B -> C, C -> B}
+    public List<ADependency> listNonBCNFDFJoint8() {
+        List<ADependency> arrayList = new ArrayList<>();
+        arrayList.add(funcDepBtoC());
+        arrayList.add(funcDepCtoB());
+        return arrayList;
     }
     
 }
