@@ -6,6 +6,7 @@ package datastructures;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -708,5 +709,113 @@ public class DFJointTest {
     public void testIsMinimalDFJoint28() {
         this.dfJoint = this.setUpObject.dfJoint28();
         assertTrue(this.dfJoint.isMinimal());
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * returns non BCNF dependencies {A -> BC, BC -> A, E -> C}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint1() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint1();
+        this.dfJoint = this.setUpObject.dfJoint01();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation01()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> E, CD -> A}
+     * returns non BCNF dependencies {A -> BC, BC -> E}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint2() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint2();      
+        this.dfJoint = this.setUpObject.dfJoint02();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation02()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+     * returns non BCNF dependencies {ABD -> G, CF -> H}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint3() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint3();      
+        this.dfJoint = this.setUpObject.dfJoint03();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation03()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
+     * returns non BCNF dependencies {B -> C}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint4() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint4and5();        
+        this.dfJoint = this.setUpObject.dfJoint04();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation04()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABC} {A -> B, B -> C}
+     * returns non BCNF dependencies {B -> C}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint5() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint4and5();        
+        this.dfJoint = this.setUpObject.dfJoint05();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation05()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
+     * returns non BCNF dependencies {B -> C, C -> B, B -> E}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint6() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint6();      
+        this.dfJoint = this.setUpObject.dfJoint06();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation06()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCD}  {A -> B, B -> C, C -> D}
+     * returns non BCNF dependencies {B -> C, C -> D}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint7() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint7();      
+        this.dfJoint = this.setUpObject.dfJoint07();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation07()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABCD} {B -> C, AB -> D, C -> B}
+     * returns non BCNF dependencies {B -> C, C -> B}.
+     */
+    @Test
+    public void testGetNonBCNFDFsDFJoint8() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint8();      
+        this.dfJoint = this.setUpObject.dfJoint08();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation08()));    
+    }
+    
+    /**
+     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
+     * Checks if DFJoint of {ABC} {AB -> C}
+     * returns non BCNF dependencies {}.
+     */
+    @Test
+    public void testGtNonBCNFDFsDFJoint9() {
+        List<ADependency> expected = new ArrayList<>();
+        this.dfJoint = this.setUpObject.dfJoint09();
+        assertEquals(expected, this.dfJoint.getNonBCNFDFs(this.setUpObject.relation09()));
     }
 }

@@ -504,4 +504,22 @@ public class DFJoint implements Iterable<ADependency> {
             return true;
         return false;
     }
+    
+    /**
+     * Returns a list of all dependencies that do not comply with Boyce-Codd criteria.
+     * 
+     * One dependencies complies with Boyce-Codd if the left side is a key (defines
+     * the Relation).
+     * 
+     * @param relation The Relation where if this DFJoint dependencies comply with Boyce-Codd.
+     * @return a list of all dependencies that don't comply with Boyce-Codd Criteria.
+     */
+    public List<ADependency> getNonBCNFDFs(Relation relation) {
+        List<ADependency> result = new ArrayList<>();
+        for (ADependency fd : this.df) {
+            if (!fd.isBCNF(relation))
+                result.add(fd);
+        }
+        return result;
+    }
 }
