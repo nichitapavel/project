@@ -822,10 +822,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
-     * returns non BCNF dependencies {}.
+     * returns non 3NF dependencies {}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint1() {
+    public void testGetNon3NFDFsDFJoint1() {
         List<ADependency> expected = new ArrayList<>();
         this.dfJoint = this.setUpObject.dfJoint01();
         assertEquals(expected, this.dfJoint.getNon3NFDFs(this.setUpObject.relation01())); 
@@ -834,10 +834,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCDE} {A -> BC, BC -> E, CD -> A}
-     * returns non BCNF dependencies {A -> BC, BC -> E}.
+     * returns non 3NF dependencies {A -> BC, BC -> E}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint2() {
+    public void testGetNon3NFDFsDFJoint2() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(this.setUpObject.funcDepAtoBC());
         expected.add(this.setUpObject.funcDepBCtoE());
@@ -848,10 +848,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
-     * returns non BCNF dependencies {}.
+     * returns non 3NF dependencies {}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint3() {
+    public void testGetNon3NFDFsDFJoint3() {
         List<ADependency> expected = new ArrayList<>();
         this.dfJoint = this.setUpObject.dfJoint03();
         assertEquals(expected, this.dfJoint.getNon3NFDFs(this.setUpObject.relation03())); 
@@ -860,10 +860,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
-     * returns non BCNF dependencies {B -> C}.
+     * returns non 3NF dependencies {B -> C}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint4() {
+    public void testGetNon3NFDFsDFJoint4() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(this.setUpObject.funcDepBtoC());
         this.dfJoint = this.setUpObject.dfJoint04();
@@ -873,10 +873,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABC} {A -> B, B -> C}
-     * returns non BCNF dependencies {B -> C}.
+     * returns non 3NF dependencies {B -> C}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint5() {
+    public void testGetNon3NFDFsDFJoint5() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(this.setUpObject.funcDepBtoC());
         this.dfJoint = this.setUpObject.dfJoint05();
@@ -886,10 +886,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
-     * returns non BCNF dependencies {B -> E}.
+     * returns non 3NF dependencies {B -> E}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint6() {
+    public void testGetNon3NFDFsDFJoint6() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(this.setUpObject.funcDepBtoE());
         this.dfJoint = this.setUpObject.dfJoint06();
@@ -899,10 +899,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCD}  {A -> B, B -> C, C -> D}
-     * returns non BCNF dependencies {B -> C, C -> D}.
+     * returns non 3NF dependencies {B -> C, C -> D}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint7() {
+    public void testGetNon3NFDFsDFJoint7() {
         List<ADependency> expected = new ArrayList<>();
         expected.add(this.setUpObject.funcDepBtoC());
         expected.add(this.setUpObject.funcDepCtoD());
@@ -913,10 +913,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABCD} {B -> C, AB -> D, C -> B}
-     * returns non BCNF dependencies {}.
+     * returns non 3NF dependencies {}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint8() {
+    public void testGetNon3NFDFsDFJoint8() {
         List<ADependency> expected = new ArrayList<>();
         this.dfJoint = this.setUpObject.dfJoint08();
         assertEquals(expected, this.dfJoint.getNon3NFDFs(this.setUpObject.relation08())); 
@@ -925,10 +925,10 @@ public class DFJointTest {
     /**
      * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
      * Checks if DFJoint of {ABC} {AB -> C}
-     * returns non BCNF dependencies {}.
+     * returns non 3NF dependencies {}.
      */
     @Test
-    public void getNon3NF_DFs_DFJoint9() {
+    public void testGetNon3NFDFsDFJoint9() {
         List<ADependency> expected = new ArrayList<>();
         this.dfJoint = this.setUpObject.dfJoint09();
         assertEquals(expected, this.dfJoint.getNon3NFDFs(this.setUpObject.relation09()));

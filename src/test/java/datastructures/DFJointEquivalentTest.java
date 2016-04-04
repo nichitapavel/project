@@ -32,21 +32,19 @@ public class DFJointEquivalentTest {
         
         AttributeJoint aJoint = new AttributeJoint();
         aJoint.addAttributes(attrA);
-        
         AttributeJoint bJoint = new AttributeJoint();
         bJoint.addAttributes(attrB);
-        
         AttributeJoint cJoint = new AttributeJoint();
         cJoint.addAttributes(attrC);
-        
         AttributeJoint abJoint = new AttributeJoint();
-        abJoint.addAttributes(attrA); abJoint.addAttributes(attrB);
-        
+        abJoint.addAttributes(attrA);
+        abJoint.addAttributes(attrB);
         AttributeJoint acJoint = new AttributeJoint();
-        acJoint.addAttributes(attrA); acJoint.addAttributes(attrC);
-        
+        acJoint.addAttributes(attrA);
+        acJoint.addAttributes(attrC);
         AttributeJoint bcJoint = new AttributeJoint();
-        bcJoint.addAttributes(attrB); bcJoint.addAttributes(attrC);
+        bcJoint.addAttributes(attrB);
+        bcJoint.addAttributes(attrC);
         
         //firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C}
         firstDFJoint = new DFJoint();
