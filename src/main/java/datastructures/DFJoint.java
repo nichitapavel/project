@@ -487,4 +487,21 @@ public class DFJoint implements Iterable<ADependency> {
         }
         return result;
     }
+    
+    /**
+     * Returns if this DFJoint and other DFJoint are equivalent.
+     * 
+     * Two DFJoint are equivalent if every dependency from one another can be implied
+     * in the other, other way to see it is that both of the DFJoints implies
+     * one another. 
+     * 
+     * @param dfJoint The DFJoint to equivalent this DFJoint against.
+     * @return returns true if they are equivalent, false otherwise.
+     */
+    public boolean isEquivalent(DFJoint dfJoint) {
+        DFJoint hiddenDF = this.getHiddenDF();
+        if (hiddenDF.isImplied(dfJoint) && dfJoint.isImplied(hiddenDF))
+            return true;
+        return false;
+    }
 }
