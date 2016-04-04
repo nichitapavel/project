@@ -983,4 +983,36 @@ public class AttributeJointTest {
         AttributeJoint attrJoint = this.setUpObject.attrJntB();
         assertFalse(attrJoint.containsJoinsFrom(new KeyJoint()));
     }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isKey(Relation)}.
+     * Checks if {ABC} is key in {ABC} {A -> B, B -> C},
+     * result: super key.
+     */
+    @Test
+    public void testIsKeyResultNotKeyRelationFive() {
+        assertEquals(0, this.mainAttributeJoint.isKey(this.setUpObject.relation05()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isKey(Relation)}.
+     * Checks if {A} is key in {ABC} {A -> B, B -> C},
+     * result: key.
+     */
+    @Test
+    public void testIsKeyResultKeyRelationFive() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntA();
+        assertEquals(1, attrJoint.isKey(this.setUpObject.relation05()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.AttributeJoint#isKey(Relation)}.
+     * Checks if {C} is key in {ABC} {A -> B, B -> C},
+     * result: not key.
+     */
+    @Test
+    public void testIsKeyResultSuperKeyRelationFive() {
+        AttributeJoint attrJoint = this.setUpObject.attrJntC();
+        assertEquals(-1, attrJoint.isKey(this.setUpObject.relation05()));
+    }
 }

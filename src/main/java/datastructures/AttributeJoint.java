@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import normalization.Normalization;
 import utils.Const;
 
 /**
@@ -457,5 +458,26 @@ public class AttributeJoint implements Iterable<Attribute> {
         if (this.joint == null || this.joint.isEmpty())
             return true;
         return false;
+    }
+    
+    /**
+     * Returns if this AttributeJoint is a key, a superkey or is not a key.
+     * 
+     * A key is a minimal AttributeJoint that defines a Relation, a superkey is 
+     * a just an AttributeJoint that defines a Relation (doesn't need to be minimal),
+     * if is not a key it doesn't defines a Relation.
+     * 
+     * @param relation The Relation where to check if this AttributeJoint is a key.
+     * @return -1 if is not a key, 0 if is a superkey and 1 if is a key. 
+     */
+    public int isKey(Relation relation) {
+        AttributeJoint ullman = Normalization.simpleUllman(this, relation.getDFJoint());
+        KeyJoint keyJoint = relation.calculateKeyJoint();
+        if (ullman.equals(relation.getAttrJoint()))
+            if(this.isPartOf(keyJoint))
+                return 1;
+            else
+                return 0;
+        return -1;
     }
 }
