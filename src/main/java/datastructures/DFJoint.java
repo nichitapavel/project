@@ -512,12 +512,33 @@ public class DFJoint implements Iterable<ADependency> {
      * the Relation).
      * 
      * @param relation The Relation where if this DFJoint dependencies comply with Boyce-Codd.
-     * @return a list of all dependencies that don't comply with Boyce-Codd Criteria.
+     * @return a list of all dependencies that don't comply with Boyce-Codd criteria.
      */
     public List<ADependency> getNonBCNFDFs(Relation relation) {
         List<ADependency> result = new ArrayList<>();
         for (ADependency fd : this.df) {
             if (!fd.isBCNF(relation))
+                result.add(fd);
+        }
+        return result;
+    }
+    
+    /**
+     * Returns a list of all dependencies that do not comply with 3rd Normal
+     * Form criteria.
+     * 
+     * One dependencies complies with 3rd Normal Form if <ul><li>Antecedent
+     * is a key of Relation</li><li>Consequent is 
+     * part of a key of Relation</li></ul>.
+     * 
+     * @param relation The Relation where if this DFJoint dependencies comply with 3rd Normal Form.
+     * @return a list of all dependencies that don't comply with 3rd Normal Form criteria.
+     */
+    public List<ADependency> getNon3NFDFs(Relation relation) {
+        List<ADependency> result = new ArrayList<>();
+        KeyJoint keyJoint = relation.calculateKeyJoint();
+        for (ADependency fd : this.df) {
+            if (!fd.is3NF(relation, keyJoint))
                 result.add(fd);
         }
         return result;
