@@ -5,7 +5,10 @@ package datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import dependency.ADependency;
 import normalization.Normalization;
 
 /**
@@ -16,6 +19,7 @@ public class Relation {
     private String name;
     private AttributeJoint attrJoint;
     private DFJoint dfJoint;
+    private static final Logger LOG = Logger.getLogger(Relation.class.getName());
     
     /**
      * Constructs a Null Relation.
@@ -224,5 +228,69 @@ public class Relation {
             i++;
         } while (i < list.size());
         return result;
+    }
+    
+    /**
+     * Returns if this relation is in 3rd normal form.
+     * 
+     * A Relation is in 3rd normal form if for every non trivial dependency
+     * comply with at least one of the next criteria:
+     * <ul><li>Antecedent is a key of Relation</li><li>Consequent is 
+     * part of a key of Relation</li></ul>.
+     * 
+     * @return true if is in 3rd normal form, false otherwise.
+     */
+    public boolean is3NF() {
+        if(this.isBCNF())
+            return true;
+        KeyJoint keyJoint = this.calculateKeyJoint();
+        for (ADependency funcDep : this.dfJoint) {
+            if (!funcDep.is3NF(this, keyJoint))
+                    return false;
+        }
+        return true;
+    }
+
+    /**
+     * Returns if this relation is in 2nd normal form.
+     * 
+     * A Relation is in 2nd normal form if for every non trivial dependency
+     * comply with at least one of the next criteria:
+     * <ul><li>Antecedent is a key of Relation</li><li>Consequent is 
+     * part of a key of Relation</li><li>The antecedent is not part of a key</li></ul>.
+     * 
+     * @return true if is in 2nd normal form, false otherwise.
+     */
+    public boolean is2NF() {
+        if(this.isBCNF() || this.is3NF())
+            return true;
+        KeyJoint keyJoint = this.calculateKeyJoint();
+        for (ADependency funcDep : this.dfJoint) {
+            if (!funcDep.is2NF(this, keyJoint))
+                return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Returns if this relation is in Boyce-Codd normal form.
+     * 
+     * A Relation is in Boyce-Codd normal form if for every non trivial dependency
+     * the antecedent is a key of Relation.
+     * 
+     * @return true if is in Boyce-Codd normal form, false otherwise.
+     */
+    public boolean isBCNF() {
+        try {
+            for (ADependency funcDep : this.dfJoint) {
+                if (!funcDep.isBCNF(this))
+                    return false;
+            }
+        }
+        catch (NullPointerException ex) {
+            LOG.log(Level.INFO, ex.getMessage(), ex);
+            return false;
+        }
+        return true;
     }
 }

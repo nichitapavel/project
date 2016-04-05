@@ -26,7 +26,7 @@ public class RelationTest {
     //AB -> C
     private Relation boyceCoddFormRelation;
     //A -> BC, BC -> A, BCD -> E, E -> C
-    private Relation one;
+    //private Relation one;
     
     //DFJoints
     private DFJoint secondFormRelationDFJoint;
@@ -38,9 +38,9 @@ public class RelationTest {
     private AttributeJoint boyceCoddFormRelationAttributes;
     
     //KeyJoint
-    private KeyJoint secondFormRelationKeyJoint;
-    private KeyJoint thirdFormRelationKeyJoint;
-    private KeyJoint boyceCoddFormRelationKeyJoint;
+    //private KeyJoint secondFormRelationKeyJoint;
+    //private KeyJoint thirdFormRelationKeyJoint;
+    //private KeyJoint boyceCoddFormRelationKeyJoint;
 
     private SetUpClass setUpObject;
 
@@ -64,17 +64,17 @@ public class RelationTest {
         this.secondFormRelation = new Relation(secondAndThirdFormRelationAttributes, secondFormRelationDFJoint);
         this.thirdFormRelation = new Relation(secondAndThirdFormRelationAttributes, thirdFormRelationDFJoint);
         this.boyceCoddFormRelation = new Relation(boyceCoddFormRelationAttributes, boyceCoddFormRelationDFJoint);
-        this.one = this.setUpObject.relation01();
+        //this.one = this.setUpObject.relation01();
 
         //KeyJoint
         List<AttributeJoint> keysVector = new ArrayList<>();
         keysVector.add(setUpObject.attrJntAB());
-        this.boyceCoddFormRelationKeyJoint = new KeyJoint(keysVector);
+        //this.boyceCoddFormRelationKeyJoint = new KeyJoint(keysVector);
         keysVector.add(setUpObject.attrJntAC());
-        this.thirdFormRelationKeyJoint = new KeyJoint(keysVector);
+        //this.thirdFormRelationKeyJoint = new KeyJoint(keysVector);
         keysVector.clear();
         keysVector.add(setUpObject.attrJntA());
-        this.secondFormRelationKeyJoint = new KeyJoint(keysVector);
+        //this.secondFormRelationKeyJoint = new KeyJoint(keysVector);
     }
 
     /**
@@ -176,4 +176,133 @@ public class RelationTest {
         assertEquals(msg, this.nullRelation.toString());
     }
 
+    /**
+     * Test method for {@link datastructures.Relation#is3NF()}.
+     * Relation {ABC} {AB -> C} is 3NF, result: true.
+     * Tip: is BCNF.
+     */
+    @Test
+    public void normalForm3TrueFNBC() {
+        assertTrue(this.boyceCoddFormRelation.is3NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is3NF()}.
+     * Relation {ABCD} {B -> C, AB -> D, C -> B} is 3NF, result: true.
+     * Tip: is 3NF.
+     */
+    @Test
+    public void normalForm3True3FN() {
+        assertTrue(this.thirdFormRelation.is3NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is3NF()}.
+     * Relation {ABCD} {A -> B, B -> C, C -> D} is 3NF, result: false.
+     * Tip: is 2NF.
+     */
+    @Test
+    public void normalForm3False2FN() {
+        assertFalse(this.secondFormRelation.is3NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is3NF()}.
+     * Relation {ABCDE} {AB -> D, B -> C, C -> B, B -> E} is 3NF, result: false.
+     * Tip: is 1NF.
+     */
+    @Test
+    public void normalForm3False1FN() {
+        assertFalse(this.firstFormRelation.is3NF());
+    }
+    
+    /**
+    * Test method for {@link datastructures.Relation#is2NF()}.
+    * Relation {ABC} {AB -> C} is 2NF, result: true.
+    * Tip: is BCNF.
+    */
+    @Test
+    public void normalForm2TrueFNBC(){
+        assertTrue(this.boyceCoddFormRelation.is2NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is2NF()}.
+     * Relation {ABCD} {B -> C, AB -> D, C -> B} is 2NF, result: true.
+     * Tip: is 3NF.
+     */
+    @Test
+    public void normalForm2True3FN(){
+        assertTrue(this.thirdFormRelation.is2NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is2NF()}.
+     * Relation {ABCD} {A -> B, B -> C, C -> D} is 2NF, result: true.
+     * Tip: is 2NF.
+     */
+    @Test
+    public void normalForm2True2FN(){
+        assertTrue(this.secondFormRelation.is2NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#is2NF()}.
+     * Relation {ABCDE} {AB -> D, B -> C, C -> B, B -> E} is 2NF, result: false.
+     * Tip: is 1NF.
+     */
+    @Test
+    public void normalForm2True1FN(){
+        assertFalse(this.firstFormRelation.is2NF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#isBCNF()}.
+     * Relation {ABC} {AB -> C} is BCNF, result: true.
+     * Tip: is BCNF.
+     */
+    @Test
+    public void boyceCoddNormalFormTrue() {
+        assertTrue(this.boyceCoddFormRelation.isBCNF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#isBCNF()}.
+     * Relation {ABCD} {B -> C, AB -> D, C -> B} is BCNF, result: false.
+     * Tip: is 3NF.
+     */
+    @Test
+    public void boyceCoddNormalFormFalse3NF() {
+        assertFalse(this.thirdFormRelation.isBCNF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#isBCNF()}.
+     * Relation {ABCD} {A -> B, B -> C, C -> D} is BCNF, result: false.
+     * Tip: is 2NF.
+     */
+    @Test
+    public void boyceCoddNormalFormFalse2NF() {
+        assertFalse(this.secondFormRelation.isBCNF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#isBCNF()}.
+     * Relation {ABCDE} {AB -> D, B -> C, C -> B, B -> E} is BCNF, result: false.
+     * Tip: is 1NF.
+     */
+    @Test
+    public void boyceCoddNormalFormFalse1NF() {
+        assertFalse(this.firstFormRelation.isBCNF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#isBCNF()}.
+     * Relation null {} {} is BCNF, result: false.
+     * Tip: is null, it can't have a normal form what else do you want?.
+     */
+    @Test
+    public void boyceCoddNormalFormTrueNullRelation() {
+        assertFalse(this.nullRelation.isBCNF());
+    }
 }
