@@ -182,7 +182,7 @@ public class RelationTest {
      * Tip: is BCNF.
      */
     @Test
-    public void normalForm3TrueFNBC() {
+    public void testIs3NFBC() {
         assertTrue(this.boyceCoddFormRelation.is3NF());
     }
     
@@ -192,7 +192,7 @@ public class RelationTest {
      * Tip: is 3NF.
      */
     @Test
-    public void normalForm3True3FN() {
+    public void testIs3NF3FN() {
         assertTrue(this.thirdFormRelation.is3NF());
     }
     
@@ -202,7 +202,7 @@ public class RelationTest {
      * Tip: is 2NF.
      */
     @Test
-    public void normalForm3False2FN() {
+    public void testIs3NF2FN() {
         assertFalse(this.secondFormRelation.is3NF());
     }
     
@@ -212,7 +212,7 @@ public class RelationTest {
      * Tip: is 1NF.
      */
     @Test
-    public void normalForm3False1FN() {
+    public void testIs3NF1FN() {
         assertFalse(this.firstFormRelation.is3NF());
     }
     
@@ -222,7 +222,7 @@ public class RelationTest {
     * Tip: is BCNF.
     */
     @Test
-    public void normalForm2TrueFNBC(){
+    public void testIs2NFBC(){
         assertTrue(this.boyceCoddFormRelation.is2NF());
     }
     
@@ -232,7 +232,7 @@ public class RelationTest {
      * Tip: is 3NF.
      */
     @Test
-    public void normalForm2True3FN(){
+    public void testIs2NF3FN(){
         assertTrue(this.thirdFormRelation.is2NF());
     }
     
@@ -242,7 +242,7 @@ public class RelationTest {
      * Tip: is 2NF.
      */
     @Test
-    public void normalForm2True2FN(){
+    public void testIs2NF2FN(){
         assertTrue(this.secondFormRelation.is2NF());
     }
     
@@ -252,7 +252,7 @@ public class RelationTest {
      * Tip: is 1NF.
      */
     @Test
-    public void normalForm2True1FN(){
+    public void testIs2NF1FN(){
         assertFalse(this.firstFormRelation.is2NF());
     }
     
@@ -262,7 +262,7 @@ public class RelationTest {
      * Tip: is BCNF.
      */
     @Test
-    public void boyceCoddNormalFormTrue() {
+    public void testIsBCNFBC() {
         assertTrue(this.boyceCoddFormRelation.isBCNF());
     }
     
@@ -272,7 +272,7 @@ public class RelationTest {
      * Tip: is 3NF.
      */
     @Test
-    public void boyceCoddNormalFormFalse3NF() {
+    public void testIsBCN3NF() {
         assertFalse(this.thirdFormRelation.isBCNF());
     }
     
@@ -282,7 +282,7 @@ public class RelationTest {
      * Tip: is 2NF.
      */
     @Test
-    public void boyceCoddNormalFormFalse2NF() {
+    public void testIsBCN2NF() {
         assertFalse(this.secondFormRelation.isBCNF());
     }
     
@@ -292,7 +292,7 @@ public class RelationTest {
      * Tip: is 1NF.
      */
     @Test
-    public void boyceCoddNormalFormFalse1NF() {
+    public void testIsBCN1NF() {
         assertFalse(this.firstFormRelation.isBCNF());
     }
     
@@ -302,7 +302,7 @@ public class RelationTest {
      * Tip: is null, it can't have a normal form what else do you want?.
      */
     @Test
-    public void boyceCoddNormalFormTrueNullRelation() {
+    public void testIsBCNNullRelation() {
         assertFalse(this.nullRelation.isBCNF());
     }
 }
