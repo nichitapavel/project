@@ -11,6 +11,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import dependency.ADependency;
+
 /**
  * @author Pavel Nichita
  *
@@ -304,5 +306,113 @@ public class RelationTest {
     @Test
     public void testIsBCNNullRelation() {
         assertFalse(this.nullRelation.isBCNF());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * returns {A -> BC, BC -> A, E -> C} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation1() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint1();
+        Relation relation = this.setUpObject.relation01();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCDE} {A -> BC, BC -> E, CD -> A}
+     * returns {A -> BC, BC -> E} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation2() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint2();      
+        Relation relation  = this.setUpObject.relation02();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+     * returns {ABD -> G, CF -> H} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation3() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint3();      
+        Relation relation  = this.setUpObject.relation03();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABC} {A -> BC, B -> C, A -> B, AB -> C}
+     * returns {B -> C} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation4() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint4and5();        
+        Relation relation  = this.setUpObject.relation04();
+        assertEquals(expected, relation.getNonBCNFDFs());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABC} {A -> B, B -> C}
+     * returns {B -> C} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation5() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint4and5();        
+        Relation relation  = this.setUpObject.relation05();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCDE} {AB -> D, B -> C, C -> B, B -> E}
+     * returns {B -> C, C -> B, B -> E} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation6() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint6();      
+        Relation relation  = this.setUpObject.relation06();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCD} {A -> B, B -> C, C -> D}
+     * returns {B -> C, C -> D} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation7() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint7();      
+        Relation relation  = this.setUpObject.relation07();
+        assertEquals(expected, relation.getNonBCNFDFs());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABCD} {B -> C, AB -> D, C -> B}
+     * returns {B -> C, C -> B} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation8() {
+        List<ADependency> expected = this.setUpObject.listNonBCNFDFJoint8();      
+        Relation relation  = this.setUpObject.relation08();
+        assertEquals(expected, relation.getNonBCNFDFs());  
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNonBCNFDFs()}.
+     * Checks that relation {ABC} {AB -> C}
+     * returns {} non BCNF dependencies.
+     */
+    @Test
+    public void testGetNonBCNFDFsRelation9() {
+        List<ADependency> expected = new ArrayList<>();
+        Relation relation  = this.setUpObject.relation09();
+        assertEquals(expected, relation.getNonBCNFDFs());
     }
 }

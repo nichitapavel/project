@@ -293,4 +293,18 @@ public class Relation {
         }
         return true;
     }
+    
+    /**
+     * Returns a list of all dependencies that do not comply with Boyce-Codd criteria
+     * in this relation.
+     * 
+     * One dependency complies with Boyce-Codd if the left side is a key (defines
+     * the Relation).
+     * 
+     * @return a list of all dependencies that don't comply with Boyce-Codd criteria in
+     * this relation.
+     */
+    public List<ADependency> getNonBCNFDFs() {
+        return this.dfJoint.getNonBCNFDFs(this);
+    }
 }
