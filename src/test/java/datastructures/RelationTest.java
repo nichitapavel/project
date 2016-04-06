@@ -611,6 +611,7 @@ public class RelationTest {
     }
     
     /**
+     * Test method for {@link datastructures.Relation#split(ADependency)}
      * This test has some existential doubts
      * Splits in two relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency (E -> C).
@@ -627,12 +628,13 @@ public class RelationTest {
     }
     
     /**
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {AD}.
      * Result: {AD} {}
      */
     @Test
-    public void splitByKeyR1KeyAD() {
+    public void testSplitByKeyR1KeyAD() {
         Relation expected = this.setUpObject.relationAD();
         this.one = this.setUpObject.relationAD();
         AttributeJoint key = this.setUpObject.attrJntAD();
@@ -640,12 +642,13 @@ public class RelationTest {
     }
     
     /**
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {BCD}.
      * Result: {BCD} {}
      */
     @Test
-    public void splitByKeyR1KeyBCD() {
+    public void testSplitByKeyR1KeyBCD() {
         Relation expected = this.setUpObject.relationBCD();
         this.one = this.setUpObject.relation01();
         AttributeJoint key = this.setUpObject.attrJntBCD();
@@ -653,12 +656,13 @@ public class RelationTest {
     }
     
     /**
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {BDE}.
      * Result: {BDE} {}
      */
     @Test
-    public void splitByKeyR1KeyBDE() {
+    public void testSplitByKeyR1KeyBDE() {
         Relation expected = this.setUpObject.relationBDE();
         this.one = this.setUpObject.relation01();
         AttributeJoint key = this.setUpObject.attrJntBDE();
