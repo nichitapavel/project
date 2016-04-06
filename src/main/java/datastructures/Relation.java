@@ -370,4 +370,21 @@ public class Relation {
         
         return relationVector;
     }
+    
+    /**
+     * Returns a Relation that is a subset of this relation.
+     * 
+     *  Sets AttributeJoint of returned relation the AttributeJoint
+     *  received as Key, as DFJoint makes a projection of this relations 
+     *  DFJoint using AttributeJoint received as Key.
+     *  
+     * @param attrJoint The AttributeJoint received as Key.
+     * @return a Relation that is a subset of this relation.
+     */
+    public Relation splitByKey(AttributeJoint attrJoint) {
+        Relation r = new Relation();
+        r.settAttrJoint(attrJoint);
+        r.setDFJoint(this.dfJoint.projectionOnAttributeJoint(attrJoint));
+        return r;
+    }
 }
