@@ -307,4 +307,18 @@ public class Relation {
     public List<ADependency> getNonBCNFDFs() {
         return this.dfJoint.getNonBCNFDFs(this);
     }
+    
+    /**
+     * Returns a list of all dependencies that do not comply with 3rd Normal
+     * Form criteria in this relation.
+     * 
+     * One dependencies complies with 3rd Normal Form if <ul><li>Antecedent
+     * is a key of Relation</li><li>Consequent is part of a key of Relation</li></ul>.
+     * 
+     * @return a list of all dependencies that don't comply with 3rd Normal Form criteria
+     * in this relation.
+     */
+    public List<ADependency> getNon3NFDFs() {
+        return this.dfJoint.getNon3NFDFs(this);
+    }
 }
