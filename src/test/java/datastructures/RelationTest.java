@@ -28,7 +28,7 @@ public class RelationTest {
     //AB -> C
     private Relation boyceCoddFormRelation;
     //A -> BC, BC -> A, BCD -> E, E -> C
-    //private Relation one;
+    private Relation one;
     
     //DFJoints
     private DFJoint secondFormRelationDFJoint;
@@ -66,7 +66,7 @@ public class RelationTest {
         this.secondFormRelation = new Relation(secondAndThirdFormRelationAttributes, secondFormRelationDFJoint);
         this.thirdFormRelation = new Relation(secondAndThirdFormRelationAttributes, thirdFormRelationDFJoint);
         this.boyceCoddFormRelation = new Relation(boyceCoddFormRelationAttributes, boyceCoddFormRelationDFJoint);
-        //this.one = this.setUpObject.relation01();
+        this.one = this.setUpObject.relation01();
 
         //KeyJoint
         List<AttributeJoint> keysVector = new ArrayList<>();
@@ -560,5 +560,69 @@ public class RelationTest {
     @Test
     public void testGetNormalForm1NF() {
         assertEquals("1FN", this.firstFormRelation.getNormalForm());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#split(ADependency)}
+     * Splits in two relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * using dependency (A -> BC).
+     * Result: {ABC} {A -> BC, BC -> A}
+     *         {ADE} {AD -> E}
+     */
+    @Test
+    public void splitRelation1UsingAtoBC() {
+        List<Relation> expected = new ArrayList<>();
+        expected.add(this.setUpObject.relation1ABC());
+        expected.add(this.setUpObject.relation1ADE());
+        List<Relation> result = this.one.split(this.setUpObject.funcDepAtoBC());
+        assertEquals(expected, result);
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#split(ADependency)}
+     * Splits in two relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * using dependency (BC -> A).
+     * Result: {ABC} {A -> BC, BC -> A}
+     *         {BCDE} {BCD -> E, E -> C}
+     */
+    @Test
+    public void splitRelation1UsingBCtoA() {
+        List<Relation> expected = new ArrayList<>();
+        expected.add(this.setUpObject.relation1ABC());
+        expected.add(this.setUpObject.relation1BCDE());
+        List<Relation> result = this.one.split(this.setUpObject.funcDepBCtoA());
+        assertEquals(expected, result);
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#split(ADependency)}
+     * Splits in two relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * using dependency (BCD -> E).
+     * Result: {BCDE} {BCD -> E, E -> C}
+     *         {ABCD} {A -> BC, BC -> A}
+     */
+    @Test
+    public void splitRelation1UsingBCDtoE() {
+        List<Relation> expected = new ArrayList<>();
+        expected.add(this.setUpObject.relation1BCDE());
+        expected.add(this.setUpObject.relation1ABCD());
+        List<Relation> result = this.one.split(this.setUpObject.funcDepBCDtoE());
+        assertEquals(expected, result);
+    }
+    
+    /**
+     * This test has some existential doubts
+     * Splits in two relation {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * using dependency (E -> C).
+     * Result: {CE} {E -> C}
+     *         {ABDE} {A -> B, BE -> A, ABD -> E}
+     */
+    @Test
+    public void splitRelation1UsingEtoC() {
+        List<Relation> expected = new ArrayList<>();
+        expected.add(this.setUpObject.relation1CE());
+        expected.add(this.setUpObject.relation1ABDE());
+        List<Relation> result = this.one.split(this.setUpObject.funcDepEtoC());
+        assertEquals(expected, result);
     }
 }

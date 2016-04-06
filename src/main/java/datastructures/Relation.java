@@ -337,4 +337,37 @@ public class Relation {
         else
             return "1FN";
     }
+    
+    /**
+     * Splits this relation in two relations using a dependency as a cutter.
+     * 
+     * The first relation has the attributes of the dependency as AttributeJoint
+     * and as DFJoint is the result of projecting this relation DFJoint on
+     * the AttributeJoint of first relation.
+     * The second relation has all attributes from this relation expect the consequent
+     * attributes from the dependency as AttributeJoint and as DFJoint is the result 
+     * of projecting this relation DFJoint on the AttributeJoint of second relation.
+     * 
+     * @param fd The dependency that act's as a cutter.
+     * @return return a list with two relations that resulted from the process.
+     */
+    public List<Relation> split(ADependency fd) {
+        List<Relation> relationVector = new ArrayList<>();
+        
+        Relation first = new Relation();
+        first.settAttrJoint(fd.getAttributeJoint());
+        relationVector.add(first);
+        
+        first.setDFJoint(this.dfJoint.projectionOnAttributeJoint(fd.getAttributeJoint()));
+        
+        Relation second = new Relation();
+        AttributeJoint newAttrJoint = new AttributeJoint(this.attrJoint);
+        newAttrJoint.removeAttributes(fd.getConsequent());
+        second.settAttrJoint(newAttrJoint);
+        relationVector.add(second);
+        
+        second.setDFJoint(this.dfJoint.projectionOnAttributeJoint(newAttrJoint));
+        
+        return relationVector;
+    }
 }
