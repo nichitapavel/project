@@ -525,4 +525,40 @@ public class RelationTest {
         Relation relation  = this.setUpObject.relation09();
         assertEquals(expected, relation.getNon3NFDFs());
     }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNormalForm()}
+     * Relation {ABC} {AB -> C} what normal form is in? Result: Boyce Codd NF.
+     */
+    @Test
+    public void testGetNormalForm() {
+        assertEquals("Boyce Codd FN", this.boyceCoddFormRelation.getNormalForm());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNormalForm()}
+     * Relation {ABCD} {B -> C, AB -> D, C -> B} what normal form is in? Result: 3NF.
+     */
+    @Test
+    public void testGetNormalForm3NF() {
+        assertEquals("3FN", this.thirdFormRelation.getNormalForm());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNormalForm()}
+     * Relation {ABCD} {A -> B, B -> C, C -> D} what normal form is in? Result: 2NF.
+     */
+    @Test
+    public void testGetNormalForm2NF() {
+        assertEquals("2FN", this.secondFormRelation.getNormalForm());
+    }
+    
+    /**
+     * Test method for {@link datastructures.Relation#getNormalForm()}
+     * Relation {ABCDE} {AB -> D, B -> C, C -> B, B -> E} what normal form is in? Result: 1NF.
+     */
+    @Test
+    public void testGetNormalForm1NF() {
+        assertEquals("1FN", this.firstFormRelation.getNormalForm());
+    }
 }

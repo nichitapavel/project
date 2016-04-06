@@ -321,4 +321,20 @@ public class Relation {
     public List<ADependency> getNon3NFDFs() {
         return this.dfJoint.getNon3NFDFs(this);
     }
+    
+    /**
+     * Returns a string saying in what normal form is this relation.
+     * 
+     * @return a string saying in what normal form is this relation.
+     */
+    public String getNormalForm() {
+        if(this.isBCNF())
+            return "Boyce Codd FN";
+        if(this.is3NF())
+            return "3FN";
+        if(this.is2NF())
+            return "2FN";
+        else
+            return "1FN";
+    }
 }
