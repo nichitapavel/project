@@ -18,7 +18,7 @@ import utils.Const;
  *
  */
 public class AttributeJoint implements Iterable<Attribute> {
-    private ArrayList<Attribute> joint;
+    private List<Attribute> joint;
     private static final Logger LOG = Logger.getLogger(AttributeJoint.class.getName()); 
 
     /**
