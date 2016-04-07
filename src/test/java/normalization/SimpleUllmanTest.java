@@ -17,7 +17,7 @@ import normalization.TestUtils;
  * For this tests we use a directly DFJoints (not a Relations) to calculate the closure
  * of an AttributeJoint.
  */
-public class SimpleUllman1Test {
+public class SimpleUllmanTest {
     private SetUpClass testObject;
     
     /**
