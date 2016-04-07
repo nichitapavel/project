@@ -3,8 +3,13 @@
  */
 package normalization;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
+import datastructures.KeyJoint;
+import datastructures.Relation;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 
@@ -47,5 +52,74 @@ public final class Normalization {
         return result;
     }
 
-
+    /**
+     * Returns a list of relations that comply with Boyce-Codd normal form.
+     * 
+     * It takes the input {@code relation} and decompose it into smaller 
+     * relations that comply with Boyce-Codd criteria. If {@code auto} is 
+     * {@code true} that it decompose based on first non Boyce-Codd dependency,
+     * if {@code false} it gives a choice to the user.
+     * 
+     * @param relation The relation that must be decomposed to smaller Boyce-Codd relations.
+     * @param auto Decompose based on first non Boyce-Codd dependency if true, gives user to
+     * choose between posibilities.
+     * @return a list of relations that comply Boyce-Codd criteria. 
+     */
+    public static List<Relation> normalizeBCNF(Relation relation, boolean auto) {
+        List<Relation> normalizedRelation = new ArrayList<>();
+        normalizedRelation.add(relation);
+        List<Relation> newRelations = null;
+        int option = 0;
+        for (int i = 0; i < normalizedRelation.size(); i++) {
+            Relation newRelation = normalizedRelation.get(i);
+            List<ADependency> nonNF_DFs;
+            if (!newRelation.isBCNF()) {
+                nonNF_DFs = newRelation.getNonBCNFDFs();
+                if (!auto) {
+                    /*
+                     * option = get.stdin()
+                     */
+                }
+                newRelations = newRelation.split(nonNF_DFs.get(option));
+                normalizedRelation.remove(newRelation);
+                normalizedRelation.addAll(i, newRelations);
+                i--;
+            }
+        }                       
+        return normalizedRelation;
+    }
+    
+    public static List<Relation> normalize3NF(Relation relation, boolean auto) {
+        List<Relation> normalizedRelation = new ArrayList<>();
+        normalizedRelation.add(relation);
+        List<Relation> newRelations = null;
+        KeyJoint keyJoint = relation.calculateKeyJoint();
+        int option = 0;
+        for (int i = 0; i < normalizedRelation.size(); i++) {
+            Relation newRelation = normalizedRelation.get(i);
+            List<ADependency> nonNF_DFs;
+            if (!newRelation.is3NF()) {
+                nonNF_DFs = newRelation.getNon3NFDFs();
+                if (!auto) {
+                    /*
+                     * option = get.stdin()
+                     */
+                }
+                newRelations = newRelation.split(nonNF_DFs.get(option));
+                normalizedRelation.remove(newRelation);
+                normalizedRelation.addAll(i, newRelations);
+                i--;
+            }
+        }
+        boolean projectionOnKey = false;
+        for (Relation r : normalizedRelation) {
+            if (r.getAttrJoint().containsJoinsFrom(keyJoint))
+                projectionOnKey = true;
+        }
+        if (!projectionOnKey) {
+            AttributeJoint key = keyJoint.getKey(0);
+            normalizedRelation.add(relation.splitByKey(key));
+        }
+        return normalizedRelation;
+    }
 }
