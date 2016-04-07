@@ -1786,7 +1786,7 @@ public class SetUpClass {
     //Relation BC_BtoC
     public Relation relationBCinBtoc() {
         Relation relation = relationBC();
-    relation.setDFJoint(dfJoint22());
+        relation.setDFJoint(dfJoint22());
         return relation;
     }
     
@@ -2070,4 +2070,86 @@ public class SetUpClass {
         return arrayList;
     }
     
+    /******************/
+    //VectorNormalize
+    /******************/
+    
+    // {ABC} {A -> BC} - {AE} {A -> E} - {AD} {}
+    public List<Relation> listRelations1() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationABCinAtobc());
+        arrayList.add(relationAEinAtoe());
+        arrayList.add(relationAD());
+        return arrayList;
+    }
+    
+    // {BC} {B -> C} - {AB} {A -> B}
+    public List<Relation> listRelations2() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationBCinBtoc());
+        arrayList.add(relationABinAtob());
+        return arrayList;
+    }
+    
+    // {BE} {B -> E} - {ABCD} {AB -> D, B -> C, C -> B}
+    public List<Relation> listRelations3() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationBEinBtoe());
+        arrayList.add(relationABCDinABtodBtocCtob());
+        return arrayList;
+    }
+    
+    // {BC} {B -> C} - {BD} {B -> D} - {AB} {A -> B}
+    public List<Relation> listRelations4() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationBCinBtoc());
+        arrayList.add(relationBDinBtod());
+        arrayList.add(relationABinAtob());
+        return arrayList;
+    }
+
+    // {ABC} {AB -> C, C -> AB} - {DE} {E -> D, D -> E} - {EF} {E -> F, F -> E} - {ABEGH} {ABE -> GH}
+    public List<Relation> listRelations5() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationABCinABtocCtoab());
+        arrayList.add(relationDEinEtodDtoe());
+        arrayList.add(relationEFinEtofFtoe());
+        arrayList.add(relationABEGH());
+        return arrayList;
+    }
+
+    // {BC} {B -> C, C -> B} - {BE} {B -> E} - {ABD} {AB -> D}
+    public List<Relation> listRelations6() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationBCinBtocCtob());
+        arrayList.add(relationBEinBtoe());
+        arrayList.add(relationABDinABtod());
+        return arrayList;
+    }
+
+    // {BC} {B -> C, C -> B} - {ABD} {AB -> D}
+    public List<Relation> listRelations7() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationBCinBtocCtob());
+        arrayList.add(relationABDinABtod());
+        return arrayList;
+    }
+
+    // {ABC} {A -> BC} - {ADE} {AD -> E}
+    public List<Relation> listRelations8() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationABCinAtobcBCtoa());
+        Relation relation = relationABCDinBtoacCtod();
+        relation.setDFJoint(dfJointADtoe());
+        arrayList.add(relation);
+        return arrayList;
+    }
+    
+    // {ABC} {A -> BC} - {ADE} {AD -> E}
+    public List<Relation> listRelations9() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relation1ABC());
+        arrayList.add(relation1ADE());
+        return arrayList;
+    }
 }
