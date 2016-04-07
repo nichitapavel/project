@@ -68,21 +68,19 @@ public final class Normalization {
     public static List<Relation> normalizeBCNF(Relation relation, boolean auto) {
         List<Relation> normalizedRelation = new ArrayList<>();
         normalizedRelation.add(relation);
-        List<Relation> newRelations = null;
         int option = 0;
         for (int i = 0; i < normalizedRelation.size(); i++) {
             Relation newRelation = normalizedRelation.get(i);
-            List<ADependency> nonNF_DFs;
+            List<ADependency> nonNFDFs;
             if (!newRelation.isBCNF()) {
-                nonNF_DFs = newRelation.getNonBCNFDFs();
+                nonNFDFs = newRelation.getNonBCNFDFs();
                 if (!auto) {
                     /*
                      * option = get.stdin()
                      */
                 }
-                newRelations = newRelation.split(nonNF_DFs.get(option));
                 normalizedRelation.remove(newRelation);
-                normalizedRelation.addAll(i, newRelations);
+                normalizedRelation.addAll(i, newRelation.split(nonNFDFs.get(option)));
                 i--;
             }
         }                       
@@ -92,22 +90,20 @@ public final class Normalization {
     public static List<Relation> normalize3NF(Relation relation, boolean auto) {
         List<Relation> normalizedRelation = new ArrayList<>();
         normalizedRelation.add(relation);
-        List<Relation> newRelations = null;
         KeyJoint keyJoint = relation.calculateKeyJoint();
         int option = 0;
         for (int i = 0; i < normalizedRelation.size(); i++) {
             Relation newRelation = normalizedRelation.get(i);
-            List<ADependency> nonNF_DFs;
+            List<ADependency> nonNFDFs;
             if (!newRelation.is3NF()) {
-                nonNF_DFs = newRelation.getNon3NFDFs();
+                nonNFDFs = newRelation.getNon3NFDFs();
                 if (!auto) {
                     /*
                      * option = get.stdin()
                      */
                 }
-                newRelations = newRelation.split(nonNF_DFs.get(option));
                 normalizedRelation.remove(newRelation);
-                normalizedRelation.addAll(i, newRelations);
+                normalizedRelation.addAll(i, newRelation.split(nonNFDFs.get(option)));
                 i--;
             }
         }
