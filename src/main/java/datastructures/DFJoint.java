@@ -360,6 +360,7 @@ public class DFJoint implements Iterable<ADependency> {
      * 
      * Depending on {@code auto} removes the first rare attribute that finds
      * or the specified by user.
+     * The end result is a Minimal DFJoint with only the most necessary Functional Dependencies.
      * 
      * @param auto if true removes the first rare attribute that it finds, if false
      * the specified by the user. 
