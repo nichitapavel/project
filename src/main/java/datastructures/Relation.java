@@ -329,13 +329,13 @@ public class Relation {
      */
     public String getNormalForm() {
         if(this.isBCNF())
-            return "Boyce Codd FN";
+            return "Boyce Codd Normal Form";
         if(this.is3NF())
-            return "3FN";
+            return "3rd Normal Form";
         if(this.is2NF())
-            return "2FN";
+            return "2nd Normal Form";
         else
-            return "1FN";
+            return "1st Normal Form";
     }
     
     /**
