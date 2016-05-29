@@ -83,7 +83,14 @@ public final class Normalization {
                 normalizedRelation.addAll(i, newRelation.split(nonNFDFs.get(option)));
                 i--;
             }
-        }                       
+        }
+
+        if (normalizedRelation.size() > 1) {
+            for (int i = 0; i < normalizedRelation.size(); i++) {
+                normalizedRelation.get(i).setName(relation.getName() + "/" + (i+1));
+            }
+        }
+
         return normalizedRelation;
     }
     
@@ -116,6 +123,13 @@ public final class Normalization {
             AttributeJoint key = keyJoint.getKey(0);
             normalizedRelation.add(relation.splitByKey(key));
         }
+
+        if (normalizedRelation.size() > 1) {
+            for (int i = 0; i < normalizedRelation.size(); i++) {
+                normalizedRelation.get(i).setName(relation.getName() + "/" + (i+1));
+            }
+        }
+
         return normalizedRelation;
     }
 }
