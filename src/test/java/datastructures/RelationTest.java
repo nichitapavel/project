@@ -532,7 +532,7 @@ public class RelationTest {
      */
     @Test
     public void testGetNormalForm() {
-        assertEquals("Boyce Codd FN", this.boyceCoddFormRelation.getNormalForm());
+        assertEquals("Boyce Codd Normal Form", this.boyceCoddFormRelation.getNormalForm());
     }
     
     /**
@@ -541,7 +541,7 @@ public class RelationTest {
      */
     @Test
     public void testGetNormalForm3NF() {
-        assertEquals("3FN", this.thirdFormRelation.getNormalForm());
+        assertEquals("3rd Normal Form", this.thirdFormRelation.getNormalForm());
     }
     
     /**
@@ -550,7 +550,7 @@ public class RelationTest {
      */
     @Test
     public void testGetNormalForm2NF() {
-        assertEquals("2FN", this.secondFormRelation.getNormalForm());
+        assertEquals("2nd Normal Form", this.secondFormRelation.getNormalForm());
     }
     
     /**
@@ -559,7 +559,7 @@ public class RelationTest {
      */
     @Test
     public void testGetNormalForm1NF() {
-        assertEquals("1FN", this.firstFormRelation.getNormalForm());
+        assertEquals("1st Normal Form", this.firstFormRelation.getNormalForm());
     }
     
     /**
