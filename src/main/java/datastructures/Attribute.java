@@ -3,6 +3,13 @@
  */
 package datastructures;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import normalization.Normalization;
@@ -203,5 +210,25 @@ public class Attribute implements Comparable<Attribute>{
         if (consequent.isContained(ullmanResult))
             return true;
         return false;
+    }
+    
+    /**
+     * Returns an XML Element tag with the value of this attribute.
+     */
+    public Element toXML() {
+        Element attribute = null;
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            Document doc = docBuilder.newDocument();
+            attribute = doc.createElement("Attribute");
+            attribute.appendChild(doc.createTextNode(attr));
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return attribute;
     }
 }

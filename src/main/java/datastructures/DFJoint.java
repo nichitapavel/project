@@ -9,6 +9,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
@@ -543,5 +550,30 @@ public class DFJoint implements Iterable<ADependency> {
                 result.add(fd);
         }
         return result;
+    }
+    
+    public Element toXML() {
+        Element fdJoint = null;
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            
+            Document doc = docBuilder.newDocument();
+            fdJoint = doc.createElement("FDJoint");
+            Element fdJointName = doc.createElement("Name");
+            fdJoint.appendChild(fdJointName);
+            fdJointName.appendChild(doc.createTextNode(name));
+            
+            for (ADependency item : df) {
+                Element fd = doc.createElement("FD");
+                fdJoint.appendChild(fd);
+                fd.appendChild(doc.createTextNode(item.toString()));
+            }
+             
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return fdJoint;
     }
 }

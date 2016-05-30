@@ -8,6 +8,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import dependency.ADependency;
 import normalization.Normalization;
 
@@ -386,5 +393,35 @@ public class Relation {
         r.settAttrJoint(attrJoint);
         r.setDFJoint(this.dfJoint.projectionOnAttributeJoint(attrJoint));
         return r;
+    }
+
+    public Element toXML() {
+        Element relation = null;
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            
+            Document doc = docBuilder.newDocument();
+            relation = doc.createElement("Relation");
+            Element relationName = doc.createElement("Name");
+            relation.appendChild(relationName);
+            relationName.appendChild(doc.createTextNode(name));
+            Element fdJoint = doc.createElement("FDJoint");
+            relation.appendChild(fdJoint);
+            fdJoint.appendChild(doc.createTextNode(dfJoint.getName()));
+            Element attributes = doc.createElement("Attributes");
+            relation.appendChild(attributes);
+            
+            for (Attribute item : attrJoint) {
+                Element attr = doc.createElement("Attribute");
+                attributes.appendChild(attr);
+                attr.appendChild(doc.createTextNode(item.toString()));
+            }
+             
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return relation;
     }
 }

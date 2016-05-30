@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import datastructures.Attribute;
 import datastructures.AttributeJoint;
 import datastructures.DFJoint;
@@ -251,4 +259,30 @@ public class FunctionalDependency extends PluralDependency {
         return true;
     }
 
+    public Element toXML() {
+        Element fd = null;
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            
+            Document doc = docBuilder.newDocument();
+            fd = doc.createElement("FD");
+            Element fdAnt = doc.createElement("Antecedent");
+            fd.appendChild(fdAnt);
+            for (Attribute itemAttrJ : antecedent) {
+                Node element = doc.importNode(itemAttrJ.toXML(), true);
+                fdAnt.appendChild(element);
+            }
+            Element fdCon = doc.createElement("Consequent");
+            fd.appendChild(fdCon);
+            for (Attribute itemAttrJ : consequent) {
+                Node element = doc.importNode(itemAttrJ.toXML(), true);
+                fdCon.appendChild(element);
+            } 
+        } catch (ParserConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return fd;
+    }
 }
