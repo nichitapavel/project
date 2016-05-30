@@ -560,13 +560,17 @@ public class DFJoint implements Iterable<ADependency> {
             
             Document doc = docBuilder.newDocument();
             fdJoint = doc.createElement("FDJoint");
+            
             Element fdJointName = doc.createElement("Name");
             fdJoint.appendChild(fdJointName);
             fdJointName.appendChild(doc.createTextNode(name));
             
+            Element fds = doc.createElement("FDs");
+            fdJoint.appendChild(fds);
+                        
             for (ADependency item : df) {
                 Element fd = doc.createElement("FD");
-                fdJoint.appendChild(fd);
+                fds.appendChild(fd);
                 fd.appendChild(doc.createTextNode(item.toString()));
             }
              
