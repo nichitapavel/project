@@ -36,8 +36,8 @@ public class RelationTest {
     private DFJoint boyceCoddFormRelationDFJoint;
     
     //AttributesJoints of relations attributes
-    private AttributeJoint secondAndThirdFormRelationAttributes;
-    private AttributeJoint boyceCoddFormRelationAttributes;
+    private AttributeSet secondAndThirdFormRelationAttributes;
+    private AttributeSet boyceCoddFormRelationAttributes;
     
     //KeyJoint
     //private KeyJoint secondFormRelationKeyJoint;
@@ -69,7 +69,7 @@ public class RelationTest {
         this.one = this.setUpObject.relation01();
 
         //KeyJoint
-        List<AttributeJoint> keysVector = new ArrayList<>();
+        List<AttributeSet> keysVector = new ArrayList<>();
         keysVector.add(setUpObject.attrJntAB());
         //this.boyceCoddFormRelationKeyJoint = new KeyJoint(keysVector);
         keysVector.add(setUpObject.attrJntAC());
@@ -88,7 +88,7 @@ public class RelationTest {
     }
 
     /**
-     * Test method for {@link datastructures.Relation#Relation(datastructures.AttributeJoint, datastructures.DFJoint)}.
+     * Test method for {@link datastructures.Relation#Relation(datastructures.AttributeSet, datastructures.DFJoint)}.
      */
     @Test
     public void testRelationAttributeJointDFJoint() {
@@ -119,7 +119,7 @@ public class RelationTest {
     }
 
     /**
-     * Test method for {@link datastructures.Relation#settAttrJoint(datastructures.AttributeJoint)}.
+     * Test method for {@link datastructures.Relation#settAttrJoint(datastructures.AttributeSet)}.
      */
     @Test
     public void testSettAttrJoint() {
@@ -628,7 +628,7 @@ public class RelationTest {
     }
     
     /**
-     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeSet)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {AD}.
      * Result: {AD} {}
@@ -637,12 +637,12 @@ public class RelationTest {
     public void testSplitByKeyR1KeyAD() {
         Relation expected = this.setUpObject.relationAD();
         this.one = this.setUpObject.relationAD();
-        AttributeJoint key = this.setUpObject.attrJntAD();
+        AttributeSet key = this.setUpObject.attrJntAD();
         assertEquals(expected, this.one.splitByKey(key));
     }
     
     /**
-     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeSet)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {BCD}.
      * Result: {BCD} {}
@@ -651,12 +651,12 @@ public class RelationTest {
     public void testSplitByKeyR1KeyBCD() {
         Relation expected = this.setUpObject.relationBCD();
         this.one = this.setUpObject.relation01();
-        AttributeJoint key = this.setUpObject.attrJntBCD();
+        AttributeSet key = this.setUpObject.attrJntBCD();
         assertEquals(expected, this.one.splitByKey(key));
     }
     
     /**
-     * Test method for {@link datastructures.Relation#splitByKey(AttributeJoint)}
+     * Test method for {@link datastructures.Relation#splitByKey(AttributeSet)}
      * Gets a relation from {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * using dependency key {BDE}.
      * Result: {BDE} {}
@@ -665,7 +665,7 @@ public class RelationTest {
     public void testSplitByKeyR1KeyBDE() {
         Relation expected = this.setUpObject.relationBDE();
         this.one = this.setUpObject.relation01();
-        AttributeJoint key = this.setUpObject.attrJntBDE();
+        AttributeSet key = this.setUpObject.attrJntBDE();
         assertEquals(expected, this.one.splitByKey(key));
     }
 }

@@ -17,14 +17,14 @@ import utils.Const;
  * @author Pavel Nichita
  *
  */
-public class AttributeJoint implements Iterable<Attribute> {
+public class AttributeSet implements Iterable<Attribute> {
     private List<Attribute> joint;
-    private static final Logger LOG = Logger.getLogger(AttributeJoint.class.getName()); 
+    private static final Logger LOG = Logger.getLogger(AttributeSet.class.getName()); 
 
     /**
      * Constructs a Null list of Attribute.
      */
-    public AttributeJoint() {
+    public AttributeSet() {
         // Manually generated default constructor.
     }
 
@@ -36,7 +36,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * 
      * @param stringArray An array of String object.
      */
-    public AttributeJoint(String [] stringArray) {
+    public AttributeSet(String [] stringArray) {
         joint = new ArrayList<>();
         for (String attr : stringArray)
             joint.add(new Attribute(attr));
@@ -51,20 +51,20 @@ public class AttributeJoint implements Iterable<Attribute> {
      * 
      * @param joint An ArrayList of Attribute objects.
      */
-    public AttributeJoint(List<Attribute> joint) {
+    public AttributeSet(List<Attribute> joint) {
         this.joint = new ArrayList<>(joint) ;
         sort();
     }
 
     /**
      * Constructs an ordered list of Attributes from another
-     * AttributeJoint object.
+     * AttributeSet object.
      *
-     * Assigns the list from obj to this AttributeJoint object.
+     * Assigns the list from obj to this AttributeSet object.
      *
-     * @param obj An AttributeJoint object.
+     * @param obj An AttributeSet object.
      */
-    public AttributeJoint(AttributeJoint obj) {
+    public AttributeSet(AttributeSet obj) {
         this.joint = new ArrayList<>(obj.getAttributeJoint());
     }
 
@@ -105,7 +105,7 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
-     * Returns the value of this AttributeJoint object in string format.
+     * Returns the value of this AttributeSet object in string format.
      * 
      * The format being used is <i>{obj, obj, ...}</i>.
      * 
@@ -126,7 +126,7 @@ public class AttributeJoint implements Iterable<Attribute> {
     /**
      * Returns a hash code for this attribute joint.
      * 
-     * The hash code for a AttributeJoint object is
+     * The hash code for a AttributeSet object is
      * computed using the default implementations of Eclipse.
      * 
      * @return a hash code value for this object.
@@ -143,11 +143,11 @@ public class AttributeJoint implements Iterable<Attribute> {
      * Compares this attribute joint to the specified object.
      * 
      *  The result is true if and only if the argument
-     *  is not null and is a AttributeJoint object that represents
+     *  is not null and is a AttributeSet object that represents
      *  the same attribute joint list as this object.
      * 
-     * @param obj The object to compare this AttributeJoint against.
-     * @return true if the given object represents a AttributeJoint
+     * @param obj The object to compare this AttributeSet against.
+     * @return true if the given object represents a AttributeSet
      * equivalent to this attribute joint list, false otherwise.
      */
     @Override
@@ -158,7 +158,7 @@ public class AttributeJoint implements Iterable<Attribute> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        AttributeJoint other = (AttributeJoint) obj;
+        AttributeSet other = (AttributeSet) obj;
         if (joint == null) {
             if (other.joint != null)
                 return false;
@@ -178,7 +178,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * @return true if all Attribute objects are part of {@code attrJoint},
      * false otherwise.
      */
-    public boolean isContained(AttributeJoint attrJoint) {
+    public boolean isContained(AttributeSet attrJoint) {
         if (attrJoint.getAttributeJoint() == null || joint == null)
             return false;
         
@@ -208,15 +208,15 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
-     * Adds another AttributeJoint Attribute objects to this.
+     * Adds another AttributeSet Attribute objects to this.
      * 
      * If this list is not initialized, initializes it, checks if {@code attrJoint}
-     * has Attribute objects, if it not, calls {@link datastructures.AttributeJoint#addAttributes(Attribute)} 
+     * has Attribute objects, if it not, calls {@link datastructures.AttributeSet#addAttributes(Attribute)} 
      * for every Attribute object of {@code attrJoint}.
      * 
-     * @param attrJoint The AttributeJoint to add to this.
+     * @param attrJoint The AttributeSet to add to this.
      */
-    public void addAttributes(AttributeJoint attrJoint) {
+    public void addAttributes(AttributeSet attrJoint) {
         if (joint == null)
             joint = new ArrayList<>();
         
@@ -238,7 +238,7 @@ public class AttributeJoint implements Iterable<Attribute> {
         }
         catch (NullPointerException ex) {
             LOG.setLevel(Level.INFO);
-            LOG.log(Level.INFO, "AttributeJoint is null", ex);
+            LOG.log(Level.INFO, "AttributeSet is null", ex);
         }
         return 0;
     }
@@ -275,12 +275,12 @@ public class AttributeJoint implements Iterable<Attribute> {
     /**
      * Removes from this a list of Attribute object.
      * 
-     * Calls for {@link datastructures.AttributeJoint#removeAttributes(Attribute)}
+     * Calls for {@link datastructures.AttributeSet#removeAttributes(Attribute)}
      * for every Attribute of {@code removedJoint}.
      * 
      * @param removedJoint A list of Attribute objects to be removed from this list.
      */
-    public void removeAttributes(AttributeJoint removedJoint) {
+    public void removeAttributes(AttributeSet removedJoint) {
         for (Attribute attr : removedJoint.getAttributeJoint())
             removeAttributes(attr);
     }
@@ -320,14 +320,14 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
     
     /**
-     * Creates a new AttributeJoint with all Attributes from this
+     * Creates a new AttributeSet with all Attributes from this
      * and {@code attrJoint} and returns it.
      * 
-     * @param attrJoint The other AttributeJoint for the union.
-     * @return a new AttributeJoint with all Attribute objects.
+     * @param attrJoint The other AttributeSet for the union.
+     * @return a new AttributeSet with all Attribute objects.
      */
-    public AttributeJoint union(AttributeJoint attrJoint) {
-        AttributeJoint result = new AttributeJoint();
+    public AttributeSet union(AttributeSet attrJoint) {
+        AttributeSet result = new AttributeSet();
         result.addAttributes(this);
         result.addAttributes(attrJoint);
         return result;
@@ -368,10 +368,10 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
 
     /**
-     * Returns if this AttributeJoint is a subset of any key from {@code keyJoint}.
+     * Returns if this AttributeSet is a subset of any key from {@code keyJoint}.
      * 
      * With just one case true, returns true.
-     * Exact opposite of {@link datastructures.AttributeJoint#containsJoinsFrom(KeyJoint)}.
+     * Exact opposite of {@link datastructures.AttributeSet#containsJoinsFrom(KeyJoint)}.
      * 
      * @param keyJoint KeyJoint where to check if is a subset.
      * @return true if this object is a subset of at least one key, false otherwise.
@@ -379,7 +379,7 @@ public class AttributeJoint implements Iterable<Attribute> {
     public boolean isPartOf(KeyJoint keyJoint) {
         if (keyJoint.getKeyJoint() == null)
             return false;
-        for (AttributeJoint key : keyJoint)
+        for (AttributeSet key : keyJoint)
             if (this.isContained(key))
                 return true;
         return false;
@@ -389,7 +389,7 @@ public class AttributeJoint implements Iterable<Attribute> {
      * Returns if a Key is a subset of this AttributeObject.
      * 
      * With just one case true, returns true.
-     * Exact opposite of {@link datastructures.AttributeJoint#isPartOf(KeyJoint)}.
+     * Exact opposite of {@link datastructures.AttributeSet#isPartOf(KeyJoint)}.
      * 
      * @param keyJoint KeyJoint with the keys to check here.
      * @return true if at least one key is a subset of this object, false otherwise.
@@ -397,24 +397,24 @@ public class AttributeJoint implements Iterable<Attribute> {
     public boolean containsJoinsFrom(KeyJoint keyJoint) {
         if (keyJoint.getKeyJoint() == null)
             return false;
-        for (AttributeJoint key : keyJoint)
+        for (AttributeSet key : keyJoint)
             if (key.isContained(this))
                 return true;
         return false;
     }
     
     /**
-     * Creates a new AttributeJoint with all common Attributes from this
+     * Creates a new AttributeSet with all common Attributes from this
      * and {@code consequent} and returns it.
      * 
      * If this is not initialized returns an empty AttributeObject.
      *  
-     * @param consequent The other AttributeJoint for the intersect.
-     * @return a new AttributeJoint with all common Attribute objects
+     * @param consequent The other AttributeSet for the intersect.
+     * @return a new AttributeSet with all common Attribute objects
      */
-    public AttributeJoint intersect(AttributeJoint consequent) {
+    public AttributeSet intersect(AttributeSet consequent) {
         try {
-            AttributeJoint resultAttrJoint = new AttributeJoint();
+            AttributeSet resultAttrJoint = new AttributeSet();
             ArrayList<Attribute> auxJoint = new ArrayList<>(this.joint);
             auxJoint.retainAll(consequent.getAttributeJoint());
             resultAttrJoint.setAttributeJoint(auxJoint);
@@ -423,21 +423,21 @@ public class AttributeJoint implements Iterable<Attribute> {
         catch (NullPointerException ex) {
             LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
-        return new AttributeJoint();
+        return new AttributeSet();
     }
     
     /**
-     * Creates a new AttributeJoint with all Attributes that only are in this
+     * Creates a new AttributeSet with all Attributes that only are in this
      * object but not in {@code attrJoint} and returns it.
      * 
      * If this is not initialized returns an empty AttributeObject.
      * 
-     * @param attrJoint The other AttributeJoint for the substract.
-     * @return a new AttributeJoint with all Attribute objects only from this object.
+     * @param attrJoint The other AttributeSet for the substract.
+     * @return a new AttributeSet with all Attribute objects only from this object.
      */
-    public AttributeJoint substract(AttributeJoint attrJoint) {
+    public AttributeSet substract(AttributeSet attrJoint) {
         try {
-            AttributeJoint resultAttrJoint = new AttributeJoint();
+            AttributeSet resultAttrJoint = new AttributeSet();
             ArrayList<Attribute> auxJoint = new ArrayList<>(this.joint);
             auxJoint.removeAll(attrJoint.getAttributeJoint());
             resultAttrJoint.setAttributeJoint(auxJoint);
@@ -446,7 +446,7 @@ public class AttributeJoint implements Iterable<Attribute> {
         catch (NullPointerException ex) {
             LOG.log(Level.INFO, Const.ATTRJOINT_NOT_INIT, ex);
         }
-        return new AttributeJoint();
+        return new AttributeSet();
     }
 
     /**
@@ -461,17 +461,17 @@ public class AttributeJoint implements Iterable<Attribute> {
     }
     
     /**
-     * Returns if this AttributeJoint is a key, a superkey or is not a key.
+     * Returns if this AttributeSet is a key, a superkey or is not a key.
      * 
-     * A key is a minimal AttributeJoint that defines a Relation, a superkey is 
-     * a just an AttributeJoint that defines a Relation (doesn't need to be minimal),
+     * A key is a minimal AttributeSet that defines a Relation, a superkey is 
+     * a just an AttributeSet that defines a Relation (doesn't need to be minimal),
      * if is not a key it doesn't defines a Relation.
      * 
-     * @param relation The Relation where to check if this AttributeJoint is a key.
+     * @param relation The Relation where to check if this AttributeSet is a key.
      * @return -1 if is not a key, 0 if is a superkey and 1 if is a key. 
      */
     public int isKey(Relation relation) {
-        AttributeJoint ullman = Normalization.simpleUllman(this, relation.getDFJoint());
+        AttributeSet ullman = Normalization.simpleUllman(this, relation.getDFJoint());
         KeyJoint keyJoint = relation.calculateKeyJoint();
         if (ullman.equals(relation.getAttrJoint()))
             if(this.isPartOf(keyJoint))

@@ -6,7 +6,7 @@ package dependency;
 import java.util.ArrayList;
 import java.util.List;
 
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 import datastructures.KeyJoint;
 import datastructures.Relation;
@@ -27,10 +27,10 @@ public class PluralDependency extends ADependency {
     /**
      * Constructs a PluralDependency with antecedent and consequent by calling inherit method.
      * 
-     * @param antecedent AttributeJoint representing the left side of a dependency.
-     * @param consequent AttributeJoint representing the right side of a dependency.
+     * @param antecedent AttributeSet representing the left side of a dependency.
+     * @param consequent AttributeSet representing the right side of a dependency.
      */
-    public PluralDependency(AttributeJoint antecedent, AttributeJoint consequent) {
+    public PluralDependency(AttributeSet antecedent, AttributeSet consequent) {
         super(antecedent, consequent);
     }
 
@@ -112,7 +112,7 @@ public class PluralDependency extends ADependency {
     @Override
     public List<ADependency> toFunctionalDependency(DFJoint dfJoint) {
         List<ADependency> result = new ArrayList<>();      
-        AttributeJoint intersect;
+        AttributeSet intersect;
         for (ADependency fd : dfJoint) {
             if (fd.getClass() == new FunctionalDependency().getClass()) {
                 intersect = fd.getAntecedent().intersect(super.consequent);

@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import datastructures.Attribute;
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 import datastructures.SetUpClass;
 
@@ -22,8 +22,8 @@ import datastructures.SetUpClass;
  */
 public class FunctionalDependencyTest {
     private ADependency fd;
-    private AttributeJoint antecedent;
-    private AttributeJoint consequent;
+    private AttributeSet antecedent;
+    private AttributeSet consequent;
     private SetUpClass setUpObject;
     private DFJoint firstDFJoint;
     private DFJoint secondDFJoint;
@@ -34,9 +34,9 @@ public class FunctionalDependencyTest {
     @Before
     public void setUp(){
         String [] antecedentArray = {"A", "B", "C"};
-        antecedent = new AttributeJoint(antecedentArray);
+        antecedent = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"D", "E", "F"};
-        consequent = new AttributeJoint(consecuentArray);
+        consequent = new AttributeSet(consecuentArray);
         fd = new FunctionalDependency(antecedent, consequent);
         setUpObject = new SetUpClass();
         firstDFJoint = this.setUpObject.dfJoint04();
@@ -44,7 +44,7 @@ public class FunctionalDependencyTest {
     }
 
     /**
-     * Test method for {@link dependency.FunctionalDependency#FunctionalDependency(datastructures.AttributeJoint, datastructures.AttributeJoint)}.
+     * Test method for {@link dependency.FunctionalDependency#FunctionalDependency(datastructures.AttributeSet, datastructures.AttributeSet)}.
      * 
      * Checks that a void constructor creates null antecedent and consequent.
      */
@@ -56,7 +56,7 @@ public class FunctionalDependencyTest {
     }
 
     /**
-     * Test method for {@link dependency.FunctionalDependency#FunctionalDependency(datastructures.AttributeJoint, datastructures.AttributeJoint)}.
+     * Test method for {@link dependency.FunctionalDependency#FunctionalDependency(datastructures.AttributeSet, datastructures.AttributeSet)}.
      * 
      * Checks that a argument constructor creates a not null antecedent and consequent.
      */
@@ -70,8 +70,8 @@ public class FunctionalDependencyTest {
      * Test method for {@link dependency.FunctionalDependency#getAntecedent()}.
      * Test method for {@link dependency.FunctionalDependency#getConsequent()}.
      * 
-     * Checks that fd returns AttributeJoint {A, B, C}.
-     * Checks that fd returns AttributeJoint {D, E, F}.
+     * Checks that fd returns AttributeSet {A, B, C}.
+     * Checks that fd returns AttributeSet {D, E, F}.
      * 
      */
     @Test
@@ -84,8 +84,8 @@ public class FunctionalDependencyTest {
      * Test method for {@link dependency.FunctionalDependency#setAntecedent()}.
      * Test method for {@link dependency.FunctionalDependency#setConsequent()}.
      * 
-     * Sets antecedent to AttributeJoint {A, B, D} and
-     * sets consequent to AttributeJoint {C, E}.
+     * Sets antecedent to AttributeSet {A, B, D} and
+     * sets consequent to AttributeSet {C, E}.
      * 
      * Checks that fd returns {A, B, D} for antecedent and
      * Checks that fd returns {C, E} for consequent.
@@ -93,9 +93,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testSet() {
         String [] antecedentSetterArray = {"A", "B", "D"};
-        AttributeJoint antecedentSetter = new AttributeJoint(antecedentSetterArray);
+        AttributeSet antecedentSetter = new AttributeSet(antecedentSetterArray);
         String [] consequentSetterArray = {"C", "E"};
-        AttributeJoint consequentSetter = new AttributeJoint(consequentSetterArray);
+        AttributeSet consequentSetter = new AttributeSet(consequentSetterArray);
         fd.setAntecedent(antecedentSetter);
         fd.setConsequent(consequentSetter);
         assertEquals(antecedentSetter, fd.getAntecedent());
@@ -110,7 +110,7 @@ public class FunctionalDependencyTest {
     @Test
     public void testRemoveAttributeFromAntecedent() {
         String [] attr = {"A", "C"}; 
-        AttributeJoint expected = new AttributeJoint(attr);
+        AttributeSet expected = new AttributeSet(attr);
         fd.removeAttributeFromAntecedent(new Attribute("B"));
         assertEquals(expected, fd.getAntecedent());
     }
@@ -123,37 +123,37 @@ public class FunctionalDependencyTest {
     @Test
     public void testRemoveAttributeFromConsequent() {
         String [] attr = {"D", "F"}; 
-        AttributeJoint expected = new AttributeJoint(attr);
+        AttributeSet expected = new AttributeSet(attr);
         fd.removeAttributeFromConsequent(new Attribute("E"));
         assertEquals(expected, fd.getConsequent());
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromAntecedent(AttributeJoint)}.
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromAntecedent(AttributeSet)}.
      * 
-     * Remove AttributeJoint {A, B} from antecedent {A, B, C}, result must be {C}.
+     * Remove AttributeSet {A, B} from antecedent {A, B, C}, result must be {C}.
      */
     @Test
     public void testRemoveAttributeJointFromAntecedent() {
         String [] attr = {"C"}; 
-        AttributeJoint expected = new AttributeJoint(attr);
+        AttributeSet expected = new AttributeSet(attr);
         String [] toBeRemovedArray = {"B", "A"}; 
-        AttributeJoint toBeRemoved = new AttributeJoint(toBeRemovedArray);
+        AttributeSet toBeRemoved = new AttributeSet(toBeRemovedArray);
         fd.removeAttributeFromAntecedent(toBeRemoved);
         assertEquals(expected, fd.getAntecedent());
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromConsequent(AttributeJoint)}.
+     * Test method for {@link dependency.FunctionalDependency#removeAttributeFromConsequent(AttributeSet)}.
      * 
-     * Remove AttributeJoint {E, D} from consequent {D, E, F}, result must be {F}.
+     * Remove AttributeSet {E, D} from consequent {D, E, F}, result must be {F}.
      */
     @Test
     public void testRemoveAttributeJointFromConsequent() {
         String [] attr = {"F"}; 
-        AttributeJoint expected = new AttributeJoint(attr);
+        AttributeSet expected = new AttributeSet(attr);
         String [] toBeRemovedArray = {"E", "D"}; 
-        AttributeJoint toBeRemoved = new AttributeJoint(toBeRemovedArray);
+        AttributeSet toBeRemoved = new AttributeSet(toBeRemovedArray);
         fd.removeAttributeFromConsequent(toBeRemoved);
         assertEquals(expected, fd.getConsequent());
     }
@@ -178,7 +178,7 @@ public class FunctionalDependencyTest {
     @Test
     public void testFuncDepIsDestroyableAntecedent() {
         String [] antecedentArray = {"A", "B", "C"};
-        this.antecedent = new AttributeJoint(antecedentArray);
+        this.antecedent = new AttributeSet(antecedentArray);
         fd.removeAttributeFromAntecedent(this.antecedent);
         assertTrue(fd.isDestroyable());
     }
@@ -192,7 +192,7 @@ public class FunctionalDependencyTest {
     @Test
     public void testFuncDepIsDestroyableConsequent() {
         String [] consecuentArray = {"D", "E", "F"};
-        this.consequent = new AttributeJoint(consecuentArray);
+        this.consequent = new AttributeSet(consecuentArray);
         fd.removeAttributeFromConsequent(this.consequent);
         assertTrue(fd.isDestroyable());
     }
@@ -213,12 +213,12 @@ public class FunctionalDependencyTest {
     /**
      * Test method for {@link dependency.FunctionalDependency#getAttributeJoint()}.
      * 
-     * Check that Dependency {A} -> {B, C, D} returns AttributeJoint {A, B, C, D}.
+     * Check that Dependency {A} -> {B, C, D} returns AttributeSet {A, B, C, D}.
      */
     @Test
     public void testGetAttributeJoint() {
         this.fd = this.setUpObject.funcDepAtoBCD();
-        AttributeJoint expected = this.setUpObject.attrJntABCD();
+        AttributeSet expected = this.setUpObject.attrJntABCD();
         assertEquals(expected, this.fd.getAttributeJoint());
     }
     
@@ -255,9 +255,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testHashCodeEquals() {
         String [] antecedentArray = {"A", "B", "C"};
-        antecedent = new AttributeJoint(antecedentArray);
+        antecedent = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"D", "E", "F"};
-        consequent = new AttributeJoint(consecuentArray);
+        consequent = new AttributeSet(consecuentArray);
         ADependency auxFD = new FunctionalDependency(antecedent, consequent);
         assertEquals(fd.hashCode(), auxFD.hashCode());
     }
@@ -280,9 +280,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testHashCodeDifferent() {
         String [] antecedentArray = {"A"};
-        antecedent = new AttributeJoint(antecedentArray);
+        antecedent = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"E", "F"};
-        consequent = new AttributeJoint(consecuentArray);
+        consequent = new AttributeSet(consecuentArray);
         ADependency auxFD = new FunctionalDependency(antecedent, consequent);
         assertNotEquals(fd.hashCode(), auxFD.hashCode());
     }
@@ -316,9 +316,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testEqualsSameValues() {
         String [] antecedentArray = {"A", "B", "C"};
-        antecedent = new AttributeJoint(antecedentArray);
+        antecedent = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"D", "E", "F"};
-        consequent = new AttributeJoint(consecuentArray);
+        consequent = new AttributeSet(consecuentArray);
         ADependency auxFD = new FunctionalDependency(antecedent, consequent);
         assertTrue(fd.equals(auxFD));
         assertTrue(auxFD.equals(fd));
@@ -343,9 +343,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testEqualsNotDifferentValues() {
         String [] antecedentArray = {"A"};
-        antecedent = new AttributeJoint(antecedentArray);
+        antecedent = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"E", "F"};
-        consequent = new AttributeJoint(consecuentArray);
+        consequent = new AttributeSet(consecuentArray);
         ADependency auxFD = new FunctionalDependency(antecedent, consequent);
         assertFalse(fd.equals(auxFD));
     }
@@ -392,7 +392,7 @@ public class FunctionalDependencyTest {
     public void testEqualsNotConsquentWithNullValues() {
         ADependency funcDep = new FunctionalDependency();
         String [] attrString = { "A", "B", "C" };
-        AttributeJoint attrJoint = new AttributeJoint(attrString);
+        AttributeSet attrJoint = new AttributeSet(attrString);
         funcDep.setAntecedent(attrJoint);
         assertFalse(fd.equals(funcDep));
     }
@@ -406,7 +406,7 @@ public class FunctionalDependencyTest {
     public void testEqualsConsequentWithNullValues() {
         ADependency funcDep = new FunctionalDependency();
         String [] attrString = { "A", "B", "C" };
-        AttributeJoint attrJoint = new AttributeJoint(attrString);
+        AttributeSet attrJoint = new AttributeSet(attrString);
         funcDep.setAntecedent(attrJoint);
         assertFalse(funcDep.equals(fd));
     }
@@ -445,7 +445,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void testClearTrivialElementsABCtoVoid() {
-        this.fd.setConsequent(new AttributeJoint());
+        this.fd.setConsequent(new AttributeSet());
         this.fd.clearTrivialElements();
     }
     
@@ -500,9 +500,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testBelongsToFalseFirstFD() {
         String [] antecedentArray = {"C"};
-        AttributeJoint antecedentFD = new AttributeJoint(antecedentArray);
+        AttributeSet antecedentFD = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"A", "B"};
-        AttributeJoint consequentFD = new AttributeJoint(consecuentArray);
+        AttributeSet consequentFD = new AttributeSet(consecuentArray);
         ADependency fundDep = new FunctionalDependency(antecedentFD, consequentFD);
         assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
@@ -514,9 +514,9 @@ public class FunctionalDependencyTest {
     @Test
     public void testBelongsFalseSecondFD() {
         String [] antecedentArray = {"C"};
-        AttributeJoint antecedentFD = new AttributeJoint(antecedentArray);
+        AttributeSet antecedentFD = new AttributeSet(antecedentArray);
         String [] consecuentArray = {"A"};
-        AttributeJoint consequentFD = new AttributeJoint(consecuentArray);
+        AttributeSet consequentFD = new AttributeSet(consecuentArray);
         ADependency fundDep = new FunctionalDependency(antecedentFD, consequentFD);
         assertFalse(fundDep.belongsTo(firstDFJoint, null));
     }
@@ -548,7 +548,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void isTrivialTrueVoidAntedent() {
-        this.fd.setAntecedent(new AttributeJoint());
+        this.fd.setAntecedent(new AttributeSet());
         assertTrue(this.fd.isTrivial());
     }
     
@@ -559,7 +559,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void isTrivialTrueVoidConsequent() {
-        this.fd.setConsequent(new AttributeJoint());
+        this.fd.setConsequent(new AttributeSet());
         assertTrue(this.fd.isTrivial());
     }
 }

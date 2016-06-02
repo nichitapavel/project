@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datastructures.Attribute;
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
@@ -68,307 +68,307 @@ public class SetUpClass {
     //ATTRIBUTEJOINTS
     /******************/
 
-    //AttributeJoint A
-    public AttributeJoint attrJntA() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet A
+    public AttributeSet attrJntA() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         return attrJoint;
     }
 
-    //AttributeJoint B
-    public AttributeJoint attrJntB() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet B
+    public AttributeSet attrJntB() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         return attrJoint;
     }
 
-    //AttributeJoint C
-    public AttributeJoint attrJntC() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet C
+    public AttributeSet attrJntC() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrC());
         return attrJoint;
     }
 
-    //AttributeJoint D
-    public AttributeJoint attrJntD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet D
+    public AttributeSet attrJntD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint E
-    public AttributeJoint attrJntE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet E
+    public AttributeSet attrJntE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint F
-    public AttributeJoint attrJntF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet F
+    public AttributeSet attrJntF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint G
-    public AttributeJoint attrJntG() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet G
+    public AttributeSet attrJntG() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrG());
         return attrJoint;
     }
 
-    //AttributeJoint H
-    public AttributeJoint attrJntH() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet H
+    public AttributeSet attrJntH() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrH());
         return attrJoint;
     }
 
-    //AttributeJoint AB
-    public AttributeJoint attrJntAB() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet AB
+    public AttributeSet attrJntAB() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         return attrJoint;
     }
 
-    //AttributeJoint AC
-    public AttributeJoint attrJntAC() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet AC
+    public AttributeSet attrJntAC() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrC());
         return attrJoint;
     }
 
-    //AttributeJoint AD
-    public AttributeJoint attrJntAD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet AD
+    public AttributeSet attrJntAD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint AE
-    public AttributeJoint attrJntAE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet AE
+    public AttributeSet attrJntAE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint BC
-    public AttributeJoint attrJntBC() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BC
+    public AttributeSet attrJntBC() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
         return attrJoint;
     }
 
-    //AttributeJoint BD
-    public AttributeJoint attrJntBD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BD
+    public AttributeSet attrJntBD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint BE
-    public AttributeJoint attrJntBE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BE
+    public AttributeSet attrJntBE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint CD
-    public AttributeJoint attrJntCD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet CD
+    public AttributeSet attrJntCD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint CE
-    public AttributeJoint attrJntCE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet CE
+    public AttributeSet attrJntCE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint CF
-    public AttributeJoint attrJntCF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet CF
+    public AttributeSet attrJntCF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint DE
-    public AttributeJoint attrJntDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet DE
+    public AttributeSet attrJntDE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrD());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint DF
-    public AttributeJoint attrJntDF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet DF
+    public AttributeSet attrJntDF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrD());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint EF
-    public AttributeJoint attrJntEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet EF
+    public AttributeSet attrJntEF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrE());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint ABC
-    public AttributeJoint attrJntABC() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABC
+    public AttributeSet attrJntABC() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
         return attrJoint;
     }
 
-    //AttributeJoint ABD
-    public AttributeJoint attrJntABD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABD
+    public AttributeSet attrJntABD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint ABE
-    public AttributeJoint attrJntABE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABE
+    public AttributeSet attrJntABE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint ABF
-    public AttributeJoint attrJntABF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABF
+    public AttributeSet attrJntABF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint ACD
-    public AttributeJoint attrJntACD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ACD
+    public AttributeSet attrJntACD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint ADE
-    public AttributeJoint attrJntADE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ADE
+    public AttributeSet attrJntADE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrD());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint AEF
-    public AttributeJoint attrJntAEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet AEF
+    public AttributeSet attrJntAEF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrE());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint BCD
-    public AttributeJoint attrJntBCD() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BCD
+    public AttributeSet attrJntBCD() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
         return attrJoint;
     }
 
-    //AttributeJoint BDE
-    public AttributeJoint attrJntBDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BDE
+    public AttributeSet attrJntBDE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrD());
         attrJoint.addAttributes(attrE());
         return attrJoint;
     }
 
-    //AttributeJoint BEF
-    public AttributeJoint attrJntBEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrB());
-        attrJoint.addAttributes(attrE());
-        attrJoint.addAttributes(attrF());
-        return attrJoint;
-    }
-
-    //AttributeJoint CDE
-    public AttributeJoint attrJntCDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrC());
-        attrJoint.addAttributes(attrD());
-        attrJoint.addAttributes(attrE());
-        return attrJoint;
-    }
-
-    //AttributeJoint CDF
-    public AttributeJoint attrJntCDF() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrC());
-        attrJoint.addAttributes(attrD());
-        attrJoint.addAttributes(attrF());
-        return attrJoint;
-    }
-
-    //AttributeJoint ABCD
-    public AttributeJoint attrJntABCD() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrA());
-        attrJoint.addAttributes(attrB());
-        attrJoint.addAttributes(attrC());
-        attrJoint.addAttributes(attrD());
-        return attrJoint;
-    }
-
-    //AttributeJoint ABDE
-    public AttributeJoint attrJntABDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrA());
-        attrJoint.addAttributes(attrB());
-        attrJoint.addAttributes(attrD());
-        attrJoint.addAttributes(attrE());
-        return attrJoint;
-    }
-
-    //AttributeJoint ABEF
-    public AttributeJoint attrJntABEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
-        attrJoint.addAttributes(attrA());
+    //AttributeSet BEF
+    public AttributeSet attrJntBEF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrE());
         attrJoint.addAttributes(attrF());
         return attrJoint;
     }
 
-    //AttributeJoint ACDE
-    public AttributeJoint attrJntACDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet CDE
+    public AttributeSet attrJntCDE() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrC());
+        attrJoint.addAttributes(attrD());
+        attrJoint.addAttributes(attrE());
+        return attrJoint;
+    }
+
+    //AttributeSet CDF
+    public AttributeSet attrJntCDF() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrC());
+        attrJoint.addAttributes(attrD());
+        attrJoint.addAttributes(attrF());
+        return attrJoint;
+    }
+
+    //AttributeSet ABCD
+    public AttributeSet attrJntABCD() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrA());
+        attrJoint.addAttributes(attrB());
+        attrJoint.addAttributes(attrC());
+        attrJoint.addAttributes(attrD());
+        return attrJoint;
+    }
+
+    //AttributeSet ABDE
+    public AttributeSet attrJntABDE() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrA());
+        attrJoint.addAttributes(attrB());
+        attrJoint.addAttributes(attrD());
+        attrJoint.addAttributes(attrE());
+        return attrJoint;
+    }
+
+    //AttributeSet ABEF
+    public AttributeSet attrJntABEF() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrA());
+        attrJoint.addAttributes(attrB());
+        attrJoint.addAttributes(attrE());
+        attrJoint.addAttributes(attrF());
+        return attrJoint;
+    }
+
+    //AttributeSet ACDE
+    public AttributeSet attrJntACDE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
@@ -376,9 +376,9 @@ public class SetUpClass {
         return attrJoint;
     }
 
-    //AttributeJoint BCDE
-    public AttributeJoint attrJntBCDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BCDE
+    public AttributeSet attrJntBCDE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
@@ -386,9 +386,9 @@ public class SetUpClass {
         return attrJoint;
     }
 
-    //AttributeJoint ABCDE
-    public AttributeJoint attrJntABCDE() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABCDE
+    public AttributeSet attrJntABCDE() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
@@ -397,9 +397,9 @@ public class SetUpClass {
         return attrJoint;
     }
 
-    //AttributeJoint BCDEF
-    public AttributeJoint attrJntBCDEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet BCDEF
+    public AttributeSet attrJntBCDEF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
         attrJoint.addAttributes(attrD());
@@ -408,9 +408,9 @@ public class SetUpClass {
         return attrJoint;
     }
 
-    //AttributeJoint ABCDEF
-    public AttributeJoint attrJntABCDEF() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABCDEF
+    public AttributeSet attrJntABCDEF() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
@@ -420,9 +420,9 @@ public class SetUpClass {
         return attrJoint;
     }   
 
-    //AttributeJoint ABEGH
-    public AttributeJoint attrJntABEGH() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABEGH
+    public AttributeSet attrJntABEGH() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrE());
@@ -431,9 +431,9 @@ public class SetUpClass {
         return attrJoint;
     }
 
-    //AttributeJoint ABCDEFGH
-    public AttributeJoint attrJntABCDEFGH() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    //AttributeSet ABCDEFGH
+    public AttributeSet attrJntABCDEFGH() {
+        AttributeSet attrJoint = new AttributeSet();
         attrJoint.addAttributes(attrA());
         attrJoint.addAttributes(attrB());
         attrJoint.addAttributes(attrC());
@@ -1562,47 +1562,47 @@ public class SetUpClass {
     //Relation
     /******************/
     
-    //Relation One = DFJoint One, AttributeJoint ABCDE
+    //Relation One = DFJoint One, AttributeSet ABCDE
     public Relation relation01() {
         return new Relation(attrJntABCDE(), dfJoint01());
     }
     
-    //Relation Two = DFJoint Two, AttributeJoint ABCDE
+    //Relation Two = DFJoint Two, AttributeSet ABCDE
     public Relation relation02() {
         return new Relation(attrJntABCDE(), dfJoint02());
     }
     
-    //Relation Three = DFJoint Three, AttributeJoint ABCDEFGH
+    //Relation Three = DFJoint Three, AttributeSet ABCDEFGH
     public Relation relation03() {
         return new Relation(attrJntABCDEFGH(), dfJoint03());
     }
     
-    //Relation Four = DFJoint Four, AttributeJoint ABC
+    //Relation Four = DFJoint Four, AttributeSet ABC
     public Relation relation04() {
         return new Relation(attrJntABC(), dfJoint04());
     }
         
-    //Relation Five = DFJoint Five, AttributeJoint ABC
+    //Relation Five = DFJoint Five, AttributeSet ABC
     public Relation relation05() {
         return new Relation(attrJntABC(), dfJoint05());
     }
     
-    //Relation Six = DFJoint Six, AttributeJoint ABCDE -> Key:
+    //Relation Six = DFJoint Six, AttributeSet ABCDE -> Key:
         public Relation relation06() {
             return new Relation(attrJntABCDE(), dfJoint06());
         }
 
-    //Relation Seven = DFJoint Seven, AttributeJoint ABCD -> Key:
+    //Relation Seven = DFJoint Seven, AttributeSet ABCD -> Key:
     public Relation relation07() {
         return new Relation(attrJntABCD(), dfJoint07());
     }
     
-    //Relation Eight = DFJoint Eight, AttributeJoint ABCD -> Key:
+    //Relation Eight = DFJoint Eight, AttributeSet ABCD -> Key:
     public Relation relation08() {
         return new Relation(attrJntABCD(), dfJoint08());
     }
     
-    //Relation Nine = DFJoint Nine, AttributeJoint ABC -> Key: AB
+    //Relation Nine = DFJoint Nine, AttributeSet ABC -> Key: AB
     public Relation relation09() {
         return new Relation(attrJntABC(), dfJoint09());
     }

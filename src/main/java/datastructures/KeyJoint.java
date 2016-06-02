@@ -13,8 +13,8 @@ import java.util.logging.Logger;
  * @author Pavel Nichita
  *
  */
-public class KeyJoint implements Iterable<AttributeJoint> {
-    private List<AttributeJoint> keys;
+public class KeyJoint implements Iterable<AttributeSet> {
+    private List<AttributeSet> keys;
     private static final Logger LOG = Logger.getLogger(KeyJoint.class.getName());
 
     /**
@@ -27,20 +27,20 @@ public class KeyJoint implements Iterable<AttributeJoint> {
     /**
      * Constructs an list of AttributesJoint representing Relation keys.
      * 
-     * Every AttributeJoint from {@code keyJoint} must be a key.
+     * Every AttributeSet from {@code keyJoint} must be a key.
      * 
      * @param keyJoint An array of String object.
      */
-    public KeyJoint(List<AttributeJoint> keyJoint) {
+    public KeyJoint(List<AttributeSet> keyJoint) {
         keys = new ArrayList<>(keyJoint);
     }
 
     /**
-     * Returns a list of AttributeJoint objects representing keys of a Relation.
+     * Returns a list of AttributeSet objects representing keys of a Relation.
      * 
-     * @return a list of AttributeJoint objects representing keys of a Relation.
+     * @return a list of AttributeSet objects representing keys of a Relation.
      */
-    public List<AttributeJoint> getKeyJoint() {
+    public List<AttributeSet> getKeyJoint() {
         return keys;
     }
     
@@ -68,25 +68,25 @@ public class KeyJoint implements Iterable<AttributeJoint> {
     }
     
     /**
-     * Adds a new key (AttributeJoint) the this list.
+     * Adds a new key (AttributeSet) the this list.
      * 
      * If the list is not instantiated, instantiates it.
      * 
      * @param key key to be added.
      */
-    public void addKey(AttributeJoint key) {
+    public void addKey(AttributeSet key) {
         if (this.keys == null)
             this.keys = new ArrayList<>();
         this.keys.add(key);
     }
     
     /**
-     * Returns an Iterator other the AttributeJoint objects list.
+     * Returns an Iterator other the AttributeSet objects list.
      * 
-     * @return an iterator other the AttributeJoint objects list.
+     * @return an iterator other the AttributeSet objects list.
      */
     @Override
-    public Iterator<AttributeJoint> iterator() {
+    public Iterator<AttributeSet> iterator() {
         return this.keys.iterator();
     }
     
@@ -113,7 +113,7 @@ public class KeyJoint implements Iterable<AttributeJoint> {
      * @param index the position of key to return.
      * @return the key from position {@code index}
      */
-    public AttributeJoint getKey(int index) {
+    public AttributeSet getKey(int index) {
         try {
             return this.keys.get(index);
         }

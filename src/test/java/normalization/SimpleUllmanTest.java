@@ -13,9 +13,9 @@ import normalization.TestUtils;
 /**
  * @author Pavel Nichita
  * 
- * Tests for {@link normalization.Normalization#simpleUllman(datastructures.AttributeJoint, datastructures.DFJoint)}.
+ * Tests for {@link normalization.Normalization#simpleUllman(datastructures.AttributeSet, datastructures.DFJoint)}.
  * For this tests we use a directly DFJoints (not a Relations) to calculate the closure
- * of an AttributeJoint.
+ * of an AttributeSet.
  */
 public class SimpleUllmanTest {
     private SetUpClass testObject;

@@ -243,8 +243,8 @@ public class DFJoint implements Iterable<ADependency> {
      * 
      * @return a list with all unique attributes in this object.
      */
-    public AttributeJoint getAttributesDFJoint() {
-        AttributeJoint attrJoint = new AttributeJoint();
+    public AttributeSet getAttributesDFJoint() {
+        AttributeSet attrJoint = new AttributeSet();
         for (ADependency obj : this.df) {
                 attrJoint.addAttributes(obj.getAntecedent());
                 attrJoint.addAttributes(obj.getConsequent());
@@ -308,12 +308,12 @@ public class DFJoint implements Iterable<ADependency> {
         DFJoint regroupedDFJoint = new DFJoint();
         for (int i = 0; i < copyDFJoint.size(); i++) {
             ADependency dfI = copyDFJoint.get(i);
-            AttributeJoint antecedentI = dfI.getAntecedent();
-            AttributeJoint regroupedConsequent = new AttributeJoint(dfI.getConsequent());
+            AttributeSet antecedentI = dfI.getAntecedent();
+            AttributeSet regroupedConsequent = new AttributeSet(dfI.getConsequent());
             for (int j = i + 1; j < copyDFJoint.size(); j++) {
                 ADependency dfJ = copyDFJoint.get(j);
                 if (dfI.getClass() == dfJ.getClass()){
-                    AttributeJoint antecedentJ = dfJ.getAntecedent();
+                    AttributeSet antecedentJ = dfJ.getAntecedent();
                     if (antecedentI.equals(antecedentJ)) {
                         regroupedConsequent.addAttributes(dfJ.getConsequent());
                         copyDFJoint.remove(j);
@@ -343,8 +343,8 @@ public class DFJoint implements Iterable<ADependency> {
         List<RareElement> rareElVector = new ArrayList<>();
         if (this.df.size() > 1) {
             for(ADependency fd : this.df) {
-                AttributeJoint antecedent = fd.getAntecedent();
-                AttributeJoint consecuent = fd.getConsequent();
+                AttributeSet antecedent = fd.getAntecedent();
+                AttributeSet consecuent = fd.getConsequent();
                 if (antecedent.getSize() != 1) {
                     for (Attribute attr : antecedent) {
                         if (attr.isRareInAntecedent(fd, this))
@@ -426,11 +426,11 @@ public class DFJoint implements Iterable<ADependency> {
      * @param attrJoint attribute on who to project.
      * @return a new DFJoint with implied dependencies.
      */
-    public DFJoint projectionOnAttributeJoint(AttributeJoint attrJoint) {
+    public DFJoint projectionOnAttributeJoint(AttributeSet attrJoint) {
         DFJoint hiddenDF = this.getHiddenDF();
         DFJoint result = new DFJoint();
-        AttributeJoint oldAntecedent;
-        AttributeJoint oldConsequent;
+        AttributeSet oldAntecedent;
+        AttributeSet oldConsequent;
         
         for (ADependency item : hiddenDF) {
             if (item.getClass() == new FunctionalDependency().getClass()){
@@ -443,16 +443,16 @@ public class DFJoint implements Iterable<ADependency> {
                 if (!oldAntecedent.isContained(attrJoint) && 
                         oldConsequent.isContained(attrJoint)) {
                     boolean added = false;
-                    ArrayList<AttributeJoint> newAntecedentElements = new ArrayList<>();
-                    AttributeJoint newAntecedent = oldAntecedent.intersect(attrJoint);
-                    AttributeJoint substract = oldAntecedent.substract(attrJoint);
+                    ArrayList<AttributeSet> newAntecedentElements = new ArrayList<>();
+                    AttributeSet newAntecedent = oldAntecedent.intersect(attrJoint);
+                    AttributeSet substract = oldAntecedent.substract(attrJoint);
                     for (ADependency dfConsequent : this.df) {
                         if (substract.isContained(dfConsequent.getConsequent())) {
                             newAntecedentElements.add(dfConsequent.getAntecedent());
                         }
                     }
                     for (int i = 0; i < newAntecedentElements.size(); i++) {
-                        AttributeJoint attrJnt = newAntecedentElements.get(i);
+                        AttributeSet attrJnt = newAntecedentElements.get(i);
                         if (!attrJnt.isContained(oldConsequent)) {
                             newAntecedent.addAttributes(attrJnt);
                             newAntecedentElements.remove(attrJnt);
@@ -460,7 +460,7 @@ public class DFJoint implements Iterable<ADependency> {
                         }
                     }
                     if (!added) {
-                        for (AttributeJoint attrJnt : newAntecedentElements) {
+                        for (AttributeSet attrJnt : newAntecedentElements) {
                             if (attrJnt.isContained(oldConsequent)) {
                                 newAntecedent.addAttributes(attrJnt);
                                 added = true;
@@ -476,10 +476,10 @@ public class DFJoint implements Iterable<ADependency> {
                 }
                 if (oldAntecedent.isContained(attrJoint) && 
                         !oldConsequent.isContained(attrJoint)) {
-                    AttributeJoint newConsequent = oldConsequent.intersect(attrJoint);
+                    AttributeSet newConsequent = oldConsequent.intersect(attrJoint);
                     
                     if (newConsequent.isNull()) {
-                        AttributeJoint substract = oldConsequent.substract(attrJoint);
+                        AttributeSet substract = oldConsequent.substract(attrJoint);
                         for (ADependency dfAntecedent : this.df)
                             if (substract.isContained(dfAntecedent.getAntecedent()))
                                 newConsequent.addAttributes(dfAntecedent.getAntecedent());

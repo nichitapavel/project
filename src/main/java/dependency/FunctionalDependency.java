@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import datastructures.Attribute;
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 import datastructures.KeyJoint;
 import datastructures.Relation;
@@ -40,10 +40,10 @@ public class FunctionalDependency extends PluralDependency {
     /**
      * Constructs a FunctionalDependency with antecedent and consequent by calling inherit method.
      * 
-     * @param antecedent AttributeJoint representing the left side of a dependency.
-     * @param consequent AttributeJoint representing the right side of a dependency.
+     * @param antecedent AttributeSet representing the left side of a dependency.
+     * @param consequent AttributeSet representing the right side of a dependency.
      */
-    public FunctionalDependency(AttributeJoint antecedent, AttributeJoint consequent) {
+    public FunctionalDependency(AttributeSet antecedent, AttributeSet consequent) {
         super(antecedent, consequent);
     }
 
@@ -129,7 +129,7 @@ public class FunctionalDependency extends PluralDependency {
     @Override
     public void clearTrivialElements() {
         try {
-            AttributeJoint newConsequent = new AttributeJoint();
+            AttributeSet newConsequent = new AttributeSet();
             for (Attribute attr : super.consequent)
                 if (!attr.isContained(super.antecedent))
                     newConsequent.addAttributes(attr);
@@ -167,7 +167,7 @@ public class FunctionalDependency extends PluralDependency {
     @Override
     public boolean belongsTo(DFJoint dfJoint, Relation relation) {
         DFJoint hiddenDF = dfJoint.getHiddenDF();
-        AttributeJoint equivalentAttrJoint = Normalization.simpleUllman(super.antecedent, hiddenDF);
+        AttributeSet equivalentAttrJoint = Normalization.simpleUllman(super.antecedent, hiddenDF);
         return super.consequent.isContained(equivalentAttrJoint);
     }
     
@@ -209,7 +209,7 @@ public class FunctionalDependency extends PluralDependency {
         if (newKeys == null)
             newKeys = relation.calculateKeyJoint();
 
-        AttributeJoint ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        AttributeSet ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
         if (!relation.getAttrJoint().equals(ullman) &&
                 !super.consequent.isPartOf(newKeys) &&
                 super.antecedent.isPartOf(newKeys))
@@ -235,7 +235,7 @@ public class FunctionalDependency extends PluralDependency {
         if (newKeys == null)
             newKeys = relation.calculateKeyJoint();
         
-        AttributeJoint ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        AttributeSet ullman = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
         if (!relation.getAttrJoint().equals(ullman) && !super.consequent.isPartOf(newKeys))
             return false;
         return true;
@@ -253,7 +253,7 @@ public class FunctionalDependency extends PluralDependency {
      */
     @Override
     public boolean isBCNF(Relation relation) {
-        AttributeJoint ullmanResult = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
+        AttributeSet ullmanResult = Normalization.simpleUllman(super.antecedent, relation.getDFJoint());
         if (!relation.getAttrJoint().equals(ullmanResult))
             return false;
         return true;

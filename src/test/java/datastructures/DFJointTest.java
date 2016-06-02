@@ -135,7 +135,7 @@ public class DFJointTest {
         String [] antecedent = {"A"};
         String [] consequent = {"B", "C"};
         FunctionalDependency expected = new FunctionalDependency(
-                new AttributeJoint(antecedent), new AttributeJoint(consequent)
+                new AttributeSet(antecedent), new AttributeSet(consequent)
                 );
         assertEquals(expected, dfJoint.getDFJoint().get(0));
     }
@@ -486,8 +486,8 @@ public class DFJointTest {
      */
     @Test
     public void testGetAttributesDFJointTest() {
-        AttributeJoint attrJointFromDF = dfJoint.getAttributesDFJoint();
-        AttributeJoint attrJoint = this.setUpObject.attrJntABCDE();
+        AttributeSet attrJointFromDF = dfJoint.getAttributesDFJoint();
+        AttributeSet attrJoint = this.setUpObject.attrJntABCDE();
         assertEquals(attrJoint, attrJointFromDF);
     }
     
@@ -497,8 +497,8 @@ public class DFJointTest {
      */
     @Test
     public void testGetAttributesFirstDFJointTest() {
-        AttributeJoint attrJointFromDF = firstDFJoint.getAttributesDFJoint();
-        AttributeJoint attrJoint = this.setUpObject.attrJntABC();
+        AttributeSet attrJointFromDF = firstDFJoint.getAttributesDFJoint();
+        AttributeSet attrJoint = this.setUpObject.attrJntABC();
         assertEquals(attrJoint, attrJointFromDF);
     }
     
@@ -508,8 +508,8 @@ public class DFJointTest {
      */
     @Test
     public void testGetAttributesSecondDFJointTest() {
-        AttributeJoint attrJointFromDF = secondDFJoint.getAttributesDFJoint();
-        AttributeJoint attrJoint = this.setUpObject.attrJntABC();
+        AttributeSet attrJointFromDF = secondDFJoint.getAttributesDFJoint();
+        AttributeSet attrJoint = this.setUpObject.attrJntABC();
         assertEquals(attrJoint, attrJointFromDF);
     }
     

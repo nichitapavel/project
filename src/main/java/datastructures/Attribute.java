@@ -162,10 +162,10 @@ public class Attribute implements Comparable<Attribute>{
      * method to see if they are equal, if positive returns true. If none is equals returns
      * false at the end. Only checks for the value of this object.
      * 
-     * @param attrJoint AttributeJoint object where to check if it is part of.
-     * @return true if this attribute is part of an AttributeJoint object, false otherwise.
+     * @param attrJoint AttributeSet object where to check if it is part of.
+     * @return true if this attribute is part of an AttributeSet object, false otherwise.
      */
-    public boolean isContained(AttributeJoint attrJoint) {
+    public boolean isContained(AttributeSet attrJoint) {
         if (attrJoint.getAttributeJoint() == null)
             return false;
         for (Attribute obj : attrJoint.getAttributeJoint())
@@ -182,9 +182,9 @@ public class Attribute implements Comparable<Attribute>{
      * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
      */
     public boolean isRareInAntecedent(ADependency fd, DFJoint dfJoint) {
-        AttributeJoint ullman = new AttributeJoint(fd.getAntecedent());
+        AttributeSet ullman = new AttributeSet(fd.getAntecedent());
         ullman.removeAttributes(this);
-        AttributeJoint ullmanResult = Normalization.simpleUllman(ullman, dfJoint);
+        AttributeSet ullmanResult = Normalization.simpleUllman(ullman, dfJoint);
         if (fd.getConsequent().isContained(ullmanResult))
             return true;
         return false;
@@ -198,15 +198,15 @@ public class Attribute implements Comparable<Attribute>{
      * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
      */
     public boolean isRareInConsequent(ADependency fd, DFJoint dfJoint) {
-        AttributeJoint consequent = fd.getConsequent();
-        AttributeJoint antecedent = fd.getAntecedent();
-        AttributeJoint newConsecuent = new AttributeJoint(consequent);
+        AttributeSet consequent = fd.getConsequent();
+        AttributeSet antecedent = fd.getAntecedent();
+        AttributeSet newConsecuent = new AttributeSet(consequent);
         newConsecuent.removeAttributes(this);
         DFJoint dfJointPrima = new DFJoint(dfJoint);                    
         dfJointPrima.removeDF(fd);
         ADependency newFD = new FunctionalDependency(antecedent, newConsecuent);
         dfJointPrima.addDependency(newFD);
-        AttributeJoint ullmanResult = Normalization.simpleUllman(antecedent, dfJointPrima);
+        AttributeSet ullmanResult = Normalization.simpleUllman(antecedent, dfJointPrima);
         if (consequent.isContained(ullmanResult))
             return true;
         return false;

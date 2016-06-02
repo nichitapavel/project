@@ -6,7 +6,7 @@ package dependency;
 import java.util.List;
 
 import datastructures.Attribute;
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 import datastructures.KeyJoint;
 import datastructures.Relation;
@@ -16,8 +16,8 @@ import datastructures.Relation;
  *
  */
 public abstract class ADependency {
-    protected AttributeJoint antecedent;
-    protected AttributeJoint consequent;
+    protected AttributeSet antecedent;
+    protected AttributeSet consequent;
     
     /**
      * Empty constructor.
@@ -29,12 +29,12 @@ public abstract class ADependency {
     /**
      * Constructs a Abstract Dependency with antecedent and consequent.
      * 
-     * @param antecedent AttributeJoint representing the left side of a dependency.
-     * @param consequent AttributeJoint representing the right side of a dependency.
+     * @param antecedent AttributeSet representing the left side of a dependency.
+     * @param consequent AttributeSet representing the right side of a dependency.
      */
-    public ADependency(AttributeJoint antecedent, AttributeJoint consequent) {
-        this.antecedent = new AttributeJoint(antecedent);
-        this.consequent = new AttributeJoint(consequent);
+    public ADependency(AttributeSet antecedent, AttributeSet consequent) {
+        this.antecedent = new AttributeSet(antecedent);
+        this.consequent = new AttributeSet(consequent);
         this.antecedent.removeDuplicatedAttribute();
         this.consequent.removeDuplicatedAttribute();
     }
@@ -42,36 +42,36 @@ public abstract class ADependency {
     /**
      * Returns the left side of a dependency.
      * 
-     * @return an AttributeJoint representing the left side of a dependency.
+     * @return an AttributeSet representing the left side of a dependency.
      */
-    public AttributeJoint getAntecedent() {
+    public AttributeSet getAntecedent() {
         return this.antecedent;
     }
     
     /**
      * Returns the right side of a dependency.
      * 
-     * @return an AttributeJoint representing the right side of a dependency.
+     * @return an AttributeSet representing the right side of a dependency.
      */
-    public AttributeJoint getConsequent() {
+    public AttributeSet getConsequent() {
         return this.consequent;
     }
     
     /**
      * Sets the left side of a dependency.
      * 
-     * @param antecedent the AttributeJoint representing the left side of a dependency.
+     * @param antecedent the AttributeSet representing the left side of a dependency.
      */
-    public void setAntecedent(AttributeJoint antecedent) {
+    public void setAntecedent(AttributeSet antecedent) {
         this.antecedent = antecedent;
     }
     
     /**
      * Sets the right side of a dependency.
      * 
-     * @param consequent the AttributeJoint representing the right side of a dependency.
+     * @param consequent the AttributeSet representing the right side of a dependency.
      */    
-    public void setConsequent(AttributeJoint consequent) {
+    public void setConsequent(AttributeSet consequent) {
         this.consequent = consequent;
     }
 
@@ -79,7 +79,7 @@ public abstract class ADependency {
      * Removes an Attribute from the left side.
      * 
      * It's a wrapper that calls a private function that calls
-     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * AttributeSet {@link datastructures.AttributeSet#removeAttributes(Attribute)}}
      * with {@code attr} as parameter.
      * 
      * @param attr The Attribute to be removed.
@@ -89,15 +89,15 @@ public abstract class ADependency {
     }
     
     /**
-     * Removes an AttributeJoint from the left side.
+     * Removes an AttributeSet from the left side.
      * 
      * It's a wrapper that calls a private function that calls
-     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}}
+     * AttributeSet {@link datastructures.AttributeSet#removeAttributes(AttributeSet)}}
      * with {@code attr} as parameter.
      * 
-     * @param attr The AttributeJoint to be removed.
+     * @param attr The AttributeSet to be removed.
      */
-    public void removeAttributeFromAntecedent(AttributeJoint attr) {
+    public void removeAttributeFromAntecedent(AttributeSet attr) {
         removeAttributes(attr, antecedent);
     }
     
@@ -105,7 +105,7 @@ public abstract class ADependency {
      * Removes an Attribute from the right side.
      * 
      * It's a wrapper that calls a private function that calls
-     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * AttributeSet {@link datastructures.AttributeSet#removeAttributes(Attribute)}}
      * with {@code attr} as parameter.
      * 
      * @param attr The Attribute to be removed.
@@ -115,39 +115,39 @@ public abstract class ADependency {
     }
     
     /**
-     * Removes an AttributeJoint from the right side.
+     * Removes an AttributeSet from the right side.
      * 
      * It's a wrapper that calls a private function that calls
-     * AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(AttributeJoint)}}
+     * AttributeSet {@link datastructures.AttributeSet#removeAttributes(AttributeSet)}}
      * with {@code attr} as parameter.
      * 
-     * @param attr The AttributeJoint to be removed.
+     * @param attr The AttributeSet to be removed.
      */
-    public void removeAttributeFromConsequent(AttributeJoint attr) {
+    public void removeAttributeFromConsequent(AttributeSet attr) {
         removeAttributes(attr, this.consequent);
     }
    
     /**
      * Removes an Attribute from the left or right side.
      * 
-     * It's a wrapper that calls AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * It's a wrapper that calls AttributeSet {@link datastructures.AttributeSet#removeAttributes(Attribute)}}
      * with {@code attr} as parameter.
      * 
      * @param attr The Attribute to be removed.
      */
-    private void removeAttributes(Attribute attr, AttributeJoint attrJoint){
+    private void removeAttributes(Attribute attr, AttributeSet attrJoint){
         attrJoint.removeAttributes(attr);       
     }
     
     /**
-     * Removes an AttributeJoint from the left or right side.
+     * Removes an AttributeSet from the left or right side.
      * 
-     * It's a wrapper that calls AttributeJoint {@link datastructures.AttributeJoint#removeAttributes(Attribute)}}
+     * It's a wrapper that calls AttributeSet {@link datastructures.AttributeSet#removeAttributes(Attribute)}}
      * with {@code attr} as parameter.
      * 
-     * @param attr The AttributeJoint to be removed.
+     * @param attr The AttributeSet to be removed.
      */
-    private void removeAttributes(AttributeJoint attr, AttributeJoint attrJoint){
+    private void removeAttributes(AttributeSet attr, AttributeSet attrJoint){
         attrJoint.removeAttributes(attr);       
     }
     
@@ -176,12 +176,12 @@ public abstract class ADependency {
     }
     
     /**
-     * Return an AttributeJoint with all Attributes from this dependency.
+     * Return an AttributeSet with all Attributes from this dependency.
      * 
-     * @return an AttributeJoint with all Attributes from this dependency.
+     * @return an AttributeSet with all Attributes from this dependency.
      */
-    public AttributeJoint getAttributeJoint() {
-        AttributeJoint attrJoint = new AttributeJoint(this.antecedent);
+    public AttributeSet getAttributeJoint() {
+        AttributeSet attrJoint = new AttributeSet(this.antecedent);
         attrJoint.addAttributes(consequent);
         return attrJoint;
     }

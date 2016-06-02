@@ -24,7 +24,7 @@ import normalization.Normalization;
  */
 public class Relation {
     private String name;
-    private AttributeJoint attrJoint;
+    private AttributeSet attrJoint;
     private DFJoint dfJoint;
     private static final Logger LOG = Logger.getLogger(Relation.class.getName());
     
@@ -42,8 +42,8 @@ public class Relation {
      * @param attrJoint The list of attributes.
      * @param dfJoint The DFJoint of this Relation. 
      */
-    public Relation(AttributeJoint attrJoint, DFJoint dfJoint) {
-        this.attrJoint = new AttributeJoint(attrJoint);
+    public Relation(AttributeSet attrJoint, DFJoint dfJoint) {
+        this.attrJoint = new AttributeSet(attrJoint);
         this.dfJoint = new DFJoint(dfJoint);
     }
     
@@ -52,7 +52,7 @@ public class Relation {
      * 
      * @return the list of attributes of this Relation.
      */
-    public AttributeJoint getAttrJoint() {
+    public AttributeSet getAttrJoint() {
         return this.attrJoint;
     }
 
@@ -79,8 +79,8 @@ public class Relation {
      * 
      * @param attrJoint The attribute list of this Relation.
      */
-    public void settAttrJoint(AttributeJoint attrJoint) {
-        this.attrJoint = new AttributeJoint(attrJoint);
+    public void settAttrJoint(AttributeSet attrJoint) {
+        this.attrJoint = new AttributeSet(attrJoint);
     }
 
     /**
@@ -197,13 +197,13 @@ public class Relation {
      */
     public KeyJoint calculateKeyJoint() {
         KeyJoint result = new KeyJoint();
-        AttributeJoint attrJointToCheck;
-        AttributeJoint ullman;
-        AttributeJoint nonKeyAttributes = new AttributeJoint();
-        List<AttributeJoint> list = new ArrayList<>();
+        AttributeSet attrJointToCheck;
+        AttributeSet ullman;
+        AttributeSet nonKeyAttributes = new AttributeSet();
+        List<AttributeSet> list = new ArrayList<>();
         
         for(Attribute attr : this.attrJoint) {
-            attrJointToCheck = new AttributeJoint();
+            attrJointToCheck = new AttributeSet();
             attrJointToCheck.addAttributes(attr);
             ullman = Normalization.simpleUllman(attrJointToCheck, this.dfJoint);
             if(!ullman.equals(this.attrJoint)) {
@@ -217,12 +217,12 @@ public class Relation {
         
         int i = 0;
         do {
-            AttributeJoint attrJointAux = list.get(i);
+            AttributeSet attrJointAux = list.get(i);
             Attribute lastAttribute = attrJointAux.getLastAttribute();
             for (int j = nonKeyAttributes.getAttributePosition(lastAttribute) + 1;
                     j < nonKeyAttributes.getSize();
                     j++) {
-                attrJointToCheck = new AttributeJoint(attrJointAux);
+                attrJointToCheck = new AttributeSet(attrJointAux);
                 attrJointToCheck.addAttributes(nonKeyAttributes.getAttributeAt(j));
                 if (!attrJointToCheck.containsJoinsFrom(result)) {
                     ullman = Normalization.simpleUllman(attrJointToCheck, this.dfJoint);
@@ -348,12 +348,12 @@ public class Relation {
     /**
      * Splits this relation in two relations using a dependency as a cutter.
      * 
-     * The first relation has the attributes of the dependency as AttributeJoint
+     * The first relation has the attributes of the dependency as AttributeSet
      * and as DFJoint is the result of projecting this relation DFJoint on
-     * the AttributeJoint of first relation.
+     * the AttributeSet of first relation.
      * The second relation has all attributes from this relation expect the consequent
-     * attributes from the dependency as AttributeJoint and as DFJoint is the result 
-     * of projecting this relation DFJoint on the AttributeJoint of second relation.
+     * attributes from the dependency as AttributeSet and as DFJoint is the result 
+     * of projecting this relation DFJoint on the AttributeSet of second relation.
      * 
      * @param fd The dependency that act's as a cutter.
      * @return return a list with two relations that resulted from the process.
@@ -368,7 +368,7 @@ public class Relation {
         first.setDFJoint(this.dfJoint.projectionOnAttributeJoint(fd.getAttributeJoint()));
         
         Relation second = new Relation();
-        AttributeJoint newAttrJoint = new AttributeJoint(this.attrJoint);
+        AttributeSet newAttrJoint = new AttributeSet(this.attrJoint);
         newAttrJoint.removeAttributes(fd.getConsequent());
         second.settAttrJoint(newAttrJoint);
         relationVector.add(second);
@@ -381,14 +381,14 @@ public class Relation {
     /**
      * Returns a Relation that is a subset of this relation.
      * 
-     *  Sets AttributeJoint of returned relation the AttributeJoint
+     *  Sets AttributeSet of returned relation the AttributeSet
      *  received as Key, as DFJoint makes a projection of this relations 
-     *  DFJoint using AttributeJoint received as Key.
+     *  DFJoint using AttributeSet received as Key.
      *  
-     * @param attrJoint The AttributeJoint received as Key.
+     * @param attrJoint The AttributeSet received as Key.
      * @return a Relation that is a subset of this relation.
      */
-    public Relation splitByKey(AttributeJoint attrJoint) {
+    public Relation splitByKey(AttributeSet attrJoint) {
         Relation r = new Relation();
         r.settAttrJoint(attrJoint);
         r.setDFJoint(this.dfJoint.projectionOnAttributeJoint(attrJoint));

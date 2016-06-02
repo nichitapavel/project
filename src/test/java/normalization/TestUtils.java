@@ -3,7 +3,7 @@
  */
 package normalization;
 
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 
 import static org.junit.Assert.*;
@@ -19,8 +19,8 @@ public final class TestUtils {
     }
     
     public static void simpleUllmanTest(String[] attr, String[] result, DFJoint dfJoint) {
-        AttributeJoint cierre = new AttributeJoint(attr);
-        AttributeJoint res = new AttributeJoint(result);
+        AttributeSet cierre = new AttributeSet(attr);
+        AttributeSet res = new AttributeSet(result);
         assertEquals(res, Normalization.simpleUllman(cierre, dfJoint));
     }
 }

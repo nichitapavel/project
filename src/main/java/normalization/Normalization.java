@@ -6,7 +6,7 @@ package normalization;
 import java.util.ArrayList;
 import java.util.List;
 
-import datastructures.AttributeJoint;
+import datastructures.AttributeSet;
 import datastructures.DFJoint;
 import datastructures.KeyJoint;
 import datastructures.Relation;
@@ -33,8 +33,8 @@ public final class Normalization {
      * @param dfJoint Where to calculate.
      * @return an attribute joint with all the attributes implied.
      */
-    public static AttributeJoint simpleUllman(AttributeJoint attrJoint, DFJoint dfJoint){
-        AttributeJoint result = new AttributeJoint(attrJoint);
+    public static AttributeSet simpleUllman(AttributeSet attrJoint, DFJoint dfJoint){
+        AttributeSet result = new AttributeSet(attrJoint);
         boolean isChanged;
         
         do {
@@ -120,7 +120,7 @@ public final class Normalization {
                 projectionOnKey = true;
         }
         if (!projectionOnKey) {
-            AttributeJoint key = keyJoint.getKey(0);
+            AttributeSet key = keyJoint.getKey(0);
             normalizedRelation.add(relation.splitByKey(key));
         }
 

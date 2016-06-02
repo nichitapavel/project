@@ -20,7 +20,7 @@ import org.junit.runners.MethodSorters;
 public class KeyJointTest {
     private KeyJoint nullKeyJoint;
     private KeyJoint keyJoint;
-    private ArrayList<AttributeJoint> keysVector;
+    private ArrayList<AttributeSet> keysVector;
     private SetUpClass setUpObject;
     /**
      * 
@@ -64,10 +64,10 @@ public class KeyJointTest {
     @Test
     public void testGetterKeyJointNotEqual() {
         String [] keyStringAB = {"A", "B"};
-        AttributeJoint attrJntAB = new AttributeJoint(keyStringAB);
+        AttributeSet attrJntAB = new AttributeSet(keyStringAB);
         String [] keyStringAC = {"A", "C"};
-        AttributeJoint attrJntAC = new AttributeJoint(keyStringAC);
-        ArrayList<AttributeJoint> keysVectorAux = new ArrayList<>();
+        AttributeSet attrJntAC = new AttributeSet(keyStringAC);
+        ArrayList<AttributeSet> keysVectorAux = new ArrayList<>();
         keysVectorAux.add(attrJntAB);
         keysVectorAux.add(attrJntAC);
         KeyJoint keyJointAux = new KeyJoint(keysVector);
@@ -103,10 +103,10 @@ public class KeyJointTest {
     @Test
     public void testEqualsTrue() {
         String [] keyStringAB = {"A", "B"};
-        AttributeJoint attrJntAB = new AttributeJoint(keyStringAB);
+        AttributeSet attrJntAB = new AttributeSet(keyStringAB);
         String [] keyStringAC = {"A", "C"};
-        AttributeJoint attrJntAC = new AttributeJoint(keyStringAC);
-        ArrayList<AttributeJoint> keysVectorAux = new ArrayList<>();
+        AttributeSet attrJntAC = new AttributeSet(keyStringAC);
+        ArrayList<AttributeSet> keysVectorAux = new ArrayList<>();
         keysVectorAux.add(attrJntAB);
         keysVectorAux.add(attrJntAC);
         KeyJoint keyJointAux = new KeyJoint(keysVectorAux);
@@ -155,20 +155,20 @@ public class KeyJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.KeyJoint#addKey(datastructures.AttributeJoint)}.
+     * Test method for {@link datastructures.KeyJoint#addKey(datastructures.AttributeSet)}.
      * 
      * Adds key to a null KeyJoint.
      */
     @Test
     public void testAddKeyToNullKeyJoint() {
         nullKeyJoint.addKey(setUpObject.attrJntB());
-        ArrayList<AttributeJoint> keyVector = new ArrayList<>();
+        ArrayList<AttributeSet> keyVector = new ArrayList<>();
         keyVector.add(setUpObject.attrJntB());
         assertEquals(keyVector, nullKeyJoint.getKeyJoint());
     }
     
     /**
-     * Test method for {@link datastructures.KeyJoint#addKey(datastructures.AttributeJoint)}.
+     * Test method for {@link datastructures.KeyJoint#addKey(datastructures.AttributeSet)}.
      * 
      * Addd key {B} to {{A, B}, {A, C}}, checks if it was added.
      */
@@ -186,7 +186,7 @@ public class KeyJointTest {
      */
     @Test
     public void testIterator() {
-        for (AttributeJoint key : keyJoint) {
+        for (AttributeSet key : keyJoint) {
             assertNotNull(key);
         }
     }

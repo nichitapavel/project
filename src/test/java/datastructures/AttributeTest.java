@@ -225,16 +225,16 @@ public class AttributeTest {
     }
 
     /**
-     * Creates an AttributeJoint with these elements in it:
+     * Creates an AttributeSet with these elements in it:
      * <i>Name</i>, <i>Atributo</i> and <i>A</i>. Checks for every Attribute 
-     * if it is contained in the AttributeJoint.
+     * if it is contained in the AttributeSet.
      * 
-     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     * Test method for {@link datastructures.Attribute#isContained(AttributeSet)}.
      */
     @Test
     public void testIsContained() {
         String [] attributes = {"Name", NAMED_ATTR, "A"};
-        AttributeJoint attrJoint = new AttributeJoint(attributes);
+        AttributeSet attrJoint = new AttributeSet(attributes);
         assertTrue(namedAttribute.isContained(attrJoint));
         assertTrue(stringAttr.isContained(attrJoint));
         Attribute attrA = new Attribute("A");
@@ -242,27 +242,27 @@ public class AttributeTest {
     }
 
     /**
-     * Creates an AttributeJoint with these elements in it:
+     * Creates an AttributeSet with these elements in it:
      * Atributo and A. Checks if Attribute <i>Name</i> 
-     * is contained in the AttributeJoint. 
+     * is contained in the AttributeSet. 
      * 
-     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     * Test method for {@link datastructures.Attribute#isContained(AttributeSet)}.
      */
     @Test
     public void testIsContainedFalseAttrJoint() {
         String [] attributes = {NAMED_ATTR, "A"};
-        AttributeJoint attrJoint = new AttributeJoint(attributes);
+        AttributeSet attrJoint = new AttributeSet(attributes);
         assertFalse(namedAttribute.isContained(attrJoint));
     }
 
     /**
-     * Checks if Attribute <i>Name</i> is contained in a null AttributeJoint. 
+     * Checks if Attribute <i>Name</i> is contained in a null AttributeSet. 
      * 
-     * Test method for {@link datastructures.Attribute#isContained(AttributeJoint)}.
+     * Test method for {@link datastructures.Attribute#isContained(AttributeSet)}.
      */
     @Test
     public void testIsContainedNullAttrJoint() {
-        AttributeJoint attrJoint = new AttributeJoint();
+        AttributeSet attrJoint = new AttributeSet();
         assertFalse(namedAttribute.isContained(attrJoint));
     }
     
@@ -386,7 +386,7 @@ public class AttributeTest {
     /**
      * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
      * 
-     * Checks if C is rare in {A} to {BC} in
+     * Checks if B is rare in {A} to {BC} in
      * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
      */
     @Test
@@ -394,5 +394,17 @@ public class AttributeTest {
         Attribute attrB = this.setUpObject.attrB();
         assertFalse(attrB.isRareInConsequent(this.setUpObject.funcDepAtoBC(),
                 this.setUpObject.dfJoint01()));
+    }
+    
+    /**
+     * Test method for {@link datastructures.Attribute#toXML()}.
+     * 
+     * Checks if C is return like an XML element:
+     * <Attribute>C</Attribute>
+     */
+    @Test
+    public void testToXML() {
+        Attribute attrC = this.setUpObject.attrC();
+        //assertEquals("<Attribute>C</Attribute>", attrC.toXML());
     }
 }
