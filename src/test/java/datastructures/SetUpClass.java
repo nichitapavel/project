@@ -780,13 +780,13 @@ public class SetUpClass {
     }
     
     /******************/
-    //DFJoint
+    //FDSet
     /******************/
     
-    //DFJoint One = {A -> BC, BC -> A, BCD -> E, E -> C}
-    public DFJoint dfJoint01() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint One");
+    //FDSet One = {A -> BC, BC -> A, BCD -> E, E -> C}
+    public FDSet dfJoint01() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet One");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBCtoA());
         dfJoint.addDependency(funcDepBCDtoE());
@@ -794,20 +794,20 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Two = {A -> BC, BC -> E, CD -> A}
-    public DFJoint dfJoint02() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Two");
+    //FDSet Two = {A -> BC, BC -> E, CD -> A}
+    public FDSet dfJoint02() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Two");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBCtoE());
         dfJoint.addDependency(funcDepCDtoA());
         return dfJoint;
     }
     
-    //DFJoint Three = {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
-    public DFJoint dfJoint03() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Three");
+    //FDSet Three = {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+    public FDSet dfJoint03() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Three");
         dfJoint.addDependency(funcDepABtoC());
         dfJoint.addDependency(funcDepCtoAB());
         dfJoint.addDependency(funcDepEtoD());
@@ -819,10 +819,10 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Four = {A -> BC, B -> C, A -> B, AB -> C}
-    public DFJoint dfJoint04() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Four");
+    //FDSet Four = {A -> BC, B -> C, A -> B, AB -> C}
+    public FDSet dfJoint04() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Four");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepAtoB());
@@ -830,19 +830,19 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Five = {A -> B, B -> C}
-    public DFJoint dfJoint05() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Five");
+    //FDSet Five = {A -> B, B -> C}
+    public FDSet dfJoint05() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Five");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepBtoC());
         return dfJoint;
     }
     
-    //DFJoint Six = {AB -> D, B -> C, C -> B, B -> E}
-    public DFJoint dfJoint06() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Six");
+    //FDSet Six = {AB -> D, B -> C, C -> B, B -> E}
+    public FDSet dfJoint06() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Six");
         dfJoint.addDependency(funcDepABtoD());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepCtoB());
@@ -850,55 +850,55 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Seven = {A -> B, B -> C, C -> D}
-    public DFJoint dfJoint07() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Seven");
+    //FDSet Seven = {A -> B, B -> C, C -> D}
+    public FDSet dfJoint07() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Seven");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepCtoD());
         return dfJoint;
     }
     
-    //DFJoint Eight = {B -> C, AB -> D, C -> B}
-    public DFJoint dfJoint08() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Eight");
+    //FDSet Eight = {B -> C, AB -> D, C -> B}
+    public FDSet dfJoint08() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Eight");
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepABtoD());
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint Nine = {AB -> C}
-    public DFJoint dfJoint09() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Nine");
+    //FDSet Nine = {AB -> C}
+    public FDSet dfJoint09() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Nine");
         dfJoint.addDependency(funcDepABtoC());
         return dfJoint;
     }
     
-    //DFJoint Ten = {AB -> C, C -> A}
-    public DFJoint dfJoint10() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Ten");
+    //FDSet Ten = {AB -> C, C -> A}
+    public FDSet dfJoint10() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Ten");
         dfJoint.addDependency(funcDepABtoC());
         dfJoint.addDependency(funcDepCtoA());
         return dfJoint;
     }
     
-    //DFJoint Eleven = {C -> A}
-    public DFJoint dfJoint11() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Eleven");
+    //FDSet Eleven = {C -> A}
+    public FDSet dfJoint11() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Eleven");
         dfJoint.addDependency(funcDepCtoA());
         return dfJoint;
     }
     
-    //DFJoint Twelve = {A -> B, CD -> A, BD -> C, DE -> C}
-    public DFJoint dfJoint12() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twelve");
+    //FDSet Twelve = {A -> B, CD -> A, BD -> C, DE -> C}
+    public FDSet dfJoint12() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twelve");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepCDtoA());
         dfJoint.addDependency(funcDepBDtoC());
@@ -906,95 +906,95 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Thirteen = {A -> B}
-    public DFJoint dfJoint13() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Thirteen");
+    //FDSet Thirteen = {A -> B}
+    public FDSet dfJoint13() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Thirteen");
         dfJoint.addDependency(funcDepAtoB());
         return dfJoint;
     }
     
-    //DFJoint Fourteen = {CD -> A, AD -> C, DE -> C}
-    public DFJoint dfJoint14() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Fourteen");
+    //FDSet Fourteen = {CD -> A, AD -> C, DE -> C}
+    public FDSet dfJoint14() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Fourteen");
         dfJoint.addDependency(funcDepCDtoA());
         dfJoint.addDependency(funcDepADtoC());
         dfJoint.addDependency(funcDepDEtoC());
         return dfJoint;
     }
     
-    //DFJoint Fifteen = {CD -> A, AD -> C}
-    public DFJoint dfJoint15() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Fifteen");
+    //FDSet Fifteen = {CD -> A, AD -> C}
+    public FDSet dfJoint15() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Fifteen");
         dfJoint.addDependency(funcDepCDtoA());
         dfJoint.addDependency(funcDepADtoC());
         return dfJoint;
     }
     
-    //DFJoint Sixteen = {DE -> C}
-    public DFJoint dfJoint16() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Sixteen");
+    //FDSet Sixteen = {DE -> C}
+    public FDSet dfJoint16() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Sixteen");
         dfJoint.addDependency(funcDepDEtoC());
         return dfJoint;
     }
     
-    //DFJoint Seventeen = {BCD -> E, E -> C}
-    public DFJoint dfJoint17() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Seventeen");
+    //FDSet Seventeen = {BCD -> E, E -> C}
+    public FDSet dfJoint17() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Seventeen");
         dfJoint.addDependency(funcDepBCDtoE());
         dfJoint.addDependency(funcDepEtoC());
         return dfJoint;
     }
     
-    //DFJoint Eighteen = {E -> C}
-    public DFJoint dfJoint18() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Eighteen");
+    //FDSet Eighteen = {E -> C}
+    public FDSet dfJoint18() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Eighteen");
         dfJoint.addDependency(funcDepEtoC());
         return dfJoint;
     }
     
-    //DFJoint Nineteen = {AB -> C, C -> B}
-    public DFJoint dfJoint19() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Nineteen");
+    //FDSet Nineteen = {AB -> C, C -> B}
+    public FDSet dfJoint19() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Nineteen");
         dfJoint.addDependency(funcDepABtoC());
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint Twenty = {C -> B}
-    public DFJoint dfJoint20() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twenty");
+    //FDSet Twenty = {C -> B}
+    public FDSet dfJoint20() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twenty");
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint Twentyone = {A -> C}
-    public DFJoint dfJoint21() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentyone");
+    //FDSet Twentyone = {A -> C}
+    public FDSet dfJoint21() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentyone");
         dfJoint.addDependency(funcDepAtoC());
         return dfJoint;
     }
     
-    //DFJoint Twentytwo = {B -> C}
-    public DFJoint dfJoint22() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentytwo");
+    //FDSet Twentytwo = {B -> C}
+    public FDSet dfJoint22() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentytwo");
         dfJoint.addDependency(funcDepBtoC());
         return dfJoint;
     }
     
-    //DFJoint Twentythree = {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H}
-    public DFJoint dfJoint23() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentythree");
+    //FDSet Twentythree = {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H}
+    public FDSet dfJoint23() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentythree");
         dfJoint.addDependency(funcDepABtoC());
         dfJoint.addDependency(funcDepCtoAB());
         dfJoint.addDependency(funcDepEtoDF());
@@ -1005,20 +1005,20 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Twentyfour = {A -> BC, B -> C, AB -> C}
-    public DFJoint dfJoint24() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentyfour");
+    //FDSet Twentyfour = {A -> BC, B -> C, AB -> C}
+    public FDSet dfJoint24() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentyfour");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepABtoC());
         return dfJoint;
     }
     
-    //DFJoint Twentyfive = {A -> B, A -> C, A -> D, D -> E}
-    public DFJoint dfJoint25() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentyfive");
+    //FDSet Twentyfive = {A -> B, A -> C, A -> D, D -> E}
+    public FDSet dfJoint25() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentyfive");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepAtoC());
         dfJoint.addDependency(funcDepAtoD());
@@ -1026,252 +1026,252 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //DFJoint Twentysix = {A -> BC, D -> E}
-    public DFJoint dfJoint26() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentysix");
+    //FDSet Twentysix = {A -> BC, D -> E}
+    public FDSet dfJoint26() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentysix");
         dfJoint.addDependency(funcDepAtoBCD());
         dfJoint.addDependency(funcDepDtoE());
         return dfJoint;
     }
     
-    //DFJoint Twentyseven = {AB -> D, B -> CE, C -> B}
-    public DFJoint dfJoint27() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentyseven");
+    //FDSet Twentyseven = {AB -> D, B -> CE, C -> B}
+    public FDSet dfJoint27() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentyseven");
         dfJoint.addDependency(funcDepABtoD());
         dfJoint.addDependency(funcDepBtoCE());
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint OneMinusAtoBC = {BC -> A, BCD -> E, E -> C}
-    public DFJoint dfJoint1MinusAtoBC() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint One minus A -> BC");
+    //FDSet OneMinusAtoBC = {BC -> A, BCD -> E, E -> C}
+    public FDSet dfJoint1MinusAtoBC() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet One minus A -> BC");
         dfJoint.addDependency(funcDepBCtoA());
         dfJoint.addDependency(funcDepBCDtoE());
         dfJoint.addDependency(funcDepEtoC());
         return dfJoint;
     }
     
-    //DFJoint FiveMinusBtoC = {A -> B}
-    public DFJoint dfJoint5MinusBtoC() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Five minus B -> C");
+    //FDSet FiveMinusBtoC = {A -> B}
+    public FDSet dfJoint5MinusBtoC() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Five minus B -> C");
         dfJoint.addDependency(funcDepAtoB());
         return dfJoint;
     }
     
-    //DFJoint Twentyeight = {A -> BCD}
-    public DFJoint dfJoint28() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Twentyeight");
+    //FDSet Twentyeight = {A -> BCD}
+    public FDSet dfJoint28() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Twentyeight");
         dfJoint.addDependency(funcDepAtoBCD());
         return dfJoint;
     }
     
-    //DFJoint FourRegroupedWithoutCinAtoBC
-    public DFJoint dfJoint4ReGroupedWithoutCinAtoBC() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Four Regrouped Without C in A->BC");
+    //FDSet FourRegroupedWithoutCinAtoBC
+    public FDSet dfJoint4ReGroupedWithoutCinAtoBC() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Four Regrouped Without C in A->BC");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepABtoC());
         return dfJoint;
     }
     
-    //DFJoint FourRegroupedWithoutAinABtoC
-    public DFJoint dfJoint4RegroupedWithoutAinABtoC() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint Four Regrouped Without A in AB->C");
+    //FDSet FourRegroupedWithoutAinABtoC
+    public FDSet dfJoint4RegroupedWithoutAinABtoC() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet Four Regrouped Without A in AB->C");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBtoC());
         return dfJoint;
     }
     
-    //DFJoint AtoBC = {A -> BC}
-    public DFJoint dfJointAtoBC() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoBC");
+    //FDSet AtoBC = {A -> BC}
+    public FDSet dfJointAtoBC() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoBC");
         dfJoint.addDependency(funcDepAtoBC());
         return dfJoint;
     }
     
-    //DFJoint AtoE = {A -> E}
-    public DFJoint dfJointAtoE() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoE");
+    //FDSet AtoE = {A -> E}
+    public FDSet dfJointAtoE() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoE");
         dfJoint.addDependency(funcDepAtoE());
         return dfJoint;
     }
     
-    //DFJoint CtoA = {C -> A}
-    public DFJoint dfJointCtoA() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint CtoA");
+    //FDSet CtoA = {C -> A}
+    public FDSet dfJointCtoA() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet CtoA");
         dfJoint.addDependency(funcDepCtoA());
         return dfJoint;
     }
     
-    //DFJoint dfJoint_BtoD = {B -> D}
-    public DFJoint dfJointBtoD() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint BtoD");
+    //FDSet dfJoint_BtoD = {B -> D}
+    public FDSet dfJointBtoD() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet BtoD");
         dfJoint.addDependency(funcDepBtoD());
         return dfJoint;
     }
     
-    //DFJoint dfJoint_BtoE = {B -> E}
-    public DFJoint dfJointBtoE() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint BtoE");
+    //FDSet dfJoint_BtoE = {B -> E}
+    public FDSet dfJointBtoE() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet BtoE");
         dfJoint.addDependency(funcDepBtoE());
         return dfJoint;
     }
     
-    //DFJoint dfJoint_ABtoD_BtoC_CtoB = {AB -> D, B -> C, C -> B}
-    public DFJoint dfJointABtodBtocCtob() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint ABtoD_BtoC_CtoB");
+    //FDSet dfJoint_ABtoD_BtoC_CtoB = {AB -> D, B -> C, C -> B}
+    public FDSet dfJointABtodBtocCtob() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ABtoD_BtoC_CtoB");
         dfJoint.addDependency(funcDepABtoD());
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint dfJoint_ABtoC_CtoAB = {AB -> C, C -> AB}
-    public DFJoint dfJointABtocCtoab() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint ABtoC_CtoAB");
+    //FDSet dfJoint_ABtoC_CtoAB = {AB -> C, C -> AB}
+    public FDSet dfJointABtocCtoab() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ABtoC_CtoAB");
         dfJoint.addDependency(funcDepABtoC());
         dfJoint.addDependency(funcDepCtoAB());
         return dfJoint;
     }
     
-    //DFJoint EtoD_DtoE = {E -> D, D -> E}
-    public DFJoint dfJointEtodDtoe() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint EtoD_DtoE");
+    //FDSet EtoD_DtoE = {E -> D, D -> E}
+    public FDSet dfJointEtodDtoe() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet EtoD_DtoE");
         dfJoint.addDependency(funcDepEtoD());
         dfJoint.addDependency(funcDepDtoE());
         return dfJoint;
     }
 
-    //DFJoint EtoF_FtoE = {E -> F, F -> E}
-    public DFJoint dfJointEtofFtoe() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint EtoF_FtoE");
+    //FDSet EtoF_FtoE = {E -> F, F -> E}
+    public FDSet dfJointEtofFtoe() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet EtoF_FtoE");
         dfJoint.addDependency(funcDepEtoF());
         dfJoint.addDependency(funcDepFtoE());
         return dfJoint;
     }
     
-    //DFJoint BtoC_CtoB = {B -> C, C -> B}
-    public DFJoint dfJointBtocCtob() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint BtoC_CtoB");
+    //FDSet BtoC_CtoB = {B -> C, C -> B}
+    public FDSet dfJointBtocCtob() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet BtoC_CtoB");
         dfJoint.addDependency(funcDepBtoC());
         dfJoint.addDependency(funcDepCtoB());
         return dfJoint;
     }
     
-    //DFJoint ABtoD = {AB -> D}
-    public DFJoint dfJointABtod() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint ABtoD");
+    //FDSet ABtoD = {AB -> D}
+    public FDSet dfJointABtod() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ABtoD");
         dfJoint.addDependency(funcDepABtoD());
         return dfJoint;
     }
     
-    //DFJoint AtoBC_BCtoA = {A -> BC, BC -> A}
-    public DFJoint dfJointAtobcBCtoa() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoBC_BCtoA");
+    //FDSet AtoBC_BCtoA = {A -> BC, BC -> A}
+    public FDSet dfJointAtobcBCtoa() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoBC_BCtoA");
         dfJoint.addDependency(funcDepAtoBC());
         dfJoint.addDependency(funcDepBCtoA());
         return dfJoint;
     }
 
-    //DFJoint ADtoE = {AD -> E}
-    public DFJoint dfJointADtoe() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint ADtoE");
+    //FDSet ADtoE = {AD -> E}
+    public FDSet dfJointADtoe() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ADtoE");
         dfJoint.addDependency(funcDepADtoE());
         return dfJoint;
     }
     
-    //DFJoint ABEtoGH = {ABE -> GH}
-    public DFJoint dfJointABEtogh() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint ABEtoGH");
+    //FDSet ABEtoGH = {ABE -> GH}
+    public FDSet dfJointABEtogh() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ABEtoGH");
         dfJoint.addDependency(funcDepABEtoG());
         dfJoint.addDependency(funcDepABEtoH());
         return dfJoint;
     }
     
-    //DFJoint BCDtoE_EtoC = {BCD -> E, E -> C}
-    public DFJoint dfJointBCDtoeEtoc() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint BCDtoE_EtoC");
+    //FDSet BCDtoE_EtoC = {BCD -> E, E -> C}
+    public FDSet dfJointBCDtoeEtoc() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet BCDtoE_EtoC");
         dfJoint.addDependency(funcDepBCDtoE());
         dfJoint.addDependency(funcDepEtoC());
         return dfJoint;
     }
     
-    //DFJoint AtoB_BEtoA_ABDtoE = {A -> B, BE -> A, ABD -> E}
-    public DFJoint dfJointAtobBEtoaABDtoe() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoB_BEtoA_ABDtoE");
+    //FDSet AtoB_BEtoA_ABDtoE = {A -> B, BE -> A, ABD -> E}
+    public FDSet dfJointAtobBEtoaABDtoe() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoB_BEtoA_ABDtoE");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepBEtoA());
         dfJoint.addDependency(funcDepABDtoE());
         return dfJoint;
     }
     
-    //DFJoint CDtoE = {CD -> E}
-    public DFJoint dfJointCDtoe() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint CDtoE");
+    //FDSet CDtoE = {CD -> E}
+    public FDSet dfJointCDtoe() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet CDtoE");
         dfJoint.addDependency(funcDepCDtoE());
         return dfJoint;
     }
     
-    //DFJoint CtoD = {C -> D}
-    public DFJoint dfJointCtod() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint CtoD");
+    //FDSet CtoD = {C -> D}
+    public FDSet dfJointCtod() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet CtoD");
         dfJoint.addDependency(funcDepCtoD());
         return dfJoint;
     }
     
     //DPJoint BtoAC = {B -> AC}
-    public DFJoint dfJointBtoac() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint BtoAC");
+    public FDSet dfJointBtoac() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet BtoAC");
         dfJoint.addDependency(funcDepBtoAC());
         return dfJoint;
     }
     
-    //DFJoint AtoC = {A -> C}
-    public DFJoint dfJointAtoc() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoC");
+    //FDSet AtoC = {A -> C}
+    public FDSet dfJointAtoc() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoC");
         dfJoint.addDependency(funcDepAtoC());
         return dfJoint;
     }
     
-    //DFJoint AtoB = {A -> B}
-    public DFJoint dfJointAtob() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint AtoB");
+    //FDSet AtoB = {A -> B}
+    public FDSet dfJointAtob() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet AtoB");
         dfJoint.addDependency(funcDepAtoB());
         return dfJoint;
     }
-    //DFJoint BtoAC_CtoD = {B -> AC, C -> D}
-    public DFJoint dfJointBtoacCtod() {
-        DFJoint dfJoint = new DFJoint();
-        dfJoint.setName("DFJoint {B -> AC, C -> D}");
+    //FDSet BtoAC_CtoD = {B -> AC, C -> D}
+    public FDSet dfJointBtoacCtod() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet {B -> AC, C -> D}");
         dfJoint.addDependency(funcDepBtoAC());
         dfJoint.addDependency(funcDepCtoD());
         return dfJoint;
@@ -1357,8 +1357,8 @@ public class SetUpClass {
     /******************/
     
     //DPJoint 30 = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A ->> CD}
-    public DFJoint dpJoint30() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint30() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A ->> CD}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(funcDepCDtoA());
@@ -1370,8 +1370,8 @@ public class SetUpClass {
     }
     
     //DPJoint 30_A = {AD -> C, CD -> A}
-    public DFJoint dpJoint30A() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint30A() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {AD -> C, CD -> A}");
         dpJoint.addDependency(funcDepCDtoA());
         dpJoint.addDependency(funcDepADtoC());
@@ -1379,8 +1379,8 @@ public class SetUpClass {
     }
     
     //DPJoint 30_B = {A -> B, AE -> F}
-    public DFJoint dpJoint30B() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint30B() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, AE -> F}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(funcDepAEtoF());
@@ -1388,16 +1388,16 @@ public class SetUpClass {
     }
     
     //DPJoint 30_C = {AE -> F}
-    public DFJoint dpJoint30C() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint30C() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {AE -> F}");
         dpJoint.addDependency(funcDepAEtoF());
         return dpJoint;
     }
     
     //DPJoint 31 = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, AE -> D, A ->> CD}
-    public DFJoint dpJoint31() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint31() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, AE -> D, A ->> CD}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(funcDepCDtoA());
@@ -1410,8 +1410,8 @@ public class SetUpClass {
     }
     
     //DPJoint 31_A = {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A -> D, A -> C}
-    public DFJoint dpJoint31Equi() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint31Equi() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, CD -> A, BD -> C, AE -> F, DE -> C, A -> D, A -> C}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(funcDepCDtoA());
@@ -1424,8 +1424,8 @@ public class SetUpClass {
     }
     
     //DPJoint 32 = {A -> B, B ->> C}
-    public DFJoint dpJoint32() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint32() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, B ->> C}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(pluDepBtoC());
@@ -1433,8 +1433,8 @@ public class SetUpClass {
     }
     
     //DPJoint 33 = {A -> B, A -> C, B ->> C}
-    public DFJoint dpJoint33() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint33() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A -> B, A -> C, B ->> C}");
         dpJoint.addDependency(funcDepAtoB());
         dpJoint.addDependency(funcDepAtoC());
@@ -1443,16 +1443,16 @@ public class SetUpClass {
     }
     
     //DPJoint 34 = {B ->> C}
-    public DFJoint dpJoint34() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint34() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {B ->> C}");
         dpJoint.addDependency(pluDepBtoC());
         return dpJoint;
     }
     
     //DPJoint 35 = {D ->> F, C -> A, CD -> E, A -> B}
-    public DFJoint dpJoint35() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint35() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {D ->> F, C -> A, CD -> E, A -> B}");
         dpJoint.addDependency(pluDepDtoF());
         dpJoint.addDependency(funcDepCtoA());
@@ -1462,8 +1462,8 @@ public class SetUpClass {
     }
     
     //DPJoint 35_A = {C -> A, CD -> E, A -> B}
-    public DFJoint dpJoint35A() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint35A() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {C -> A, CD -> E, A -> B}");
         dpJoint.addDependency(funcDepCtoA());
         dpJoint.addDependency(funcDepCDtoE());
@@ -1473,8 +1473,8 @@ public class SetUpClass {
     
     
     //DPJoint 36 = {A ->> BCD, B -> AC, C -> D}
-    public DFJoint dpJoint36() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint36() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A ->> BCD, B -> AC, C -> D}");
         dpJoint.addDependency(pluDepAtoBCD());
         dpJoint.addDependency(funcDepBtoAC());
@@ -1483,17 +1483,17 @@ public class SetUpClass {
     }
     
     //DPJoint 37 = {A ->> BC, D -> C}
-    public DFJoint dpJoint37() {
-        DFJoint dpJoint = new DFJoint();
+    public FDSet dpJoint37() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {A ->> BC, D -> C}");
         dpJoint.addDependency(pluDepAtoBC());
         dpJoint.addDependency(funcDepDtoC());
         return dpJoint;
     }
     
-    //DFJoint 38 = {B -> AC, C -> D, BC ->> AD}
-    public DFJoint dpJoint38() {
-        DFJoint dpJoint = new DFJoint();
+    //FDSet 38 = {B -> AC, C -> D, BC ->> AD}
+    public FDSet dpJoint38() {
+        FDSet dpJoint = new FDSet();
         dpJoint.setName("DPJoint {B -> AC, C -> D, BC ->> AD}");
         dpJoint.addDependency(funcDepBtoAC());
         dpJoint.addDependency(funcDepCtoD());
@@ -1505,7 +1505,7 @@ public class SetUpClass {
     //RareElement
     /******************/
     
-    //C Consequent A->BC DFJoint TwentyFour
+    //C Consequent A->BC FDSet TwentyFour
     public RareElement rareElementCinAtoBCDFJoint24Consequent() {
         return new RareElement(
                 attrC(),
@@ -1514,7 +1514,7 @@ public class SetUpClass {
                 Const.CONSEQUEDENT);
     }
     
-    //A Antecedent AB->C DFJoint TwentyFour
+    //A Antecedent AB->C FDSet TwentyFour
     public RareElement rareElementAinABtoCDFJoint24Antecedent() {
         return new RareElement(
                 attrA(),
@@ -1523,7 +1523,7 @@ public class SetUpClass {
                 Const.ANTECEDENT);
     }
     
-    //B Antecedent AB->C DFJoint TwentyFour
+    //B Antecedent AB->C FDSet TwentyFour
     public RareElement rareElementBinABtoCDFJoint24Antecedent() {
         return new RareElement(
                 attrB(),
@@ -1532,7 +1532,7 @@ public class SetUpClass {
                 Const.ANTECEDENT);
     }
     
-    //C Consequent A->BC DFJoint Four
+    //C Consequent A->BC FDSet Four
     public RareElement rareElementCinAtoBCDFJoint4Consequent() {
         return new RareElement(
                 attrC(),
@@ -1540,7 +1540,7 @@ public class SetUpClass {
                 dfJoint04(),
                 Const.CONSEQUEDENT);
     }
-    //A Antecedent AB->C DFJoint Four
+    //A Antecedent AB->C FDSet Four
     public RareElement rareElementAinABtoCDFJoint4Antecedent() {
         return new RareElement(
                 attrA(),
@@ -1549,7 +1549,7 @@ public class SetUpClass {
                 Const.ANTECEDENT);
     }
 
-    //B Antecedent AB->C DFJoint Four
+    //B Antecedent AB->C FDSet Four
     public RareElement rareElementBinABtoCDFJoint4Antecedent() {
         return new RareElement(
                 attrB(),
@@ -1562,47 +1562,47 @@ public class SetUpClass {
     //Relation
     /******************/
     
-    //Relation One = DFJoint One, AttributeSet ABCDE
+    //Relation One = FDSet One, AttributeSet ABCDE
     public Relation relation01() {
         return new Relation(attrJntABCDE(), dfJoint01());
     }
     
-    //Relation Two = DFJoint Two, AttributeSet ABCDE
+    //Relation Two = FDSet Two, AttributeSet ABCDE
     public Relation relation02() {
         return new Relation(attrJntABCDE(), dfJoint02());
     }
     
-    //Relation Three = DFJoint Three, AttributeSet ABCDEFGH
+    //Relation Three = FDSet Three, AttributeSet ABCDEFGH
     public Relation relation03() {
         return new Relation(attrJntABCDEFGH(), dfJoint03());
     }
     
-    //Relation Four = DFJoint Four, AttributeSet ABC
+    //Relation Four = FDSet Four, AttributeSet ABC
     public Relation relation04() {
         return new Relation(attrJntABC(), dfJoint04());
     }
         
-    //Relation Five = DFJoint Five, AttributeSet ABC
+    //Relation Five = FDSet Five, AttributeSet ABC
     public Relation relation05() {
         return new Relation(attrJntABC(), dfJoint05());
     }
     
-    //Relation Six = DFJoint Six, AttributeSet ABCDE -> Key:
+    //Relation Six = FDSet Six, AttributeSet ABCDE -> Key:
         public Relation relation06() {
             return new Relation(attrJntABCDE(), dfJoint06());
         }
 
-    //Relation Seven = DFJoint Seven, AttributeSet ABCD -> Key:
+    //Relation Seven = FDSet Seven, AttributeSet ABCD -> Key:
     public Relation relation07() {
         return new Relation(attrJntABCD(), dfJoint07());
     }
     
-    //Relation Eight = DFJoint Eight, AttributeSet ABCD -> Key:
+    //Relation Eight = FDSet Eight, AttributeSet ABCD -> Key:
     public Relation relation08() {
         return new Relation(attrJntABCD(), dfJoint08());
     }
     
-    //Relation Nine = DFJoint Nine, AttributeSet ABC -> Key: AB
+    //Relation Nine = FDSet Nine, AttributeSet ABC -> Key: AB
     public Relation relation09() {
         return new Relation(attrJntABC(), dfJoint09());
     }
@@ -1666,7 +1666,7 @@ public class SetUpClass {
     public Relation relationAD() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntAD());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1674,7 +1674,7 @@ public class SetUpClass {
     public Relation relationBC() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntBC());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1689,7 +1689,7 @@ public class SetUpClass {
     public Relation relationAB() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntAB());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1711,7 +1711,7 @@ public class SetUpClass {
     public Relation relationDF() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntDF());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1733,7 +1733,7 @@ public class SetUpClass {
     public Relation relationBCD() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntBCD());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1741,7 +1741,7 @@ public class SetUpClass {
     public Relation relationBDE() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntBDE());
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     
@@ -1884,7 +1884,7 @@ public class SetUpClass {
     //Relation AEF
     public Relation relationAEF() {
         Relation relation = relation30C();
-        relation.setDFJoint(new DFJoint());
+        relation.setDFJoint(new FDSet());
         return relation;
     }
     

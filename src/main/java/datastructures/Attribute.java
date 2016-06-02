@@ -175,13 +175,13 @@ public class Attribute implements Comparable<Attribute>{
     }
     
     /**
-     * Returns if this attribute is rare in the antecedent of a dependency in a specified DFJoint.
+     * Returns if this attribute is rare in the antecedent of a dependency in a specified FDSet.
      * 
      * @param fd Dependency where to check.
-     * @param dfJoint DFJoint where to check.
+     * @param dfJoint FDSet where to check.
      * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
      */
-    public boolean isRareInAntecedent(ADependency fd, DFJoint dfJoint) {
+    public boolean isRareInAntecedent(ADependency fd, FDSet dfJoint) {
         AttributeSet ullman = new AttributeSet(fd.getAntecedent());
         ullman.removeAttributes(this);
         AttributeSet ullmanResult = Normalization.simpleUllman(ullman, dfJoint);
@@ -191,18 +191,18 @@ public class Attribute implements Comparable<Attribute>{
     }
 
     /**
-     * Returns if this attribute is rare in the consequent of a dependency in a specified DFJoint.
+     * Returns if this attribute is rare in the consequent of a dependency in a specified FDSet.
      * 
      * @param fd Dependency where to check.
-     * @param dfJoint DFJoint where to check.
+     * @param dfJoint FDSet where to check.
      * @return true if is rare in {@code fd} in {@code dfJoint}, false otherwise.
      */
-    public boolean isRareInConsequent(ADependency fd, DFJoint dfJoint) {
+    public boolean isRareInConsequent(ADependency fd, FDSet dfJoint) {
         AttributeSet consequent = fd.getConsequent();
         AttributeSet antecedent = fd.getAntecedent();
         AttributeSet newConsecuent = new AttributeSet(consequent);
         newConsecuent.removeAttributes(this);
-        DFJoint dfJointPrima = new DFJoint(dfJoint);                    
+        FDSet dfJointPrima = new FDSet(dfJoint);                    
         dfJointPrima.removeDF(fd);
         ADependency newFD = new FunctionalDependency(antecedent, newConsecuent);
         dfJointPrima.addDependency(newFD);

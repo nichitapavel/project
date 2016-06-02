@@ -25,7 +25,7 @@ import normalization.Normalization;
 public class Relation {
     private String name;
     private AttributeSet attrJoint;
-    private DFJoint dfJoint;
+    private FDSet dfJoint;
     private static final Logger LOG = Logger.getLogger(Relation.class.getName());
     
     /**
@@ -36,15 +36,15 @@ public class Relation {
     }
 
     /**
-     * Constructs a Relation with a list of attributes and a DFJoint,
+     * Constructs a Relation with a list of attributes and a FDSet,
      * but without a name.
      * 
      * @param attrJoint The list of attributes.
-     * @param dfJoint The DFJoint of this Relation. 
+     * @param dfJoint The FDSet of this Relation. 
      */
-    public Relation(AttributeSet attrJoint, DFJoint dfJoint) {
+    public Relation(AttributeSet attrJoint, FDSet dfJoint) {
         this.attrJoint = new AttributeSet(attrJoint);
-        this.dfJoint = new DFJoint(dfJoint);
+        this.dfJoint = new FDSet(dfJoint);
     }
     
     /**
@@ -66,11 +66,11 @@ public class Relation {
     }
 
     /**
-     * Returns the DFJoint of this Relation.
+     * Returns the FDSet of this Relation.
      * 
-     * @return the DFJoint of this Relation. 
+     * @return the FDSet of this Relation. 
      */
-    public DFJoint getDFJoint() {
+    public FDSet getDFJoint() {
         return this.dfJoint;
     }
     
@@ -84,12 +84,12 @@ public class Relation {
     }
 
     /**
-     * Sets the DFJoint of this Relation.
+     * Sets the FDSet of this Relation.
      * 
-     * @param dfJoint The DFJoint of this Relation.
+     * @param dfJoint The FDSet of this Relation.
      */
-    public void setDFJoint(DFJoint dfJoint) {
-        this.dfJoint = new DFJoint(dfJoint);
+    public void setDFJoint(FDSet dfJoint) {
+        this.dfJoint = new FDSet(dfJoint);
     }
     
     /**
@@ -104,7 +104,7 @@ public class Relation {
     /**
      * Returns a string representation of this Relation.
      * 
-     * If this Relation has no attribute list or DFJoint returns an 
+     * If this Relation has no attribute list or FDSet returns an 
      * "Sin Attributos Sin Dependencias Funcionales" message.
      * 
      * @return a string representation of this Relation.
@@ -150,7 +150,7 @@ public class Relation {
     }
 
     /**
-     * Compares this DFJoint to the specified object.
+     * Compares this FDSet to the specified object.
      * 
      *  The result is true if and only if the argument
      *  is not null and is a Relation object that represents
@@ -349,11 +349,11 @@ public class Relation {
      * Splits this relation in two relations using a dependency as a cutter.
      * 
      * The first relation has the attributes of the dependency as AttributeSet
-     * and as DFJoint is the result of projecting this relation DFJoint on
+     * and as FDSet is the result of projecting this relation FDSet on
      * the AttributeSet of first relation.
      * The second relation has all attributes from this relation expect the consequent
-     * attributes from the dependency as AttributeSet and as DFJoint is the result 
-     * of projecting this relation DFJoint on the AttributeSet of second relation.
+     * attributes from the dependency as AttributeSet and as FDSet is the result 
+     * of projecting this relation FDSet on the AttributeSet of second relation.
      * 
      * @param fd The dependency that act's as a cutter.
      * @return return a list with two relations that resulted from the process.
@@ -382,8 +382,8 @@ public class Relation {
      * Returns a Relation that is a subset of this relation.
      * 
      *  Sets AttributeSet of returned relation the AttributeSet
-     *  received as Key, as DFJoint makes a projection of this relations 
-     *  DFJoint using AttributeSet received as Key.
+     *  received as Key, as FDSet makes a projection of this relations 
+     *  FDSet using AttributeSet received as Key.
      *  
      * @param attrJoint The AttributeSet received as Key.
      * @return a Relation that is a subset of this relation.

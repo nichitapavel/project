@@ -7,7 +7,7 @@ import java.util.List;
 
 import datastructures.Attribute;
 import datastructures.AttributeSet;
-import datastructures.DFJoint;
+import datastructures.FDSet;
 import datastructures.KeyJoint;
 import datastructures.Relation;
 
@@ -197,9 +197,9 @@ public abstract class ADependency {
     @Override
     public abstract boolean equals(Object obj);
 
-    public abstract List<ADependency> toFunctionalDependency(DFJoint dfJoint);
+    public abstract List<ADependency> toFunctionalDependency(FDSet dfJoint);
 
-    public abstract boolean belongsTo(DFJoint dfJoint, Relation relation);
+    public abstract boolean belongsTo(FDSet dfJoint, Relation relation);
 
     public abstract boolean isTrivial();
 

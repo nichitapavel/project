@@ -25,39 +25,39 @@ import utils.Const;
  * @author Pavel Nichita
  *
  */
-public class DFJoint implements Iterable<ADependency> {
+public class FDSet implements Iterable<ADependency> {
     /**
-     * A list of functional dependencies defining this DFJoint
+     * A list of functional dependencies defining this FDSet
      */
     private List<ADependency> df;
     /**
-     * A name to reference this DFJoint.
+     * A name to reference this FDSet.
      */
     private String name;
-    private static final Logger LOG = Logger.getLogger(DFJoint.class.getName());
+    private static final Logger LOG = Logger.getLogger(FDSet.class.getName());
     
     /**
-     * Constructs a Null DFJoint.
+     * Constructs a Null FDSet.
      */
-    public DFJoint() {
+    public FDSet() {
         df = new ArrayList<>();
     }
 
     /**
-     * Constructs a DFJoint with a list of functional dependencies and no name. 
+     * Constructs a FDSet with a list of functional dependencies and no name. 
      * 
      * @param dfJoint The list of dependencies.
      */
-    public DFJoint(List<ADependency> dfJoint) {
+    public FDSet(List<ADependency> dfJoint) {
         this.df = new ArrayList<>(dfJoint);
     }
     
     /**
-     * Constructs a DFJoint from another DFJoint.
+     * Constructs a FDSet from another FDSet.
      * 
-     * @param dfJoint A DFJoint with a list of dependencies and name.
+     * @param dfJoint A FDSet with a list of dependencies and name.
      */
-    public DFJoint(DFJoint dfJoint) {
+    public FDSet(FDSet dfJoint) {
         this.df = new ArrayList<>(dfJoint.getDFJoint());
         this.name = dfJoint.getName();
     }
@@ -81,18 +81,18 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Sets the name of this DFJoint.
+     * Sets the name of this FDSet.
      * 
-     * @param newName the name of this DFJoint.
+     * @param newName the name of this FDSet.
      */
     public void setName(String newName) {
         this.name = newName;
     }
     
     /**
-     * Return the name of this DFJoint. 
+     * Return the name of this FDSet. 
      * 
-     * @return the name of this DFJoint.
+     * @return the name of this FDSet.
      */
     public String getName() {
         if (this.name == null)
@@ -128,9 +128,9 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns a hash code for this DFJoint.
+     * Returns a hash code for this FDSet.
      * 
-     * The hash code for a DFJoint object is
+     * The hash code for a FDSet object is
      * computed using the default implementations of Eclipse.
      * 
      * @return a hash code value for this object.
@@ -144,17 +144,17 @@ public class DFJoint implements Iterable<ADependency> {
     }
 
     /**
-     * Compares this DFJoint to the specified object.
+     * Compares this FDSet to the specified object.
      * 
      *  The result is true if and only if the argument
-     *  is not null and is a DFJoint object that represents
-     *  the same DFJoint as this object.
+     *  is not null and is a FDSet object that represents
+     *  the same FDSet as this object.
      *  Only checks the list of dependencies, the name of this
-     *  DFJoint doesn't counts.
+     *  FDSet doesn't counts.
      * 
-     * @param obj The object to compare this DFJoint against.
-     * @return true if the given object represents a DFJoint
-     * equivalent to this DFJoint, false otherwise.
+     * @param obj The object to compare this FDSet against.
+     * @return true if the given object represents a FDSet
+     * equivalent to this FDSet, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {
@@ -164,7 +164,7 @@ public class DFJoint implements Iterable<ADependency> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DFJoint other = (DFJoint) obj;
+        FDSet other = (FDSet) obj;
         if (df == null) {
             if (other.df != null)
                 return false;
@@ -184,12 +184,12 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns a string representing of this DFJoint.
+     * Returns a string representing of this FDSet.
      * 
      * The format followed is {({obj, obj} to {obj, obj}), ({obj, obj} to {obj, obj}), ...}.
      * If this is null then returns "null" string.
      * 
-     * @return a string representing of this DFJoint.
+     * @return a string representing of this FDSet.
      */
     @Override
     public String toString() {
@@ -211,11 +211,11 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns the number of dependencies in this DFJoint.
+     * Returns the number of dependencies in this FDSet.
      * 
      * If this is null, returns zero.
      * 
-     * @return the number of dependencies in this DFJoint.
+     * @return the number of dependencies in this FDSet.
      */
     public int getSize() {
         if (this.df == null)
@@ -224,9 +224,9 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Removes a dependency from this DFJoint, if the dependency exist.
+     * Removes a dependency from this FDSet, if the dependency exist.
      * 
-     * If DFJoint is null nothing happens.
+     * If FDSet is null nothing happens.
      * 
      * @param fd the dependency to be removed.
      */
@@ -263,14 +263,14 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns if this DFJoint is a subset of the {@code dfJoint} DFJoint.
+     * Returns if this FDSet is a subset of the {@code dfJoint} FDSet.
      * 
-     * Checks that every dependency from this DFJoint belongs to {@code dfJoint}. 
+     * Checks that every dependency from this FDSet belongs to {@code dfJoint}. 
      * 
-     * @param dfJoint The DFJoint that is an overset of this DFJoint.
-     * @return true if this DFJoint is a subset of {@code dfJoint}.
+     * @param dfJoint The FDSet that is an overset of this FDSet.
+     * @return true if this FDSet is a subset of {@code dfJoint}.
      */
-    public boolean isImplied(DFJoint dfJoint) {
+    public boolean isImplied(FDSet dfJoint) {
         for (ADependency fd : this.df) {
             if (!fd.belongsTo(dfJoint, null))
                 return false;
@@ -279,14 +279,14 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Return a DFJoint that contains all functional dependency that can be implied
+     * Return a FDSet that contains all functional dependency that can be implied
      * from a plural dependency and all the functional dependency that already exists
-     * in this DFJoint.
+     * in this FDSet.
      * 
      * @return a list of all functional dependencies that can be implied.
      */
-    public DFJoint getHiddenDF() {
-        DFJoint hiddenDF = new DFJoint(this);
+    public FDSet getHiddenDF() {
+        FDSet hiddenDF = new FDSet(this);
         for (ADependency pl : this) {
             if (pl.getClass() == new PluralDependency().getClass())
                 hiddenDF.getDFJoint().addAll(pl.toFunctionalDependency(hiddenDF));
@@ -295,17 +295,17 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns a new DFJoint equivalent with this one, but with all dependencies in
+     * Returns a new FDSet equivalent with this one, but with all dependencies in
      * a "minimal" form.
      * 
-     * If a DFJoint has dependencies like {A, B} to {C}, {A, B} to {E}, this will be transformed
+     * If a FDSet has dependencies like {A, B} to {C}, {A, B} to {E}, this will be transformed
      * to {A, B} to {C, E}.
      * 
-     * @return a new DFJoint with all dependencies with same left side in just on dependency.
+     * @return a new FDSet with all dependencies with same left side in just on dependency.
      */
-    public DFJoint regroupDFJoint() {
+    public FDSet regroupDFJoint() {
         ArrayList<ADependency> copyDFJoint = new ArrayList<>(this.df); 
-        DFJoint regroupedDFJoint = new DFJoint();
+        FDSet regroupedDFJoint = new FDSet();
         for (int i = 0; i < copyDFJoint.size(); i++) {
             ADependency dfI = copyDFJoint.get(i);
             AttributeSet antecedentI = dfI.getAntecedent();
@@ -332,7 +332,7 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Checks for existence of rare attributes in this DFJoint.
+     * Checks for existence of rare attributes in this FDSet.
      * 
      * Returns a list with all rare attributes wrapped arround {@link datastructures.RareElement}
      * class.
@@ -363,11 +363,11 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Removes all rare attributes from this DFJoint.
+     * Removes all rare attributes from this FDSet.
      * 
      * Depending on {@code auto} removes the first rare attribute that finds
      * or the specified by user.
-     * The end result is a Minimal DFJoint with only the most necessary Functional Dependencies.
+     * The end result is a Minimal FDSet with only the most necessary Functional Dependencies.
      * 
      * @param auto if true removes the first rare attribute that it finds, if false
      * the specified by the user. 
@@ -386,13 +386,13 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Removes the specified rare attribute from this DFJoint.
+     * Removes the specified rare attribute from this FDSet.
      * 
      * Doesn't check if it actually an rare attribute, this should be
      * handle by developer.
      * 
      * @param rareAttr an attribute with all needed information to remove it from
-     * this DFJoint.
+     * this FDSet.
      */
     public void removeAttribute(RareElement rareAttr) {
         int pos = this.df.indexOf(rareAttr.getFD());
@@ -404,7 +404,7 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns if this DFJoint is in it's minimal form.
+     * Returns if this FDSet is in it's minimal form.
      *
      * In order to be minimum, there must be no rare attributes and all
      * dependencies with same left part should be grouped: {A} to {B} and
@@ -420,15 +420,15 @@ public class DFJoint implements Iterable<ADependency> {
     }
 
     /**
-     * Returns a new DFJoint only with dependencies that can be implied by using
+     * Returns a new FDSet only with dependencies that can be implied by using
      * attributes from {@code attrJoint}.
      * 
      * @param attrJoint attribute on who to project.
-     * @return a new DFJoint with implied dependencies.
+     * @return a new FDSet with implied dependencies.
      */
-    public DFJoint projectionOnAttributeJoint(AttributeSet attrJoint) {
-        DFJoint hiddenDF = this.getHiddenDF();
-        DFJoint result = new DFJoint();
+    public FDSet projectionOnAttributeJoint(AttributeSet attrJoint) {
+        FDSet hiddenDF = this.getHiddenDF();
+        FDSet result = new FDSet();
         AttributeSet oldAntecedent;
         AttributeSet oldConsequent;
         
@@ -497,17 +497,17 @@ public class DFJoint implements Iterable<ADependency> {
     }
     
     /**
-     * Returns if this DFJoint and other DFJoint are equivalent.
+     * Returns if this FDSet and other FDSet are equivalent.
      * 
-     * Two DFJoint are equivalent if every dependency from one another can be implied
+     * Two FDSet are equivalent if every dependency from one another can be implied
      * in the other, other way to see it is that both of the DFJoints implies
      * one another. 
      * 
-     * @param dfJoint The DFJoint to equivalent this DFJoint against.
+     * @param dfJoint The FDSet to equivalent this FDSet against.
      * @return returns true if they are equivalent, false otherwise.
      */
-    public boolean isEquivalent(DFJoint dfJoint) {
-        DFJoint hiddenDF = this.getHiddenDF();
+    public boolean isEquivalent(FDSet dfJoint) {
+        FDSet hiddenDF = this.getHiddenDF();
         if (hiddenDF.isImplied(dfJoint) && dfJoint.isImplied(hiddenDF))
             return true;
         return false;
@@ -519,7 +519,7 @@ public class DFJoint implements Iterable<ADependency> {
      * One dependencies complies with Boyce-Codd if the left side is a key (defines
      * the Relation).
      * 
-     * @param relation The Relation where if this DFJoint dependencies comply with Boyce-Codd.
+     * @param relation The Relation where if this FDSet dependencies comply with Boyce-Codd.
      * @return a list of all dependencies that don't comply with Boyce-Codd criteria.
      */
     public List<ADependency> getNonBCNFDFs(Relation relation) {
@@ -539,7 +539,7 @@ public class DFJoint implements Iterable<ADependency> {
      * is a key of Relation</li><li>Consequent is 
      * part of a key of Relation</li></ul>.
      * 
-     * @param relation The Relation where if this DFJoint dependencies comply with 3rd Normal Form.
+     * @param relation The Relation where if this FDSet dependencies comply with 3rd Normal Form.
      * @return a list of all dependencies that don't comply with 3rd Normal Form criteria.
      */
     public List<ADependency> getNon3NFDFs(Relation relation) {

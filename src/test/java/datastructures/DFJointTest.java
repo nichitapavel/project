@@ -22,17 +22,17 @@ import dependency.FunctionalDependency;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DFJointTest {
-    private DFJoint nullDFJoint;
+    private FDSet nullDFJoint;
     private ArrayList<ADependency> dfJointVector;
     private ADependency one;
     private ADependency two;
     
-    /* DFJoint = {A -> BC, BC -> A, BCD -> E, E -> C} */
-    private DFJoint dfJoint;
+    /* FDSet = {A -> BC, BC -> A, BCD -> E, E -> C} */
+    private FDSet dfJoint;
     /* firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C} */
-    private DFJoint firstDFJoint;
+    private FDSet firstDFJoint;
     /* secondDFJoint = {A -> B, B -> C} */
-    private DFJoint secondDFJoint;
+    private FDSet secondDFJoint;
     
     private SetUpClass setUpObject;
     /**
@@ -41,7 +41,7 @@ public class DFJointTest {
     @Before
     public void setUp() {
         this.setUpObject = new SetUpClass();
-        nullDFJoint = new DFJoint();
+        nullDFJoint = new FDSet();
         dfJoint = this.setUpObject.dfJoint01();
         
         this.one = this.setUpObject.funcDepAtoB();
@@ -59,7 +59,7 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#DFJoint()}.
+     * Test method for {@link datastructures.FDSet#DFJoint()}.
      * 
      * Null constructor has size 0.
      */
@@ -69,35 +69,35 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#DFJoint(java.util.List)}.
+     * Test method for {@link datastructures.FDSet#DFJoint(java.util.List)}.
      * 
      * Checks every element after construct with a list of dependencies.
      */
     @Test
     public void testConstructorArgumentVector() {
-        DFJoint auxDFJoint = new DFJoint(dfJointVector);
+        FDSet auxDFJoint = new FDSet(dfJointVector);
         assertEquals(2, auxDFJoint.getDFJoint().size());
         assertEquals(this.one, auxDFJoint.getDFJoint().get(0));
         assertEquals(this.two, auxDFJoint.getDFJoint().get(1));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#DFJoint(DFJoint)}.
+     * Test method for {@link datastructures.FDSet#DFJoint(FDSet)}.
      * 
-     * Checks the list and name after construct with another DFJoint.
+     * Checks the list and name after construct with another FDSet.
      */
     @Test
     public void testConstructorArgumentDFJoint() {
-        DFJoint auxDFJoint = new DFJoint(dfJointVector);
-        DFJoint testDFJoint = new DFJoint(auxDFJoint);
+        FDSet auxDFJoint = new FDSet(dfJointVector);
+        FDSet testDFJoint = new FDSet(auxDFJoint);
         assertEquals(dfJointVector, testDFJoint.getDFJoint());
         assertEquals(auxDFJoint.getName(), testDFJoint.getName());
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getDFJoint()}.
+     * Test method for {@link datastructures.FDSet#getDFJoint()}.
      * 
-     * A DFJoint not null should not have it list size equal to zero.
+     * A FDSet not null should not have it list size equal to zero.
      */
     @Test
     public void testGetDFJointNotEqualZero() {
@@ -105,7 +105,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getDFJoint()}.
+     * Test method for {@link datastructures.FDSet#getDFJoint()}.
      * 
      * Is equal list size to 4? Result True. 
      */
@@ -115,9 +115,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getDFJoint()}.
+     * Test method for {@link datastructures.FDSet#getDFJoint()}.
      * 
-     * A return list of non null DFJoint is no empty.
+     * A return list of non null FDSet is no empty.
      */
     @Test
     public void testGetDFJointNotNull() {
@@ -126,7 +126,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getDFJoint()}.
+     * Test method for {@link datastructures.FDSet#getDFJoint()}.
      * 
      * The return list of dependencies are the ones expected.
      */
@@ -141,7 +141,7 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#setDFJoint(java.util.ArrayList)}.
+     * Test method for {@link datastructures.FDSet#setDFJoint(java.util.ArrayList)}.
      * 
      * Sets a list of dependencies, and checks that is returned the same list.
      */
@@ -152,7 +152,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#setDFJoint(java.util.ArrayList)}.
+     * Test method for {@link datastructures.FDSet#setDFJoint(java.util.ArrayList)}.
      * 
      * Sets a list of dependencies, and checks that is returned list has the right size.
      */
@@ -163,7 +163,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#setDFJoint(java.util.ArrayList)}.
+     * Test method for {@link datastructures.FDSet#setDFJoint(java.util.ArrayList)}.
      * 
      * Sets a list of dependencies, and checks every dependency is in the returned list.
      */
@@ -175,19 +175,19 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#setName(java.lang.String)}.
+     * Test method for {@link datastructures.FDSet#setName(java.lang.String)}.
      * 
      * Sets name, checks that the returned name is correct.
      */
     @Test
     public void testSetName() {
-        String expected = "DFJoint";
+        String expected = "FDSet";
         this.nullDFJoint.setName(expected);
         assertEquals(expected, this.nullDFJoint.getName());
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#getName()}.
+     * Test method for {@link datastructures.FDSet#getName()}.
      * 
      * Checks that the returned names is the expected one.
      */
@@ -198,7 +198,7 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#iterator()}.
+     * Test method for {@link datastructures.FDSet#iterator()}.
      * 
      * Return iterator is not empty.
      */
@@ -209,9 +209,9 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#addDependency(ADependency)}.
+     * Test method for {@link datastructures.FDSet#addDependency(ADependency)}.
      * 
-     * Adds dependency to null DFJoint, checks that after size is 1 and
+     * Adds dependency to null FDSet, checks that after size is 1 and
      * that it got inserted.
      */
     @Test
@@ -222,9 +222,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#addDependency(ADependency)}.
+     * Test method for {@link datastructures.FDSet#addDependency(ADependency)}.
      * 
-     * Adds dependency to a DFJoint, checks that after size is +1 and
+     * Adds dependency to a FDSet, checks that after size is +1 and
      * that it got inserted.
      */
     @Test
@@ -235,33 +235,33 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#addDependency(ADependency)}.
+     * Test method for {@link datastructures.FDSet#addDependency(ADependency)}.
      * 
-     * Adds dependency that already exists to DFJoint, checks that after size didn't
+     * Adds dependency that already exists to FDSet, checks that after size didn't
      * changed and that has the same list of dependencies.
      */
     @Test
     public void testAddFuncDepThatExist() {
-        DFJoint expected = this.setUpObject.dfJoint04();
+        FDSet expected = this.setUpObject.dfJoint04();
         this.firstDFJoint.addDependency(this.setUpObject.funcDepAtoBC());
         assertEquals(expected, this.firstDFJoint);
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#hashCode()}.
+     * Test method for {@link datastructures.FDSet#hashCode()}.
      * 
-     * Checks that two DFJoint with same values have same hashCode.
+     * Checks that two FDSet with same values have same hashCode.
      */
     @Test
     public void testHashCodeDFJointsWithSameValues() {
-        DFJoint auxDFJoint = new SetUpClass().dfJoint01();
+        FDSet auxDFJoint = new SetUpClass().dfJoint01();
         assertEquals(dfJoint.hashCode(), auxDFJoint.hashCode());
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#hashCode()}.
+     * Test method for {@link datastructures.FDSet#hashCode()}.
      * 
-     * Checks that two different DFJoint have different hashCode.
+     * Checks that two different FDSet have different hashCode.
      */
     @Test
     public void testHashCodeDifferentDFJoints() {
@@ -269,9 +269,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#hashCode()}.
+     * Test method for {@link datastructures.FDSet#hashCode()}.
      * 
-     * Checks hashCode value of an empty DFJoint. 
+     * Checks hashCode value of an empty FDSet. 
      */
     @Test
     public void testHashCodeEmptyValueDFJoint() {
@@ -280,9 +280,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
-     * Same DFJoint is equal to himself.
+     * Same FDSet is equal to himself.
      */
     @Test
     public void testEqualsTrueSameObject() {
@@ -290,9 +290,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
-     * DFJoint is not equal to null.
+     * FDSet is not equal to null.
      */
     @Test
     public void testEqualsFalseNullObject() {
@@ -300,9 +300,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
-     * DFJoint is not equal to different class.
+     * FDSet is not equal to different class.
      */
     @Test
     public void testEqualsFalseDifferentClassObject() {
@@ -311,9 +311,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
-     * One good DFJoint is not equal to one with no list of dependencies.
+     * One good FDSet is not equal to one with no list of dependencies.
      */
     @Test
     public void testEqualsFalseDFJointWithNullValue() {
@@ -322,7 +322,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
      * Two different DFJoints are not equal.
      */
@@ -333,18 +333,18 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
      * Two DFJoints with same value are equal.
      */
     @Test
     public void testEqualsTrueDFJoints() {
-        DFJoint auxDFJoint = new SetUpClass().dfJoint01();
+        FDSet auxDFJoint = new SetUpClass().dfJoint01();
         assertTrue(dfJoint.equals(auxDFJoint));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#equals(Object)}.
+     * Test method for {@link datastructures.FDSet#equals(Object)}.
      * 
      * Two DFJoints with same null lists are equal.
      */
@@ -356,9 +356,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#contains(ADependency)}.
+     * Test method for {@link datastructures.FDSet#contains(ADependency)}.
      * 
-     * DFJoint contains A to BC? Result true.
+     * FDSet contains A to BC? Result true.
      */
     @Test
     public void testContainsTrue() {
@@ -366,16 +366,16 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#contains(ADependency)}.
+     * Test method for {@link datastructures.FDSet#contains(ADependency)}.
      * 
-     * DFJoint contains E to C? Result false.
+     * FDSet contains E to C? Result false.
      */
     public void testContainsFalse() {
         assertFalse(this.firstDFJoint.contains(this.setUpObject.funcDepEtoC()));
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#toString()}.
+     * Test method for {@link datastructures.FDSet#toString()}.
      * 
      * Checks if the returned string is the expected one.
      */
@@ -386,9 +386,9 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#toString()}.
+     * Test method for {@link datastructures.FDSet#toString()}.
      * 
-     * Checks that "null" is returned if DFJoint is null.
+     * Checks that "null" is returned if FDSet is null.
      */
     @Test
     public void testToStringNullValuesObject() {
@@ -396,9 +396,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Test method for {@link datastructures.FDSet#getSize()}.
      * 
-     * Checks that DFJoint size is four.
+     * Checks that FDSet size is four.
      */
     @Test
     public void testGetSizeDFJoint() {
@@ -406,9 +406,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Test method for {@link datastructures.FDSet#getSize()}.
      * 
-     * Checks that zero is returned if DFJoint is null.
+     * Checks that zero is returned if FDSet is null.
      */
     @Test
     public void testGetSizeNullDFJoint() {
@@ -416,9 +416,9 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getSize()}.
+     * Test method for {@link datastructures.FDSet#getSize()}.
      * 
-     * Sets a DFJoint to null, then checks if returned size is zero.
+     * Sets a FDSet to null, then checks if returned size is zero.
      */
     @Test
     public void testGetSizeNullDfJointVector() {
@@ -427,7 +427,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Test method for {@link datastructures.FDSet#removeDF(ADependency)}.
      * 
      * Removes A to BC dependency, checks that it is not more present.
      */
@@ -438,7 +438,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Test method for {@link datastructures.FDSet#removeDF(ADependency)}.
      * Removes B to C dependency, checks that it is not more present.
      */
     @Test
@@ -449,18 +449,18 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
-     * Tries to remove DE to C dependency if a DFJoint where it is not present.
+     * Test method for {@link datastructures.FDSet#removeDF(ADependency)}.
+     * Tries to remove DE to C dependency if a FDSet where it is not present.
      */
     @Test
     public void testRemoveDFJointAnNonExistentFD() {
-        DFJoint dfJointCopy = new DFJoint(this.dfJoint);
+        FDSet dfJointCopy = new FDSet(this.dfJoint);
         this.dfJoint.removeDF(this.setUpObject.funcDepDEtoC());
         assertEquals(dfJointCopy, this.dfJoint);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
+     * Test method for {@link datastructures.FDSet#removeDF(ADependency)}.
      * Remove B to C and leave it with zero dependencies.
      */
     @Test
@@ -472,8 +472,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeDF(ADependency)}.
-     * Tries to remove a dependency from a null DFJoint
+     * Test method for {@link datastructures.FDSet#removeDF(ADependency)}.
+     * Tries to remove a dependency from a null FDSet
      */
     @Test
     public void testRemoveDFJointException() {
@@ -481,8 +481,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
-     * Checks if DFJoint return list is {A, B, C, D, E}.
+     * Test method for {@link datastructures.FDSet#getAttributesDFJoint()}.
+     * Checks if FDSet return list is {A, B, C, D, E}.
      */
     @Test
     public void testGetAttributesDFJointTest() {
@@ -492,8 +492,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
-     * Checks if DFJoint return list is {A, B, C}.
+     * Test method for {@link datastructures.FDSet#getAttributesDFJoint()}.
+     * Checks if FDSet return list is {A, B, C}.
      */
     @Test
     public void testGetAttributesFirstDFJointTest() {
@@ -503,8 +503,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getAttributesDFJoint()}.
-     * Checks if DFJoint return list is {A, B, C}.
+     * Test method for {@link datastructures.FDSet#getAttributesDFJoint()}.
+     * Checks if FDSet return list is {A, B, C}.
      */
     @Test
     public void testGetAttributesSecondDFJointTest() {
@@ -514,7 +514,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isImplied(FDSet)}.
      * Checks if firstDFJoint is implied by secondDFJoint, result true.
      */ 
     @Test
@@ -523,7 +523,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isImplied(FDSet)}.
      * Checks if secondDFJoint is implied by firstDFJoint, result true.
      */
     @Test
@@ -532,7 +532,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isImplied(DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isImplied(FDSet)}.
      * Checks if dfJoint is implied by firstDFJoint, result false.
      */
     @Test
@@ -541,7 +541,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes C in {A} -> {BC} in {A -> BC, B -> C, A -> B, AB -> C}
      * Result: {A -> B, B -> C, AB -> C}
      */
@@ -552,7 +552,7 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes A in {A, B} -> {C} in {A -> BC, B -> C, A -> B, AB -> C}
      * Result: {A -> BC, B -> C}
      */
@@ -563,7 +563,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes B in {A, B} -> {C} in {A -> BC, B -> C, A -> B, AB -> C}
      * Result: {A -> BC, B -> C}
      */
@@ -574,69 +574,69 @@ public class DFJointTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes C in {A} -> {B, C} in {A -> BC, B -> C, AB -> C}
      * Result: {A -> B, B -> C, AB -> C}
      */
     @Test
     public void testRemoveAinttributeCinAtoBCDFJoint24Consequent() {
-        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        FDSet newDFjoint = this.setUpObject.dfJoint24();
         newDFjoint.removeAttribute(this.setUpObject.rareElementCinAtoBCDFJoint24Consequent());
         assertEquals(this.setUpObject.dfJoint4ReGroupedWithoutCinAtoBC(), newDFjoint);
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes A in {A, B} -> {C} in {A -> BC, B -> C, AB -> C}
      * Result: {A -> BC, B -> C}
      */
     @Test
     public void testRemoveAttributeAinABtoCDFJoint24Antecedent() {
-        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        FDSet newDFjoint = this.setUpObject.dfJoint24();
         newDFjoint.removeAttribute(this.setUpObject.rareElementAinABtoCDFJoint24Antecedent());
         assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), newDFjoint);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeAttribute(RareElement)}.
+     * Test method for {@link datastructures.FDSet#removeAttribute(RareElement)}.
      * Removes A in {A, B} -> {C} in {A -> BC, B -> C, AB -> C}
      * Result: {A -> BC, B -> C}
      */
     @Test
     public void testRemoveAttributeBinABtoCDFJoint24Antecedent() {
-        DFJoint newDFjoint = this.setUpObject.dfJoint24();
+        FDSet newDFjoint = this.setUpObject.dfJoint24();
         newDFjoint.removeAttribute(this.setUpObject.rareElementBinABtoCDFJoint24Antecedent());
         assertEquals(this.setUpObject.dfJoint4RegroupedWithoutAinABtoC(), newDFjoint);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeRareAttributes(boolean)}.
+     * Test method for {@link datastructures.FDSet#removeRareAttributes(boolean)}.
      * Removes all rare attribute in {A -> BC, B -> C, AB -> C}
      * Result: {A -> B, B -> C}
      */
     @Test
     public void removeRareAttributesAutoDFJoint24() {
-        DFJoint expected = this.setUpObject.dfJoint05();
-        DFJoint toBeMinimal = this.setUpObject.dfJoint24();
+        FDSet expected = this.setUpObject.dfJoint05();
+        FDSet toBeMinimal = this.setUpObject.dfJoint24();
         toBeMinimal.removeRareAttributes(true);
         assertEquals(expected, toBeMinimal);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#removeRareAttributes(boolean)}.
+     * Test method for {@link datastructures.FDSet#removeRareAttributes(boolean)}.
      * Removes all rare attribute in {A -> BC, B -> C, A -> B, AB -> C}
      * Result: {A -> B, B -> C}
      */
     @Test
     public void removeRareAttributesAutoDFJoint4() {
-        DFJoint expected = this.setUpObject.dfJoint05();
-        DFJoint toBeMinimal = this.setUpObject.dfJoint04();
+        FDSet expected = this.setUpObject.dfJoint05();
+        FDSet toBeMinimal = this.setUpObject.dfJoint04();
         toBeMinimal.removeRareAttributes(true);
         assertEquals(expected, toBeMinimal);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {A -> BC, B -> C, A -> B, AB -> C} is minimal.
      * Result: False.
      */
@@ -646,7 +646,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {A -> BC, B -> C, AB -> C} is minimal.
      * Result: False.
      */
@@ -657,7 +657,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {A -> BC, BC -> A, BCD -> E, E -> C} is minimal.
      * Result: True.
      */
@@ -668,7 +668,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {A -> BC, BC -> A, BCD -> E, E -> C} is minimal.
      * Result: True.
      */
@@ -679,7 +679,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H} is minimal.
      * Result: True.
      */
@@ -690,7 +690,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H} is minimal.
      * Result: True.
      */
@@ -701,7 +701,7 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isMinimal()}.
+     * Test method for {@link datastructures.FDSet#isMinimal()}.
      * Checks if {A -> BCD} is minimal.
      * Result: True.
      */
@@ -712,8 +712,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * returns non BCNF dependencies {A -> BC, BC -> A, E -> C}.
      */
     @Test
@@ -724,8 +724,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> E, CD -> A}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE} {A -> BC, BC -> E, CD -> A}
      * returns non BCNF dependencies {A -> BC, BC -> E}.
      */
     @Test
@@ -736,8 +736,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
      * returns non BCNF dependencies {ABD -> G, CF -> H}.
      */
     @Test
@@ -748,8 +748,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
      * returns non BCNF dependencies {B -> C}.
      */
     @Test
@@ -760,8 +760,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {A -> B, B -> C}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {A -> B, B -> C}
      * returns non BCNF dependencies {B -> C}.
      */
     @Test
@@ -772,8 +772,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
      * returns non BCNF dependencies {B -> C, C -> B, B -> E}.
      */
     @Test
@@ -784,8 +784,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCD}  {A -> B, B -> C, C -> D}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCD}  {A -> B, B -> C, C -> D}
      * returns non BCNF dependencies {B -> C, C -> D}.
      */
     @Test
@@ -796,8 +796,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABCD} {B -> C, AB -> D, C -> B}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABCD} {B -> C, AB -> D, C -> B}
      * returns non BCNF dependencies {B -> C, C -> B}.
      */
     @Test
@@ -808,8 +808,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNonBCNFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {AB -> C}
+     * Test method for {@link datastructures.FDSet#getNonBCNFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {AB -> C}
      * returns non BCNF dependencies {}.
      */
     @Test
@@ -820,8 +820,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE} {A -> BC, BC -> A, BCD -> E, E -> C}
      * returns non 3NF dependencies {}.
      */
     @Test
@@ -832,8 +832,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE} {A -> BC, BC -> E, CD -> A}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE} {A -> BC, BC -> E, CD -> A}
      * returns non 3NF dependencies {A -> BC, BC -> E}.
      */
     @Test
@@ -846,8 +846,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCDEFGH} {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
      * returns non 3NF dependencies {}.
      */
     @Test
@@ -858,8 +858,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {A -> BC, B -> C, A -> B, AB -> C}
      * returns non 3NF dependencies {B -> C}.
      */
     @Test
@@ -871,8 +871,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {A -> B, B -> C}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {A -> B, B -> C}
      * returns non 3NF dependencies {B -> C}.
      */
     @Test
@@ -884,8 +884,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCDE}  {AB -> D, B -> C, C -> B, B -> E}
      * returns non 3NF dependencies {B -> E}.
      */
     @Test
@@ -897,8 +897,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCD}  {A -> B, B -> C, C -> D}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCD}  {A -> B, B -> C, C -> D}
      * returns non 3NF dependencies {B -> C, C -> D}.
      */
     @Test
@@ -911,8 +911,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABCD} {B -> C, AB -> D, C -> B}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABCD} {B -> C, AB -> D, C -> B}
      * returns non 3NF dependencies {}.
      */
     @Test
@@ -923,8 +923,8 @@ public class DFJointTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#getNon3NFDFs(Relation)}.
-     * Checks if DFJoint of {ABC} {AB -> C}
+     * Test method for {@link datastructures.FDSet#getNon3NFDFs(Relation)}.
+     * Checks if FDSet of {ABC} {AB -> C}
      * returns non 3NF dependencies {}.
      */
     @Test

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datastructures.AttributeSet;
-import datastructures.DFJoint;
+import datastructures.FDSet;
 import datastructures.KeyJoint;
 import datastructures.Relation;
 import dependency.ADependency;
@@ -33,7 +33,7 @@ public final class Normalization {
      * @param dfJoint Where to calculate.
      * @return an attribute joint with all the attributes implied.
      */
-    public static AttributeSet simpleUllman(AttributeSet attrJoint, DFJoint dfJoint){
+    public static AttributeSet simpleUllman(AttributeSet attrJoint, FDSet dfJoint){
         AttributeSet result = new AttributeSet(attrJoint);
         boolean isChanged;
         

@@ -267,7 +267,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if A is rare in {AB} to {C} in
      * {A -> BC, B -> C, A -> B, AB -> C}, result true.
@@ -280,7 +280,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if B is rare in {AB} to {C} in
      * {A -> BC, B -> C, A -> B, AB -> C}, result true.
@@ -293,7 +293,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if A is rare in {AB} to {C} in
      * {A -> BC, B -> C, AB -> C}, result true.
@@ -306,7 +306,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if B is rare in {AB} to {C} in
      * {A -> BC, B -> C, AB -> C}, result true.
@@ -319,7 +319,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if B is rare in {BC} to {A} in
      * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
@@ -332,7 +332,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInAntecedent(dependency.ADependency, FDSet)}.
      * 
      * Checks if C is rare in {BC} to {A} in
      * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
@@ -345,7 +345,7 @@ public class AttributeTest {
     }
 
     /**
-     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, FDSet)}.
      * 
      * Checks if B is rare in {A} to {BC} in
      * {A -> BC, B -> C, A -> B, AB -> C}, result true.
@@ -358,7 +358,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, FDSet)}.
      * 
      * Checks if C is rare in {A} to {BC} in
      * {A -> BC, B -> C, A -> B, AB -> C}, result true.
@@ -371,7 +371,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, FDSet)}.
      * 
      * Checks if C is rare in {A} to {BC} in
      * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.
@@ -384,7 +384,7 @@ public class AttributeTest {
     }
     
     /**
-     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, DFJoint)}.
+     * Test method for {@link datastructures.Attribute#isRareInConsequent(dependency.ADependency, FDSet)}.
      * 
      * Checks if B is rare in {A} to {BC} in
      * {A -> BC, BC -> A, BCD -> E, E -> C}, result false.

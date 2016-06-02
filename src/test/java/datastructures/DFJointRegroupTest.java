@@ -13,7 +13,7 @@ import org.junit.Test;
  *
  */
 public class DFJointRegroupTest {
-    private DFJoint dfJoint;
+    private FDSet dfJoint;
     private SetUpClass setUpObject;
     
     /**
@@ -27,17 +27,17 @@ public class DFJointRegroupTest {
     /**
      * Template that calls {@code regroupDFJoint()} method and checks if
      * result is the expected one.
-     * @param expected DFJoint that should returned regroupDFJoint() method.
-     * @param dfJoint The DFJoint to regroup.
+     * @param expected FDSet that should returned regroupDFJoint() method.
+     * @param dfJoint The FDSet to regroup.
      */
-    private void testTemplate(DFJoint expected, DFJoint dfJoint) {
-        DFJoint result = dfJoint.regroupDFJoint();
+    private void testTemplate(FDSet expected, FDSet dfJoint) {
+        FDSet result = dfJoint.regroupDFJoint();
         assertEquals(expected, result);
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
-     * Checks that a DFJoint that is already grouped doesn't change.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
+     * Checks that a FDSet that is already grouped doesn't change.
      * {A -> BC, BC -> A, BCD -> E, E -> C}
      */
     @Test
@@ -47,8 +47,8 @@ public class DFJointRegroupTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
-     * Checks that a DFJoint that is already grouped doesn't change.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
+     * Checks that a FDSet that is already grouped doesn't change.
      * {A -> BC, BC -> E, CD -> A}
      */
     @Test
@@ -58,8 +58,8 @@ public class DFJointRegroupTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
-     * Checks that a DFJoint that is already grouped doesn't change.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
+     * Checks that a FDSet that is already grouped doesn't change.
      * {AB -> C}
      */
     @Test
@@ -69,10 +69,10 @@ public class DFJointRegroupTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
-     * Checks that a DFJoint is grouped as expected.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
+     * Checks that a FDSet is grouped as expected.
      * Expected out - {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H}
-     * DFJoint in   - {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
+     * FDSet in   - {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}
      */
     @Test
     public void testRegroupDFJointThree() {
@@ -80,9 +80,9 @@ public class DFJointRegroupTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
      * Expected out - {A -> BC, B -> C, AB -> C}
-     * DFJoint in   - {A -> BC, B -> C, A -> B, AB -> C}
+     * FDSet in   - {A -> BC, B -> C, A -> B, AB -> C}
      */
     @Test
     public void testRegroupDFJointFour() {
@@ -90,9 +90,9 @@ public class DFJointRegroupTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
      * Expected out - {A -> BC, D -> E}
-     * DFJoint in   - {A -> B, A -> C, A -> D, D -> E}
+     * FDSet in   - {A -> B, A -> C, A -> D, D -> E}
      */
     @Test
     public void testRegroupDFJointTwentyFive() {
@@ -100,9 +100,9 @@ public class DFJointRegroupTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#regroupDFJoint()}.
+     * Test method for {@link datastructures.FDSet#regroupDFJoint()}.
      * Expected out - {AB -> D, B -> CE, C -> B}
-     * DFJoint in   - {AB -> D, B -> C, C -> B, B -> E}
+     * FDSet in   - {AB -> D, B -> C, C -> B, B -> E}
      */
     @Test
     public void testRegroupDFJointSix() {

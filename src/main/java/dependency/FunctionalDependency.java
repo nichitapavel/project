@@ -18,7 +18,7 @@ import org.w3c.dom.Node;
 
 import datastructures.Attribute;
 import datastructures.AttributeSet;
-import datastructures.DFJoint;
+import datastructures.FDSet;
 import datastructures.KeyJoint;
 import datastructures.Relation;
 import normalization.Normalization;
@@ -144,29 +144,29 @@ public class FunctionalDependency extends PluralDependency {
      * Returns a list with this dependency.
      * 
      * This function was designed for {@link dependency.PluralDependency} class.
-     * A plural dependency can imply a list of functional dependency in a DFJoint.
+     * A plural dependency can imply a list of functional dependency in a FDSet.
      * 
-     * @param dfJoint the DFJoint where this dependency exists.
+     * @param dfJoint the FDSet where this dependency exists.
      * @return a list of size one with this dependency in it.
      */
     @Override
-    public List<ADependency> toFunctionalDependency(DFJoint dfJoint) {
+    public List<ADependency> toFunctionalDependency(FDSet dfJoint) {
         List<ADependency> result = new ArrayList<>();
         result.add(this);
         return result;
     }
     
     /**
-     * Returns if this dependency can be implied in a relation with DFJoint.
+     * Returns if this dependency can be implied in a relation with FDSet.
      * 
      * The method used is Ullman, it calculates all attributes implied by antecedent, 
-     * if all consequent attributes are present, then this dependency belongs to Relation DFJoint.
+     * if all consequent attributes are present, then this dependency belongs to Relation FDSet.
      * 
-     * @return true if it can be implied in Relation with DFJoint, false otherwise. 
+     * @return true if it can be implied in Relation with FDSet, false otherwise. 
      */
     @Override
-    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
-        DFJoint hiddenDF = dfJoint.getHiddenDF();
+    public boolean belongsTo(FDSet dfJoint, Relation relation) {
+        FDSet hiddenDF = dfJoint.getHiddenDF();
         AttributeSet equivalentAttrJoint = Normalization.simpleUllman(super.antecedent, hiddenDF);
         return super.consequent.isContained(equivalentAttrJoint);
     }

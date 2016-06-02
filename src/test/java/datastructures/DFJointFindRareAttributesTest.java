@@ -31,7 +31,7 @@ public class DFJointFindRareAttributesTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> BC, BC -> A, BCD -> E, E -> C}.
      */
@@ -42,8 +42,8 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
-     * Checks that in DFJoint {A -> BC, B -> C, AB -> C}
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
+     * Checks that in FDSet {A -> BC, B -> C, AB -> C}
      * finds rare attributes:
      *  C in {A} -> {B, C}, consequent,
      *  A in {A, B} -> {C}, antecedent,
@@ -72,7 +72,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> BC, BC -> E, CD -> A}.
      */
@@ -83,7 +83,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> C, C -> AB, E -> D, D -> E, E -> F, F -> E, ABD -> G, CF -> H}.
      */
@@ -94,8 +94,8 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
-     * Checks that in DFJoint {A -> BC, B -> C, A -> B, AB -> C}
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
+     * Checks that in FDSet {A -> BC, B -> C, A -> B, AB -> C}
      * finds rare attributes:
      *  B in {A} -> {B, C}, consequent,
      *  C in {A} -> {B, C}, consequent,
@@ -134,7 +134,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> D, B -> C, C -> B, B -> E}.
      */
@@ -145,7 +145,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {B -> C, AB -> D, C -> B}.
      */
@@ -156,7 +156,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> BC, BC -> A, BCD -> E, E -> C}.
      */
@@ -167,7 +167,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> C}.
      */
@@ -178,7 +178,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> B, CD -> A, BD -> C, DE -> C}.
      */
@@ -189,7 +189,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {CD -> A, AD -> C, DE -> C}
      */
@@ -200,7 +200,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {CD -> A, AD -> C}
      */
@@ -211,7 +211,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {DE -> C}.
      */
@@ -222,7 +222,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {BCD -> E, E -> C}.
      */
@@ -233,7 +233,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> C, C -> B}.
      */
@@ -244,7 +244,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> C, C -> AB, E ->DF, D -> E, F -> E, ABD -> G, CF -> H}.
      */
@@ -255,7 +255,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> BC, D -> E}.
      */
@@ -266,7 +266,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {AB -> D, B -> CE, C -> B}.
      */
@@ -277,7 +277,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {BC -> A, BCD -> E, E -> C}.
      */
@@ -288,7 +288,7 @@ public class DFJointFindRareAttributesTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#findRareAttributes()}.
+     * Test method for {@link datastructures.FDSet#findRareAttributes()}.
      * Checks that there is no rare attributes in 
      * {A -> BCD}.
      */

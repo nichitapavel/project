@@ -15,11 +15,11 @@ import dependency.FunctionalDependency;
  *
  */
 public class DFJointEquivalentTest {
-    private DFJoint firstDFJoint;
-    private DFJoint secondDFJoint;
-    private DFJoint thirdDFJoint;
-    private DFJoint forthDFJoint;
-    private DFJoint fifthDFJoint;
+    private FDSet firstDFJoint;
+    private FDSet secondDFJoint;
+    private FDSet thirdDFJoint;
+    private FDSet forthDFJoint;
+    private FDSet fifthDFJoint;
 
     /**
      * Set up.
@@ -47,38 +47,38 @@ public class DFJointEquivalentTest {
         bcJoint.addAttributes(attrC);
         
         //firstDFJoint  = {A -> BC, B -> C, A -> B, AB -> C}
-        firstDFJoint = new DFJoint();
+        firstDFJoint = new FDSet();
         firstDFJoint.addDependency(new FunctionalDependency(aJoint, bcJoint));
         firstDFJoint.addDependency(new FunctionalDependency(bJoint, cJoint));
         firstDFJoint.addDependency(new FunctionalDependency(aJoint, bJoint));
         firstDFJoint.addDependency(new FunctionalDependency(abJoint, cJoint));
         
         //secondDFJoint = {A -> B, B -> C}
-        secondDFJoint = new DFJoint();
+        secondDFJoint = new FDSet();
         secondDFJoint.addDependency(new FunctionalDependency(aJoint, bJoint));
         secondDFJoint.addDependency(new FunctionalDependency(bJoint, cJoint));
         
         //thirdDFJoint  = {A -> BC, B -> AC, C -> AB}
-        thirdDFJoint = new DFJoint();
+        thirdDFJoint = new FDSet();
         thirdDFJoint.addDependency(new FunctionalDependency(aJoint, bcJoint));
         thirdDFJoint.addDependency(new FunctionalDependency(bJoint, acJoint));
         thirdDFJoint.addDependency(new FunctionalDependency(cJoint, abJoint));
         
         //forthDFJoint  = {A -> B, B -> C, C -> A}
-        forthDFJoint = new DFJoint();
+        forthDFJoint = new FDSet();
         forthDFJoint.addDependency(new FunctionalDependency(aJoint, bJoint));
         forthDFJoint.addDependency(new FunctionalDependency(bJoint, cJoint));
         forthDFJoint.addDependency(new FunctionalDependency(cJoint, aJoint));
         
         //fifthDFJoint  = {A -> B, B -> AC, C -> B}
-        fifthDFJoint = new DFJoint();
+        fifthDFJoint = new FDSet();
         fifthDFJoint.addDependency(new FunctionalDependency(aJoint, bJoint));
         fifthDFJoint.addDependency(new FunctionalDependency(bJoint, acJoint));
         fifthDFJoint.addDependency(new FunctionalDependency(cJoint, bJoint));
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> C, A -> B, AB -> C} is equivalent to
      * {A -> B, B -> C}, result: true.
      */
@@ -88,7 +88,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C} is equivalent to
      * {A -> BC, B -> C, A -> B, AB -> C}, result: true.
      */
@@ -98,7 +98,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> B, B -> C, C -> A}, result: true.
      */
@@ -108,7 +108,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C, C -> A} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: true.
      */
@@ -118,7 +118,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> B, B -> AC, C -> B}, result: true.
      */
@@ -128,7 +128,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: true.
      */
@@ -138,7 +138,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C, C -> A} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: true.
      */
@@ -148,7 +148,7 @@ public class DFJointEquivalentTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> B, B -> C, C -> A}, result: true.
      */
@@ -158,7 +158,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> C, A -> B, AB -> C} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: false.
      */
@@ -168,7 +168,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> BC, B -> C, A -> B, AB -> C}, result: false.
      */
@@ -178,7 +178,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> C, A -> B, AB -> C} is equivalent to
      * {A -> B, B -> C, C -> A}, result: false.
      */
@@ -188,7 +188,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C, C -> A} is equivalent to
      * {A -> BC, B -> C, A -> B, AB -> C}, result: false.
      */
@@ -198,7 +198,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> C, A -> B, AB -> C} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: false.
      */
@@ -208,7 +208,7 @@ public class DFJointEquivalentTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> BC, B -> C, A -> B, AB -> C}, result: false.
      */
@@ -218,7 +218,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: false.
      */
@@ -228,7 +228,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> B, B -> C}, result: false.
      */
@@ -238,7 +238,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C} is equivalent to
      * {A -> B, B -> C, C -> A}, result: false.
      */
@@ -248,7 +248,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C, C -> A} is equivalent to
      * {A -> B, B -> C}, result: false.
      */
@@ -258,7 +258,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> B, B -> C} is equivalent to
      * {A -> BC, B -> AC, C -> AB}, result: false.
      */
@@ -268,7 +268,7 @@ public class DFJointEquivalentTest {
     }
     
     /**
-     * Test method for {@link datastructures.DFJoint#isEquivalent(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.FDSet#isEquivalent(datastructures.FDSet)}.
      * Check if {A -> BC, B -> AC, C -> AB} is equivalent to
      * {A -> B, B -> C}, result: false.
      */

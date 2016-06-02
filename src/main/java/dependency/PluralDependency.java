@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datastructures.AttributeSet;
-import datastructures.DFJoint;
+import datastructures.FDSet;
 import datastructures.KeyJoint;
 import datastructures.Relation;
 
@@ -106,11 +106,11 @@ public class PluralDependency extends ADependency {
      * is part of this consequent then there is a functional dependency with this antecedent that defines
      * functional dependency consequent.
      * 
-     * @param dfJoint the DFJoint where this dependency exists.
+     * @param dfJoint the FDSet where this dependency exists.
      * @return a list of size one with this dependency in it.
      */
     @Override
-    public List<ADependency> toFunctionalDependency(DFJoint dfJoint) {
+    public List<ADependency> toFunctionalDependency(FDSet dfJoint) {
         List<ADependency> result = new ArrayList<>();      
         AttributeSet intersect;
         for (ADependency fd : dfJoint) {
@@ -124,7 +124,7 @@ public class PluralDependency extends ADependency {
     }
 
     @Override
-    public boolean belongsTo(DFJoint dfJoint, Relation relation) {
+    public boolean belongsTo(FDSet dfJoint, Relation relation) {
         // TODO Auto-generated method stub
         return false;
     }

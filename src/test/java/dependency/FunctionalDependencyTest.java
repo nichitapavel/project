@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import datastructures.Attribute;
 import datastructures.AttributeSet;
-import datastructures.DFJoint;
+import datastructures.FDSet;
 import datastructures.SetUpClass;
 
 /**
@@ -25,8 +25,8 @@ public class FunctionalDependencyTest {
     private AttributeSet antecedent;
     private AttributeSet consequent;
     private SetUpClass setUpObject;
-    private DFJoint firstDFJoint;
-    private DFJoint secondDFJoint;
+    private FDSet firstDFJoint;
+    private FDSet secondDFJoint;
     
     /**
      * 
@@ -450,10 +450,10 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#toFunctionalDependency(datastructures.DFJoint)}.
+     * Test method for {@link dependency.FunctionalDependency#toFunctionalDependency(datastructures.FDSet)}.
      * 
-     * Returns a list with {A, B, C} to {D, E, F} dependency checked in a null DFJoint.
-     * It doesn't matter the DFJoint, since this is a FunctinalDependency, not a PluralDependency. 
+     * Returns a list with {A, B, C} to {D, E, F} dependency checked in a null FDSet.
+     * It doesn't matter the FDSet, since this is a FunctinalDependency, not a PluralDependency. 
      */
     @Test
     public void testToFunctionalDependency() {
@@ -463,7 +463,7 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(FDSet, Relation)}.
      * Checks that every dependency from firstJoint belongs secondDFJoint.
      */
     @Test
@@ -473,7 +473,7 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(FDSet, Relation)}.
      * Checks that every dependency from secondDFJoint belongs firstJoint.
      */
     @Test
@@ -483,7 +483,7 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(FDSet, Relation)}.
      * Checks that {A, B, C} to {D, E, F} belongs to firstDFJoint and secondDFJoint,
      * result false.
      */
@@ -494,7 +494,7 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(FDSet, Relation)}.
      * Checks that {C} to {A, B} belongs to firstDFJoint, result false.
      */
     @Test
@@ -508,7 +508,7 @@ public class FunctionalDependencyTest {
     }
     
     /**
-     * Test method for {@link dependency.FunctionalDependency#belongsTo(DFJoint, Relation)}.
+     * Test method for {@link dependency.FunctionalDependency#belongsTo(FDSet, Relation)}.
      * Checks that {C} to {A} belongs to firstDFJoint, result false.
      */
     @Test

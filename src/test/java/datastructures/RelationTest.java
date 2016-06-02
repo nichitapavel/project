@@ -31,9 +31,9 @@ public class RelationTest {
     private Relation one;
     
     //DFJoints
-    private DFJoint secondFormRelationDFJoint;
-    private DFJoint thirdFormRelationDFJoint;
-    private DFJoint boyceCoddFormRelationDFJoint;
+    private FDSet secondFormRelationDFJoint;
+    private FDSet thirdFormRelationDFJoint;
+    private FDSet boyceCoddFormRelationDFJoint;
     
     //AttributesJoints of relations attributes
     private AttributeSet secondAndThirdFormRelationAttributes;
@@ -88,7 +88,7 @@ public class RelationTest {
     }
 
     /**
-     * Test method for {@link datastructures.Relation#Relation(datastructures.AttributeSet, datastructures.DFJoint)}.
+     * Test method for {@link datastructures.Relation#Relation(datastructures.AttributeSet, datastructures.FDSet)}.
      */
     @Test
     public void testRelationAttributeJointDFJoint() {
@@ -128,7 +128,7 @@ public class RelationTest {
     }
 
     /**
-     * Test method for {@link datastructures.Relation#setDFJoint(datastructures.DFJoint)}.
+     * Test method for {@link datastructures.Relation#setDFJoint(datastructures.FDSet)}.
      */
     @Test
     public void testSetDFJoint() {

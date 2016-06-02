@@ -12,7 +12,7 @@ import dependency.ADependency;
 public class RareElement {
     private Attribute attr;
     private ADependency fd;
-    private DFJoint dfJoint;
+    private FDSet dfJoint;
     /**
      * Position in dependency, only has two possible values: antecedent and consequent.
      */
@@ -30,13 +30,13 @@ public class RareElement {
      * 
      * @param attr The rare attribute.
      * @param fd The dependency where is rare.
-     * @param dfJoint The DFJoint where is rare.
+     * @param dfJoint The FDSet where is rare.
      * @param position If is in "antecedent" or "consequent".
      */
-    public RareElement(Attribute attr, ADependency fd, DFJoint dfJoint, String position) {
+    public RareElement(Attribute attr, ADependency fd, FDSet dfJoint, String position) {
         this.attr = new Attribute(attr);
         this.fd = fd;
-        this.dfJoint = new DFJoint(dfJoint);
+        this.dfJoint = new FDSet(dfJoint);
         this.position = position;
     }
     
@@ -59,11 +59,11 @@ public class RareElement {
     }
 
     /**
-     * Returns the DFJoint where {@code attr} is rare.
+     * Returns the FDSet where {@code attr} is rare.
      * 
-     * @return the DFJoint where {@code attr} is rare.
+     * @return the FDSet where {@code attr} is rare.
      */
-    public DFJoint getDFJoint() {
+    public FDSet getDFJoint() {
         return this.dfJoint;
     }
     

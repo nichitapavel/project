@@ -30,7 +30,7 @@ public class RareElementTest {
         this.setUpObject = new SetUpClass();
         Attribute attr = this.setUpObject.attrA();
         ADependency fd = this.setUpObject.funcDepAtoB();
-        DFJoint dfJoint = this.setUpObject.dfJoint04();
+        FDSet dfJoint = this.setUpObject.dfJoint04();
         this.rareElement = new RareElement(attr, fd, dfJoint, "Antecedent");
         this.rareElementVoid = new RareElement();
     }
@@ -48,7 +48,7 @@ public class RareElementTest {
     }
 
     /**
-     * Test method for {@link datastructures.RareElement#RareElement(datastructures.Attribute, dependency.ADependency, datastructures.DFJoint, java.lang.String)}.
+     * Test method for {@link datastructures.RareElement#RareElement(datastructures.Attribute, dependency.ADependency, datastructures.FDSet, java.lang.String)}.
      * Checks that a RareElement has all of his attributes with content.
      */
     @Test
@@ -65,7 +65,7 @@ public class RareElementTest {
      */
     @Test
     public void testToString() {
-        String expected = "//** A, Antecedent, {A} -> {B}, DFJoint Four";
+        String expected = "//** A, Antecedent, {A} -> {B}, FDSet Four";
         assertEquals(expected, this.rareElement.toString());
     }
     

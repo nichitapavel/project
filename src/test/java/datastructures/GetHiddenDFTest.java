@@ -14,8 +14,8 @@ import org.junit.Test;
  */
 public class GetHiddenDFTest {
     private SetUpClass setUpObject;
-    private DFJoint dfJointEx;
-    private DFJoint dfJointOriginal;
+    private FDSet dfJointEx;
+    private FDSet dfJointOriginal;
     
     /**
      * Set up
@@ -26,7 +26,7 @@ public class GetHiddenDFTest {
     }
 
     /**
-     * Test method for {@link datastructures.DFJoint#getHiddenDF()}.
+     * Test method for {@link datastructures.FDSet#getHiddenDF()}.
      */
     @Test
     public void hiddenDFDFJoint30() {
