@@ -230,7 +230,7 @@ public class FunctionalDependencyTest {
      */
     @Test
     public void testToStringFunctionalDependency() {
-        String expected = "{A, B, C} -> {D, E, F}";
+        String expected = "(A, B, C) -> (D, E, F)";
         assertEquals(expected, fd.toString());
     }
     

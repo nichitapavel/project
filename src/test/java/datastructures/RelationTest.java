@@ -141,9 +141,9 @@ public class RelationTest {
      */
     @Test
     public void testToString() {
-        String msg2FN = "Atributos: {A, B, C, D} Dependencias Funcionales: { ({A} -> {B}), ({B} -> {C}), ({C} -> {D}) }";
-        String msg3FN = "Atributos: {A, B, C, D} Dependencias Funcionales: { ({B} -> {C}), ({A, B} -> {D}), ({C} -> {B}) }";
-        String msgBCFN = "Atributos: {A, B, C} Dependencias Funcionales: { ({A, B} -> {C}) }";
+        String msg2FN = "Atributos: (A, B, C, D) Dependencias Funcionales: { ((A) -> (B)), ((B) -> (C)), ((C) -> (D)) }";
+        String msg3FN = "Atributos: (A, B, C, D) Dependencias Funcionales: { ((B) -> (C)), ((A, B) -> (D)), ((C) -> (B)) }";
+        String msgBCFN = "Atributos: (A, B, C) Dependencias Funcionales: { ((A, B) -> (C)) }";
         assertEquals(msg2FN, this.secondFormRelation.toString());
         assertEquals(msg3FN, this.thirdFormRelation.toString());
         assertEquals(msgBCFN, this.boyceCoddFormRelation.toString());
@@ -154,7 +154,7 @@ public class RelationTest {
      */
     @Test
     public void testToStringTestNullAttrJoint() {
-        String msg = "Sin Atributos Dependencias Funcionales: { ({A, B} -> {C}) }";
+        String msg = "Sin Atributos Dependencias Funcionales: { ((A, B) -> (C)) }";
         this.nullRelation.setDFJoint(boyceCoddFormRelationDFJoint);
         assertEquals(msg, this.nullRelation.toString());
     }
@@ -164,7 +164,7 @@ public class RelationTest {
      */
     @Test
     public void testToStringTestNullDFJoint() {
-        String msg = "Atributos: {A, B, C} Sin Dependencias Funcionales";
+        String msg = "Atributos: (A, B, C) Sin Dependencias Funcionales";
         this.nullRelation.settAttrJoint(boyceCoddFormRelationAttributes);
         assertEquals(msg, this.nullRelation.toString());
     }

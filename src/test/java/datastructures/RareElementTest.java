@@ -65,7 +65,7 @@ public class RareElementTest {
      */
     @Test
     public void testToString() {
-        String expected = "//** A, Antecedent, {A} -> {B}, FDSet Four";
+        String expected = "//** A, Antecedent, (A) -> (B), FDSet Four";
         assertEquals(expected, this.rareElement.toString());
     }
     

@@ -381,7 +381,7 @@ public class DFJointTest {
      */
     @Test
     public void testToStringTest() {
-        String msg = "{ ({A} -> {B, C}), ({B, C} -> {A}), ({B, C, D} -> {E}), ({E} -> {C}) }";
+        String msg = "{ ((A) -> (B, C)), ((B, C) -> (A)), ((B, C, D) -> (E)), ((E) -> (C)) }";
         assertEquals(msg, dfJoint.toString());
     }
 

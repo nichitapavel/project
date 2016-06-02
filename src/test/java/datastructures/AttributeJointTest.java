@@ -170,7 +170,7 @@ public class AttributeJointTest {
      */
     @Test
     public void testToString() {
-        String expected = "{A, B, C}";
+        String expected = "(A, B, C)";
         assertEquals(expected, mainAttributeJoint.toString());
     }
 

@@ -81,7 +81,7 @@ public class KeyJointTest {
      */
     @Test
     public void testToString() {
-        String msg = "{{A, B}, {A, C}}";
+        String msg = "{(A, B), (A, C)}";
         assertEquals(msg, keyJoint.toString());
     }
     
