@@ -3,6 +3,9 @@
  */
 package datastructures;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,6 +23,7 @@ import normalization.Normalization;
  */
 public class Attribute implements Comparable<Attribute>{
     private String attr;
+    private static final Logger LOG = Logger.getLogger(Attribute.class.getName());
     
     /**
      * Constructs a Null string. 
@@ -225,8 +229,8 @@ public class Attribute implements Comparable<Attribute>{
             attribute = doc.createElement("Attribute");
             attribute.appendChild(doc.createTextNode(attr));
         } catch (ParserConfigurationException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.setLevel(Level.SEVERE);
+            LOG.log(Level.SEVERE, "XML not generated for Attribute", e);
         }
         
         return attribute;
