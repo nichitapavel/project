@@ -575,8 +575,8 @@ public class FDSet implements Iterable<ADependency> {
             }
              
         } catch (ParserConfigurationException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            LOG.setLevel(Level.SEVERE);
+            LOG.log(Level.SEVERE, "XML not generated for FDSet", e);
         }
         return fdJoint;
     }
