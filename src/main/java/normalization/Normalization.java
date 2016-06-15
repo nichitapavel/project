@@ -88,6 +88,7 @@ public final class Normalization {
         if (normalizedRelation.size() > 1) {
             for (int i = 0; i < normalizedRelation.size(); i++) {
                 normalizedRelation.get(i).setName(relation.getName() + "/" + (i+1));
+                normalizedRelation.get(i).getDFJoint().setName("FDSet " + relation.getName() + "/" + (i+1));
             }
         }
 
@@ -127,6 +128,7 @@ public final class Normalization {
         if (normalizedRelation.size() > 1) {
             for (int i = 0; i < normalizedRelation.size(); i++) {
                 normalizedRelation.get(i).setName(relation.getName() + "/" + (i+1));
+                normalizedRelation.get(i).getDFJoint().setName("FDSet " + relation.getName() + "/" + (i+1));
             }
         }
 
