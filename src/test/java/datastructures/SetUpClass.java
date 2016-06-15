@@ -1071,6 +1071,15 @@ public class SetUpClass {
         return dfJoint;
     }
     
+    //FDSet TwentyNine = {A -> D}
+    public FDSet dfJoint29() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet TwentyNine");
+        dfJoint.addDependency(funcDepAtoD());
+        return dfJoint;
+    }
+
+    
     //FDSet FourRegroupedWithoutCinAtoBC
     public FDSet dfJoint4ReGroupedWithoutCinAtoBC() {
         FDSet dfJoint = new FDSet();
