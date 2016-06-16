@@ -217,4 +217,30 @@ public class DFJointProjectionTest {
         FDSet expected = this.setUpObject.dfJoint29();
         assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
     }
+    
+    /**
+     * Test method for {@link datastructures.FDSet#projectionOnAttributeJoint(datastructures.AttributeSet)}.
+     * Projecting {A -> B, B -> C, C -> D} on {A, B, C},
+     * result: {A -> B, B -> C}.
+     */
+    @Test
+    public void testProjectionDFJoint07AToAttributeJointABC() {
+        FDSet dfJoint = this.setUpObject.dfJoint07();
+        AttributeSet attrJoint = this.setUpObject.attrJntABC();
+        FDSet expected = this.setUpObject.dfJoint05();
+        assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
+    }
+    
+    /**
+     * Test method for {@link datastructures.FDSet#projectionOnAttributeJoint(datastructures.AttributeSet)}.
+     * Projecting {A -> BE, B -> C, EC -> D} on {A, D},
+     * result: {A -> D}.
+     */
+    @Test
+    public void testProjectionDFJoint100AToAttributeJointAD() {
+        FDSet dfJoint = this.setUpObject.dfJoint100();
+        AttributeSet attrJoint = this.setUpObject.attrJntAD();
+        FDSet expected = this.setUpObject.dfJoint05();
+        assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
+    }
 }

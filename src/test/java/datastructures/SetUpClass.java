@@ -469,6 +469,11 @@ public class SetUpClass {
         return new FunctionalDependency(attrJntA(), attrJntE());
     }
     
+    //Functional Dependency A -> BE
+    public ADependency funcDepAtoBE() {
+        return new FunctionalDependency(attrJntA(), attrJntBE());
+    }
+    
     //Functional Dependency A -> BCD
     public ADependency funcDepAtoBCD() {
         return new FunctionalDependency(attrJntA(), attrJntBCD());
@@ -637,6 +642,11 @@ public class SetUpClass {
     //Functional Dependency CD -> E
     public ADependency funcDepCDtoE() {
         return new FunctionalDependency(attrJntCD(), attrJntE());
+    }
+    
+    //Functional Dependency CE -> D
+    public ADependency funcDepCEtoD() {
+        return new FunctionalDependency(attrJntCE(), attrJntD());
     }
     
     //Functional Dependency CF -> H
@@ -1079,6 +1089,15 @@ public class SetUpClass {
         return dfJoint;
     }
 
+  //FDSet TwentyNine = {A -> BE, B -> C, CE -> D}
+    public FDSet dfJoint100() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet 100");
+        dfJoint.addDependency(funcDepAtoBE());
+        dfJoint.addDependency(funcDepBtoC());
+        dfJoint.addDependency(funcDepCEtoD());
+        return dfJoint;
+    }
     
     //FDSet FourRegroupedWithoutCinAtoBC
     public FDSet dfJoint4ReGroupedWithoutCinAtoBC() {

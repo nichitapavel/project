@@ -478,12 +478,12 @@ public class FDSet implements Iterable<ADependency> {
                         !oldConsequent.isContained(attrJoint)) {
                     AttributeSet newConsequent = oldConsequent.intersect(attrJoint);
                     
-                    if (newConsequent.isNull()) {
-                        AttributeSet substract = oldConsequent.substract(attrJoint);
-                        for (ADependency dfAntecedent : this.df)
-                            if (substract.isContained(dfAntecedent.getAntecedent()))
-                                newConsequent.addAttributes(dfAntecedent.getAntecedent());
-                    }
+//                    if (newConsequent.isNull()) {
+//                        AttributeSet substract = oldConsequent.substract(attrJoint);
+//                        for (ADependency dfAntecedent : this.df)
+//                            if (substract.isContained(dfAntecedent.getAntecedent()))
+//                                newConsequent.addAttributes(dfAntecedent.getAntecedent());
+//                    }
                     
                     ADependency addDF = new FunctionalDependency(oldAntecedent, newConsequent);
                     addDF.clearTrivialElements();
