@@ -464,7 +464,6 @@ public class FDSet implements Iterable<ADependency> {
             }
             for (ADependency item : newFDSet) {
                 hiddenDF.addDependency(item);
-                hiddenDF = hiddenDF.regroupDFJoint();
             }
         }
         
