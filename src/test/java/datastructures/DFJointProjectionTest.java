@@ -240,7 +240,7 @@ public class DFJointProjectionTest {
     public void testProjectionDFJoint100AToAttributeJointAD() {
         FDSet dfJoint = this.setUpObject.dfJoint100();
         AttributeSet attrJoint = this.setUpObject.attrJntAD();
-        FDSet expected = this.setUpObject.dfJoint05();
+        FDSet expected = this.setUpObject.dfJoint29();
         assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
     }
 }
