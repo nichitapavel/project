@@ -431,68 +431,44 @@ public class FDSet implements Iterable<ADependency> {
         FDSet result = new FDSet();
         AttributeSet oldAntecedent;
         AttributeSet oldConsequent;
+        FDSet newFDSet = new FDSet();
+        boolean hasChange = true;
         
-        for (ADependency item : hiddenDF) {
-            if (item.getClass() == new FunctionalDependency().getClass()){
-                oldAntecedent = item.getAntecedent();
-                oldConsequent = item.getConsequent();
-                if (oldAntecedent.isContained(attrJoint) && 
-                        oldConsequent.isContained(attrJoint)) {
-                    result.addDependency(item); // añadir df
-                }
-                if (!oldAntecedent.isContained(attrJoint) && 
-                        oldConsequent.isContained(attrJoint)) {
-                    boolean added = false;
-                    ArrayList<AttributeSet> newAntecedentElements = new ArrayList<>();
-                    AttributeSet newAntecedent = oldAntecedent.intersect(attrJoint);
-                    AttributeSet substract = oldAntecedent.substract(attrJoint);
-                    for (ADependency dfConsequent : this.df) {
-                        if (substract.isContained(dfConsequent.getConsequent())) {
-                            newAntecedentElements.add(dfConsequent.getAntecedent());
-                        }
-                    }
-                    for (int i = 0; i < newAntecedentElements.size(); i++) {
-                        AttributeSet attrJnt = newAntecedentElements.get(i);
-                        if (!attrJnt.isContained(oldConsequent)) {
-                            newAntecedent.addAttributes(attrJnt);
-                            newAntecedentElements.remove(attrJnt);
-                            added = true;
-                        }
-                    }
-                    if (!added) {
-                        for (AttributeSet attrJnt : newAntecedentElements) {
-                            if (attrJnt.isContained(oldConsequent)) {
-                                newAntecedent.addAttributes(attrJnt);
-                                added = true;
+        while (hasChange) {
+            hasChange = false;
+            for (ADependency item : hiddenDF) {
+                if (item.getClass() == new FunctionalDependency().getClass()){
+                    oldAntecedent = item.getAntecedent();
+                    oldConsequent = item.getConsequent();
+                    if (oldAntecedent.isContained(attrJoint) && 
+                            oldConsequent.isContained(attrJoint)) {
+                        result.addDependency(item); // añadir df
+                    } else {
+                        for (ADependency fd : hiddenDF) {
+                            if (fd.getClass() == new FunctionalDependency().getClass()){
+                               if (oldAntecedent.isContained(fd.getConsequent())) {
+                                   AttributeSet newConsequent = new AttributeSet(fd.getConsequent());
+                                   newConsequent.removeAttributes(oldAntecedent);
+                                   newConsequent.addAttributes(oldConsequent);
+                                   
+                                   ADependency newFD = new FunctionalDependency(fd.getAntecedent(), newConsequent);
+                                   if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
+                                       newFDSet.addDependency(newFD);
+                                       hasChange = true;
+                                   }
+                                }
                             }
-                        }                   
+                        }
                     }
-                    ADependency addDF = new FunctionalDependency(newAntecedent, oldConsequent);
-                    addDF.clearTrivialElements();
-                    if (added && !addDF.getAntecedent().isNull()
-                            && !addDF.getConsequent().isNull()
-                            && addDF.getAntecedent().isContained(attrJoint))
-                        result.addDependency(addDF); // añadir df
-                }
-                if (oldAntecedent.isContained(attrJoint) && 
-                        !oldConsequent.isContained(attrJoint)) {
-                    AttributeSet newConsequent = oldConsequent.intersect(attrJoint);
-                    
-//                    if (newConsequent.isNull()) {
-//                        AttributeSet substract = oldConsequent.substract(attrJoint);
-//                        for (ADependency dfAntecedent : this.df)
-//                            if (substract.isContained(dfAntecedent.getAntecedent()))
-//                                newConsequent.addAttributes(dfAntecedent.getAntecedent());
-//                    }
-                    
-                    ADependency addDF = new FunctionalDependency(oldAntecedent, newConsequent);
-                    addDF.clearTrivialElements();
-                    
-                    if (!addDF.getConsequent().isNull() && newConsequent.isContained(attrJoint))
-                        result.addDependency(addDF); // añadir df
                 }
             }
+            for (ADependency item : newFDSet) {
+                hiddenDF.addDependency(item);
+                hiddenDF = hiddenDF.regroupDFJoint();
+            }
         }
+        
+
         return result;
     }
     
