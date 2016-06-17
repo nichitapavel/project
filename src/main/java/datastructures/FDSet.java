@@ -4,8 +4,10 @@
 package datastructures;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +21,7 @@ import org.w3c.dom.Element;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
+import normalization.Normalization;
 import utils.Const;
 
 /**
@@ -434,40 +437,26 @@ public class FDSet implements Iterable<ADependency> {
         FDSet newFDSet = new FDSet();
         boolean hasChange = true;
         
-        while (hasChange) {
-            hasChange = false;
-            for (ADependency item : hiddenDF) {
-                if (item.getClass() == new FunctionalDependency().getClass()){
-                    oldAntecedent = item.getAntecedent();
-                    oldConsequent = item.getConsequent();
-                    if (oldAntecedent.isContained(attrJoint) && 
-                            oldConsequent.isContained(attrJoint)) {
-                        result.addDependency(item); // añadir df
-                    } else {
-                        for (ADependency fd : hiddenDF) {
-                            if (fd.getClass() == new FunctionalDependency().getClass()){
-                               if (oldAntecedent.isContained(fd.getConsequent())) {
-                                   AttributeSet newConsequent = new AttributeSet(fd.getConsequent());
-                                   newConsequent.removeAttributes(oldAntecedent);
-                                   newConsequent.addAttributes(oldConsequent);
-                                   
-                                   ADependency newFD = new FunctionalDependency(fd.getAntecedent(), newConsequent);
-                                   if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
-                                       newFDSet.addDependency(newFD);
-                                       hasChange = true;
-                                   }
-                                }
-                            }
-                        }
+        Map<AttributeSet, AttributeSet> map = new HashMap<>();
+        
+        for (ADependency item : hiddenDF) {
+            AttributeSet ullman = Normalization.simpleUllman(item.getAntecedent(), hiddenDF);
+            map.put(item.getAntecedent(), ullman);
+        }
+        
+        map.forEach((k, v) -> {
+            if (k.isContained(attrJoint)){
+                AttributeSet newConsequent = new AttributeSet(v.intersect(attrJoint));
+                if (!newConsequent.isNull()) {
+                    FunctionalDependency fd = new FunctionalDependency(k, newConsequent);
+                    fd.clearTrivialElements();
+                    if (!fd.getConsequent().isNull()){
+                        result.addDependency(fd);
+                        result.removeRareAttributes(true);
                     }
                 }
             }
-            for (ADependency item : newFDSet) {
-                hiddenDF.addDependency(item);
-                hiddenDF = hiddenDF.regroupDFJoint();
-            }
-        }
-        
+        });
 
         return result;
     }
