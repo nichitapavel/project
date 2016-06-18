@@ -555,4 +555,25 @@ public class FDSet implements Iterable<ADependency> {
         }
         return fdJoint;
     }
+    
+    /**
+     * Returns a FDSet equivalent to this one, but with all Functional
+     * Dependencies into elemental form, where the consequent is always
+     * just one Attribute.
+     * 
+     * @return a FDSet in elemental form.
+     */
+    public FDSet toElementalForm() {
+        FDSet newFDSet = new FDSet();
+        
+        for (ADependency item : df) {
+            for (Attribute attr : item.getConsequent()) {
+                AttributeSet newConsequent = new AttributeSet();
+                newConsequent.addAttributes(attr);
+                newFDSet.addDependency(new FunctionalDependency(item.getAntecedent(), newConsequent));
+            }
+        }
+        
+        return newFDSet;
+    }
 }
