@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.crypto.CipherInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -449,13 +448,10 @@ public class FDSet implements Iterable<ADependency> {
                         AttributeSet newConsequent = new AttributeSet();
                         for (ADependency fd : hiddenDF) {
                             if (fd.getClass() == new FunctionalDependency().getClass()){
-                                if (fd.getConsequent().isContained(item.getAntecedent())) {
-                                   newConsequent = new AttributeSet(fd.getConsequent());
-                                   newConsequent.removeAttributes(oldAntecedent);
+                                if (fd.getConsequent().isContained(oldAntecedent)) {
                                    newConsequent.addAttributes(oldConsequent);
-                                   newAntecedent.addAttributes(item.getAntecedent());
+                                   newAntecedent.addAttributes(oldAntecedent.union(fd.getAntecedent()));
                                    newAntecedent.removeAttributes(fd.getConsequent());
-                                   newAntecedent.addAttributes(fd.getAntecedent());
                                 }
                             }
                         }
@@ -473,10 +469,11 @@ public class FDSet implements Iterable<ADependency> {
             for (ADependency item : newFDSet) {
                 hiddenDF.addDependency(item);
             }
+            hiddenDF = hiddenDF.toElementalForm();
         }
         
 
-        return result;
+        return result.regroupDFJoint();
     }
     
     /**
