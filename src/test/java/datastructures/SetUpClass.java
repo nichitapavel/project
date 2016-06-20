@@ -123,6 +123,14 @@ public class SetUpClass {
         attrJoint.addAttributes(attrH());
         return attrJoint;
     }
+    
+    //AttributeSet GH
+    public AttributeSet attrJntGH() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrG()); 
+        attrJoint.addAttributes(attrH());
+        return attrJoint;
+    }
 
     //AttributeSet AB
     public AttributeSet attrJntAB() {
@@ -223,6 +231,15 @@ public class SetUpClass {
     //AttributeSet EF
     public AttributeSet attrJntEF() {
         AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrE());
+        attrJoint.addAttributes(attrF());
+        return attrJoint;
+    }
+    
+    //AttributeSet DEF
+    public AttributeSet attrJntDEF() {
+        AttributeSet attrJoint = new AttributeSet();
+        attrJoint.addAttributes(attrD());
         attrJoint.addAttributes(attrE());
         attrJoint.addAttributes(attrF());
         return attrJoint;
@@ -679,6 +696,11 @@ public class SetUpClass {
         return new FunctionalDependency(attrJntABE(), attrJntH());
     }
 
+    //Functional Dependency ABE -> GH
+    public ADependency funcDepABEtoGH() {
+        return new FunctionalDependency(attrJntABE(), attrJntGH());
+    }
+    
     //Functional Dependency BCD -> E
     public ADependency funcDepBCDtoE() {
         return new FunctionalDependency(attrJntBCD(), attrJntE());
@@ -1195,6 +1217,16 @@ public class SetUpClass {
         return dfJoint;
     }
     
+    //FDSet EtoD_DtoE = {E -> DF, D -> E, E -> F}
+    public FDSet dfJoint101() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet EtoDF_DtoE_EtoF");
+        dfJoint.addDependency(funcDepEtoDF());
+        dfJoint.addDependency(funcDepDtoE());
+        dfJoint.addDependency(funcDepFtoE());
+        return dfJoint;
+    }
+    
     //FDSet BtoC_CtoB = {B -> C, C -> B}
     public FDSet dfJointBtocCtob() {
         FDSet dfJoint = new FDSet();
@@ -1222,19 +1254,27 @@ public class SetUpClass {
     }
 
     //FDSet ADtoE = {AD -> E}
-    public FDSet dfJointADtoe() {
+    public FDSet dfJointADtoE() {
         FDSet dfJoint = new FDSet();
         dfJoint.setName("FDSet ADtoE");
         dfJoint.addDependency(funcDepADtoE());
         return dfJoint;
     }
     
-    //FDSet ABEtoGH = {ABE -> GH}
+    //FDSet ABEtoGH = {ABE -> G, ABE -> H}
     public FDSet dfJointABEtogh() {
         FDSet dfJoint = new FDSet();
         dfJoint.setName("FDSet ABEtoGH");
         dfJoint.addDependency(funcDepABEtoG());
         dfJoint.addDependency(funcDepABEtoH());
+        return dfJoint;
+    }
+    
+    //FDSet ABEtoGH = {ABE -> GH}
+    public FDSet dfJointABEtoGHseparated() {
+        FDSet dfJoint = new FDSet();
+        dfJoint.setName("FDSet ABEtoGH");
+        dfJoint.addDependency(funcDepABEtoGH());
         return dfJoint;
     }
     
@@ -1253,7 +1293,7 @@ public class SetUpClass {
         dfJoint.setName("FDSet AtoB_BEtoA_ABDtoE");
         dfJoint.addDependency(funcDepAtoB());
         dfJoint.addDependency(funcDepBEtoA());
-        dfJoint.addDependency(funcDepABDtoE());
+        dfJoint.addDependency(funcDepADtoE());
         return dfJoint;
     }
     
@@ -1647,7 +1687,7 @@ public class SetUpClass {
     public Relation relation1ADE() {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntADE());
-        relation.setDFJoint(dfJointADtoe());
+        relation.setDFJoint(dfJointADtoE());
         return relation;
     }
     
@@ -1750,6 +1790,13 @@ public class SetUpClass {
         return relation;
     }
     
+    //Relation DEF
+    public Relation relationDEF() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntDEF());
+        return relation;
+    }
+    
     //Relation ABD
     public Relation relationABD() {
         Relation relation = new Relation();
@@ -1778,6 +1825,14 @@ public class SetUpClass {
         Relation relation = new Relation();
         relation.settAttrJoint(attrJntABEGH());
         relation.setDFJoint(dfJointABEtogh());
+        return relation;
+    }
+    
+    //Relation AEGH
+    public Relation relationABEGH2() {
+        Relation relation = new Relation();
+        relation.settAttrJoint(attrJntABEGH());
+        relation.setDFJoint(dfJointABEtoGHseparated());
         return relation;
     }
     
@@ -1865,6 +1920,13 @@ public class SetUpClass {
     public Relation relationABCinABtocCtoab() {
         Relation relation = relation1ABC();
         relation.setDFJoint(dfJointABtocCtoab());
+        return relation;
+    }
+
+    //Relation 100
+    public Relation relation100() {
+        Relation relation = relationDEF();
+        relation.setDFJoint(dfJoint101());
         return relation;
     }
     
@@ -2168,7 +2230,7 @@ public class SetUpClass {
         List<Relation> arrayList = new ArrayList<>();
         arrayList.add(relationABCinAtobcBCtoa());
         Relation relation = relationABCDinBtoacCtod();
-        relation.setDFJoint(dfJointADtoe());
+        relation.setDFJoint(dfJointADtoE());
         arrayList.add(relation);
         return arrayList;
     }
@@ -2178,6 +2240,15 @@ public class SetUpClass {
         List<Relation> arrayList = new ArrayList<>();
         arrayList.add(relation1ABC());
         arrayList.add(relation1ADE());
+        return arrayList;
+    }
+    
+    // {ABC} {AB -> C, C -> AB} - {DE} {E -> D, D -> E} - {EF} {E -> F, F -> E} - {ABEGH} {ABE -> GH}
+    public List<Relation> listRelations10() {
+        List<Relation> arrayList = new ArrayList<>();
+        arrayList.add(relationABCinABtocCtoab());
+        arrayList.add(relation100());
+        arrayList.add(relationABEGH2());
         return arrayList;
     }
 }
