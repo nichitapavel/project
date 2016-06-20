@@ -4,10 +4,8 @@
 package datastructures;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +19,6 @@ import org.w3c.dom.Element;
 import dependency.ADependency;
 import dependency.FunctionalDependency;
 import dependency.PluralDependency;
-import normalization.Normalization;
 import utils.Const;
 
 /**
@@ -430,35 +427,52 @@ public class FDSet implements Iterable<ADependency> {
      * @return a new FDSet with implied dependencies.
      */
     public FDSet projectionOnAttributeJoint(AttributeSet attrJoint) {
-        FDSet hiddenDF = this.getHiddenDF();
+        FDSet hiddenDF = this.toElementalForm();
         FDSet result = new FDSet();
         AttributeSet oldAntecedent;
         AttributeSet oldConsequent;
         FDSet newFDSet = new FDSet();
         boolean hasChange = true;
         
-        Map<AttributeSet, AttributeSet> map = new HashMap<>();
-        
-        for (ADependency item : hiddenDF) {
-            AttributeSet ullman = Normalization.simpleUllman(item.getAntecedent(), hiddenDF);
-            map.put(item.getAntecedent(), ullman);
-        }
-        
-        map.forEach((k, v) -> {
-            if (k.isContained(attrJoint)){
-                AttributeSet newConsequent = new AttributeSet(v.intersect(attrJoint));
-                if (!newConsequent.isNull()) {
-                    FunctionalDependency fd = new FunctionalDependency(k, newConsequent);
-                    fd.clearTrivialElements();
-                    if (!fd.getConsequent().isNull()){
-                        result.addDependency(fd);
-                        result.removeRareAttributes(true);
+        while (hasChange) {
+            hasChange = false;
+            for (ADependency item : hiddenDF) {
+                if (item.getClass() == new FunctionalDependency().getClass()){
+                    oldAntecedent = item.getAntecedent();
+                    oldConsequent = item.getConsequent();
+                    if (oldAntecedent.isContained(attrJoint) && 
+                            oldConsequent.isContained(attrJoint)) {
+                        result.addDependency(item); // añadir df
+                    } else {
+                        AttributeSet newAntecedent = new AttributeSet();
+                        AttributeSet newConsequent = new AttributeSet();
+                        for (ADependency fd : hiddenDF) {
+                            if (fd.getClass() == new FunctionalDependency().getClass()){
+                                if (fd.getConsequent().isContained(oldAntecedent)) {
+                                   newConsequent.addAttributes(oldConsequent);
+                                   newAntecedent.addAttributes(oldAntecedent.union(fd.getAntecedent()));
+                                   newAntecedent.removeAttributes(fd.getConsequent());
+                                }
+                            }
+                        }
+                        if (!newAntecedent.isNull()) {
+                            ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
+                            if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
+                                newFDSet.addDependency(newFD);
+                                hasChange = true;
+                            }
+                        }
                     }
                 }
             }
-        });
-
-        return result;
+            newFDSet = newFDSet.toElementalForm();
+            for (ADependency item : newFDSet) {
+                hiddenDF.addDependency(item);
+            }
+            hiddenDF = hiddenDF.toElementalForm();
+        }
+        
+        return result.regroupDFJoint();
     }
     
     /**
@@ -544,5 +558,26 @@ public class FDSet implements Iterable<ADependency> {
             LOG.log(Level.SEVERE, "XML not generated for FDSet", e);
         }
         return fdJoint;
+    }
+    
+    /**
+     * Returns a FDSet equivalent to this one, but with all Functional
+     * Dependencies into elemental form, where the consequent is always
+     * just one Attribute.
+     * 
+     * @return a FDSet in elemental form.
+     */
+    public FDSet toElementalForm() {
+        FDSet newFDSet = new FDSet();
+        
+        for (ADependency item : df) {
+            for (Attribute attr : item.getConsequent()) {
+                AttributeSet newConsequent = new AttributeSet();
+                newConsequent.addAttributes(attr);
+                newFDSet.addDependency(new FunctionalDependency(item.getAntecedent(), newConsequent));
+            }
+        }
+        
+        return newFDSet;
     }
 }
