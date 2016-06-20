@@ -459,10 +459,12 @@ public class FDSet implements Iterable<ADependency> {
                                 }
                             }
                         }
-                        ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
-                        if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
-                            newFDSet.addDependency(newFD);
-                            hasChange = true;
+                        if (!newAntecedent.isNull()) {
+                            ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
+                            if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
+                                newFDSet.addDependency(newFD);
+                                hasChange = true;
+                            }
                         }
                     }
                 }
