@@ -243,4 +243,17 @@ public class DFJointProjectionTest {
         FDSet expected = this.setUpObject.dfJoint29();
         assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
     }
+    
+    /**
+     * Test method for {@link datastructures.FDSet#projectionOnAttributeJoint(datastructures.AttributeSet)}.
+     * Projecting {A -> BC, BC -> A, BCD -> E, E -> C} on {A, D, E},
+     * result: {AD -> E}.
+     */
+    @Test
+    public void testProjectionDFJoint01AToAttributeJointADE() {
+        FDSet dfJoint = this.setUpObject.dfJoint01();
+        AttributeSet attrJoint = this.setUpObject.attrJntADE();
+        FDSet expected = this.setUpObject.dfJointADtoe();
+        assertEquals(expected, dfJoint.projectionOnAttributeJoint(attrJoint));
+    }
 }
