@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.crypto.CipherInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -444,20 +445,24 @@ public class FDSet implements Iterable<ADependency> {
                             oldConsequent.isContained(attrJoint)) {
                         result.addDependency(item); // añadir df
                     } else {
+                        AttributeSet newAntecedent = new AttributeSet();
+                        AttributeSet newConsequent = new AttributeSet();
                         for (ADependency fd : hiddenDF) {
                             if (fd.getClass() == new FunctionalDependency().getClass()){
-                               if (fd.getConsequent().isContained(item.getAntecedent())) {
-                                   AttributeSet newConsequent = new AttributeSet(fd.getConsequent());
+                                if (fd.getConsequent().isContained(item.getAntecedent())) {
+                                   newConsequent = new AttributeSet(fd.getConsequent());
                                    newConsequent.removeAttributes(oldAntecedent);
                                    newConsequent.addAttributes(oldConsequent);
-                                   
-                                   ADependency newFD = new FunctionalDependency(fd.getAntecedent(), newConsequent);
-                                   if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
-                                       newFDSet.addDependency(newFD);
-                                       hasChange = true;
-                                   }
+                                   newAntecedent.addAttributes(item.getAntecedent());
+                                   newAntecedent.removeAttributes(fd.getConsequent());
+                                   newAntecedent.addAttributes(fd.getAntecedent());
                                 }
                             }
+                        }
+                        ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
+                        if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
+                            newFDSet.addDependency(newFD);
+                            hasChange = true;
                         }
                     }
                 }
