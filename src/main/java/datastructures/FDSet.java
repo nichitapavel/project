@@ -427,7 +427,7 @@ public class FDSet implements Iterable<ADependency> {
      * @return a new FDSet with implied dependencies.
      */
     public FDSet projectionOnAttributeJoint(AttributeSet attrJoint) {
-        FDSet hiddenDF = this.getHiddenDF();
+        FDSet hiddenDF = this.toElementalForm();
         FDSet result = new FDSet();
         AttributeSet oldAntecedent;
         AttributeSet oldConsequent;
@@ -446,7 +446,7 @@ public class FDSet implements Iterable<ADependency> {
                     } else {
                         for (ADependency fd : hiddenDF) {
                             if (fd.getClass() == new FunctionalDependency().getClass()){
-                               if (oldAntecedent.isContained(fd.getConsequent())) {
+                               if (fd.getConsequent().isContained(item.getAntecedent())) {
                                    AttributeSet newConsequent = new AttributeSet(fd.getConsequent());
                                    newConsequent.removeAttributes(oldAntecedent);
                                    newConsequent.addAttributes(oldConsequent);
@@ -462,6 +462,7 @@ public class FDSet implements Iterable<ADependency> {
                     }
                 }
             }
+            newFDSet = newFDSet.toElementalForm();
             for (ADependency item : newFDSet) {
                 hiddenDF.addDependency(item);
             }
