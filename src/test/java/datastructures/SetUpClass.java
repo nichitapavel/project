@@ -929,8 +929,8 @@ public class SetUpClass {
         FDSet dfJoint = new FDSet();
         dfJoint.setName("FDSet Fourteen");
         dfJoint.addDependency(funcDepCDtoA());
-        dfJoint.addDependency(funcDepADtoC());
         dfJoint.addDependency(funcDepDEtoC());
+        dfJoint.addDependency(funcDepADtoC());
         return dfJoint;
     }
     
