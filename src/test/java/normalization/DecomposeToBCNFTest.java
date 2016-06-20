@@ -65,7 +65,7 @@ public class DecomposeToBCNFTest {
     @Test
     public void testNormalizeBCNFRelation3() {
         List<Relation> result = Normalization.normalizeBCNF(this.setUpObject.relation03(), true);
-        assertEquals(this.setUpObject.listRelations5(), result);
+        assertEquals(this.setUpObject.listRelations10(), result);
     }
     
     /**
