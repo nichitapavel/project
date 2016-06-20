@@ -65,7 +65,7 @@ public class DFJointProjectionTest {
     /**
      * Test method for {@link datastructures.FDSet#projectionOnAttributeJoint(datastructures.AttributeSet)}.
      * Projecting {A -> B, CD -> A, BD -> C, DE -> C} on {A, C, D, E},
-     * result: {CD -> A, AD -> C, DE -> C}.
+     * result: {CD -> A, DE -> C, AD -> C}.
      */
     @Test
     public void testProjectionDFJointTwelveToAttributeJointACDE() {

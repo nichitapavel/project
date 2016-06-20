@@ -924,7 +924,7 @@ public class SetUpClass {
         return dfJoint;
     }
     
-    //FDSet Fourteen = {CD -> A, AD -> C, DE -> C}
+    //FDSet Fourteen = {CD -> A, DE -> C, AD -> C}
     public FDSet dfJoint14() {
         FDSet dfJoint = new FDSet();
         dfJoint.setName("FDSet Fourteen");
