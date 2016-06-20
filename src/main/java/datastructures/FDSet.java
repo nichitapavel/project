@@ -444,24 +444,26 @@ public class FDSet implements Iterable<ADependency> {
                             oldConsequent.isContained(attrJoint)) {
                         result.addDependency(item); // añadir df
                     } else {
-                        AttributeSet newAntecedent = new AttributeSet();
-                        AttributeSet newConsequent = new AttributeSet();
                         for (ADependency fd : hiddenDF) {
                             if (fd.getClass() == new FunctionalDependency().getClass()){
+                                AttributeSet newAntecedent = new AttributeSet();
+                                AttributeSet newConsequent = new AttributeSet();
                                 if (fd.getConsequent().isContained(oldAntecedent)) {
                                    newConsequent.addAttributes(oldConsequent);
                                    newAntecedent.addAttributes(oldAntecedent.union(fd.getAntecedent()));
                                    newAntecedent.removeAttributes(fd.getConsequent());
+                                   
+                                   if (!newAntecedent.isNull()) {
+                                       ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
+                                       if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
+                                           newFDSet.addDependency(newFD);
+                                           hasChange = true;
+                                       }
+                                   }
                                 }
                             }
                         }
-                        if (!newAntecedent.isNull()) {
-                            ADependency newFD = new FunctionalDependency(newAntecedent, newConsequent);
-                            if (!newFD.isTrivial() && !newFDSet.contains(newFD)){
-                                newFDSet.addDependency(newFD);
-                                hasChange = true;
-                            }
-                        }
+                        
                     }
                 }
             }
@@ -472,7 +474,10 @@ public class FDSet implements Iterable<ADependency> {
             hiddenDF = hiddenDF.toElementalForm();
         }
         
-        return result.regroupDFJoint();
+        result = result.regroupDFJoint();
+        result.removeRareAttributes(true);
+        
+        return result; 
     }
     
     /**
